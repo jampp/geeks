@@ -74,8 +74,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: .5rem;
   font-weight: bold;
   line-height: 1.25;
-  color: #444;
-  text-rendering: optimizeLegibility;
+  color: #444;  
 }
 h1 {
   font-size: 2rem;
@@ -216,8 +215,7 @@ blockquote p:last-child {
 img {
   display: block;
   max-width: 100%;
-  margin: 0 0 1rem;
-  border-radius: 5px;
+  margin: 0 0 1rem;  
 }
 
 /* Tables */
@@ -328,7 +326,7 @@ tbody tr:nth-child(odd) th {
 
 /* Meta data line below post title */
 .post-date {
-  font-size: 20px;
+  font-size: 14px;
   display: block;
   text-transform: uppercase;
   color: #9a9a9a;

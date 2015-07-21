@@ -8,7 +8,8 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  background: #ffffff; }
+  background: #ffffff;
+  z-index: 999; }
   header .container {
     max-width: 48rem;
     display: table;
@@ -22,7 +23,7 @@ header {
     header nav a {
       color: #444;
       transition: 0.1s;
-      margin-left: 20px; }
+      padding: 20px 10px; }
       header nav a.active, header nav a:hover {
         color: #65b9e8;
         text-decoration: none; }
@@ -107,6 +108,40 @@ header {
   margin-bottom: 80px;
   border-bottom: 1px solid #e5e5e5;
   padding-bottom: 80px; }
+
+#about h1 {
+  margin-bottom: 40px; }
+#about .page {
+  padding-bottom: 40px; }
+
+.about-container {
+  display: table;
+  width: 100%; }
+  .about-container .inner {
+    display: table-cell;
+    width: 50%;
+    vertical-align: middle; }
+  .about-container p {
+    text-align: center; }
+    .about-container p:first-child {
+      font-size: 18px;
+      color: #65B9E8; }
+    .about-container p:last-child {
+      margin-bottom: 0; }
+  .about-container ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+    font-style: italic;
+    line-height: 40px;
+    margin: 0; }
+
+h1.page-header {
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 80px;
+  padding-bottom: 10px; }
 
 .post-date {
   color: #9a9a9a;

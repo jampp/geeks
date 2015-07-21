@@ -9,8 +9,11 @@
     
     {% include social.html %}
 	
-    <div class="content container">
-      {{ content }}
+    <div class="content container" id="{{ page.title | downcase }}">
+	    {% if page.header %}
+	    	<h1 class="page-header">{{ page.header }}</h1>
+	    {% endif %}
+      	{{ content }}
     </div>
 
   </body>

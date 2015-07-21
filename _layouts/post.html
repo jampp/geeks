@@ -2,12 +2,13 @@
 layout: default
 ---
 
-<div class="post">
-  <span class="post-date">{{ page.date | date_to_string }}</span>
-  <h1 class="post-title">{{ page.title }}</h1>
+<div class="post all">
+  <h1>{{ page.title }}</h1>
+  <div class="post-date">{{ page.date | date: '%B %d, %Y' }}</div>
   {{ content }}
 </div>
-<a class="small" href="/">Back to homepage</a>
+
+<div class="footer-cta"><a href="/">Back to homepage</a></div>
 
 <!--
 <div class="related">

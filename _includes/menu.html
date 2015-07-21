@@ -1,10 +1,10 @@
-<div class="sidebar">
+<header>
   <div class="container">
-    <div class="sidebar-about">
+    <div class="inner">
       <a href="/"><img src="/images/logo_color.png"></a>
     </div>
 
-    <nav class="sidebar-nav">
+    <nav class="inner">
       <a class="sidebar-nav-item{% if (page.url == '/index.html' || page.url == site.baseurl) %} active{% endif %}" href="/">Home</a>
 
       {% comment %}
@@ -26,7 +26,7 @@
     </nav>
   </div>
 
-  <div class="container sidebar-sticky">
+  <!--<div class="container sidebar-sticky">
     <p class="mb-0 small">&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>
-  </div>
-</div>
+  </div>-->
+</header>

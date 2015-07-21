@@ -3,23 +3,21 @@ layout: default
 title: Home
 ---
 
-<h1>Welcome, feel free to Jampp around!</h1>
-
 <div class="posts">
   {% for post in site.posts limit:5 %}
     <article class="post">
-      <span class="post-date">{{ post.date | date_to_string }}</span>
       <h2 class="post-title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+      <div class="post-date">{{ post.date | date: '%B %d, %Y' }}</div>
 
       <div class="entry">
-        {{ post.content | strip_html | truncatewords: 30 }}
+        {{ post.content | strip_html | truncatewords: 40 }}
         <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
       </div>
 
     </article>
   {% endfor %}
 
-  <div><a href="/archive.html">See all articles</a></div>
+  <div class="footer-cta"><a href="/archive.html">See all articles</a></div>
 
 </div>
 

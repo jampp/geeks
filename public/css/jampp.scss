@@ -1,0 +1,94 @@
+body { padding:80px 0; }
+header {
+	padding: 20px; box-shadow: 0px 0px 1px 0px #444; position: fixed; top: 0; left: 0; right: 0; background:#ffffff;
+	.container { 
+		max-width: 48rem; display: table; width: 100%;
+		.inner { display: table-cell; vertical-align: middle; }
+	}
+	nav {
+		text-align: right; font-size:16px;
+		a {
+			color: #444; transition: 0.1s; margin-left: 20px;
+			&.active, &:hover { color: #65b9e8; text-decoration: none; }
+		}	
+	}
+	img { margin: 0; }
+}
+
+.posts {
+	h2 {
+		font-size: 1.1rem; font-weight: 400; margin-top: 0; text-align: center; margin-bottom:0;
+		a {
+			transition: 0.1s;
+			&:hover { color: #65b9e8; text-decoration: none; }
+		}
+	}
+	article.post {
+		margin-bottom: 80px; border-bottom: 1px solid #e5e5e5; padding-bottom: 80px; color: #555; font-size: 16px;
+		p { margin-bottom: .5rem; }
+		.read-more { font-size: 16px; }		
+		.post-date { font-size: 14px; margin-bottom:20px; }
+	}
+}
+
+.post {
+	font-size:16px; margin-bottom: 80px; border-bottom: 1px solid #e5e5e5; padding-bottom: 80px;
+	h1 { font-weight: bold; text-align:center; margin-bottom:0; }
+	img { border: 1px solid #ddd; padding: 4px; }
+	.post-date { color: #888; text-align: center; margin-top: 10px; }
+}
+
+.post.all {
+	  .post-date { margin-bottom: 40px; font-size: 18px; }
+}
+
+.archive {
+	text-align:center;
+	h3 {   
+		margin-bottom: 10px; border-top: 1px solid #e5e5e5; padding-top: 80px; text-align: center; margin-top: 80px; 
+		&:first-child { padding-top:0; margin-top:0; border-top:0; }
+	}
+	p { font-size: 16px; margin-bottom: 4px; }
+}	
+
+
+.content.container { margin-top: 80px; animation-name: show-content; animation-duration: 1s; animation-iteration-count: 1; }
+@keyframes show-content {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.page {
+	font-size:16px; margin-bottom: 80px; border-bottom: 1px solid #e5e5e5; padding-bottom: 80px;
+}
+
+.post-date { color: #9a9a9a; text-align: center; margin-top: 4px; }
+.footer-cta { font-size:16px; text-align: center; }
+.mb-0 { margin-bottom: 0; }
+
+#social {  
+	position: fixed; top: 82px; right: 0; padding: 18px;
+	.icon { 
+		display: block; width:30px; height: 30px; background-image:url(../../images/social.png); background-repeat: no-repeat; margin-bottom: 18px; 
+		&.gh {
+			background-position: 6px 3px;
+			&:hover { background-position: 6px -37px; }
+		}
+		&.tw {
+			background-position: -180px 2px;
+			&:hover { background-position: -180px -38px; }
+		}
+		&.email {
+			background-position: -41px 2px;
+			&:hover { background-position: -41px -38px; }
+		}
+		&.so {
+			background-position: -89px 2px;
+			&:hover { background-position: -89px -38px; }
+		}
+		&.in {
+			background-position: -133px 1px;
+			&:hover { background-position: -133px -39px; }
+		}
+	}
+}

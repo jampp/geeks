@@ -1,0 +1,47 @@
+# Site settings
+title:             Jampp Blog
+sitename:          Jampp
+title-divider:     "-"
+email:             info@jammp.com
+description:       Lorem ipsum bajada descripción del blog algo sobre jampp dolor sit amet consectetuer
+locale:            en_US
+owner:             Alexis Sgarbossa
+
+twitter_username:  jampp
+github_username:   jampp
+facebook_username: jamppHQ
+linkedin_username: jampp
+
+
+fb_admins:         https://www.facebook.com/alexis.redo
+fb_appid:          362484580560378
+
+production:        false
+
+baseurl:           ""
+url:               "http://localhost:9999"
+
+source:            ./_src
+destination:       ./build
+
+permalink:         /:categories/:title/
+
+paginate:          3
+paginate_path:     '/page:num'
+gems:              [jekyll-paginate]
+
+# Any entry from the IANA Time Zone Database
+timezone:          America/Argentina/Buenos_Aires
+
+# Build settings
+markdown:          kramdown
+
+# Gulp takes care of images and assets
+exclude:           ['images', 'css', 'js', 'fonts', '**.png', '**.jpg', '**.jpeg', '**.gif', '**.webp', '**.svg', '**.ico', 'page-template.html']
+
+# Don't import the folder structure
+exclude:           []
+
+# `_config.build.yml` sets `future` and `show_drafts` to `false`
+future:            true
+show_drafts:       true

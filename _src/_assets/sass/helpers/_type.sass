@@ -1,0 +1,109 @@
+*, *:before,
+*:after
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+
+
+// +font-face($style-name, $file, $family, $category)
++font-face('Gotham', 'GothamRnd-Book', 'Gotham', 'serif')
+
++font-face('GothamBold', 'GothamRnd-Bold', 'Gotham', 'serif')
+
++font-face('GothamMedium', 'GothamRnd-Medium', 'Gotham', 'serif')
+
++font-face('Aleo', 'aleo-regular-webfont', 'Aleo', 'serif')
+
++font-face('AleoLight', 'aleo-light-webfont', 'Aleo', 'serif')
+
++font-face('AleoBold', 'aleo-bold-webfont', 'Aleo', 'serif')
+
+html
+  font-size: 10px
+  -webkit-tap-highlight-color: rgba(0,0,0,0)
+
+body
+  font-family: Gotham
+  font-size: 14px
+  line-height: 1.42857
+
+h1, h2, h3, h4, .Gotham
+  font-family: Gotham
+  font-weight: normal
+
+a
+  color: $link-alt
+  text-decoration: none
+  &:hover,
+  &:focus
+    color: darken($link-alt, 20%)
+    text-decoration: none
+
+h1, .h1
+  font-size: 24px
+  line-height: 32px
+  color: $text-main
+  @media #{$breakpoint}
+    font-size: 36px
+    line-height: 44px
+
+h2, .h2
+  font-size: 24px
+  line-height: 32px
+  color: $text-main
+  @media #{$breakpoint}
+    font-size: 28px
+    line-height: 34px
+
+h3, .h3
+  font-size: 20px
+  line-height: 28px
+  color: $text-main
+  @media #{$breakpoint}
+    font-size: 18px
+    line-height: 28px
+
+h4, .h4
+  font-size: 18px
+  line-height: 24px
+  color: $text-main
+  @media #{$breakpoint}
+    font-size: 16px
+    line-height: 24px
+
+p
+  font-family: Aleo
+  color: $text-secondary
+  font-size: 16px
+  line-height: 30px
+  color: $text-main
+  margin-bottom: 1em
+  letter-spacing: 0.3px
+
+
+b, strong
+  color: darken($text-main, 10%)
+  font-family: AleoBold
+
+blockquote
+  font-family: Gotham
+  font-size: 20px
+  color: #9AB2BF
+  line-height: 32px
+  margin-bottom: 1em
+  cite
+    font-family: GothamRounded-BookItalic
+    font-size: 12px
+    color: #B4B4B4
+    line-height: 18px
+
+hr
+  border-top: 1px solid $separation-color
+  border-bottom: 0
+  margin-bottom: 1em
+  display: inline-block
+  width: 60px
+
+
+img
+  max-width: 100%

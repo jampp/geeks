@@ -1,0 +1,28 @@
+<header class="site-header">
+  <div class="fluid-container">
+    <div class="left">
+      <a href="/" class="visit">
+        <span class="svg-logo-blue w-dims"></span>
+      </a>
+    </div>
+    <div class="right">
+      <a class="suscribe btn-secondary" href="{{ "/feed.xml" | prepend: site.baseurl }}">Suscribe</a>
+    </div>
+  </div>
+
+  {% if page.image.feature %}
+    <div class="entry-image simple-post" style="background-image: url({{ site.url }}/assets/images/featured-images-posts/{{ page.image.feature }})"></div>
+    {% elsif page.tag == "news" %}
+      <div class="entry-image news"></div>
+    {% elsif page.tag == "product-announcements" %}
+      <div class="entry-image product-announcements"></div>
+    {% elsif page.tag == "events" %}
+      <div class="entry-image events"></div>
+    {% elsif page.tag == "insights" %}
+      <div class="entry-image insights"></div>
+    {% elsif page.tag == "best-practices" %}
+      <div class="entry-image best-practices"></div>
+    {% else %}
+  {% endif %}
+
+</header>

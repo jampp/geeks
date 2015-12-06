@@ -1,0 +1,29 @@
+{% if page.external-related %}
+
+<div class="related">
+  <span class="more">
+      More from Jampp
+  </span>
+  <h3>
+    <a href="{{page.external-related.url}}">
+      {{page.external-related.title}}
+    </a>
+  </h3>
+  <a href="{{page.external-related.url}}" class="btn-primary">Read</a>
+</div>
+
+{% elsif  page.next_in_category  != nil %}
+  <div class="related">
+    <span class="more">
+      {% if page.next_in_category != nil %}
+        More from {% for category in sortedcategories %} {{ category }} {% endfor %}
+    </span>
+    <h3>
+      <a href="{{page.next_in_category.url}}">
+        {{page.next_in_category.title}}
+      </a>
+    </h3>
+    <a href="{{page.next_in_category.url}}" class="btn-primary">Read</a>
+    {% endif %}
+  </div>
+{% endif %}

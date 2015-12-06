@@ -1,0 +1,12 @@
+<span class="reading-time" title="Estimated read time">
+  {% capture count_words %}
+    {{ post.content | number_of_words }}
+  {% endcapture %}
+
+  {% capture time_words %}
+    {{count_words | divided_by: 5}}
+  {% endcapture %}
+
+  <!-- {{count_words}} Words in Post. -->
+  {{time_words | divided_by: 60}} minutes
+</span>

@@ -1,0 +1,121 @@
+.fluid-container
+  // &.home
+  //   .logo
+  //     display: none
+  &.shrink
+    background: rgba($header-background, .9)
+    .visit
+      color: $link-alt
+    .suscribe
+      @extend .btn-default
+    .logo
+      @extend .svg-logo-white
+      display: block!important
+    .visit,
+    .logo
+      display: inline-block
+    .text
+      display: none
+
+.small-logo
+  transition: transform 0.5s ease 0s
+  margin-bottom: 2em
+  @extend .svg-logo-white-small.w-dims
+  &:hover
+    transform: scale(1.1)
+  @media #{$breakpoint}
+    display: none
+
+.big-logo
+  display: none
+  transition: transform 0.5s ease 0s
+  &:hover
+    transform: scale(1.1)
+  @media #{$breakpoint}
+    @extend .svg-logo.w-dims
+    display: inline-block
+    margin-bottom: 1em
+
+
+.site-header
+  background: $header-background
+  text-align: center
+  height: 300px
+  color: #fff
+  position: relative
+  @media #{$breakpoint}
+    height: 400px
+  .logo
+    @extend .svg-logo-blue
+    &.white
+      @extend .svg-logo-white
+  .suscribe
+    @extend .btn-secondary
+
+  .visit
+    color: #fff
+    text-transform: uppercase
+    font-family: GothamMedium
+    &:hover,
+    &:focus
+      color: #cae5f6
+
+  .fluid-container
+    width: 100%
+    margin: 0
+    left: 0
+    padding: 1em 5%
+    display: inline-block
+    position: fixed
+    z-index: 1
+    .logo
+      @extend .svg-logo-blue.w-dims
+
+  .container
+    padding: 0 .5em
+    @media #{$breakpoint}
+      padding: 0 4em
+
+  .logo-container
+    padding: 5em 0
+    @media #{$breakpoint}
+      padding: 7.25em 0
+
+  .svg-logo
+    margin-bottom: 1em
+
+  .tagline
+    font-size: 16px
+    color: #FFFFFF
+    line-height: 30px
+    font-family: Gotham
+    max-width: 450px
+    margin: 0 auto
+    @media #{$breakpoint}
+      font-size: 18px
+      line-height: 24px
+
+  .sections
+    padding: 1.5em 0
+    list-style: none
+    border-top: 1px solid rgba(235,247,248,0.35)
+    display: none
+    @media #{$breakpoint}
+      display: block
+    > li
+      display: inline-block
+      padding-left: 2%
+      padding-right: 2%
+    a
+      color: #EBF7F8
+      text-transform: uppercase
+      font-size: 12px
+      line-height: 14px
+      &:hover,
+      &:focus
+        color: #fff
+.left
+  float: left
+
+.right
+  float: right

@@ -1,0 +1,105 @@
+$list: news product-announcements events insights best-practices
+
+=section-images
+  @each $section in $list
+    &.#{$section}
+      +at2x('#{$imagePath}/categories/#{$section}', png, auto, 385px)
+      background:
+        repeat: no-repeat
+        position: center center
+
+.post-body
+  .site-header
+    background: #fff
+
+  .container
+    max-width: 620px
+
+  .tag
+    color: $link-alt
+    text-transform: uppercase
+    font-size: 12px
+    margin-bottom: 1.5em
+    display: inline-block
+
+  .tagline
+    font-family: AleoLight
+    font-size: 16px
+    color: #B4B4B4
+    line-height: 30px
+    padding-bottom: 1em
+
+
+  .title
+    @extend .h1
+    text-transform: uppercase
+    margin-bottom: .5em
+
+  .entry-image
+    height: 300px
+    +section-images
+    @media #{$breakpoint}
+      height: 400px
+    &.simple-post
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      background:
+        position: center center
+        size: cover
+        repeat: no-repeat
+
+.post
+  ol, ul
+    list-style: outside none none
+    padding: 0
+    margin-bottom: 1em
+    font-size: 16px
+    letter-spacing: 0.3px
+    li
+      line-height: 30px
+      &:before
+        content: "•"
+        font-size: 18px
+        color: #9AB2BF
+        padding-right: .5em
+
+  dl
+    counter-reset: counter
+    font-family: Aleo
+    dd
+      font-size: 16px
+      margin-bottom: 1em
+      line-height: 30px
+    dt
+      font-size: 20px
+      line-height: 28px
+      color: $text-main
+      margin-bottom: 1em
+      font-family: Gotham
+      &:before
+        padding-right: .5em
+        color: #9AB2BF
+    dt:before
+      content: counter(counter)
+      counter-increment: counter
+
+
+.related
+  background: #F3F3F3
+  text-align: center
+  border-top: 1px solid darken(#F3F3F3, 10%)
+  padding: 2em
+  .more
+    font-size: 12px
+    color: #B4B4B4
+    line-height: 14px
+    text-transform: uppercase
+  h3
+    text-transform: uppercase
+    font-size: 20px
+    line-height: 28px
+    margin-bottom: 1em
+    a
+      color: $text-main

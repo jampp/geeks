@@ -1,0 +1,47 @@
+<footer class="footer">
+  <div class="footer-container">
+    <div class="center">
+      <h3>
+        Don’t miss any news. Get blog posts directly on you inbox.
+      </h3>
+      <form class="email-signup" action="http://twitter.us2.list-manage.com/subscribe/post?u={{ site.mailchimp.user-id }}&amp;id={{ site.mailchimp.list-id }}" method="post" novalidate>
+        <div class="field-group">
+          <label for="EMAIL">
+            <input placeholder="your email address" type="email" value="" name="EMAIL">
+          </label>
+        </div>
+        <div style="position: absolute; left: -5000px;">
+          <input type="text" name="b_{{ site.mailchimp.user-id }}_{{ site.mailchimp.list-id }}" tabindex="-1" value="">
+        </div>
+
+        <input type="submit" value="submit" name="subscribe" class="btn-default">
+      </form>
+    </div>
+  </div>
+
+  <div class="navigation">
+    <div class="visit">
+      <a href="http://jampp.com">visit jammp</a>
+    </div>
+    <div class="container">
+      <ul class="sections">
+        {% for link in site.data.nav %} {% if link.url contains 'http' %} {% assign domain = '' %} {% else %} {% assign domain = site.url %} {% endif %}
+        <li>
+          <a href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank" {% endif %}>{{ link.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="social">
+      <a href="https://twitter.com/{{ site.twitter_username }}">
+        <span class="svg-icon-tw_fill w-dims"></span>
+      </a>
+      <a href="https://facebook.com/{{ site.facebook_username }}">
+        <span class="svg-icon-fb_fill w-dims"></span>
+      </a>
+      <a href="https://linkedin.com/company/{{ site.linkedin_username }}">
+        <span class="svg-icon-in_fill w-dims"></span>
+      </a>
+    </div>
+  </div>
+</footer>

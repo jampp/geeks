@@ -1,0 +1,235 @@
+%svg-common {
+  background: url("#{$spritePath}") no-repeat;
+}
+
+.svg-icon-BackTop {
+	@extend %svg-common;
+	background-position: 0 0;
+  &.w-dims {
+    width: 18px;
+  	height: 25px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-fb_fill {
+	@extend %svg-common;
+	background-position: 0 4%;
+  &.w-dims {
+    width: 23px;
+  	height: 23px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-fb_fill-alt {
+	@extend %svg-common;
+	background-position: 0 7.68%;
+  &.w-dims {
+    width: 23px;
+  	height: 23px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-fb_fill_big {
+	@extend %svg-common;
+	background-position: 0 11.488673139158577%;
+  &.w-dims {
+    width: 30px;
+  	height: 30px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-fb_stroke {
+	@extend %svg-common;
+	background-position: 0 16.34304207119741%;
+  &.w-dims {
+    width: 30px;
+  	height: 30px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-in_fill {
+	@extend %svg-common;
+	background-position: 0 20.96%;
+  &.w-dims {
+    width: 23px;
+  	height: 23px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-in_fill-alt {
+	@extend %svg-common;
+	background-position: 0 24.64%;
+  &.w-dims {
+    width: 23px;
+  	height: 23px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-in_fill_big {
+	@extend %svg-common;
+	background-position: 0 28.640776699029125%;
+  &.w-dims {
+    width: 30px;
+  	height: 30px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-in_stroke {
+	@extend %svg-common;
+	background-position: 0 33.49514563106796%;
+  &.w-dims {
+    width: 30px;
+  	height: 30px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-play {
+	@extend %svg-common;
+	background-position: 0 43.40659340659341%;
+  &.w-dims {
+    width: 102px;
+  	height: 102px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-search {
+	@extend %svg-common;
+	background-position: 0 53.98089171974522%;
+  &.w-dims {
+    width: 20px;
+  	height: 20px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-tw_fill {
+	@extend %svg-common;
+	background-position: 0 57.3482428115016%;
+  &.w-dims {
+    width: 22px;
+  	height: 22px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-tw_fill-alt {
+	@extend %svg-common;
+	background-position: 0 60.86261980830671%;
+  &.w-dims {
+    width: 22px;
+  	height: 22px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-tw_fill_big {
+	@extend %svg-common;
+	background-position: 0 65.21035598705501%;
+  &.w-dims {
+    width: 30px;
+  	height: 30px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-tw_stroke {
+	@extend %svg-common;
+	background-position: 0 70.06472491909385%;
+  &.w-dims {
+    width: 30px;
+  	height: 30px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon_hamburger-menu {
+	@extend %svg-common;
+	background-position: 0 73.72611464968153%;
+  &.w-dims {
+    width: 32px;
+  	height: 20px;
+    display: inline-block;
+  }
+}
+
+
+.svg-logo {
+	@extend %svg-common;
+	background-position: 0 81.31313131313131%;
+  &.w-dims {
+    width: 302px;
+  	height: 54px;
+    display: inline-block;
+  }
+}
+
+
+.svg-logo-blue {
+	@extend %svg-common;
+	background-position: 0 86.47342995169082%;
+  &.w-dims {
+    width: 142px;
+  	height: 27px;
+    display: inline-block;
+  }
+}
+
+
+.svg-logo-white {
+	@extend %svg-common;
+	background-position: 0 90.82125603864735%;
+  &.w-dims {
+    width: 142px;
+  	height: 27px;
+    display: inline-block;
+  }
+}
+
+
+.svg-logo-white-small {
+	@extend %svg-common;
+	background-position: 0 95.94155844155844%;
+  &.w-dims {
+    width: 176px;
+  	height: 32px;
+    display: inline-block;
+  }
+}
+
+
+.svg-logo-white-tiny {
+	@extend %svg-common;
+	background-position: 0 100%;
+  &.w-dims {
+    width: 132px;
+  	height: 25px;
+    display: inline-block;
+  }
+}
+
+

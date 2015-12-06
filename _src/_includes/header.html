@@ -1,0 +1,46 @@
+<header class="site-header">
+  {% include mobile-navigation.html %}
+  <div class="fluid-container home animated">
+    <div class="left">
+      <a href="http://jampp.com" class="visit">
+        <span class="text">Visit Jammp</span>
+        <span class="logo"></span>
+      </a>
+    </div>
+    <div class="right"></div>
+    <div class="mobile-navigation">
+      <span></span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row logo-container">
+      <div class="column grid-12-of-12">
+        <a class="site-title" href="{{ site.baseurl }}/">
+          <span class="big-logo svg-logo"></span>
+          <span class="small-logo svg-logo-white-small"></span>
+        </a>
+        <p class="tagline">
+          {{ site.description }}
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column grid-12-of-12">
+        <ul class="sections">
+          {% for link in site.data.nav %}
+            {% if link.url contains 'http' %}
+              {% assign domain = '' %}
+            {% else %}
+              {% assign domain = site.url %}
+            {% endif %}
+            <li>
+              <a href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank"{% endif %}>{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

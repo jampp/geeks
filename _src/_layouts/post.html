@@ -1,0 +1,71 @@
+{% include head.html %}
+
+<body class="post-body">
+  <div class="post-content">
+    <header class="site-header">
+      {% include mobile-navigation.html %}
+      <div class="fluid-container animated">
+        <div class="left">
+          <a href="/" class="visit">
+            <span class="logo {% if page.image.feature %}white{% endif %}"></span>
+          </a>
+        </div>
+        <div class="right"></div>
+        <div class="mobile-navigation">
+          <span></span>
+        </div>
+      </div>
+
+      {% if page.image.feature %}
+        <div class="entry-image simple-post" style="background-image: url({{ site.url }}/assets/images/featured-images-posts/{{ page.image.feature }})"></div>
+      {% elsif page.tag == "news" %}
+        <div class="entry-image news"></div>
+      {% elsif page.tag == "product-announcements" %}
+        <div class="entry-image product-announcements"></div>
+      {% elsif page.tag == "events" %}
+        <div class="entry-image events"></div>
+      {% elsif page.tag == "insights" %}
+        <div class="entry-image insights"></div>
+      {% elsif page.tag == "best-practices" %}
+        <div class="entry-image best-practices"></div>
+      {% else %}
+        {% comment %}
+          <!-- if ot image.feature or tag show this image -->
+        {% endcomment %}
+        <div class="entry-image product-announcements"></div>
+      {% endif %}
+    </header>
+
+    <div class="page-content post">
+      <div class="container">
+        {% assign sortedcategories = page.categories | sort %} {% for category in sortedcategories %}
+        <a href="/{{ category }}">
+          <span class="tag">{{ category }}</span>
+        </a>
+        {% endfor %}
+
+        <h2 class="title">
+          {{ page.title }}
+        </h2>
+
+        {% if page.tagline %}
+          <div class="tagline">
+            {{ page.tagline }}
+          </div>
+          <hr>
+        {% endif %}
+
+        {% include author-post.html %}
+
+        {{ content }}
+
+        {% include social-share.html %}
+
+      </div>
+    </div>
+    {% include related-posts.html %}
+    {% include footer-page.html %}
+  </div>
+  {% include site-scripts.html %}
+</body>
+</html>

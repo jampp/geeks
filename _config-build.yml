@@ -1,0 +1,17 @@
+url:         "http://jampp-blog.com.s3-website-sa-east-1.amazonaws.com" # the base hostname & protocol for your site
+
+owner:       REPLACEME # Default site Owner. Will be used if post has no author. Full Name
+
+production:  true
+
+mailchimp:
+  user-id:   REPLACEME
+  list-id:   REPLACEME
+
+fb_admins:   REPLACEME #url to facebook app manager profile Eg https://www.facebook.com/jamppHQ
+fb_appid:    REPLACEME #App id https://developers.facebook.com/apps
+
+future:      false
+show_drafts: false
+
+exclude:     ['css', 'js', 'fonts']

@@ -1,0 +1,16 @@
+=font-face($style-name, $file, $family, $category: "")
+  $fontPath: "../fonts/" + $family + "/" + $file
+  @font-face
+    font-family: #{$style-name}
+    src: url($fontPath + ".eot")
+    src: url($fontPath + ".eot?#iefix") format("embedded-opentype"), url($fontPath + ".woff") format("woff"), url($fontPath + ".ttf") format("truetype"), url($fontPath + ".svg#" + $style-name + "") format("svg")
+    font-weight: normal
+    font-style: normal
+    
+  %#{$style-name}
+    font:
+      @if $category != ""
+        family: #{$style-name}, #{$category}
+      @else
+        family: #{$style-name}
+        weight: normal

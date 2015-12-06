@@ -1,0 +1,44 @@
+%btn-base
+  font-family: GothamMedium
+  padding: 0.55em 1.5em
+  font-size: 12px
+  line-height: 14px
+  border-radius: 4px
+  display: inline-block
+  text-transform: uppercase
+  transition: transform 0.2s ease 0s
+  cursor: pointer
+
+.btn-default
+  @extend %btn-base
+  border: 1px solid #fff
+  color: #fff
+  background: transparent
+  &:hover
+    color: #fff
+    background: $link-alt
+    border-color: $link-alt
+    transform: scale(1.1)
+
+.btn-primary
+  @extend %btn-base
+  border: 1px solid $link-alt
+  color: $link-alt
+  background: transparent
+  &:hover,
+  &:focus
+    color: #fff
+    background: $link-alt
+    border-color: $link-alt
+    transform: scale(1.05)
+
+.btn-secondary
+  @extend %btn-base
+  color: $header-background
+  border: 1px solid $header-background
+  background: transparent
+  &:hover,
+  &:focus
+    color: #fff
+    background: $header-background
+    transform: scale(1.05)

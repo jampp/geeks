@@ -122,13 +122,7 @@
     line-height: 15px
     padding-bottom: 1em
 
-.style-switcher
-  position: fixed
-  margin-left: -3%
-  .svg-switch:hover
-    @extend .svg-switch-active
-  #original
-    display: none
+
 
 .page-content
   .style-switcher
@@ -137,10 +131,19 @@
     left: 20px
     top: 0
     @media #{$breakpoint}
-      margin-left: -10%
+      margin-left: 10%
       position: fixed
       top: inherit
       left: inherit
+    .svg-switch:hover
+      @extend .svg-switch-active
+    #original
+      display: none
+
+.page-content.home
+  .style-switcher
+    @media #{$breakpoint}
+      margin-left: -10%
 
 .job-button
   background: #88C425

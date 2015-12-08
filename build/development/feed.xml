@@ -5,8 +5,8 @@
     <description>Lorem ipsum bajada descripción del blog Geek algo sobre jampp dolor sit amet consectetuer</description>
     <link>http://localhost:9999/</link>
     <atom:link href="http://localhost:9999/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 08 Dec 2015 15:07:11 -0300</pubDate>
-    <lastBuildDate>Tue, 08 Dec 2015 15:07:11 -0300</lastBuildDate>
+    <pubDate>Tue, 08 Dec 2015 18:47:51 -0300</pubDate>
+    <lastBuildDate>Tue, 08 Dec 2015 18:47:51 -0300</lastBuildDate>
     <generator>Jekyll v3.0.0</generator>
     
       <item>
@@ -82,7 +82,7 @@ re-engagement technology helps you bring users back to your app.&lt;/p&gt;
 
 &lt;p&gt;but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
-&lt;figure class=&quot;bt-video-container&quot; style=&quot;padding-bottom:75.00%&quot;&gt;&lt;a class=&quot;youtube&quot; href=&quot;https://www.youtube.com/watch?v=SfojnpvuC5I&quot; data-videoid=&quot;SfojnpvuC5I&quot; data-width=&quot;480&quot; data-height=&quot;360&quot;&gt;YouTube Video&lt;/a&gt;&lt;/figure&gt;
+&lt;figure class=&quot;bt-video-container&quot; style=&quot;padding-bottom:56.25%&quot;&gt;&lt;a class=&quot;youtube&quot; href=&quot;https://www.youtube.com/watch?v=SfojnpvuC5I&quot; data-videoid=&quot;SfojnpvuC5I&quot; data-width=&quot;640&quot; data-height=&quot;360&quot;&gt;YouTube Video&lt;/a&gt;&lt;/figure&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 

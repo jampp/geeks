@@ -16,7 +16,9 @@ module.exports = {
       files: [
         developmentAssets + '/css/*.css',
         developmentAssets + '/js/*.js',
-        developmentAssets + '/images/**'      ]
+        developmentAssets + '/images/**',
+        developmentAssets + '/svg-icons/**'
+      ]
     },
     production: {
       server: {
@@ -41,7 +43,7 @@ module.exports = {
     }
   },
   styles: {
-    src:  srcAssets + '/sass/app.sass',
+    src:  srcAssets + '/sass/*.sass',
     dest: developmentAssets + '/css',
     options: {
       autoprefixer: {
@@ -76,7 +78,10 @@ module.exports = {
     }]
   },
   images: {
-    src:  srcAssets + '/images/**/*',
+    src:  [
+      srcAssets + '/images/**/*',
+      srcAssets + '/svg-icons/**/*'
+    ],
     dest: developmentAssets + '/images'
   },
   crop: {
@@ -190,7 +195,10 @@ module.exports = {
       options: {}
     },
     images: {
-      src:  developmentAssets + '/images/**/*.{jpg,jpeg,png,gif,svg}',
+      src:  [
+        developmentAssets + '/images/**/*.{jpg,jpeg,png,gif,svg}',
+        developmentAssets + '/svg-icons/**/*.{jpg,jpeg,png,gif,svg}',
+      ],
       dest: productionAssets + '/images/',
       options: {
         optimizationLevel: 3,
@@ -212,6 +220,7 @@ module.exports = {
         productionAssets + '/css/*.css',
         productionAssets + '/js/*.js',
         productionAssets + '/images/**/*',
+        productionAssets + '/svg-icons/**/*',
       ],
       base: production
     },

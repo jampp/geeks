@@ -15,7 +15,29 @@
 
 .svg-facebook-active {
 	@extend %svg-common;
-	background-position: 0 10.674157303370787%;
+	background-position: 0 4.481132075471698%;
+  &.w-dims {
+    width: 11px;
+  	height: 19px;
+    display: inline-block;
+  }
+}
+
+
+.svg-facebook-social {
+	@extend %svg-common;
+	background-position: 0 8.962264150943396%;
+  &.w-dims {
+    width: 11px;
+  	height: 19px;
+    display: inline-block;
+  }
+}
+
+
+.svg-facebook-social-active {
+	@extend %svg-common;
+	background-position: 0 13.443396226415095%;
   &.w-dims {
     width: 11px;
   	height: 19px;
@@ -26,7 +48,7 @@
 
 .svg-icon-dots {
 	@extend %svg-common;
-	background-position: 0 21.468926553672315%;
+	background-position: 0 17.96690307328605%;
   &.w-dims {
     width: 6px;
   	height: 20px;
@@ -37,7 +59,7 @@
 
 .svg-icon-geek {
 	@extend %svg-common;
-	background-position: 0 32.22222222222222%;
+	background-position: 0 22.535211267605632%;
   &.w-dims {
     width: 17px;
   	height: 17px;
@@ -46,9 +68,20 @@
 }
 
 
+.svg-icon-play {
+	@extend %svg-common;
+	background-position: 0 33.13782991202346%;
+  &.w-dims {
+    width: 102px;
+  	height: 102px;
+    display: inline-block;
+  }
+}
+
+
 .svg-icon-search {
 	@extend %svg-common;
-	background-position: 0 42.13483146067416%;
+	background-position: 0 50.70754716981132%;
   &.w-dims {
     width: 19px;
   	height: 19px;
@@ -59,7 +92,7 @@
 
 .svg-linkedin {
 	@extend %svg-common;
-	background-position: 0 52.80898876404494%;
+	background-position: 0 55.18867924528302%;
   &.w-dims {
     width: 21px;
   	height: 19px;
@@ -70,7 +103,29 @@
 
 .svg-linkedin-active {
 	@extend %svg-common;
-	background-position: 0 63.48314606741573%;
+	background-position: 0 59.66981132075472%;
+  &.w-dims {
+    width: 21px;
+  	height: 19px;
+    display: inline-block;
+  }
+}
+
+
+.svg-linkedin-social {
+	@extend %svg-common;
+	background-position: 0 64.15094339622641%;
+  &.w-dims {
+    width: 21px;
+  	height: 19px;
+    display: inline-block;
+  }
+}
+
+
+.svg-linkedin-social-active {
+	@extend %svg-common;
+	background-position: 0 68.63207547169812%;
   &.w-dims {
     width: 21px;
   	height: 19px;
@@ -81,7 +136,7 @@
 
 .svg-logo {
 	@extend %svg-common;
-	background-position: 0 79.51807228915662%;
+	background-position: 0 75.24271844660194%;
   &.w-dims {
     width: 314px;
   	height: 31px;
@@ -90,9 +145,31 @@
 }
 
 
+.svg-switch {
+	@extend %svg-common;
+	background-position: 0 80.0469483568075%;
+  &.w-dims {
+    width: 17px;
+  	height: 17px;
+    display: inline-block;
+  }
+}
+
+
+.svg-switch-active {
+	@extend %svg-common;
+	background-position: 0 84.03755868544602%;
+  &.w-dims {
+    width: 17px;
+  	height: 17px;
+    display: inline-block;
+  }
+}
+
+
 .svg-twitter {
 	@extend %svg-common;
-	background-position: 0 90.55555555555556%;
+	background-position: 0 88.02816901408451%;
   &.w-dims {
     width: 21px;
   	height: 17px;
@@ -102,6 +179,28 @@
 
 
 .svg-twitter-active {
+	@extend %svg-common;
+	background-position: 0 92.01877934272301%;
+  &.w-dims {
+    width: 21px;
+  	height: 17px;
+    display: inline-block;
+  }
+}
+
+
+.svg-twitter-social {
+	@extend %svg-common;
+	background-position: 0 96.0093896713615%;
+  &.w-dims {
+    width: 21px;
+  	height: 17px;
+    display: inline-block;
+  }
+}
+
+
+.svg-twitter-social-active {
 	@extend %svg-common;
 	background-position: 0 100%;
   &.w-dims {

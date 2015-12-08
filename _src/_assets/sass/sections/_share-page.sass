@@ -1,19 +1,31 @@
 .share-page
   display: table
-  a,
-  h5
-    display: table-cell
-    vertical-align: middle
-  h5
-    text-transform: uppercase
+  padding: 2em 0
+  @media #{$breakpoint}
+    padding: 5em 0
   a
-    padding-left: 1em
-.svg-icon-tw_stroke
-  &:hover
-    @extend .svg-icon-tw_fill_big
-.svg-icon-fb_stroke
-  &:hover
-    @extend .svg-icon-fb_fill_big
-.svg-icon-in_stroke
-  &:hover
-    @extend .svg-icon-in_fill_big
+    padding-left: 2em
+    color: $brand-color
+    display: table-cell
+    &:first-child
+      padding-left: 0
+    &:hover
+      color: $body-color
+      .svg-twitter-social
+        @extend .svg-twitter-social-active
+      .svg-facebook-social
+        @extend .svg-facebook-social-active
+      .svg-linkedin-social
+        @extend .svg-linkedin-social-active
+
+
+  .text
+    border-bottom: 1px dotted
+    text-transform: uppercase
+    font-weight: 500
+    font-size: 11px
+    letter-spacing: 1px
+    line-height: 15px
+
+  .w-dims
+    vertical-align: middle

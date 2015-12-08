@@ -5,7 +5,10 @@
 
 
     <div class="page-content">
+      {% include style-switcher.html %}
       <div class="container is-post">
+
+
 
         <h2 class="title">
           {{ page.title }}
@@ -23,10 +26,10 @@
 
         <div class="post">
           {{ content }}
-          {% include related-posts.html %}
         </div>
 
         {% include social-share.html %}
+        {% include related-posts.html %}
 
       </div>
     </div>

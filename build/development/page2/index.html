@@ -58,7 +58,7 @@
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
 
 
-    <link rel="stylesheet" href="/assets/css/app.css">
+    <link id="theme" rel="stylesheet" href="/assets/css/app.css">
     <script src="/assets/js/head.js"></script>
 
     <!--[if IE]><![endif]-->
@@ -72,7 +72,6 @@
 <body>
 
   <header class="site-header">
-
   <div class="fluid-container home animated">
     <div class="left">
       <a href="/" class="visit">
@@ -112,13 +111,21 @@
       </li>
       
     </ul>
-
   </div>
 </header>
 
 
   <div class="page-content">
     <div class="container">
+  <div class="style-switcher">
+  <a id="original" href="#" data-stylesheet="/assets/css/app.css">
+    <img src="http://localhost:9999/assets/images/switch.svg" alt="Switch style">
+  </a>
+  <a id="github" href="#" data-stylesheet="/assets/css/github-markdown.css">
+    <span class="svg-switch w-dims"></span>
+  </a>
+</div>
+
   <div class="post-list">
     
 

@@ -4,7 +4,6 @@
   -webkit-box-sizing: border-box
   box-sizing: border-box
 
-
 html
   font-size: 10px
   -webkit-tap-highlight-color: rgba(0,0,0,0)
@@ -25,9 +24,11 @@ a
   text-decoration: none
   transition: all .25s ease-in-out
   &:hover,
-  &:focus
+  &:focus,
+  &:active
     color: darken($link-alt, 20%)
     text-decoration: none
+    outline: none
 
 h1, .h1
   font-size: 32px

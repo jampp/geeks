@@ -17,7 +17,7 @@ module Jekyll
     def initialize(tag_name, markup, tokens)
       if markup =~ /(?:(?:https?:\/\/)?(?:www.youtube.com\/(?:embed\/|watch\?v=)|youtu.be\/)?(\S+)(?:\?rel=\d)?)(?:\s+(\d+)\s(\d+))?(?:\s+"(.*?)")?/i
         @videoid = $1
-        @width = $2 || "480"
+        @width = $2 || "640"
         @height = $3 || "360"
         @caption = $4 ? "<figcaption>#{$4}</figcaption>" : ""
       end

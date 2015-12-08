@@ -68,7 +68,7 @@
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
 
 
-    <link rel="stylesheet" href="/assets/css/app.css">
+    <link id="theme" rel="stylesheet" href="/assets/css/app.css">
     <script src="/assets/js/head.js"></script>
 
     <!--[if IE]><![endif]-->
@@ -82,7 +82,6 @@
 
 <body class="post-body">
     <header class="site-header">
-
   <div class="fluid-container home animated">
     <div class="left">
       <a href="/" class="visit">
@@ -122,14 +121,24 @@
       </li>
       
     </ul>
-
   </div>
 </header>
 
 
 
     <div class="page-content">
+      <div class="style-switcher">
+  <a id="original" href="#" data-stylesheet="/assets/css/app.css">
+    <img src="http://localhost:9999/assets/images/switch.svg" alt="Switch style">
+  </a>
+  <a id="github" href="#" data-stylesheet="/assets/css/github-markdown.css">
+    <span class="svg-switch w-dims"></span>
+  </a>
+</div>
+
       <div class="container is-post">
+
+
 
         <h2 class="title">
           The News
@@ -159,8 +168,8 @@
         <a class="author-data" href="http://twitter.com/baires" itemprop="author">Alexis Sgarbossa</a> 
       </h3>
     </div>
-
   </div>
+</div>
 
 
         
@@ -176,102 +185,105 @@
 <p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://github.com/jekyll/jekyll-help">Jekyll’s dedicated Help repository</a>.</p>
 
 
-          
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-                
-                <h4>keep reading code</h4>
-                <ul>
-                
-                <li class="relatedPost">
-                    <a href="http://localhost:9999/python/how-sworkits/">How sworkits helps users finish workouts
-                    
-                    </a>
-                </li>
-                
-                
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-        
-            
-        
-    
-
-    
-    
-        
-            
-        
-    
-
-
-    </ul>
-
-
         </div>
 
-        <hr>
-<div class="share-page">
-  <h5>Share:</h5>
+        <div class="share-page">
   <a href="https://twitter.com/intent/tweet?text=The News&amp;url=http://localhost:9999/python/the-news/&amp;via=jampp&amp;related=jampp" rel="nofollow" target="_blank" title="Share on Twitter">
-    <span class="svg-icon-tw_stroke w-dims"></span>
+    <span class="svg-twitter-social w-dims"></span>
+    <span class="text">Twitter</span>
   </a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:9999/python/the-news/" title="Share on Facebook">
-    <span class="svg-icon-fb_stroke w-dims"></span>
+    <span class="svg-facebook-social w-dims"></span>
+    <span class="text">Facebook</span>
   </a>
 
   <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:9999/python/the-news/=&amp;summary=Lorem ipsum bajada descripción del blog Geek algo sobre jampp dolor sit amet consectetuer&amp;title=The News">
-    <span class="svg-icon-in_stroke w-dims"></span>
+    <span class="svg-linkedin-social w-dims"></span>
+    <span class="text">Linkedin</span>
   </a>
 </div>
+
+        
+  
+  
+    
+        
+            
+        
+    
+
+  
+    
+        
+            
+        
+    
+
+  
+    
+        
+            
+                
+                <div class="related">
+                  <h4>keep reading code</h4>
+                  <ul>
+                  
+                  <li class="relatedPost">
+                      <a href="http://localhost:9999/python/how-sworkits/">How sworkits helps users finish workouts
+                      
+                      </a>
+                  </li>
+                
+                
+            
+        
+    
+
+  
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+  
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+  
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+  
+    
+        
+            
+        
+    
+
+
+  </ul>
+    </div>
+
 
 
       </div>

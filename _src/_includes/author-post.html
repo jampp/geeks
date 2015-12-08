@@ -1,0 +1,30 @@
+<div class="meta">
+  {% if page.author %} {% assign author = site.data.authors[page.author] %} {% else %} {% assign author = site.owner %} {% endif %}
+
+  <div class="author-content">
+
+    <div class="meta">
+      {% assign sortedcategories = page.categories | sort %} {% for category in sortedcategories %} Published on <a href="/{{ category }}">
+        {{ category }}
+      </a> {% endfor %}
+      <span class="separator">-</span>
+      <span class="post-date">
+        on {% assign d = page.date | date: "%-d" %} {% assign m = page.date | date: "%B" %} {% case m %} {% when 'April' or 'May' or 'June' or 'July' %}{{ m }} {% when 'September' %}Sept. {% else %}{{ page.date | date: "%b" }}. {% endcase %} {% case d %} {% when
+        '1' or '21' or '31' %}{{ d }}st {% when '2' or '22' %}{{ d }}nd {% when '3' or '23' %}{{ d }}rd {% else %}{{ d }}th {% endcase %}
+      </span>
+      <span class="separator">-</span>
+      <span class="author-image">
+        {% if author.photo %}
+        <img src="{{ site.url }}/assets/images/authors/{{ author.photo }}" alt="{{ author.name }}"> {% else %}
+        <img src="{{ site.url }}/assets/images/authors/default.png" alt="{{ author.name }}"> {% endif %}
+      </span>
+
+      <h3 class="author-name">
+        {% if author.web %}
+        <a class="author-data" href="{{ author.web }}" itemprop="author">{{ author.name }}</a> {% else %}
+        <span class="author-data" itemprop="author">{{ author.name }}</span>
+        {% endif %}
+      </h3>
+    </div>
+
+  </div>

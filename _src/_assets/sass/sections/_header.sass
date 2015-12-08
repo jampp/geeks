@@ -1,0 +1,60 @@
+.site-header
+  background: $header-background
+  text-align: center
+  color: #fff
+  position: relative
+  float: left
+  width: 100%
+  padding: 0 2%
+  margin: 1em 0
+
+  .fluid-container
+    max-width: 1024px
+    width: 100%
+    display: inline-block
+    margin: 0 auto
+    position: relative
+
+  .show-menu
+    display: inline-block
+    text-align: center
+    width: 40px
+    &:hover
+      transform: scale(1.1)
+.left
+  float: left
+
+.right
+  float: right
+
+
+.sections
+  position: absolute
+  top: 0
+  right: 0
+  background: #fff
+  border: 1px solid rgba($box-frame, 50%)
+  box-shadow: 0px 1px 3px 0px rgba(52,94,119,0.10)
+  padding: 1em
+  text-align: left
+  min-width: 180px
+  z-index: 1
+  display: none
+  &.opened
+    display: block
+  li
+    padding: .5em 0
+    &:first-child
+      padding-top: 0
+    &:last-child
+      padding-bottom: 0
+  a
+    font-family: Yantramanav
+    font-weight: 500
+    font-size: 16px
+    color: $brand-color
+    letter-spacing: 1px
+    line-height: 15px
+    text-transform: uppercase
+    &:hover
+      text-decoration: underline

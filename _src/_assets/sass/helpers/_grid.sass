@@ -1,0 +1,46 @@
+// Mobile First Grid
+// ==========================================================================
+%clearfix
+  &:before
+    content: " "
+    display: table
+  &:after
+    content: " "
+    display: table
+    clear: both
+  *zoom: 1
+
+.column
+  margin-bottom: 1.5rem
+
+@media #{$breakpoint}
+  %column
+    float: left
+    margin: 0
+    padding: 0 1em
+    @for $i from 1 through $grid-columns
+      &.grid-#{$i}-of-#{$grid-columns}
+        width: ($i / $grid-columns) * 100%
+    @for $i from 1 through $grid-columns
+      &.push-#{$i}-of-#{$grid-columns}
+        margin-left: ($i / $grid-columns) * 100%
+    @for $i from 1 through $grid-columns
+      &.pull-#{$i}-of-#{$grid-columns}
+        margin-right: ($i / $grid-columns) * 100%
+    &.flow-opposite
+      float: right
+
+  .column
+    @extend %column
+
+.row
+  margin-bottom: 1em
+  @extend %clearfix
+
+.container
+  margin: 0 auto
+  max-width: 780px
+  position: relative
+  padding: 0 2em
+  @media #{$breakpoint}
+    padding: 0

@@ -1,0 +1,114 @@
+%svg-common {
+  background: url("#{$spritePath}") no-repeat;
+}
+
+.svg-facebook {
+	@extend %svg-common;
+	background-position: 0 0;
+  &.w-dims {
+    width: 11px;
+  	height: 19px;
+    display: inline-block;
+  }
+}
+
+
+.svg-facebook-active {
+	@extend %svg-common;
+	background-position: 0 10.674157303370787%;
+  &.w-dims {
+    width: 11px;
+  	height: 19px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-dots {
+	@extend %svg-common;
+	background-position: 0 21.468926553672315%;
+  &.w-dims {
+    width: 6px;
+  	height: 20px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-geek {
+	@extend %svg-common;
+	background-position: 0 32.22222222222222%;
+  &.w-dims {
+    width: 17px;
+  	height: 17px;
+    display: inline-block;
+  }
+}
+
+
+.svg-icon-search {
+	@extend %svg-common;
+	background-position: 0 42.13483146067416%;
+  &.w-dims {
+    width: 19px;
+  	height: 19px;
+    display: inline-block;
+  }
+}
+
+
+.svg-linkedin {
+	@extend %svg-common;
+	background-position: 0 52.80898876404494%;
+  &.w-dims {
+    width: 21px;
+  	height: 19px;
+    display: inline-block;
+  }
+}
+
+
+.svg-linkedin-active {
+	@extend %svg-common;
+	background-position: 0 63.48314606741573%;
+  &.w-dims {
+    width: 21px;
+  	height: 19px;
+    display: inline-block;
+  }
+}
+
+
+.svg-logo {
+	@extend %svg-common;
+	background-position: 0 79.51807228915662%;
+  &.w-dims {
+    width: 314px;
+  	height: 31px;
+    display: inline-block;
+  }
+}
+
+
+.svg-twitter {
+	@extend %svg-common;
+	background-position: 0 90.55555555555556%;
+  &.w-dims {
+    width: 21px;
+  	height: 17px;
+    display: inline-block;
+  }
+}
+
+
+.svg-twitter-active {
+	@extend %svg-common;
+	background-position: 0 100%;
+  &.w-dims {
+    width: 21px;
+  	height: 17px;
+    display: inline-block;
+  }
+}
+
+

@@ -1,0 +1,17 @@
+---
+layout: default
+title: Home
+---
+<div class="container">
+  <div class="post-list">
+    {% include first-post.html %}
+  </div>
+  <div class="post-list" data-columns>
+    {% for post in paginator.posts offset:1 %}
+      <div class="post">
+        {% include post.html %}
+      </div>
+    {% endfor %}
+  </div>
+  {% include pagination.html %}
+</div>

@@ -1,0 +1,115 @@
+.is-post
+  max-width: 660px
+  
+.post-body
+  .tagline
+    font-size: 16px
+    color: #B4B4B4
+    line-height: 30px
+    padding-bottom: 1em
+
+  .title
+    @extend .h1
+    margin-bottom: .5em
+
+  .meta
+    padding: 0
+    font-family: Lekton
+    font-size: 14px
+    color: $body-color
+    line-height: 22px
+    margin-bottom: 1em
+    a
+      color: $body-color
+      border-bottom: 1px dotted $body-color
+    h3
+      display: inline-block
+
+  .author-image
+    img
+      width: 25px
+      height: 25px
+      vertical-align: middle
+      border-radius: 1000em
+      margin-right: .5em
+
+
+  .post
+    padding: 3em 0
+    p, strong, ul, ol
+      color: $text-secondary
+    a
+      color: $brand-color
+      border-bottom: 1px dotted $brand-color
+      &:hover
+        border-bottom: 1px solid
+    h2, h3, h4, h5
+      margin-bottom: .75em
+
+
+    ol, ul
+      list-style: outside none none
+      padding: 0
+      margin-bottom: 1em
+      font-size: 16px
+      letter-spacing: 0.3px
+      font-family: Yantramanav
+      font-weight: 300
+      li
+        line-height: 30px
+        &:before
+          content: "•"
+          font-size: 18px
+          padding-right: .5em
+
+    dl
+      counter-reset: counter
+      color: $text-secondary
+      dd
+        font-size: 16px
+        margin-bottom: 1em
+        line-height: 30px
+      dt
+        font-size: 20px
+        line-height: 28px
+        margin-bottom: 1em
+        font-family: Yantramanav
+        &:before
+          padding-right: .5em
+          color: $text-secondary
+      dt:before
+        content: counter(counter)
+        counter-increment: counter
+
+
+.highlight
+  font-size: 14px
+  color: #FFFFFF
+  letter-spacing: 0.4px
+  line-height: 21px
+  margin-bottom: 1em
+  border: 1px solid #FF9D00
+  padding: 1em
+  background: #333333
+  pre
+    background: #333333
+    border: none
+
+//
+// .related
+//   background: #F3F3F3
+//   text-align: center
+//   border-top: 1px solid darken(#F3F3F3, 10%)
+//   padding: 2em
+//   .more
+//     font-size: 12px
+//     color: #B4B4B4
+//     line-height: 14px
+//     text-transform: uppercase
+//   h3
+//     text-transform: uppercase
+//     font-size: 20px
+//     line-height: 28px
+//     margin-bottom: 1em
+//     a
+//       color: $text-main

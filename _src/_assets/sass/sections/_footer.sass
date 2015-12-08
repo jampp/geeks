@@ -1,0 +1,114 @@
+=placeholder
+  &::-webkit-input-placeholder
+    @content
+  &:-moz-placeholder
+    @content
+  &::-moz-placeholder
+    @content
+  &:-ms-input-placeholder
+    @content
+
+.footer
+  background: $brand-color
+  overflow: hidden
+  float: left
+  width: 100%
+  padding: 1.5em 0.5em 0
+  @media #{$breakpoint}
+    padding: 0.5em 0.5em 1em
+  .row
+    margin-bottom: 0
+  .footer-container
+    text-align: center
+    color: #fff
+    position: relative
+    h3
+      color: #fff
+      font-family: Yantramanav
+      @media #{$breakpoint}
+        margin-top: .5em
+
+    form
+      margin-top: 2em
+      @media #{$breakpoint}0
+        margin-top: 0
+    .field-group
+      display: inline-block
+      margin-bottom: 1em
+      width: 100%
+      position: relative
+      @media #{$breakpoint}
+        margin-bottom: 0
+
+    .btn
+      position: absolute
+      top: 5px
+      right: 0
+      background: transparent
+      text-transform: uppercase
+      font-family: Yantramanav
+      font-weight: 500
+      border: 0
+      color: #EBF7F8
+      font-size: 14px
+      cursor: pointer
+      &:hover,
+        color: #fff
+
+    input[type="email"]
+      +placeholder
+        font-family: Lekton
+        color: #fff
+        opacity: 1
+      padding: .5em 1em
+      background: #fff
+      min-width: 100%
+      font-size: 12px
+      color: #fff
+      font-family: Lekton
+      background: $brand-color
+      font-size: 14px
+      border:
+        top: 0
+        left: 0
+        right: 0
+        bottom: 1px dashed #fff
+      &:hover,
+      &:focus
+        border-bottom: 1px solid #fff
+
+
+.footer-navigation
+  max-width: 1024px
+  width: 100%
+  margin: 0 auto
+  @media #{$breakpoint}
+    padding-bottom: 1.5em
+    margin: 0 auto 1em
+  .visit
+    float: none
+    text-align: center
+    @media #{$breakpoint}
+      float: left
+    a
+      color: $body-color
+      text-transform: uppercase
+      font-weight: 500
+      &:hover
+        color: $text-secondary
+
+  .social
+    float: none
+    text-align: center
+    padding: 1em 0
+    @media #{$breakpoint}
+      float: right
+      padding: 0
+    a
+      padding-left: .5em
+    .svg-twitter:hover
+      @extend .svg-twitter-active
+    .svg-facebook:hover
+      @extend .svg-facebook-active
+    .svg-linkedin:hover
+      @extend .svg-linkedin-active

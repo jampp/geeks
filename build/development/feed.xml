@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jampp Geeks</title>
+    <description>Lorem ipsum bajada descripción del blog Geek algo sobre jampp dolor sit amet consectetuer</description>
+    <link>http://localhost:9999/</link>
+    <atom:link href="http://localhost:9999/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 08 Dec 2015 15:07:11 -0300</pubDate>
+    <lastBuildDate>Tue, 08 Dec 2015 15:07:11 -0300</lastBuildDate>
+    <generator>Jekyll v3.0.0</generator>
+    
+      <item>
+        <title>Mobile Re-Engagement</title>
+        <description>&lt;p&gt;Identify your existing users and bring them back to your app.&lt;/p&gt;
+
+&lt;p&gt;You can re-engage inactive users and recover lost ones. Our RTB enabled
+re-engagement technology helps you bring users back to your app.&lt;/p&gt;
+
+&lt;p&gt;We identify users that have already installed (or uninstalled) your app and display custom ads promoting newly added features or offers in an effort to bring them back. We also build segments dynamically based on the user activity within your app.&lt;/p&gt;
+
+&lt;p&gt;Generating additional revenue by re-engaging users is significantly more cost-effective than generating revenue from newly acquired users. Drive users to a special promotion within your app.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 25 Nov 2015 00:00:00 -0300</pubDate>
+        <link>http://localhost:9999/technology/mobile-re-engagement/</link>
+        <guid isPermaLink="true">http://localhost:9999/technology/mobile-re-engagement/</guid>
+        
+        
+        <category>technology</category>
+        
+      </item>
+    
+      <item>
+        <title>How the magic works inside Jampp</title>
+        <description>&lt;h2 id=&quot;our-platform-learns&quot;&gt;Our platform learns&lt;/h2&gt;
+
+&lt;p&gt;We apply &lt;strong&gt;programmatic and big data technologies&lt;/strong&gt; to conduct tracking, real-time optimisation and mobile media buying at scale.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We gather and analyse billions of data points daily (including cost, user profile, ad impression context, in-app purchases) to improve our optimisation algorithms.&lt;/li&gt;
+  &lt;li&gt;We can decide where to allocate budget and how much to pay in milliseconds (thousands of times per second).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Our &lt;strong&gt;machine learning algorithms&lt;/strong&gt; not only adapt to market conditions, but become more effective to each unique advertiser over time by using deep data integration, cohort analysis and maturity curves to inform goal-based dynamic bidding. It offers an ever &lt;strong&gt;evolving intelligence&lt;/strong&gt; to deliver superior results for app marketers.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 21 Nov 2015 10:06:05 -0300</pubDate>
+        <link>http://localhost:9999/open-source/how/</link>
+        <guid isPermaLink="true">http://localhost:9999/open-source/how/</guid>
+        
+        <category>open-source</category>
+        
+        
+        <category>open-source</category>
+        
+      </item>
+    
+      <item>
+        <title>How sworkits helps users finish workouts</title>
+        <description>&lt;p&gt;We are on a mission to make it easy for companies to promote their mobile apps, drive users and re-engage them to deliver customers and revenues.&lt;/p&gt;
+
+&lt;p&gt;Although we started in Argentina, we have very global ambitions. We currently have teams in the beautiful cities of Buenos Aires, London, San Francisco, Cape Town and Rio de Janeiro.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;We love what we do.&lt;/strong&gt; We are a fast-growing team of fun, creative, passionate hackers and business folks looking to work with like-minded innovators.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;We believe our team is our greatest asset.&lt;/strong&gt; This is no BS.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 20 Nov 2015 10:06:05 -0300</pubDate>
+        <link>http://localhost:9999/python/how-sworkits/</link>
+        <guid isPermaLink="true">http://localhost:9999/python/how-sworkits/</guid>
+        
+        <category>events</category>
+        
+        
+        <category>python</category>
+        
+      </item>
+    
+      <item>
+        <title>Ruby Rails</title>
+        <description>&lt;!--excerpt.start--&gt;
+&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways,
+&lt;!--excerpt.end--&gt;&lt;/p&gt;
+
+&lt;p&gt;but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;figure class=&quot;bt-video-container&quot; style=&quot;padding-bottom:75.00%&quot;&gt;&lt;a class=&quot;youtube&quot; href=&quot;https://www.youtube.com/watch?v=SfojnpvuC5I&quot; data-videoid=&quot;SfojnpvuC5I&quot; data-width=&quot;480&quot; data-height=&quot;360&quot;&gt;YouTube Video&lt;/a&gt;&lt;/figure&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 24 Oct 2015 10:06:05 -0300</pubDate>
+        <link>http://localhost:9999/jekyll/jammp/ruby-rails/</link>
+        <guid isPermaLink="true">http://localhost:9999/jekyll/jammp/ruby-rails/</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>jammp</category>
+        
+      </item>
+    
+      <item>
+        <title>Jampping forward getting a bit more serious as we raise a series a $7 million</title>
+        <description>&lt;p&gt;A strategic data collection plan can provide valuable insights regarding the way people use your app, which is instrumental in improving user experience, marketing actions and&lt;/p&gt;
+
+&lt;p&gt;Sworkit is a &lt;a href=&quot;http://google.com&quot;&gt;personal&lt;/a&gt; trainer app for iOS and Android that provides guided, video-based workouts that users can do anywhere.  With over 5 &lt;strong&gt;million&lt;/strong&gt; downloads and a top 5 ranking in the Fitness category, Sworkit knows what it takes for you to accomplish your goals.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;foo&#39;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+Out of all the apps I tried this one is the best. It tells you how many calories you lost plus lets you play a high intensity playlist off of SPOTIFY!!!
+No charge at all plus you get reward points for completing workouts doesn&#39;t matter how little the time
+&lt;br /&gt;&lt;cite&gt;5 Stars May 31&lt;/cite&gt;&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;a-strategic-data-collection&quot;&gt;A strategic data collection&lt;/h2&gt;
+
+&lt;p&gt;Users love the music widget and are more likely to finish their workout after selecting their perfect playlist:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;40% increase in workout completion for users who listen to music when they workout&lt;/li&gt;
+  &lt;li&gt;63% of users who engaged with music widget clicked through to listen in Spotify&lt;/li&gt;
+  &lt;li&gt;15,000+ followers across Sworkit’s workout playlists on Spotify&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://lorempixel.com/g/400/200/&quot; alt=&quot;alt text&quot; title=&quot;Logo Title Text 1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And the user feedback in the reviews speaks for itself:&lt;/p&gt;
+
+&lt;p&gt;5 Stars - Jun 11, 2015 - “I am too am embarrassed right now to go to the gym and this app is helping me get the exercise I need without the pressure of the gym. Love this app and the fact that it is connected to Spotify for my music.”&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;A good product (duh!)&lt;/dt&gt;
+  &lt;dd&gt;Yes, seems obvious but the app stores are full of horrible apps. It’s important that the app is original (or improves on another app) or solves a problem or entertains. It has to be well designed, both in terms of how it looks and its user experience (UX). Everything that follows will be easier if the app is good. Something to keep in mind: The best apps only do “one thing” but they do that thing very very well.&lt;/dd&gt;
+  &lt;dt&gt;Built In Virality&lt;/dt&gt;
+  &lt;dd&gt;Try to incorporate some viral mechanism into the core functionality of the app, that way each user that uses and enjoys the app will potentially attract new users. In Instagram for example, the experience of looking at other people’s photos was much better with the app.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;&lt;strong&gt;The secret? The perfect playlist&lt;/strong&gt; to give you that extra motivation to get  started and keep you going.  Sworkit and URX teamed up to make it easy for users to access curated playlists that compliment their workout intensity and personalities.&lt;/p&gt;
+
+&lt;p&gt;Sworkit is a &lt;a href=&quot;http://google.com&quot;&gt;personal&lt;/a&gt; trainer app for iOS and Android that provides guided, video-based workouts that users can do anywhere.  With over 5 &lt;strong&gt;million&lt;/strong&gt; downloads and a top 5 ranking in the Fitness category, Sworkit knows what it takes for you to accomplish your goals.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://lorempixel.com/g/900/450/&quot; alt=&quot;alt text&quot; title=&quot;Logo Title Text 1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sworkit is a &lt;a href=&quot;http://google.com&quot;&gt;personal&lt;/a&gt; trainer app for iOS and Android that provides guided, video-based workouts that users can do anywhere.  With over 5 &lt;strong&gt;million&lt;/strong&gt; downloads and a top 5 ranking in the Fitness category, Sworkit knows what it takes for you to accomplish your goals.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;a[href^=#]&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;click&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;||&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;[name=&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;slice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;]&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;tOffset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;offset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;html,body&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;scrollTop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tOffset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;slow&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;preventDefault&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;​&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;  &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Python syntax highlighting&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;DOMContentLoaded&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;metaTag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;meta&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;metaTag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setAttribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;http-equiv&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;Content-Security-Policy&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;metaTag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setAttribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;content&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;script-src https: &#39;unsafe-eval&#39;;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;metaTag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Sat, 24 Oct 2015 00:00:00 -0300</pubDate>
+        <link>http://localhost:9999/jammp/info/jumping-forward/</link>
+        <guid isPermaLink="true">http://localhost:9999/jammp/info/jumping-forward/</guid>
+        
+        <category>news</category>
+        
+        
+        <category>jammp</category>
+        
+        <category>info</category>
+        
+      </item>
+    
+      <item>
+        <title>Welcome to Jekyll!</title>
+        <description>&lt;!--excerpt.start--&gt;
+&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways,
+&lt;!--excerpt.end--&gt;&lt;/p&gt;
+
+&lt;p&gt;but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;figure class=&quot;bt-video-container&quot; style=&quot;padding-bottom:75.00%&quot;&gt;&lt;a class=&quot;youtube&quot; href=&quot;https://www.youtube.com/watch?v=SfojnpvuC5I&quot; data-videoid=&quot;SfojnpvuC5I&quot; data-width=&quot;480&quot; data-height=&quot;360&quot;&gt;YouTube Video&lt;/a&gt;&lt;/figure&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 23 Oct 2015 10:06:05 -0300</pubDate>
+        <link>http://localhost:9999/jekyll/jammp/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:9999/jekyll/jammp/welcome-to-jekyll/</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>jammp</category>
+        
+      </item>
+    
+      <item>
+        <title>A New Era has arrived</title>
+        <description>&lt;p&gt;What’s new&lt;/p&gt;
+
+&lt;p&gt;There are 3 main features:&lt;/p&gt;
+
+&lt;!--excerpt.start--&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Any Event&lt;/strong&gt;: You can now analyse performance easily within Ruby of &lt;strong&gt;any&lt;/strong&gt; in-app event and metrics (CPA, ER, EVR, Etc).
+&lt;!--excerpt.end--&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Status of Data Sharing&lt;/strong&gt;: You can now see very graphically which in-app events our clients are sharing with us and which is the exact status (Are they sending it? Which was the last one? Any in-app event that they still need to add?)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Filters&lt;/strong&gt;: You can now filter any report by performance metrics (which are the rows that have a conversion &amp;gt; 1.1%?).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And a lot of other features, small fixes and details (Client will be able to share reports, lots of new performance metrics, Cohorts by Apps/Campaigns, Clearer view of Dynamic Segments, etc).&lt;/p&gt;
+
+&lt;p&gt;But most importantly we are sharing all this info/features on our client’s dashboard as well. If our internal Ruby is 2 times better than it was, the client dashboard is changing by 10 times.&lt;/p&gt;
+
+&lt;p&gt;Why this is important&lt;/p&gt;
+
+&lt;p&gt;In-app activity (sales, credit spending, etc, etc) is at the core of what our client needs and what we need to optimize.&lt;/p&gt;
+
+&lt;p&gt;Basically, what we do is driving more activity within our client’s apps….no matter if that comes from app installs or re-targeting campaigns.&lt;/p&gt;
+
+&lt;p&gt;This release makes in-app event optimization much easier and scalable (instead of running many pivots you will see the same info everywhere).&lt;/p&gt;
+
+&lt;p&gt;But also, it give us an awesome base to build a lot of new features that we are planning soon:&lt;/p&gt;
+
+&lt;p&gt;And a lot of other features, small fixes and details (Client will be able to share reports, lots of new performance metrics, Cohorts by Apps/Campaigns, Clearer view of Dynamic Segments, etc).&lt;/p&gt;
+
+&lt;p&gt;But most importantly we are sharing all this info/features on our client’s dashboard as well. If our internal Ruby is 2 times better than it was, the client dashboard is changing by 10 times.&lt;/p&gt;
+
+&lt;p&gt;Why this is important&lt;/p&gt;
+
+&lt;p&gt;In-app activity (sales, credit spending, etc, etc) is at the core of what our client needs and what we need to optimize.&lt;/p&gt;
+
+&lt;p&gt;In-app activity (sales, credit spending, etc, etc) is at the core of what our client needs and what we need to optimize.
+In-app activity (sales, credit spending, etc, etc) is at the core of what our client needs and what we need to optimize.&lt;/p&gt;
+
+&lt;p&gt;In-app activity (sales, credit spending, etc, etc) is at the core of what our client needs and what we need to optimize.&lt;/p&gt;
+
+&lt;p&gt;In-app activity (sales, credit spending, etc, etc) is at the core of what our client needs and what we need to optimize.&lt;/p&gt;
+
+&lt;p&gt;In-app activity (sales, credit spending, etc, etc) is at the core of what our client needs and what we need to optimize.&lt;/p&gt;
+
+&lt;p&gt;In-app activity (sales, credit spending, etc, etc) is at the core of what our client needs and what we need to optimize.&lt;/p&gt;
+
+&lt;p&gt;In-app activity (sales, credit spending, etc, etc) is at the core of what our client needs and what we need to optimize.&lt;/p&gt;
+
+&lt;p&gt;In-app activity (sales, credit spending, etc, etc) is at the core of what our client needs and what we need to optimize.
+Basically, what we do is driving more activity within our client’s apps….no matter if that comes from app installs or re-targeting campaigns.&lt;/p&gt;
+
+&lt;p&gt;This release makes in-app event optimization much easier and scalable (instead of running many pivots you will see the same info everywhere).&lt;/p&gt;
+
+&lt;p&gt;But also, it give us an awesome base to build a lot of new features that we are planning soon:&lt;/p&gt;
+
+&lt;p&gt;And a lot of other features, small fixes and details (Client will be able to share reports, lots of new performance metrics, Cohorts by Apps/Campaigns, Clearer view of Dynamic Segments, etc).&lt;/p&gt;
+
+&lt;p&gt;But most importantly we are sharing all this info/features on our client’s dashboard as well. If our internal Ruby is 2 times better than it was, the client dashboard is changing by 10 times.&lt;/p&gt;
+
+&lt;p&gt;Why this is important&lt;/p&gt;
+
+&lt;p&gt;In-app activity (sales, credit spending, etc, etc) is at the core of what our client needs and what we need to optimize.&lt;/p&gt;
+
+&lt;p&gt;Basically, what we do is driving more activity within our client’s apps….no matter if that comes from app installs or re-targeting campaigns.&lt;/p&gt;
+
+&lt;p&gt;This release makes in-app event optimization much easier and scalable (instead of running many pivots you will see the same info everywhere).&lt;/p&gt;
+
+&lt;p&gt;But also, it give us an awesome base to build a lot of new features that we are planning soon:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Create Black/Whitelist just from the performance reports.&lt;/li&gt;
+  &lt;li&gt;Automation Rules (“If conversion is below 1.2% pause the action”)&lt;/li&gt;
+  &lt;li&gt;…and many more.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 09 Aug 2015 00:00:00 -0300</pubDate>
+        <link>http://localhost:9999/jammp/a-new-era/</link>
+        <guid isPermaLink="true">http://localhost:9999/jammp/a-new-era/</guid>
+        
+        
+        <category>jammp</category>
+        
+      </item>
+    
+      <item>
+        <title>The News</title>
+        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;figure class=&quot;bt-video-container&quot; style=&quot;padding-bottom:56.25%&quot;&gt;&lt;a class=&quot;youtube&quot; href=&quot;https://www.youtube.com/watch?v=SfojnpvuC5I&quot; data-videoid=&quot;SfojnpvuC5I&quot; data-width=&quot;640&quot; data-height=&quot;360&quot;&gt;YouTube Video&lt;/a&gt;&lt;/figure&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 12 Dec 2014 10:06:05 -0300</pubDate>
+        <link>http://localhost:9999/python/the-news/</link>
+        <guid isPermaLink="true">http://localhost:9999/python/the-news/</guid>
+        
+        <category>news</category>
+        
+        
+        <category>python</category>
+        
+      </item>
+    
+  </channel>
+</rss>

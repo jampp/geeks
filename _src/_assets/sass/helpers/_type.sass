@@ -1,0 +1,101 @@
+*, *:before,
+*:after
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+
+
+html
+  font-size: 10px
+  -webkit-tap-highlight-color: rgba(0,0,0,0)
+
+body
+  font-family: 'Yantramanav', sans-serif
+  font-size: 14px
+  line-height: 1.42857
+  color: $body-color
+  background: $body-background
+
+h1, h2, h3, h4, .Yantramanav
+  font-family: 'Lekton', sans-serif
+  font-weight: normal
+
+a
+  color: $link-alt
+  text-decoration: none
+  transition: all .25s ease-in-out
+  &:hover,
+  &:focus
+    color: darken($link-alt, 20%)
+    text-decoration: none
+
+h1, .h1
+  font-size: 32px
+  line-height: 42px
+  color: $text-main
+
+
+h2, .h2
+  font-size: 24px
+  line-height: 32px
+  color: $text-main
+  @media #{$breakpoint}
+    font-size: 21px
+    line-height: 30px
+
+h3, .h3
+  font-size: 20px
+  line-height: 28px
+  color: $text-main
+  @media #{$breakpoint}
+    font-size: 16px
+    line-height: 21px
+
+h4, .h4
+  font-size: 18px
+  line-height: 24px
+  color: $text-main
+  @media #{$breakpoint}
+    font-size: 14px
+    line-height: 18px
+
+p
+  font-family: Yantramanav
+  font-size: 16px
+  line-height: 30px
+  margin-bottom: 1em
+  letter-spacing: 0.3px
+  font-weight: 300
+
+
+b, strong
+  color: darken($text-main, 10%)
+  font-family: Yantramanav
+  font-weight: 500
+
+blockquote
+  font-family: Lekton
+  font-size: 18px
+  color: $link-alt
+  line-height: 28px
+  margin-bottom: 1em
+  position: relative
+  &:before
+    content: '/'
+    margin-bottom: .5em
+    display: block
+  cite
+    font-size: 12px
+    font-weight: 600
+    line-height: 18px
+
+hr
+  border-top: 1px solid $separation-color
+  border-bottom: 0
+  margin-bottom: 1em
+  display: inline-block
+  width: 60px
+
+
+img
+  max-width: 100%

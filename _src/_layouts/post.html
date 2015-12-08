@@ -1,0 +1,37 @@
+{% include head.html %}
+
+<body class="post-body">
+    {% include header.html %}
+
+
+    <div class="page-content">
+      <div class="container is-post">
+
+        <h2 class="title">
+          {{ page.title }}
+        </h2>
+
+        {% include author-post.html %}
+
+        {% if page.tagline %}
+          <div class="tagline">
+            {{ page.tagline }}
+          </div>
+          <hr>
+        {% endif %}
+
+
+        <div class="post">
+          {{ content }}
+          {% include related-posts.html %}
+        </div>
+
+        {% include social-share.html %}
+
+      </div>
+    </div>
+    {% include footer-page.html %}
+
+  {% include site-scripts.html %}
+</body>
+</html>

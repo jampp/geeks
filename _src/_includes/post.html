@@ -1,0 +1,42 @@
+<div class="box-container">
+  <div class="category">
+    {% assign sortedcategories = post.categories | sort %} {% for category in sortedcategories %}
+    <a class="tag" href="/{{ category }}">
+      #{{ category }}
+    </a>
+    {% endfor %}
+  </div>
+
+  <h2 class="post-link">
+    <a title="{{ post.title }}" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+  </h2>
+
+  {% if post.image.feature %}
+    <a href="{{ post.url | prepend: site.baseurl }}">
+      <img title="{{ post.title }}" class="featured-image" src="{{ site.url }}/assets/images/featured-images-posts/small/{{ post.image.feature }}" />
+    </a>
+  {% endif %}
+
+  <div class="excerpt">
+    {% if post.content contains '<!--excerpt.start-->' and post.content contains '<!--excerpt.end-->' %}
+      {{ ((post.content | split:'<!--excerpt.start-->' | last) | split: '<!--excerpt.end-->' | first) | strip_html | truncatewords: 20 }}
+    {% else %}
+      {{ post.content | strip_html | truncatewords: 40 }}
+    {% endif %}
+  </div>
+
+  <div class="time">
+    <a class="read" href="{{ post.url | prepend: site.baseurl }}">Read More</a>
+    <span>-</span>
+    <!-- {{ page.content | reading_time }} -->
+
+    <span class="reading-time" title="Estimated read time">
+      {% assign words = post.content | number_of_words %}
+      {% if words < 360 %}
+        1 minute
+      {% else %}
+        {{ words | divided_by:180 }} minutes
+      {% endif %}
+    </span>
+  </div>
+</div>

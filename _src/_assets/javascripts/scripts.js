@@ -62,13 +62,6 @@ WebFontConfig = {
    s.parentNode.insertBefore(wf, s);
  })();
 
-//  $('.style-switcher a').click(function(ev){
-//     ev.preventDefault();
-//     $('link').attr('href',$(this).data('stylesheet'));
-//     $('body').wrap("<div class='markdown-body'></div>");
-//
-// });
-
 
 $("a[data-stylesheet]").click(function() {
     $("head #theme").attr("href", $(this).data("stylesheet"));

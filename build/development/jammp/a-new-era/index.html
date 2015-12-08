@@ -127,6 +127,7 @@
 
 
     <div class="page-content">
+      <a class="job-button" href="#modal">&lt;/We are hiring!&gt;</a>
       <div class="style-switcher">
   <a id="original" href="#" data-stylesheet="/assets/css/app.css">
     <img src="http://localhost:9999/assets/images/switch.svg" alt="Switch style">
@@ -420,6 +421,33 @@ Basically, what we do is driving more activity within our client’s apps….no 
   </div>
 </footer>
 
+
+  <div class="remodal-bg">
+  <div class="remodal" data-remodal-id="modal">
+  <span class="close-modal" data-remodal-action="close">x</span>
+    <span class="modal-title">
+      &lt;/We are hiring!&gt;
+    </span>
+    
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>      <span class="k">if</span> <span class="p">(</span><span class="nx">$You</span><span class="p">.</span><span class="nx">areLookingForAJob</span> <span class="o">==</span> <span class="nx">TRUE</span><span class="p">)</span> <span class="p">{</span>
+      <span class="err">    </span><span class="nx">visit</span><span class="p">(</span><span class="s1">'jampp.com/jobs'</span><span class="p">);</span>
+      <span class="err">    </span><span class="nx">mail</span><span class="p">(</span><span class="err">'</span><span class="nx">jobs</span><span class="err">@</span><span class="nx">jampp</span><span class="p">.</span><span class="nx">com</span><span class="err">’</span><span class="p">);</span>
+
+      <span class="err">    </span><span class="c1">// Hey! We constantly need smart, stubborn, passionate</span>
+          <span class="c1">// technology lovers to join our team.</span>
+      <span class="p">}</span>
+    <span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+  </div>
+</div>
 
   <script src="/assets/js/application.js"></script>
 

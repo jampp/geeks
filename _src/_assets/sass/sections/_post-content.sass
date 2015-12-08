@@ -137,7 +137,24 @@
     left: 20px
     top: 0
     @media #{$breakpoint}
-      margin-left: 10%
+      margin-left: -10%
       position: fixed
       top: inherit
       left: inherit
+
+.job-button
+  background: #88C425
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75)
+  font-family: Lekton
+  font-size: 14px
+  color: #FFFFFF
+  line-height: 16px
+  padding: .5em 1em
+  position: absolute
+  top: 50%
+  right: 0
+  transform: translate(0, -50%)
+  z-index: 1
+  &:hover
+    color: #fff
+    box-shadow: 0px 3px 4px 0px rgba(0,0,0,0.50)

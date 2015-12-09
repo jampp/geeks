@@ -1,4 +1,4 @@
-url:         "http://jampp-blog.com.s3-website-sa-east-1.amazonaws.com" # the base hostname & protocol for your site
+url:         "http://jampp-geeks.com.s3-website-sa-east-1.amazonaws.com" # the base hostname & protocol for your site
 
 owner:       REPLACEME # Default site Owner. Will be used if post has no author. Full Name
 

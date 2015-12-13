@@ -131,11 +131,13 @@
     position: absolute
     left: 20px
     top: 0
+    display: none
     @media #{$breakpoint}
       margin-left: 10%
       position: fixed
       top: inherit
       left: inherit
+      display: block
     .svg-switch:hover
       @extend .svg-switch-active
     #original
@@ -154,11 +156,14 @@
   color: #FFFFFF
   line-height: 16px
   padding: .5em 1em
-  position: absolute
+  position: fixed
   top: 50%
   right: 0
   transform: translate(0, -50%)
   z-index: 1
+  display: none
+  @media #{$breakpoint}
+    display: block
   &:hover
     color: #fff
     box-shadow: 0px 3px 4px 0px rgba(0,0,0,0.50)

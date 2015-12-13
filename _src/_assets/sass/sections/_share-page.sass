@@ -7,18 +7,23 @@
     padding-left: 2em
     color: $brand-color
     display: table-cell
+    .w-dims
+      margin-top: -2px
     &:first-child
       padding-left: 0
     &:hover
-      color: $body-color
       .svg-twitter-social
         @extend .svg-twitter-social-active
       .svg-facebook-social
         @extend .svg-facebook-social-active
       .svg-linkedin-social
         @extend .svg-linkedin-social-active
-
-
+    &.linkedin:hover
+      color: #0274B3
+    &.facebook:hover
+      color: #3A579D
+    &.twitter:hover
+      color: #5EA9DD
   .text
     border-bottom: 1px dotted
     text-transform: uppercase

@@ -5,8 +5,9 @@
   "browser": {
     "modernizr": "./_src/_bower_components/modernizr/modernizr.js",
     "jquery": "./_src/_bower_components/jquery/dist/jquery.js",
-    "salvattore": "./_src/_bower_components/salvattore/dist/salvattore.js",
+    "salvattore":  "./_src/_bower_components/salvattore/dist/salvattore.js",
     "remodal": "./_src/_bower_components/remodal/dist/remodal.js",
+    "switcher": "./_src/_assets/javascripts/vendor/jQuery.style.switcher.js",
     "scripts": "./_src/_assets/javascripts/scripts.js"
   },
   "browserify-shim": {

@@ -18,11 +18,22 @@ $(function() {
 });
 
 $(".show-menu").click(function(e) {
-
   $(this).toggleClass("open");
   $("body").toggleClass('scroll');
   $(".main-menu").toggleClass("opened");
     e.preventDefault();
+});
+
+
+$(".mobile-navigation").click(function() {
+  $(this).toggleClass("open");
+  $("body").toggleClass('scroll');
+  $(".show-mobile-menu").toggleClass("opened");
+  if ($('.show-mobile-menu').hasClass('opened')) {
+    $('body').on('touchmove', false);
+  } else {
+    $('body').off('touchmove', false);
+  }
 });
 
 $(document).on('click', function (e) {
@@ -63,9 +74,23 @@ WebFontConfig = {
  })();
 
 
-$("a[data-stylesheet]").click(function() {
-    $("head #theme").attr("href", $(this).data("stylesheet"));
-    $('body').addClass('markdown-body');
-    $('body').hide().fadeIn(1000);
 
-})
+ $('.style-switcher a').click(function(e) {
+
+     e.preventDefault();
+ });
+$(document).ready(function() {
+
+  $('.style-switcher').styleSwitcher({
+    hasPreview: false,
+    defaultThemeId: 'app',
+    fullPath: '/assets/css/',
+    cookie: {
+      expires: 30,
+      isManagingLoad: true
+    }
+
+  });
+  $('body').addClass('markdown-body');
+  $('body').hide().fadeIn(1000);
+});

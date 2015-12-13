@@ -217,7 +217,7 @@ module.exports = {
   revision: {
     src: {
       assets: [
-        productionAssets + '/css/*.css',
+        // productionAssets + '/css/*.css',
         productionAssets + '/js/*.js',
         productionAssets + '/images/**/*',
         productionAssets + '/svg-icons/**/*',

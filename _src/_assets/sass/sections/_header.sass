@@ -8,6 +8,15 @@
   padding: 0 2%
   margin: 1em 0
 
+  .svg-logo
+    display: none
+    @media #{$breakpoint}
+      display: block
+  .svg-logo-mobile
+    display: block
+    @media #{$breakpoint}
+      display: none
+
   .fluid-container
     max-width: 1024px
     width: 100%
@@ -19,8 +28,12 @@
     display: inline-block
     text-align: center
     width: 40px
+    display: none
+    @media #{$breakpoint}
+      display: block
     &:hover
       transform: scale(1.1)
+
 .left
   float: left
 

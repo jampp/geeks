@@ -4,9 +4,13 @@
   <div class="author-content">
 
     <div class="meta">
-      {% assign sortedcategories = page.categories | sort %} {% for category in sortedcategories %} Published on <a href="/{{ category }}">
-        {{ category }}
-      </a> {% endfor %}
+      {% assign sortedcategories = page.categories | sort %}
+        Published on
+        {% for category in sortedcategories %}
+          <a href="/{{ category }}">
+            {{ category }}
+          </a>
+        {% endfor %}
       <span class="separator">-</span>
       <span class="post-date">
         on {% assign d = page.date | date: "%-d" %} {% assign m = page.date | date: "%B" %} {% case m %} {% when 'April' or 'May' or 'June' or 'July' %}{{ m }} {% when 'September' %}Sept. {% else %}{{ page.date | date: "%b" }}. {% endcase %} {% case d %} {% when

@@ -9,6 +9,10 @@ categories:
 author: alexis
 ---
 
+<!--excerpt.start-->
+- **Any Event**: You can now analyse performance easily within Ruby of **any** 
+<!--excerpt.end-->
+
 A strategic data collection plan can provide valuable insights regarding the way people use your app, which is instrumental in improving user experience, marketing actions and
 
 Sworkit is a [personal](http://google.com) trainer app for iOS and Android that provides guided, video-based workouts that users can do anywhere.  With over 5 **million** downloads and a top 5 ranking in the Fitness category, Sworkit knows what it takes for you to accomplish your goals.

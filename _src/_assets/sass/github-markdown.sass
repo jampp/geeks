@@ -42,6 +42,8 @@ body
   @media (min-width: 50em)
     padding: 0 45px
 
+.footer-navigation
+  margin: 2em 0
 .footer
   padding: 30px 5%
   @media (min-width: 50em)
@@ -53,8 +55,7 @@ body
     padding: 30px 45px
 
 .job-button
-  text-align: center
-  display: block
+  display: none
 
 .sections
   padding-left: 0!important
@@ -64,6 +65,11 @@ body
   &:before
     content: 'Categories'
     display: inline-block
+
+.sections-mobile,
+.show-mobile-menu
+  .footer-navigation
+    display: none
 
 .pagination
   padding: 1em 0

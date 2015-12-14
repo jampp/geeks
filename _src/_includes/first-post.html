@@ -1,0 +1,7 @@
+{% if page.url == "/" %}
+  {% for post in site.posts limit:1 %}
+    <div class="post first">
+      {% include post.html %}
+    </div>
+  {% endfor %}
+{% endif %}

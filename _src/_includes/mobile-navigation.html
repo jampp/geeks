@@ -1,0 +1,36 @@
+<div class="show-mobile-menu">
+  <a href="/" class="visit">
+    <span class="svg-logo-mobile w-dims"></span>
+  </a>
+  {% include style-switcher.html %}
+  <ul class="sections-mobile">
+    {% for link in site.data.nav %} {% if link.url contains 'http' %} {% assign domain = '' %} {% else %} {% assign domain = site.url %} {% endif %}
+    <li>
+      <a href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank" {% endif %}>{{ link.title }}</a>
+    </li>
+    {% endfor %}
+    <li>
+      <a class="job-button" href="#modal">&lt;/We are hiring!&gt;</a>
+    </li>
+  </ul>
+  <div class="footer-navigation">
+    <div class="conatainer">
+      <div class="visit">
+        <a href="http://jampp.com">visit jammp</a>
+      </div>
+
+      <div class="social">
+        <a href="https://twitter.com/{{ site.twitter_username }}">
+          <span class="svg-twitter w-dims"></span>
+        </a>
+        <a href="https://facebook.com/{{ site.facebook_username }}">
+          <span class="svg-facebook w-dims"></span>
+        </a>
+        <a href="https://linkedin.com/company/{{ site.linkedin_username }}">
+          <span class="svg-linkedin w-dims"></span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>

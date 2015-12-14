@@ -1,0 +1,122 @@
+=transition($duration, $timing-func)
+  transition: $duration $timing-func all
+
+=scale($size)
+  transform: scale($size)
+
+=rotate($deg)
+  transform: rotate($deg)
+
+.mobile-navigation
+  position: fixed
+  z-index: 3
+  width: $mobile-menu-size / 1.75
+  height: $mobile-menu-size / 1.75
+  top: 5px
+  right: 0
+  margin: 1em 1em 0 0
+  cursor: pointer
+  @media #{$breakpoint}
+    display: none
+
+  span
+    display: block
+    position: absolute
+    width: 100%
+    height: $mobile-menu-size / 25
+    margin: $mobile-menu-size / 4 0 0 0
+    background: $brand-color
+    +transition($mobile-menu-time, $mobile-menu-timing)
+    &:before,
+    &:after
+      content: " "
+      position: absolute
+      width: 100%
+      height: $mobile-menu-size / 25
+      background: $brand-color
+      left: 0
+      +transition($mobile-menu-time, $mobile-menu-timing)
+    &:before
+      margin: -$mobile-menu-size / 5 0 0 0
+    &:after
+      margin: $mobile-menu-size / 5 0 0 0
+  &.open
+    span
+      background-color: transparent
+      &:before,
+      &:after
+        margin: 0
+        background: $brand-color
+      &:before
+        +rotate($mobile-menu-degree)
+      &:after
+        +rotate(-$mobile-menu-degree)
+
+.show-mobile-menu
+  visibility: hidden
+  opacity: 0
+  position: fixed
+  z-index: 2
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  text-align: center
+  background: $bg
+  +scale(1.1)
+  +transition($mobile-menu-time, $mobile-menu-timing)
+  &.opened
+    visibility: visible
+    opacity: 1
+    +scale(1)
+    +transition($mobile-menu-time, $mobile-menu-timing)
+  span
+    &#title
+      display: block
+      line-height: $mobile-menu-size / 5
+      margin: 0 0 $mobile-menu-size / 10 0
+      font-size: $mobile-menu-size
+      color: $bg
+
+  .sections-mobile
+    left: 50%
+    position: absolute
+    top: 20%
+    transform: translate(-50%, 0%)
+    width: 100%
+    text-align: left
+    padding: 0 5%
+    li
+      margin-bottom: 1.5em
+      &:last-child
+        margin-bottom: 0
+    a
+      @extend .h3
+      color: $brand-color
+      text-transform: uppercase
+      font-size: 16px
+
+  .footer-navigation
+    bottom: 0
+    position: absolute
+    width: 100%
+    background: $bg
+  .job-button
+    position: inherit
+    display: block
+    margin: 0 -7%
+    color: #fff!important
+    transform: none
+    padding: 1em 4em
+    box-shadow: none
+  .style-switcher
+    margin: 2em 0 1em 1.5em
+    text-align: left
+    a:first-child
+      display: none
+  .svg-logo-mobile
+    display: block
+    margin: 1em 0 0 1em
+//Hide scoll on menu open
+.scroll
+  overflow: hidden

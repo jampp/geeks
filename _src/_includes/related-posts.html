@@ -1,0 +1,28 @@
+{% assign hasSimilar = '' %}
+  {% for post in site.related_posts %}
+  {% assign postHasSimilar = false %}
+    {% for tag in post.categories %}
+        {% for thisTag in page.categories %}
+            {% if postHasSimilar == false and hasSimilar.size < 6 and post != page and tag == thisTag %}
+                {% if hasSimilar.size == 0 %}
+                <div class="related">
+                  <h4>keep reading code</h4>
+                  <ul>
+                  {% endif %}
+                  <li class="relatedPost">
+                      <a href="{{ site.url }}{{ post.url }}">{{ post.title }}
+                      {% if post.series %}
+                          (Series: {{ post.series }})
+                      {% endif %}
+                      </a>
+                  </li>
+                {% capture hasSimilar %}{{ hasSimilar }}*{% endcapture %}
+                {% assign postHasSimilar = true %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+{% endfor %}
+{% if hasSimilar.size > 0 %}
+  </ul>
+    </div>
+{% endif %}

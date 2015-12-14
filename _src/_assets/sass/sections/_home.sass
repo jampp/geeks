@@ -1,0 +1,86 @@
+.page-content
+  display: inline-block
+  width: 100%
+  position: relative
+  padding-top: 2em
+
+  .post-list
+    display: inline-block
+    width: 100%
+    .post
+      margin-bottom: 2em
+      border: 1px solid rgba($box-frame, 50%)
+      border-radius: 3px
+      width: 100%
+      margin: 0
+      float: left
+      margin-bottom: 3em
+      &.first
+        margin-bottom: 2em
+
+  [data-columns]::before
+  	content: '2 .column.size-1of2'
+
+  .size-1of2
+    width: 100%
+    @media #{$breakpoint}
+      width: 50%
+    &:first-child
+      padding-left: 0
+    &:last-child
+      padding-right: 0
+
+  .box-container
+    padding: 1.5em
+    @media #{$breakpoint}
+      padding: 2em
+
+  .post-link
+    margin-bottom: .5em
+    a
+      color: $text-main
+      &:hover
+        text-decoration: underline
+
+  .excerpt
+    margin-bottom: .5em
+    font-size: 16px
+    color: $text-secondary
+    font-weight: 100
+    p
+      line-height: 24px
+
+  .read
+    color: $brand-color
+    font-family: Yantramanav
+    font-weight: 500
+    border-bottom: 1px dashed $brand-color
+    &:hover
+      border-style: solid
+
+  .time
+    text-transform: uppercase
+    margin-top: 1em
+    font-size: 12px
+
+  .meta
+    padding: 2em 0 1em 0
+
+  .category
+    display: inline-block
+    width: 100%
+    border-bottom: 1px dashed $body-color
+    margin-bottom: 1em
+    a
+      color: $body-color
+      font-weight: 500
+      font-size: 12px
+      text-transform: uppercase
+      letter-spacing: 1px
+      display: inline-block
+      padding-bottom: .5em
+      &:hover
+        color: $brand-color
+
+  .featured-image
+    margin-bottom: 1em

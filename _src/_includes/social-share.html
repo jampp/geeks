@@ -1,0 +1,16 @@
+<div class="share-page">
+  <a class="twitter" href="https://twitter.com/intent/tweet?text={{ page.title }}&amp;url={{ site.url }}{{ page.url }}&amp;via={{ site.twitter_username }}&amp;related={{ site.twitter_username }}" rel="nofollow" target="_blank" title="Share on Twitter">
+    <span class="svg-twitter-social w-dims"></span>
+    <span class="text">Twitter</span>
+  </a>
+
+  <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" title="Share on Facebook">
+    <span class="svg-facebook-social w-dims"></span>
+    <span class="text">Facebook</span>
+  </a>
+
+  <a class="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}=&amp;summary={% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}&amp;title={{ page.title }}">
+    <span class="svg-linkedin-social w-dims"></span>
+    <span class="text">Linkedin</span>
+  </a>
+</div>

@@ -1,0 +1,47 @@
+<div class="footer-navigation">
+  <div class="conatainer">
+    <div class="visit">
+      <a href="http://jampp.com">visit jammp</a>
+    </div>
+
+    <div class="social">
+      <a href="https://twitter.com/{{ site.twitter_username }}">
+        <span class="svg-twitter w-dims"></span>
+      </a>
+      <a href="https://facebook.com/{{ site.facebook_username }}">
+        <span class="svg-facebook w-dims"></span>
+      </a>
+      <a href="https://linkedin.com/company/{{ site.linkedin_username }}">
+        <span class="svg-linkedin w-dims"></span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+{% comment %}
+<footer class="footer">
+  <div class="footer-container container">
+    <div class="row">
+      <div class="column grid-6-of-12">
+        <h3>
+          Subscribe and get updates on your inbox.
+        </h3>
+      </div>
+      <div class="column grid-6-of-12">
+        <form class="email-signup" action="http://twitter.us2.list-manage.com/subscribe/post?u={{ site.mailchimp.user-id }}&amp;id={{ site.mailchimp.list-id }}" method="post" novalidate>
+          <div class="field-group">
+            <label for="EMAIL">
+              <input placeholder="your email address" type="email" value="" name="EMAIL">
+            </label>
+            <input type="submit" value="submit" name="subscribe" class="btn">
+          </div>
+          <div style="position: absolute; left: -5000px;">
+            <input type="text" name="b_{{ site.mailchimp.user-id }}_{{ site.mailchimp.list-id }}" tabindex="-1" value="">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endcomment %}

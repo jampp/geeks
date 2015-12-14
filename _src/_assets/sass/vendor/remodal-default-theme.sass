@@ -1,0 +1,227 @@
+/*
+ *  Remodal - v1.0.6
+ *  Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.
+ *  http://vodkabears.github.io/remodal/
+ *
+ *  Made by Ilya Makarov
+ *  Under MIT License
+
+/* ==========================================================================
+ * Remodal's default mobile first theme
+ * ==========================================================================
+
+/* Default theme styles for the background
+
+.remodal-bg
+  &.remodal-is-opening, &.remodal-is-opened
+    -webkit-filter: blur(3px)
+    filter: blur(3px)
+
+/* Default theme styles of the overlay
+
+.remodal-overlay
+  background: rgba(43, 46, 56, 0.9)
+  &.remodal-is-opening, &.remodal-is-closing
+    -webkit-animation-duration: 0.3s
+    animation-duration: 0.3s
+    -webkit-animation-fill-mode: forwards
+    animation-fill-mode: forwards
+  &.remodal-is-opening
+    -webkit-animation-name: remodal-overlay-opening-keyframes
+    animation-name: remodal-overlay-opening-keyframes
+  &.remodal-is-closing
+    -webkit-animation-name: remodal-overlay-closing-keyframes
+    animation-name: remodal-overlay-closing-keyframes
+
+/* Default theme styles of the wrapper
+
+.remodal-wrapper
+  padding: 10px 10px 0
+
+/* Default theme styles of the modal dialog
+
+.remodal
+  box-sizing: border-box
+  width: 100%
+  margin-bottom: 10px
+  padding: 0
+  -webkit-transform: translate3d(0, 0, 0)
+  transform: translate3d(0, 0, 0)
+  color: #2b2e38
+  background: #fff
+  font-family: Lekton
+  &.remodal-is-opening, &.remodal-is-closing
+    -webkit-animation-duration: 0.3s
+    animation-duration: 0.3s
+    -webkit-animation-fill-mode: forwards
+    animation-fill-mode: forwards
+  &.remodal-is-opening
+    -webkit-animation-name: remodal-opening-keyframes
+    animation-name: remodal-opening-keyframes
+  &.remodal-is-closing
+    -webkit-animation-name: remodal-closing-keyframes
+    animation-name: remodal-closing-keyframes
+  vertical-align: middle
+
+  .highlight
+    text-align: left
+    margin-bottom: 0
+    border: 4px solid #88C425
+  .modal-title
+    color: #fff
+    background: #88C425
+    position: absolute
+    left: 0
+    top: -20px
+    font-size: 13px
+    line-height: 18px
+    padding: .25em .5em
+  .close-modal
+    position: absolute
+    right: 0
+    color: #fff
+    font-size: 22px
+    top: -28px
+    font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif !important
+    cursor: pointer
+
+/* Vertical align of the modal dialog
+
+.remodal-wrapper:after
+  vertical-align: middle
+
+
+/* Dialog buttons
+
+.remodal-confirm, .remodal-cancel
+  font: inherit
+  display: inline-block
+  overflow: visible
+  min-width: 110px
+  margin: 0
+  padding: 12px 0
+  cursor: pointer
+  -webkit-transition: background 0.2s
+  transition: background 0.2s
+  text-align: center
+  vertical-align: middle
+  text-decoration: none
+  border: 0
+  outline: 0
+
+.remodal-confirm
+  color: #fff
+  background: #81c784
+  &:hover, &:focus
+    background: #66bb6a
+
+.remodal-cancel
+  color: #fff
+  background: #e57373
+  &:hover, &:focus
+    background: #ef5350
+
+/* Remove inner padding and border in Firefox 4+ for the button tag.
+
+.remodal-confirm::-moz-focus-inner, .remodal-cancel::-moz-focus-inner, .remodal-close::-moz-focus-inner
+  padding: 0
+  border: 0
+
+/* Keyframes
+ * ==========================================================================
+
+@-webkit-keyframes remodal-opening-keyframes
+  from
+    -webkit-transform: scale(1.05)
+    transform: scale(1.05)
+    opacity: 0
+
+  to
+    -webkit-transform: none
+    transform: none
+    opacity: 1
+
+
+@keyframes remodal-opening-keyframes
+  from
+    -webkit-transform: scale(1.05)
+    transform: scale(1.05)
+    opacity: 0
+
+  to
+    -webkit-transform: none
+    transform: none
+    opacity: 1
+
+
+@-webkit-keyframes remodal-closing-keyframes
+  from
+    -webkit-transform: scale(1)
+    transform: scale(1)
+    opacity: 1
+
+  to
+    -webkit-transform: scale(0.95)
+    transform: scale(0.95)
+    opacity: 0
+
+
+@keyframes remodal-closing-keyframes
+  from
+    -webkit-transform: scale(1)
+    transform: scale(1)
+    opacity: 1
+
+  to
+    -webkit-transform: scale(0.95)
+    transform: scale(0.95)
+    opacity: 0
+
+
+@-webkit-keyframes remodal-overlay-opening-keyframes
+  from
+    opacity: 0
+
+  to
+    opacity: 1
+
+
+@keyframes remodal-overlay-opening-keyframes
+  from
+    opacity: 0
+
+  to
+    opacity: 1
+
+
+@-webkit-keyframes remodal-overlay-closing-keyframes
+  from
+    opacity: 1
+
+  to
+    opacity: 0
+
+
+@keyframes remodal-overlay-closing-keyframes
+  from
+    opacity: 1
+
+  to
+    opacity: 0
+
+
+/* Media queries
+ * ==========================================================================
+
+@media only screen and (min-width: 641px)
+  .remodal
+    max-width: 700px
+
+/* IE8
+ * ==========================================================================
+
+.lt-ie9
+  .remodal-overlay
+    background: #2b2e38
+  .remodal
+    width: 700px

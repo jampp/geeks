@@ -1,0 +1,26 @@
+<header class="site-header">
+  {% include mobile-navigation.html %}
+  <div class="fluid-container home animated">
+    <div class="left">
+      <a href="/" class="visit">
+        <span class="svg-logo w-dims"></span>
+        <span class="svg-logo-mobile w-dims"></span>
+      </a>
+    </div>
+    <div class="right">
+      <a class="show-menu" href="#">
+        <span class="svg-icon-dots w-dims"></span>
+      </a>
+    </div>
+    <div class="mobile-navigation">
+      <span></span>
+    </div>
+    <ul class="sections main-menu">
+      {% for link in site.data.nav %} {% if link.url contains 'http' %} {% assign domain = '' %} {% else %} {% assign domain = site.url %} {% endif %}
+      <li>
+        <a href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank" {% endif %}>{{ link.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</header>

@@ -2,24 +2,10 @@
 <div class="pagination">
   {% if paginator.previous_page %}
     <a class="prev" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
-  {% else %}
-    <span class="prev">&laquo; Prev</span>
   {% endif %}
-
-  {% for page in (1..paginator.total_pages) %}
-    {% if page == paginator.page %}
-      <em class="number">{{ page }}</em>
-    {% elsif page == 1 %}
-      <a class="number" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
-    {% else %}
-      <a class="number" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-    {% endif %}
-  {% endfor %}
 
   {% if paginator.next_page %}
     <a class="next" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
-  {% else %}
-    <span class="next">Next &raquo;</span>
   {% endif %}
 </div>
 {% endif %}

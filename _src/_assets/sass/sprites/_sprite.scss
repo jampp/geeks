@@ -15,7 +15,7 @@
 
 .svg-facebook-active {
 	@extend %svg-common;
-	background-position: 0 4.175824175824176%;
+	background-position: 0 3.869653767820774%;
   &.w-dims {
     width: 11px;
   	height: 19px;
@@ -26,7 +26,7 @@
 
 .svg-facebook-social {
 	@extend %svg-common;
-	background-position: 0 8.351648351648352%;
+	background-position: 0 7.739307535641548%;
   &.w-dims {
     width: 11px;
   	height: 19px;
@@ -37,7 +37,7 @@
 
 .svg-facebook-social-active {
 	@extend %svg-common;
-	background-position: 0 12.527472527472527%;
+	background-position: 0 11.608961303462321%;
   &.w-dims {
     width: 11px;
   	height: 19px;
@@ -46,9 +46,31 @@
 }
 
 
+.svg-github {
+	@extend %svg-common;
+	background-position: 0 15.447154471544716%;
+  &.w-dims {
+    width: 18px;
+  	height: 18px;
+    display: inline-block;
+  }
+}
+
+
+.svg-github-active {
+	@extend %svg-common;
+	background-position: 0 19.10569105691057%;
+  &.w-dims {
+    width: 18px;
+  	height: 18px;
+    display: inline-block;
+  }
+}
+
+
 .svg-icon-dots {
 	@extend %svg-common;
-	background-position: 0 16.740088105726873%;
+	background-position: 0 22.857142857142858%;
   &.w-dims {
     width: 6px;
   	height: 20px;
@@ -59,7 +81,7 @@
 
 .svg-icon-geek {
 	@extend %svg-common;
-	background-position: 0 21.00656455142232%;
+	background-position: 0 26.774847870182555%;
   &.w-dims {
     width: 17px;
   	height: 17px;
@@ -70,7 +92,7 @@
 
 .svg-icon-play {
 	@extend %svg-common;
-	background-position: 0 30.376344086021504%;
+	background-position: 0 36.51960784313726%;
   &.w-dims {
     width: 102px;
   	height: 102px;
@@ -81,7 +103,7 @@
 
 .svg-icon-search {
 	@extend %svg-common;
-	background-position: 0 47.252747252747255%;
+	background-position: 0 51.12016293279022%;
   &.w-dims {
     width: 19px;
   	height: 19px;
@@ -92,7 +114,7 @@
 
 .svg-linkedin {
 	@extend %svg-common;
-	background-position: 0 51.42857142857143%;
+	background-position: 0 54.989816700611%;
   &.w-dims {
     width: 21px;
   	height: 19px;
@@ -103,7 +125,7 @@
 
 .svg-linkedin-active {
 	@extend %svg-common;
-	background-position: 0 55.604395604395606%;
+	background-position: 0 58.85947046843177%;
   &.w-dims {
     width: 21px;
   	height: 19px;
@@ -114,7 +136,7 @@
 
 .svg-linkedin-social {
 	@extend %svg-common;
-	background-position: 0 59.78021978021978%;
+	background-position: 0 62.729124236252545%;
   &.w-dims {
     width: 21px;
   	height: 19px;
@@ -125,7 +147,7 @@
 
 .svg-linkedin-social-active {
 	@extend %svg-common;
-	background-position: 0 63.956043956043956%;
+	background-position: 0 66.59877800407332%;
   &.w-dims {
     width: 21px;
   	height: 19px;
@@ -136,7 +158,7 @@
 
 .svg-logo {
 	@extend %svg-common;
-	background-position: 0 69.97742663656885%;
+	background-position: 0 72.23382045929019%;
   &.w-dims {
     width: 314px;
   	height: 31px;
@@ -147,7 +169,7 @@
 
 .svg-logo-mobile {
 	@extend %svg-common;
-	background-position: 0 76.97516930022573%;
+	background-position: 0 78.70563674321504%;
   &.w-dims {
     width: 156px;
   	height: 31px;
@@ -158,7 +180,7 @@
 
 .svg-switch {
 	@extend %svg-common;
-	background-position: 0 81.40043763676148%;
+	background-position: 0 82.75862068965517%;
   &.w-dims {
     width: 17px;
   	height: 17px;
@@ -169,7 +191,7 @@
 
 .svg-switch-active {
 	@extend %svg-common;
-	background-position: 0 85.12035010940919%;
+	background-position: 0 86.20689655172414%;
   &.w-dims {
     width: 17px;
   	height: 17px;
@@ -180,7 +202,7 @@
 
 .svg-twitter {
 	@extend %svg-common;
-	background-position: 0 88.8402625820569%;
+	background-position: 0 89.65517241379311%;
   &.w-dims {
     width: 21px;
   	height: 17px;
@@ -191,7 +213,7 @@
 
 .svg-twitter-active {
 	@extend %svg-common;
-	background-position: 0 92.5601750547046%;
+	background-position: 0 93.10344827586206%;
   &.w-dims {
     width: 21px;
   	height: 17px;
@@ -202,7 +224,7 @@
 
 .svg-twitter-social {
 	@extend %svg-common;
-	background-position: 0 96.2800875273523%;
+	background-position: 0 96.55172413793103%;
   &.w-dims {
     width: 21px;
   	height: 17px;

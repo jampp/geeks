@@ -21,7 +21,7 @@ $(".show-menu").click(function(e) {
   $(this).toggleClass("open");
   $("body").toggleClass('scroll');
   $(".main-menu").toggleClass("opened");
-    e.preventDefault();
+  e.preventDefault();
 });
 
 
@@ -36,10 +36,10 @@ $(".mobile-navigation").click(function() {
   }
 });
 
-$(document).on('click', function (e) {
-    if ($(e.target).closest(".show-menu").length === 0) {
-        $(".main-menu").removeClass("opened");
-    }
+$(document).on('click', function(e) {
+  if ($(e.target).closest(".show-menu").length === 0) {
+    $(".main-menu").removeClass("opened");
+  }
 });
 
 $(".bt-video-container a.youtube").each(function(index) {
@@ -61,26 +61,26 @@ $(".bt-video-container a.youtube").each(function(index) {
 
 
 WebFontConfig = {
-   google: { families: [ 'Yantramanav:100,400,300,500:latin', 'Lekton:400,700:latin' ] }
- };
- (function() {
-   var wf = document.createElement('script');
-   wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-     '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-   wf.type = 'text/javascript';
-   wf.async = 'true';
-   var s = document.getElementsByTagName('script')[0];
-   s.parentNode.insertBefore(wf, s);
- })();
+  google: {
+    families: ['Yantramanav:100,400,300,500:latin', 'Lekton:400,700:latin']
+  }
+};
+(function() {
+  var wf = document.createElement('script');
+  wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+  wf.type = 'text/javascript';
+  wf.async = 'true';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(wf, s);
+})();
 
+$('.style-switcher a').click(function(e) {
+  e.preventDefault();
+  $('body').hide().fadeIn(1000);
+});
 
-
- $('.style-switcher a').click(function(e) {
-
-     e.preventDefault();
- });
 $(document).ready(function() {
-
   $('.style-switcher').styleSwitcher({
     hasPreview: false,
     defaultThemeId: 'app',
@@ -92,5 +92,4 @@ $(document).ready(function() {
 
   });
   $('body').addClass('markdown-body');
-  $('body').hide().fadeIn(1000);
 });

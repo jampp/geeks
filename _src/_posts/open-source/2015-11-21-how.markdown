@@ -12,7 +12,7 @@ author: alexis
 
 We apply **programmatic and big data technologies** to conduct tracking, real-time optimisation and mobile media buying at scale.
 
-*   We gather and analyse billions of data points daily (including cost, user profile, ad impression context, in-app purchases) to improve our optimisation algorithms.
+*   We gather and analyze billions of data points daily (including cost, user profile, ad impression context, in-app purchases) to improve our optimisation algorithms.
 *   We can decide where to allocate budget and how much to pay in milliseconds (thousands of times per second).
 
 Our **machine learning algorithms** not only adapt to market conditions, but become more effective to each unique advertiser over time by using deep data integration, cohort analysis and maturity curves to inform goal-based dynamic bidding. It offers an ever **evolving intelligence** to deliver superior results for app marketers.

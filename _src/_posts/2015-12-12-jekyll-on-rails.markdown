@@ -17,8 +17,6 @@ We can all appreciate the power that Ruby on Rails gives us to rapidly build gre
  
 _What if we could combine these two?_ In this article, I’m going to do just that.
 
-
-
 ## Why?
 
 The most practical scenario to combine Jekyll and Rails is when you don’t want to separate your main app from your blog. You _shouldn’t_ do this if you just want to add some dynamic-ness to your site ([Middleman](https://middlemanapp.com/) is better suited for this). But whatever the reason may be, let’s get started!

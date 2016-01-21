@@ -14,9 +14,7 @@ We can all appreciate the power that Ruby on Rails gives us to rapidly build gre
 <!--excerpt.end-->
 
 ![jekyll_on_Rails.svg](http://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2015/04/1428750609jekyll_on_Rails.svg.png)
-
-We can all appreciate the power that Ruby on Rails gives us to rapidly build great web applications. We can also appreciate Jekyll’s amazing ability to turn Markdown and templating into a beautiful static site.
-
+ 
 _What if we could combine these two?_ In this article, I’m going to do just that.
 
 ## Why?

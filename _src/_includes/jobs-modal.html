@@ -4,14 +4,30 @@
     <span class="modal-title">
       &lt;/We are hiring&gt;
     </span>
-    {% highlight javascript linenos %}
-    if ($you.lookingForAJob && $you.freakingGeek) {
-        visit('jampp.com/jobs.php');
-        mail('jobs@jampp.com');
-        
-        // Hey! We constantly need smart, stubborn, passionate
-        // technology lovers to join our team.
-    }
+    {% highlight python linenos %}
+    import tornado.ioloop
+    import tornado.web
+    ​
+    class CandidatesHandler(tornado.web.RequestHandler):
+        def get(self, name):
+            secret = self.get_argument('secret')
+            is_geek = False
+    ​
+            if ',' in secret:
+                word = ''.join([chr(int(x)) for x in secret.split(',')])
+                is_geek = word == 'geek'
+    ​
+            if is_geek:
+                self.write("Hi %s, we are waiting for you. jobs@jampp.com" % name)
+            else:
+                raise tornado.web.HTTPError(404, "Geek not found")
+    ​
+    if __name__ == "__main__":
+        app = tornado.web.Application([
+           (r'/candidates/(.*)', CandidatesHandler)
+        ])
+        app.listen(8000)
+        tornado.ioloop.IOLoop.instance().start()
     {% endhighlight %}
   </div>
 </div>

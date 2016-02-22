@@ -7,8 +7,10 @@
     {% highlight python linenos %}
     import tornado.ioloop
     import tornado.web
+
     ​
     class CandidatesHandler(tornado.web.RequestHandler):
+
         def get(self, name):
             secret = self.get_argument('secret')
             is_geek = False
@@ -22,6 +24,7 @@
             else:
                 raise tornado.web.HTTPError(404, "Geek not found")
     ​
+    
     if __name__ == "__main__":
         app = tornado.web.Application([
            (r'/candidates/(.*)', CandidatesHandler)

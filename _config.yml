@@ -19,7 +19,7 @@ fb_appid:          362484580560378
 production:        false
 
 baseurl:           ""
-url:               "http://localhost:9999"
+url:               "http://localhost:10001"
 
 source:            ./_src
 destination:       ./build

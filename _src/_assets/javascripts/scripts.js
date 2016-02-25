@@ -19,7 +19,6 @@ $(function() {
 
 $(".show-menu").click(function(e) {
   $(this).toggleClass("open");
-  $("body").toggleClass('scroll');
   $(".main-menu").toggleClass("opened");
   e.preventDefault();
 });

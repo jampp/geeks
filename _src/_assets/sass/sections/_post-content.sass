@@ -39,9 +39,12 @@
       border-bottom: 1px dotted $brand-color
       &:hover
         border-bottom: 1px solid
-    h2, h3, h4, h5
+    h1, h2, h3, h4, h5
       margin-bottom: .75em
-
+      margin-top: 40px
+      
+    pre
+      margin-bottom: 30px
 
     ol, ul
       list-style: outside none none
@@ -57,6 +60,27 @@
           content: "•"
           font-size: 18px
           padding-right: .5em
+          float: left;
+
+    table
+      font-size: 16px
+      margin: 30px auto
+      color: #aaa
+
+      tr
+        background-color: #fff
+        border-top: 1px solid #ccc
+
+      th, td
+        padding: 6px 13px
+        border: 1px solid #ddd
+
+      th
+        color: #888
+
+    .center-image 
+      margin: 0 auto
+      display: block
 
     dl
       counter-reset: counter

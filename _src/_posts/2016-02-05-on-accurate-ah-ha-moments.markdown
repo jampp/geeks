@@ -27,12 +27,11 @@ Let’s talk about these accuracy measures using a real world example from our a
 
 It is clear that, the better the ‘Ah-Ha’ moment, more people will be allocated in the upper-left and bottom-right corners of the table. Let us call them true-negatives and true-positives respectively. “Conversion-Accuracy”, thus, can be defined as the ratio between true-positives and the total number of monetized users; and, by the same token, “Not-Missing-Accuracy”  is the ratio between true-negatives and the total number of not-monetized users. Getting a 100% “Conversion Accuracy” is easy: set the threshold at 0 and every monetized user will be spotted by this criteria… as well as anyone else (we have just created a too broad segment). “Conversion Accuracy” is 100%, but “Not-Missing Accuracy” is 0% (as no one is below the threshold). As the threshold goes up,  “Conversion-Accuracy” falls and “Not-Missing” accuracy goes up. On the other side of the spectrum, when the threshold is very high, everyone is below it, so “Not-Missing” accuracy is 100%, but “Conversion” accuracy is 0%. This relationship can be seen in the figure below:
 
-
-![Graph 1]({{ site.url }}/_assets/images/ahha-graph1.jpg){: .center-image }
+![Graph 1]({{ site.url }}/assets/images/ahha-graph1.jpg){: .center-image }
 
 From a business perspective, both accuracies do not have the same value, an ‘Ah-Ha’ moment with excellent “Conversion Accuracy” might spot a segment with a very high conversion rate within itself, but still miss people who convert outside it. As reaching every good user usually overweights the cost of showing publicity to some bad ones, when constructing our overall accuracy index we give a higher weight to “Not-Missing-Accuracy”. Then, our accuracy index is a weighted average of them. The ‘Ah-Ha’ moment is the threshold which maximizes this index; that is, the most accurate.
 
-![Graph 1]({{ site.url }}/_assets/images/ahha-graph2.jpg){: .center-image }
+![Graph 2]({{ site.url }}/assets/images/ahha-graph2.jpg){: .center-image }
 
 So, finishing our example, using data from several apps belonging to the booking vertical we found that, in this case, a three views within a week threshold was the most accurate ‘Ah-Ha’ moment when segmenting users from this kind of application. If this segmentation is used, conversion lift between users who experienced the ‘Ah-Ha’ moment and those who didn’t is over 10 times. And, if measured against average users, conversion rate is three time higher for people who went through the ‘Ah-Ha’ moment.
 

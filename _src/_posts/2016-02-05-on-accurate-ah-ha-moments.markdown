@@ -4,7 +4,7 @@ title:  On accurate ‘Ah-Ha’ moments
 date:   2016-02-05
 tag: news
 categories:
-  - infrastructure
+  - technology
   - python
 author: juanpampliega
 ---

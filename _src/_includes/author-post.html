@@ -7,9 +7,7 @@
       {% assign sortedcategories = page.categories | sort %}
         Published on
         {% for category in sortedcategories %}
-          <a href="/{{ category }}">
-            {{ category }}
-          </a>
+          <a href="/{{ category }}">{{ category }}</a>
         {% endfor %}
       <span class="separator">-</span>
       <span class="post-date">

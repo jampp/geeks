@@ -154,19 +154,22 @@ of storage needed to store memorized replies.
 
 In general, in code, pessimistic caching looks like this:
 
-    def get_user(user_id):
-        cached_user = user_cache.get(user_id)
-        if cached_user is None:
-            cached_user = user_cache[user_id] = database.get(user_id)
-        return cached_user
-
+{% highlight python %}
+def get_user(user_id):
+    cached_user = user_cache.get(user_id)
+    if cached_user is None:
+        cached_user = user_cache[user_id] = database.get(user_id)
+    return cached_user
+{% endhighlight %}
 
 Yes, that's python. So you will probably want to write it more like:
 
-    @cached(user_cache)
-    def get_user(user_id):
-        return database.get(user_id)
-
+{% highlight python %}
+@cached(user_cache)
+def get_user(user_id):
+    return database.get(user_id)
+{% endhighlight %}
+    
 But pessimistic caching can only improve your average response time, 
 but not your worst.
 When you get a request for which you haven't got a fresh answer memorized
@@ -195,19 +198,23 @@ system-wide restart).
 
 Optimistic caching would, terribly simplified, look like:
 
-    def get_user(user_id):
-        cached_user = user_cache.get(user_id)
-        if cached_user is None:
-            def load():
-                user_cache[user_id] = database.get(user_id)
-            Thread(target = load).start()
-        return cached_user
+{% highlight python %}
+def get_user(user_id):
+    cached_user = user_cache.get(user_id)
+    if cached_user is None:
+        def load():
+            user_cache[user_id] = database.get(user_id)
+        Thread(target = load).start()
+    return cached_user
+{% endhighlight %}
 
 Which, of course, you'd also write pythonically like:
 
-    @cached(user_cache)
-    def get_user(user_id):
-        return database.get(user_id)
+{% highlight python %}
+@cached(user_cache)
+def get_user(user_id):
+    return database.get(user_id)
+{% endhighlight %}
 
 **Hint**: you don't have to write that decorator. We have published it already,
 and with an opensource license. Just get [chorde]. And of course it does a lot more.
@@ -328,24 +335,26 @@ Total latency
 
 Say you've got the following:
 
-    @cached(user_cache, ttl = 600)
-    def get_user(user_id):
-        return database.get_user(user_id)
+{% highlight python %}
+@cached(user_cache, ttl = 600)
+def get_user(user_id):
+    return database.get_user(user_id)
 
-    @cached(balance_cache, ttl = 600)
-    def get_current_balance(user_id):
-        return database.get_balance(get_user(user_id))
+@cached(balance_cache, ttl = 600)
+def get_current_balance(user_id):
+    return database.get_balance(get_user(user_id))
 
-    @cached(history_cache, ttl = 600)
-    def get_history(user_id):
-        return database.get_history(get_user(user_id))
+@cached(history_cache, ttl = 600)
+def get_history(user_id):
+    return database.get_history(get_user(user_id))
 
-    @cached(projection_cache, ttl = 600)
-    def get_projection(user_id):
-        return smarts.project(
-            get_user(user_id), 
-            get_current_balance(user_id), 
-            get_history(user_id))
+@cached(projection_cache, ttl = 600)
+def get_projection(user_id):
+    return smarts.project(
+        get_user(user_id), 
+        get_current_balance(user_id), 
+        get_history(user_id))
+{% endhighlight %}
 
 How long does it take for a transaction to get to be noticed by the projection module?
 ``get_projection`` depends on ``get_user``, ``get_current_balance`` and ``get_history``,
@@ -364,9 +373,11 @@ at once.
 
 But don't forget to be mindful of the force of the cartesian product:
 
-    @cached(history_cache, ttl = 600)
-    def get_transfers(user_id, destination_user_id):
-        return database.blah...
+{% highlight python %}
+@cached(history_cache, ttl = 600)
+def get_transfers(user_id, destination_user_id):
+    return database.blah...
+{% endhighlight %}
 
 That there just made it impossible to hold everything in memory, if you've got a
 reasonable user base, with reasonably connected people, since it didn't double

@@ -35,7 +35,7 @@ The bidding system is composed by a variable amount of processes implemented in 
 Due to the bidding system’s distributed nature and the need to implement a pacing algorithm to regulate expenditure, some communication exists between the different machines that compose the bidding system.
 The actual money spent bidding can be modeled as a random process, due to multiple external factors like the existence of other RTB systems. This problem can be conceptualized in the following formula:
 
- E(S) = E(Pv|Pb, R) · P(W|Pb, R)
+$$E(S) = E(Pv|Pb, R) · P(W|Pb, R)$$
 
 Where S represents the estimated money spent every 1000 impression, Pv the clearing price, Pb the offered price (the bid), W winning the auction and R represents the contextual information provided during the bid request.
 With this expense estimate, we can update the pacing algorithm’s current state, by adjusting the bidding system’s current behaviour according to the expected outcome of each offer and periodically synchronizing with the database to get the actual cost tracked. This way the system can run a stable operation with a low communication overhead with the database.   
@@ -51,17 +51,17 @@ Coherence between the different caching levels is kept by communicating the diff
 To decide whether to bid and how much we use similar metrics derived from machine learning algorithms. 
 With metrics like the click through rate and the conversion rate:
 
- $CT R = P(click|impression)$ 
- $CV R = P(open|click)$
+$$CT R = P(click|impression)$$
+$$CV R = P(open|click)$$
 
 We choose a price that, in average, will be profitable:
 
-  $$P_b = P_c · R_g$$ 
-  $$CTR = N_c / N_i$$ 
-  $$CVR = N_o / N_c$$
-  $$R_g = CTR o CTR · CVR$$
+$$P_b = P_c · R_g \\$$ 
+$$CTR = \frac{N_c}{N_i} \\$$ 
+$$CVR = \frac{N_o}{N_c} \\$$
+$$R_g = CTR o CTR · CVR \\$$
 
-Where $$P_c$$ is the price by objective that the client accepts, $N_c$ the amount of clicks in the sample, $N_i$ the amount of impressions and No the amount of opens.
+Where $$P_c$$ is the price by objective that the client accepts, $$N_c$$ the amount of clicks in the sample, $$N_i$$ the amount of impressions and $$N_o$$ the amount of opens.
 After this, an internal auction between all campaigns whose business rules permit an offer for the current bid request is executed. For each campaign one randomly chosen creative is selected with a distribution that fosters the ones with the best performance.
 The winner of the internal auction is chosen randomly with a distribution based on the probability of winning the external auction and on expected profitability. This way, we can avoid starving the campaigns with worse performance which is what would happen if we always chose the ones with the highest expected performance.
 

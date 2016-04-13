@@ -2,9 +2,10 @@
 layout: post
 title:  PrestoDB on Amazon EMR at Jampp
 date:   2016-04-08
-tag: AmazonEMR,Presto
+tag: data-infrastructure
 categories:
   - data-infrastructure
+keywords: "Presto, PrestoDB, AmazonEMR, Elastic Map Reduce"
 author: juanpampliega
 ---
 

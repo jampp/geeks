@@ -2,10 +2,11 @@
 layout: post
 title:  How we use Jupyter + Airpal to improve our Data Analytics processes
 date:   2016-04-13
-tag: news
+tag: data-science
 categories:
   - data-science
   - python
+keywords: "Airpal, Jupyter, notebooks, python"
 author: cantuna
 ---
 

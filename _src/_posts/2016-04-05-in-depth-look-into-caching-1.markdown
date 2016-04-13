@@ -2,9 +2,10 @@
 layout: post
 title:  An in depth look into caching (Part 1)
 date:   2016-04-05
-tag: caching
+tag: python
 categories:
   - python
+keywords: "python, caching, real-time"
 author: klauss
 ---
 

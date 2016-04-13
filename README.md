@@ -83,7 +83,7 @@ To have a structure like `site/slug` we need to create a folder named according 
     - `layout` Always use post
     - `title` The page title
     - `date` The page date
-    - `tag` Unique value, can be: `data-science, front-end, infrastructure, open-source, python, technology`
+    - `tag` Unique value, can be: `data-infrastructure, data-science, front-end, infrastructure, open-source, python, technology`
     - `categories` and array of categories
     - `image feature` A featured image, must be 640x480 or higher. Place those images at `_src/_assets/images/featured-images-posts`
     - `keywords` An array of related keywords for SEO purposes. Optional

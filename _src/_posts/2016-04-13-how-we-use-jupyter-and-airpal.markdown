@@ -1,8 +1,17 @@
+---
+layout: post
+title:  How we use Jupyter + Airpal to improve our Data Analytics processes
+date:   2016-04-13
+tag: news
+categories:
+  - data-science
+  - python
+author: cantuna
+---
 
-# How we use Jupyter + Airpal to improve our Data Analytics processes
-
-
-Being a data driven company, reporting needs are constantly increasing in Jampp. From basic summarizations to complex analysis, every team needs to query our databases. Given this backdrop, a priority for our tech team is to readily provide these reports to non technical areas. Client-sided reports and other frequently used reports can be found on our Dashboard . Initially, this was enough to cover Jampp’s evolving reporting needs But, for some time now, we found ourselves getting more and more report and visualizations requests.
+<!--excerpt.start-->
+Being a data driven company, reporting needs are constantly increasing in Jampp. From basic summarizations to complex analysis, every team needs to query our databases. Given this backdrop, a priority for our tech team is to readily provide these reports to non technical areas. Client-sided reports and other frequently used reports can be found on our Dashboard . Initially, this was enough to cover Jampp’s evolving reporting needs but, for some time now, we found ourselves getting more and more report and visualizations requests.
+<!--excerpt.end-->
 
 Requests were steadily growing in quantity and complexity. Moreover,  complex analysis tend to be more specific, so a report may be very insightful for a unique area but irrelevant for other areas. For example, the sales team wouldn’t need the same analysis as the operations team, not to mention that some analysis and visualizations might only be useful for a limited time, for a particular project. This meant that the long process it took to productionize dashboards in our UI became increasingly costly, both in terms of tech team resources and delay for the reports availability. 
 

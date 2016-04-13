@@ -35,9 +35,9 @@ The bidding system is composed by a variable amount of processes implemented in 
 Due to the bidding system’s distributed nature and the need to implement a pacing algorithm to regulate expenditure, some communication exists between the different machines that compose the bidding system.
 The actual money spent bidding can be modeled as a random process, due to multiple external factors like the existence of other RTB systems. This problem can be conceptualized in the following formula:
 
-$$E(S) = E(Pv|Pb, R) · P(W|Pb, R)$$
+$$E(S) = E(P_v|P_b, R) · P(W|P_b, R)$$
 
-Where S represents the estimated money spent every 1000 impression, Pv the clearing price, Pb the offered price (the bid), W winning the auction and R represents the contextual information provided during the bid request.
+Where $$S$$ represents the estimated money spent every 1000 impression, $$P_v$$ the clearing price, $$P_b$$ the offered price (the bid), $$W$$ winning the auction and $$R$$ represents the contextual information provided during the bid request.
 With this expense estimate, we can update the pacing algorithm’s current state, by adjusting the bidding system’s current behaviour according to the expected outcome of each offer and periodically synchronizing with the database to get the actual cost tracked. This way the system can run a stable operation with a low communication overhead with the database.   
 To implement the pacing algorithm it needs to consult both databases, and compute metrics and plans (expenditure projections according to the configured parameters). These operations are expensive in terms of computational costs and, due to the strict latency requirements, have to be done in an asynchronous manner. To alleviate this problem we implemented a caching architecture with various levels which is shown in the following diagram:
 
@@ -51,8 +51,8 @@ Coherence between the different caching levels is kept by communicating the diff
 To decide whether to bid and how much we use similar metrics derived from machine learning algorithms. 
 With metrics like the click through rate and the conversion rate:
 
-$$CT R = P(click|impression)$$
-$$CV R = P(open|click)$$
+$$CT R = P(click\|impression)$$
+$$CV R = P(open\|click)$$
 
 We choose a price that, in average, will be profitable:
 
@@ -74,7 +74,9 @@ Attributed events are stored in a database to power dashboards that show the sta
 The bidding system also generates events like auctions, bids, wins, loses and impressions. Since the volume of these events is orders of magnitude larger than the ones from the tracking platform, we publish them through a PUB/SUB channel using ZMQ. The events are published by a set of processes called Bid Loggers, which are also in charge of filtering, aggregating and sampling the data to persist it in the Postgres database. 
 The stream of events from the bidder is designed as PUB/SUB message stream without persistence so the only messages that are actually published are the ones which belong to topics that have actual consumers subscribed. When events are published, they are partitioned by a transaction id that is maintained through the whole chain of events: auction, bid, impression, click, in app event. This permits the consumers to do consistent sampling by subscribing to a particular partition and receiving all the associated events for one transaction. This capability is of vital importance when systems want to analyze the events’ data without being forced to handle 100% of the volume and avoid skewed results.
 
-This was a very brief summary of some aspects of the systems we have in place at Jampp to effectively market apps. If you found any part of this interesting and would like to work in a cool company where you can tackle other challenges like this [We Are Hiring Geeks!](http://jampp.com/jobs.php "We Are Hiring Geeks!").
+This was a very brief summary of some aspects of the systems we have in place at Jampp to effectively market apps. 
+
+If you found any part of this interesting and would like to work in a cool company where you can tackle other challenges like this [We Are Hiring Geeks!](http://jampp.com/jobs.php "We Are Hiring Geeks!").
 
 ###References:
 [http://44jaiio.sadio.org.ar/sites/default/files/agranda14-30.pdf](http://44jaiio.sadio.org.ar/sites/default/files/agranda14-30.pdf)

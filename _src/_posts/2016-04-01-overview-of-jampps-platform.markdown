@@ -51,15 +51,15 @@ Coherence between the different caching levels is kept by communicating the diff
 To decide whether to bid and how much we use similar metrics derived from machine learning algorithms. 
 With metrics like the click through rate and the conversion rate:
 
-$$CT R = P(click\|impression)$$
-$$CV R = P(open\|click)$$
+$$CTR = P(click\|impression)$$
+$$CVR = P(open\|click)$$
 
 We choose a price that, in average, will be profitable:
 
 $$P_b = P_c · R_g \\$$ 
 $$CTR = \frac{N_c}{N_i} \\$$ 
 $$CVR = \frac{N_o}{N_c} \\$$
-$$R_g = CTR o CTR · CVR \\$$
+$$R_g = CTR\ or\ CTR · CVR \\$$
 
 Where $$P_c$$ is the price by objective that the client accepts, $$N_c$$ the amount of clicks in the sample, $$N_i$$ the amount of impressions and $$N_o$$ the amount of opens.
 After this, an internal auction between all campaigns whose business rules permit an offer for the current bid request is executed. For each campaign one randomly chosen creative is selected with a distribution that fosters the ones with the best performance.

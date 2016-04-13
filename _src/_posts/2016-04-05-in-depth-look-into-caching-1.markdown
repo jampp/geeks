@@ -400,7 +400,7 @@ slightly different tradeoffs:
    less the same. They do require serialization of keys and values (ouch).
  
  - **Task queues**: this is for the big boys. When you have a complex enough system,
-   you'll feel the need to extract all this heavy-duty logic which is on your way,
+   you'll feel the need to extract all this heavy-duty logic which is in your way,
    and be able to push tasks to a shared queue that knows how to distribute the
    tasks among many workers. Kinda like [Celery](http://www.celeryproject.org). Making it interact properly with
    your main application will take more work than both of the above, but it will

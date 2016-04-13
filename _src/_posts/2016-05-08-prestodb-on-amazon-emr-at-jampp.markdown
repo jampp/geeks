@@ -8,7 +8,9 @@ categories:
 author: juanpampliega
 ---
 
+<!--excerpt.start-->
 At Jampp we are big users of Amazon EMR. Since we handle a lot of data, our volumes keep growing and we have a lot of unstructured log data. Amazon EMR was a great fit for a lot of the use cases we had for analytics and log forensics.
+<!--excerpt.end-->
 
 We really like the versatility EMR provides with the 
 apps available like PrestoDB, Spark and  Hive. It doesn’t limit you to one kind of processing since you can do batch, interactive and real-time workloads mixed with some Machine Learning magic. In particular, we found in PrestoDB a great tool that gave us speed and flexibility and was much more robust than Spark SQL as a SQL tool for large scale analytics. As our use of Presto grew, we even got featured in the Amazon [PrestoDB product page](https://aws.amazon.com/elasticmapreduce/details/presto/).

@@ -10,6 +10,7 @@ author: klauss
 
 ##The world-wide web
 
+<!--excerpt.start-->
 Nobody calls it that anymore. But the term is oddly descriptive. 
 Nowadays, it's all about interconnected systems. You log into your
 mobile game with your google account, or maybe your facebook account.
@@ -18,6 +19,7 @@ You search for some page (of which you never ever knew its address
 of typing your query, finding your page, and going into that, to
 be faster than bookmarking it. You find it in half a second, it
 was a news page, and hit the button to share on twitter.
+<!--excerpt.end-->
 
 Increasingly, the difference between offline and online is slowly
 fading, and the separation between services even more so.

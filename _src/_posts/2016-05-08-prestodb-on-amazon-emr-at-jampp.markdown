@@ -111,15 +111,15 @@ One final important alteration to Presto’s config was to change the **jvm.conf
 
 Other important aspects to consider when tuning Presto to improve its performance are the following useful session properties:
  
- - `hive.force_local_scheduling` forces scans to occur locally where the data resides. In the case of EMR it forces scans to happen in the CORE nodes and avoid the increase in network bandwidth usage that would happen if scans were done in a TASK nodes.    
+ - ``hive.force_local_scheduling`` forces scans to occur locally where the data resides. In the case of EMR it forces scans to happen in the CORE nodes and avoid the increase in network bandwidth usage that would happen if scans were done in a TASK nodes.    
  
- - `hive.parquet_predicate_pushdown_enabled` pretty self explanatory.
+ - ``hive.parquet_predicate_pushdown_enabled`` pretty self explanatory.
  
- - `hive.parquet_optimized_reader_enabled` enable optimized Parquet reader for PrestoDB. This reader is still experimental but we have tried most of the usual queries we use and haven’t found a differences with the legacy reader. We still only use it in queries where approximate results are acceptable.
+ - ``hive.parquet_optimized_reader_enabled`` enable optimized Parquet reader for PrestoDB. This reader is still experimental but we have tried most of the usual queries we use and haven’t found a differences with the legacy reader. We still only use it in queries where approximate results are acceptable.
  
- - `task_intermediate_aggregation` this option forces intermediate aggregation of results which improves the performance of queries that do aggregations over very large data sets.  
+ - ``task_intermediate_aggregation`` this option forces intermediate aggregation of results which improves the performance of queries that do aggregations over very large data sets.  
  
- - `hash_partition_count` the number of partitions for distributed joins and aggregations. The default for Presto in EMR is 8 which is good for only a small cluster. If you have a cluster with more than 8 nodes that do processing and you are running a query that contains a big join, it is a good idea to set this number to a higher value.  
+ - ``hash_partition_count`` the number of partitions for distributed joins and aggregations. The default for Presto in EMR is 8 which is good for only a small cluster. If you have a cluster with more than 8 nodes that do processing and you are running a query that contains a big join, it is a good idea to set this number to a higher value.  
 
 Finally, there were a couple of issues we run into in some of the EMR versions. I will leave the solutions we found here, in case you run into any of them.
 

@@ -1,11 +1,11 @@
 # Site settings
-title:             Jampp Geeks
+title:             Jampp Geeks Blog
 sitename:          Jampp
 title-divider:     "-"
-email:             info@jammp.com
-description:       Lorem ipsum bajada descripción del blog Geek algo sobre jampp dolor sit amet consectetuer
+email:             tech@jammp.com
+description:       Jampp Geeks Blog - tech, big data, data science and random interesting stuff!
 locale:            en_US
-owner:             Alexis Sgarbossa
+owner:             Patricio Rocca Huguet
 
 twitter_username:  jampp
 github_username:   jampp

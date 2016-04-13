@@ -56,12 +56,12 @@ With metrics like the click through rate and the conversion rate:
 
 We choose a price that, in average, will be profitable:
 
-  $Pb = Pc · Rg$ 
-  $CT R = Nc / Ni$ 
-  $CV R = No / Nc$
-  $Rg = CTR o CTR · CVR$
+  $$P_b = P_c · R_g$$ 
+  $$CTR = N_c / N_i$$ 
+  $$CVR = N_o / N_c$$
+  $$R_g = CTR o CTR · CVR$$
 
-Where $P_c$ is the price by objective that the client accepts, $N_c$ the amount of clicks in the sample, $N_i$ the amount of impressions and No the amount of opens.
+Where $$P_c$$ is the price by objective that the client accepts, $N_c$ the amount of clicks in the sample, $N_i$ the amount of impressions and No the amount of opens.
 After this, an internal auction between all campaigns whose business rules permit an offer for the current bid request is executed. For each campaign one randomly chosen creative is selected with a distribution that fosters the ones with the best performance.
 The winner of the internal auction is chosen randomly with a distribution based on the probability of winning the external auction and on expected profitability. This way, we can avoid starving the campaigns with worse performance which is what would happen if we always chose the ones with the highest expected performance.
 

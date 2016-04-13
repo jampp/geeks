@@ -346,7 +346,7 @@ def get_projection(user_id):
 {% endhighlight %}
 
 How long does it take for a transaction to get noticed by the projection module?
-`get_projection` depends on `get_user`, `get_current_balance` and `get_history`,
+**get_projection** depends on **get_user**, **get_current_balance** and **get_history**,
 so its latency will be 10 minutes plus the maximum latency of its dependencies. And
 its dependencies have dependencies, so you have your hands full.
 
@@ -355,7 +355,7 @@ you, it won't be pleasant, nor easily detectable.
 
 ###Key cardinality
 
-Up until now, all examples used `user_id` as key, and that's fine. We can assume not
+Up until now, all examples used **user_id** as key, and that's fine. We can assume not
 all users will be active, and we'll be able to size the caches to fit all active users
 at once.
 
@@ -390,7 +390,7 @@ There are several ways to schedule this asynchronous computation, and they all h
 slightly different tradeoffs:
 
  - **Thread pools**: quite simple to implement, they're most likely your main
-   workhorse when it comes to numerous small tasks (like `get_user`). They avoid
+   workhorse when it comes to numerous small tasks (like **get_user**). They avoid
    having to serialize keys and responses, and having to communicate with external
    processes, so they're fast. They also scale with your system, which is a very
    nice property. But they can be chaotic with big systems, since

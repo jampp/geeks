@@ -1,9 +1,9 @@
 # Site settings
-title:             Jampp Geeks Blog
+title:             Jampp Geeks
 sitename:          Jampp
 title-divider:     "-"
 email:             tech@jammp.com
-description:       Jampp Geeks Blog - tech, python, big data, data science and random interesting stuff!
+description:       Jampp Geeks - tech, python, big data, data science and random interesting stuff!
 locale:            en_US
 owner:             Patricio Rocca Huguet
 

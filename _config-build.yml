@@ -8,9 +8,6 @@ mailchimp:
   user-id:   REPLACEME
   list-id:   REPLACEME
 
-fb_admins:   REPLACEME #url to facebook app manager profile Eg https://www.facebook.com/jamppHQ
-fb_appid:    REPLACEME #App id https://developers.facebook.com/apps
-
 future:      false
 show_drafts: false
 

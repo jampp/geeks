@@ -13,19 +13,18 @@ author: juanpampliega
 At Jampp we are big users of Amazon EMR. Since we handle a lot of data, our volumes keep growing and we have a lot of unstructured log data. Amazon EMR was a great fit for a lot of the use cases we had for analytics and log forensics.
 <!--excerpt.end-->
 
-We really like the versatility EMR provides with the 
-apps available like PrestoDB, Spark and  Hive. It doesn’t limit you to one kind of processing since you can do batch, interactive and real-time workloads mixed with some Machine Learning magic. In particular, we found in PrestoDB a great tool that gave us speed and flexibility and was much more robust than Spark SQL as a SQL tool for large scale analytics. As our use of Presto grew, we even got featured in the Amazon [PrestoDB product page](https://aws.amazon.com/elasticmapreduce/details/presto/).
+We really like the versatility EMR provides with the apps available like PrestoDB, Spark and  Hive. It doesn’t limit you to one kind of processing since you can do batch, interactive and real-time workloads mixed with some Machine Learning magic. In particular, we found in PrestoDB a great tool that gave us speed and flexibility, and was much more robust than Spark SQL as a SQL tool for large scale analytics. As our use of Presto grew, we even got featured in the Amazon [PrestoDB product page](https://aws.amazon.com/elasticmapreduce/details/presto/).
 
-Our production cluster executes daily ETL tasks and contains a warehouse stored in Parquet backed tables, which is queried by OLAP processes through PrestoDB and Spark. These daily and hourly ETL jobs extract data from different sources like RDS databases and log files and centralize everything in the EMR Cluster. We found <a href="https://github.com/airbnb/airflow" target="_blank">Airflow from AirBnB</a> to be a great tool for orchestrating these workflows and we will talk more in detail on how and why we use it on a later post.
+Our production cluster executes daily ETL tasks and contains a warehouse stored in Parquet backed tables, which is queried by OLAP processes through PrestoDB and Spark. These daily and hourly ETL jobs extract data from different sources like RDS databases and log files, and centralize everything in the EMR Cluster. We found <a href="https://github.com/airbnb/airflow" target="_blank">Airflow from AirBnB</a> to be a great tool for orchestrating these workflows and we will talk more in detail on how and why we use it on a later post.
 
 During this post, we will focus on our experience with Presto and the different customizations we implemented and nuggets of wisdom we learnt along the way.
 
-Using Presto through Amazon EMR’s apps enabled us to get up and running quickly and scale capacity as needed during peak hours. We were also able to quickly analyze the enormous amount of logs that we have been dumping on S3, using tables defined in Hive with regular expressions. Also, we could combine this information with data from relational databases that we had previously imported to the cluster or that was directly in the databases. Over time we tuned a lot of Presto’s configuration files and add monitoring, using a bootstrap action.
+Using Presto through Amazon EMR’s apps enabled us to get up and running quickly and scale capacity as needed during peak hours. We were also able to quickly analyze the enormous amount of logs that we had been dumping on S3, using tables defined in Hive with regular expressions. Also, we could combine this information with data from relational databases that we had previously imported to the cluster or that was directly in the databases. Over time we tuned a lot of Presto’s configuration files and add monitoring, using a bootstrap action.
 
 One problem we had with EMR 4.x is that bootstrap actions are executed before all the EMR apps like Hadoop, Presto, Spark, etc. are installed. In our case we needed to configure Presto and additional programs after Presto was installed. Because of this we developed a way in the bootstrap script to wait for the Presto process to be installed before continuing with the configurations steps. You can get an idea of how to achieve this in the following thread we answered in the AWS forum:
 [https://forums.aws.amazon.com/thread.jspa?threadID=220183&tstart=25](https://forums.aws.amazon.com/thread.jspa?threadID=220183&tstart=25)
 
-Since we moved the cluster to VPC, and one of the databases from which we import data into the cluster is in EC2 classic, we had to add Classic Link between the cluster and the Amazon RDS database. The cluster grows and shrinks during the day, so we  created a script that we execute every time a node is bootstrapped. The script adds new nodes to the db’s security group whenever the number of nodes in the cluster is increased. Here is the script in case you need to replicate this behaviour:
+Since we moved the cluster to VPC, and one of the databases from which we import data into the cluster is in EC2 classic, we had to add Classic Link between the cluster and the Amazon RDS database. The cluster grows and shrinks during the day, so we created a script that we execute every time a node is bootstrapped. The script adds new nodes to the db’s security group whenever the number of nodes in the cluster is increased. Here is the script in case you need to replicate this behaviour:
 
 {% highlight shell %}
 #!/bin/sh
@@ -82,7 +81,7 @@ done
 
 As our usage of Presto grew, we developed many ways of improving its performance and stability.
 
-One common issue with Presto is that, when handling a join between two large tables, Presto’s process, in the node that is doing part of the join, might be killed due to **OoM exception**. Since most of the queries we run in Presto are for analytics, it is not a big issue for us if one of the queries fails. But, as Amazon EMR is configured by default, once a Presto process dies, there is no monitor that restarts it. Therefore, when you run many large queries the nodes available for Presto to process data were decreased over time. To fix this issue, we run a bootstrap action for each node in the cluster that installs and configures [Monit](https://mmonit.com/monit/) to monitor the Presto service in each node.
+One common issue with Presto is that, when handling a join between two large tables, Presto’s process, in the node that is doing part of the join, might be killed due to **OoM exception**. Since most of the queries we run in Presto are for analytics, it is not a big issue for us if one of the queries fails. But, as Amazon EMR is configured by default, once a Presto process dies, there is no monitor that restarts it. Therefore, when you run many large queries, the nodes available for Presto to process data were decreased over time. To fix this issue, we run a bootstrap action for each node in the cluster that installs and configures [Monit](https://mmonit.com/monit/) to monitor the Presto service in each node.
 
 In the **config.properties** file we added:
 
@@ -112,15 +111,15 @@ One final important alteration to Presto’s config was to change the **jvm.conf
 
 Other important aspects to consider when tuning Presto to improve its performance are the following useful session properties:
  
- - **hive.force_local_scheduling** forces scans to occur locally where the data resides. In the case of EMR it forces scans to happen in the CORE nodes and avoid the increase in network bandwidth usage that would happen if scans were done in a TASK nodes.    
+ - **hive.force_local_scheduling** forces scans to occur locally where the data resides. In the case of EMR it forces scans to happen in the CORE nodes and avoid the increase in network bandwidth usage that would happen if scans were done in a TASK nodes.
  
  - **hive.parquet_predicate_pushdown_enabled** pretty self explanatory.
  
- - **hive.parquet_optimized_reader_enabled** enable optimized Parquet reader for PrestoDB. This reader is still experimental but we have tried most of the usual queries we use and haven’t found a differences with the legacy reader. We still only use it in queries where approximate results are acceptable.
+ - **hive.parquet_optimized_reader_enabled** enable optimized Parquet reader for PrestoDB. This reader is still experimental but we have tried most of the usual queries we use and have not found a differences with the legacy reader. We still only use it in queries where approximate results are acceptable.
  
- - **task_intermediate_aggregation** this option forces intermediate aggregation of results which improves the performance of queries that do aggregations over very large data sets.  
+ - **task_intermediate_aggregation** this option forces intermediate aggregation of results which improves the performance of queries that do aggregations over very large data sets.
  
- - **hash_partition_count** the number of partitions for distributed joins and aggregations. The default for Presto in EMR is 8 which is good for only a small cluster. If you have a cluster with more than 8 nodes that do processing and you are running a query that contains a big join, it is a good idea to set this number to a higher value.  
+ - **hash_partition_count** the number of partitions for distributed joins and aggregations. The default for Presto in EMR is 8 which is good for only a small cluster. If you have a cluster with more than 8 nodes that do processing and you are running a query that contains a big join, it is a good idea to set this number to a higher value.
 
 Finally, there were a couple of issues we run into in some of the EMR versions. I will leave the solutions we found here, in case you run into any of them.
 
@@ -134,4 +133,4 @@ presto - nofile 32768
 presto - nproc  65536
 {% endhighlight %}
 
-This brings us to the end of the post. As you might have seen we did a lot of tuning of Presto which was a result of having this tool running in production for almost a year. Although much was done, this is still a work in progress. If you find anything mentioned in this post interesting and might want to come work with us at Jampp, [We Are Hiring Geeks!](http://jampp.com/jobs.php)   
+This brings us to the end of the post. As you might have seen, we did a lot of tuning of Presto which was a result of having this tool running in production for almost a year. Although much has been done, this is still a work in progress. If you find anything mentioned in this post interesting and might want to come work with us at Jampp, [We Are Hiring Geeks!](http://jampp.com/jobs.php)

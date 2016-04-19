@@ -11,12 +11,12 @@ author: cantuna
 ---
 
 <!--excerpt.start-->
-Recently in Jampp, I had the chance to switch some of our data science environment from Python to Julia. For various reasons, it's type system is, in my opinion, one of the best language features. The most obvious reason are performance enhancements it allows. I will not, however, address that point here: it has been benchmarked very well in several places. Instead, I will briefly show a safety advantage this type system brings that is really handy for data science.
+Recently in Jampp, I had the chance to switch some of our data science environment from Python to Julia. For various reasons, its type system is, in my opinion, one of the best language features. The most obvious one is the performance enhancements it allows. I will not, however, address that point here: it has been benchmarked very well in several places. Instead, I will briefly show a safety advantage this type system brings that is really handy for data science.
 <!--excerpt.end-->
 
 To be fair, this feature is handy in a production oriented data science team. Someone more oriented towards analytics, then, might not find it so helpful. Quoting [Robert Chang][CHANG], I perform Type B data science: models I build are meant to get into production. Because of this fact, safety issues are a big concern when implementing them. If we don't catch a misbehaviour in our Machine Learning systems, we will be running our business based on mistaken metrics. For example, bidding high prices for bad banners millions times a day...
 
-So, let's get to the point. When you deal with hundreds of thousands of messages per second coming from a number of sources, you learn one thing: every field will eventually receive at least one ill-formated message. It is true, and not only for data science, that a smart use of types in a language helps you finding mismatches early in the data handling process. Take this toy example and look when Python realizes there is something wrong with the message and when Julia does:
+So, let's get to the point. When you deal with hundreds of thousands of messages per second coming from a number of sources, you learn one thing: every field will eventually receive at least one ill-formated message. It is true, and not only for data science, that a smart use of types in a language helps you finding mismatches early in the data handling process. Take this toy example and look when Python realizes there is something wrong with the message and what Julia does:
 
 Here is Python's version:
 {% highlight python %}

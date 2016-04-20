@@ -12,9 +12,7 @@ github_username:   jampp
 facebook_username: jamppHQ
 linkedin_username: jampp
 
-
-fb_admins:         https://www.facebook.com/alexis.redo
-fb_appid:          362484580560378
+google_analytics: UA-22947720-14
 
 production:        false
 

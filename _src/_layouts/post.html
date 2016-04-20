@@ -10,9 +10,9 @@
 
       <div class="container is-post">
 
-        <h2 class="title">
+        <h1 class="title">
           {{ page.title }}
-        </h2>
+        </h1>
 
         {% include author-post.html %}
 
@@ -37,6 +37,6 @@
 
   {% include jobs-modal.html %}
   {% include site-scripts.html %}
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  {% include analytics.html %}
 </body>
 </html>

@@ -55,6 +55,7 @@ To decide whether to bid and how much, we use similar metrics derived from machi
 With metrics like the click through rate and the conversion rate:
 
 $$CTR = P(click\|impression)$$
+
 $$CVR = P(open\|click)$$
 
 We choose a price that, in average, will be profitable:

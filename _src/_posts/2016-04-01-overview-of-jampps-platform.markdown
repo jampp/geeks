@@ -60,8 +60,11 @@ $$CVR = P(open\|click)$$
 We choose a price that, in average, will be profitable:
 
 $$P_b = P_c · R_g \\$$ 
-$$CTR = \frac{N_c}{N_i} \\$$ 
+
+$$CTR = \frac{N_c}{N_i} \\$$
+
 $$CVR = \frac{N_o}{N_c} \\$$
+
 $$R_g = CTR\ or\ CTR · CVR \\$$
 
 Where $$P_c$$ is the price by objective that the client accepts, $$N_c$$ the amount of clicks in the sample, $$N_i$$ the amount of impressions, and $$N_o$$ the amount of opens.

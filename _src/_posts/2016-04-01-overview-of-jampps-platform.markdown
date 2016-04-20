@@ -18,10 +18,10 @@ Our intention, in this initial post, is to give a brief overview of the differen
 Jampp markets apps by effectively buying programmatic ads. Our platform processes more than 200,000 RTB ad bid requests per second which amounts to about 300 MB/s or 25 TB of data per day. Additionally, Jampp tracks more than 6 billion in-app events (app installs, actions taken inside the app and contextual information used for user segmentation) per month. To effectively deal with this volume of information, we combine different technologies like ZMQ, PostgreSQL, SciPy, Cython and Memcache and especially compact data storage formats that eliminate redundancies.
 
 Jampp’s architecture is composed of four main subsystems that run in the Amazon Web Services (AWS) cloud:
-A bidding system that implements the OpenRTB protocol and answers bid requests in less than 100ms.
-A tracking system for clicks, installs and in-app events which lets us attribute an install or in-app event to a click on an ad.
-An online supervised learning system that improves the bidder’s performance by trying to estimate conversion rates and how to explore the market in an efficient way.
-A data processing platform that is constituted by different pub-sub systems with different guarantees that enable consistent sampling of all the data available in real-time and a cluster for scalable data processing.
+ * a bidding system that implements the OpenRTB protocol and answers bid requests in less than 100ms.
+ * a tracking system for clicks, installs and in-app events which lets us attribute an install or in-app event to a click on an ad.
+ * an online supervised learning system that improves the bidder’s performance by trying to estimate conversion rates and how to explore the market in an efficient way.
+ * a data processing platform that is made-up by different pub-sub systems with different guarantees that enable consistent sampling of all the data available in real-time and a cluster for scalable data processing.
 
 ![Graph 1]({{ site.url }}/assets/images/rtb_callout_diagram.png){: .center-image }
 

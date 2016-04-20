@@ -82,7 +82,7 @@ done
 
 As our usage of Presto grew, we developed many ways of improving its performance and stability.
 
-One common issue with Presto is that, when handling a join between two large tables, Presto’s process, in the node that is doing part of the join, might be killed due to **OoM exception**. Since most of the queries we run in Presto are for analytics, it is not a big issue for us if one of the queries fails. But, as Amazon EMR is configured by default, once a Presto process dies, there is no monitor that restarts it. Therefore, when you run many large queries the nodes available for Presto to process data were decreased over time. To fix this issue, we run a bootstrap action for each node in the cluster that installs and configures [Monit](https://mmonit.com/monit/) to monitor the Presto service in each node.
+One common issue with Presto is that, when handling a join between two large tables, Presto’s process, in the node that is making part of the join, might be killed due to **OoM exception**. Since most of the queries we run in Presto are for analytics, it is not a big issue for us if one of the queries fails. But, as Amazon EMR is configured by default, once a Presto process dies, there is no monitor that restarts it. Therefore, when you run many large queries the nodes available for Presto to process data were decreasing over time. To fix this issue, we run a bootstrap action for each node in the cluster that installs and configures [Monit](https://mmonit.com/monit/) to monitor the Presto service in each node.
 
 In the **config.properties** file we added:
 
@@ -122,7 +122,7 @@ Other important aspects to consider when tuning Presto to improve its performanc
  
  - **hash_partition_count** the number of partitions for distributed joins and aggregations. The default for Presto in EMR is 8 which is good for only a small cluster. If you have a cluster with more than 8 nodes that do processing and you are running a query that contains a big join, it is a good idea to set this number to a higher value.  
 
-Finally, there were a couple of issues we run into in some of the EMR versions. I will leave the solutions we found here, in case you run into any of them.
+Finally, there were a couple of issues we faced in some of the EMR versions. I will leave the solutions we found here, in case you run into any of them.
 
 The first issue had to do with some problems with Presto’s connection to the Hive Metastore to retrieve table metadata. After some use, the connections were timing out and we found that this was originated by EMR switching to the MariaDB connector. In the link below, you can find a post from the EMR blog detailing this issue and our answer on how to fix it:
 [https://forums.aws.amazon.com/thread.jspa?threadID=220302&tstart=25](https://forums.aws.amazon.com/thread.jspa?threadID=220302&tstart=25)

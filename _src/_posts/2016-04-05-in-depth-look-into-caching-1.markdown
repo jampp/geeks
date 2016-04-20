@@ -12,7 +12,7 @@ author: klauss
 ##The world-wide web
 
 <!--excerpt.start-->
-Nobody calls it that anymore. But the term is oddly descriptive. 
+Nobody calls it that way anymore. But the term is oddly descriptive. 
 Nowadays, it's all about interconnected systems. You log into your
 mobile game with your google account, or maybe your facebook account.
 You search for some page (of which you never ever knew its address
@@ -71,10 +71,10 @@ commits (when transactions need to span shards), etc.
 
 Hardware that is fast enough, can make the system meet the 100ms deadline even under big loads when using sharding. Banks have this very well tuned.
 
-Let’s spice it up a bit. Now, the system wants to reply to
+Let’s spice it up a bit. Now, to give an example, the system wants to reply to
 every transaction with both the current balance, and a projection
 of future balances, as an estimate of how the user is spending
-(or earning) his money. To put an example.
+(or earning) her money.
 
 The system suddenly needs access to a lot of historic transaction
 data, do a lot of math, and things quickly get out of hand.
@@ -94,7 +94,7 @@ There are several ways to get this back to manageable:
    
  - Throw a lot of computing power (and money) to the problem.
    The fact that this still is constrained to the history of
-   a single user makes it at least scalable (it may not always
+   a single user makes it at least scalable (it might not always
    be the case).
  
  - Do approximations. Keep a truncated transaction history
@@ -118,7 +118,7 @@ After all, they are usually architectures made reusable by packaging them
 into a product, and come with their own set of tradeoffs. 
 Take NoSQL, for instance. It takes away *ACID* ity (mostly
 consistency) and querying capabilities, trading it for speed and ease of
-scalability. They may be useful, but they won't work in all cases, and the
+scalability. They might be useful, but they won't work in all cases, and the
 tradeoffs need to be considered carefully before adoption.
 
 Most of the time, we can get a better fit by designing our own
@@ -230,13 +230,13 @@ But let's discuss the other problems, those that do have some formula that mostl
 
 ###Cache intermediate results
 
-You may have noticed the example above is about caching the result of a function,
+You might have noticed the example above is about caching the result of a function,
 and not the reply to an HTTP request.
 
 Caching the whole HTTP reply of course is easier to deploy (usually a plugin here or
 there, a CDN or two). It's also quite efficient, since it reuses almost 100% of the
 work involved in generating a reply. But it also restricts your options quite considerably,
-and it may give you no measurable benefit due to poor keying (ie: badly selected cache keys).
+and it might give you no measurable benefit due to poor keying (ie: badly selected cache keys).
 
 *Always consider the possibility of caching functions, not responses*. Functions are
 far more ubiquitous in your code, you'll have more caching opportunities, and you'll
@@ -262,7 +262,7 @@ If the answer is yes, do it. If not, just set a TTL that saves you money.
 Sure, things get trickier with a hundred different kinds of requests, when you have to juggle the TTLs of all to prioritize some above others. But usually any sensible setting will do, and the business
 itself will push hard for changes if they're needed (and pay for the bills too, when needed).
 
-If you need a guideline for your starting point, ask yourself how fast does the value
+If you need a guideline for your starting point, ask yourself: how fast does the value
 you're trying to cache change? If projections, for instance, can't change more than a
 small percent during a day, there's little point in a refresh period much lower than a day.
 
@@ -283,7 +283,7 @@ an LRU isn't hard enough to justify crippling your system like that.
 A related problem is how to limit the amount of data in the cache. We don't want to get
 into the various types of cache stores just yet, but an LRU in memory needs a limit,
 and sometimes measuring that limit in bytes (which would be optimal in most cases, since
-we know how many bytes we can have for caching) may not be as easy (or viable) as
+we know how many bytes we can have for caching) might not be as easy (or viable) as
 one would like.
 
 Trying to estimate the "size in bytes" of a complex object graph
@@ -366,7 +366,7 @@ def get_transfers(user_id, destination_user_id):
     return database.blah...
 {% endhighlight %}
 
-That there just made it impossible to hold everything in memory. If you happen to have a
+That line there just made it impossible to hold everything in memory. If you happen to have a
 reasonable user base, with reasonably connected people, using this composite key didn't just double the cardinality, **it made it quadratic!**. Ouch.
 
 A cache over a key with high cardinality will provide very small benefits, and

@@ -4,6 +4,7 @@ title:  Overview of Jampp's platform
 date:   2016-04-01
 tag: technology
 categories:
+  - infrastructure
   - technology
 keywords: "python, RTB, architecture, platform"
 author: juanpampliega

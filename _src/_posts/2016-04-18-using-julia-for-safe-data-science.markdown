@@ -5,7 +5,6 @@ date:   2016-04-18
 tag: data-science
 categories:
   - data-science
-  - julia
 keywords: "Julia, Data Science"
 author: cantuna
 ---

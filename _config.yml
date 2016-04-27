@@ -1,7 +1,7 @@
 # Site settings
-title:             Jampp Geeks
-sitename:          Jampp
-title-divider:     "-"
+title:             Tech
+sitename:          Jampp Geeks Blog
+title-divider:     "|"
 email:             tech@jammp.com
 description:       Jampp Geeks - tech, python, big data, data science and random interesting stuff!
 locale:            en_US

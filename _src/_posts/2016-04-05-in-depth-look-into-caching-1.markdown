@@ -140,7 +140,7 @@ to make roadblocks go away.
 ![Graph 1]({{ site.url }}/assets/images/caching_diagram_3.png){: .center-image }
 
 But like TNT, it requires careful handling. Someone said it of regexes, and we can say it
-of caching too. If you add caching to a solve a problem, you get two problems.
+of caching too. If you add caching to solve a problem, you get two problems.
 But caching done right can actually solve problems, just like regexes
 can solve you some too. The trick lies in understanding its limitations.
 And its pointy edges.

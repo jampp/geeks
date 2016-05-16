@@ -39,12 +39,12 @@ module.exports = {
     staging: {
       src:    src,
       dest:   production,
-      config: '_config.yml,_config-preview.yml'
+      config: '_config.yml,_config-build.yml'
     },
     production: {
       src:    src,
       dest:   production,
-      config: '_config.yml,_config-preview.yml,_config-prod.yml'
+      config: '_config.yml,_config-build.yml,_config-prod.yml'
     }
   },
   styles: {
@@ -135,7 +135,7 @@ module.exports = {
   watch: {
     jekyll: [
       '_config.yml',
-      '_config-preview.yml',
+      '_config-build.yml',
       '_config-prod.yml',
       src + '/_data/**/*.{json,yml,csv}',
       src + '/_includes/**/*.{html,xml}',

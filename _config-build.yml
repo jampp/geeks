@@ -1,4 +1,5 @@
-url:         "http://geeks-preview.jampp.com"
+url:			"http://geeks-preview.jampp.com"
+production:		false
 
 mailchimp:
   user-id:   REPLACEME

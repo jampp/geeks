@@ -1,0 +1,10 @@
+url:         "http://geeks-preview.jampp.com"
+
+mailchimp:
+  user-id:   REPLACEME
+  list-id:   REPLACEME
+
+future:      false
+show_drafts: false
+
+exclude:     ['css', 'js', 'fonts']

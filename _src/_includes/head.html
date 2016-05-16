@@ -30,6 +30,11 @@
 
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ "/feed.xml" | prepend: site.baseurl }}">
 
+    {% if site.production == false %}
+      <meta name="robots" content="NOINDEX, NOFOLLOW">
+    {% endif %}
+
+
 
     <link id="app" rel="stylesheet" href="{{ '/assets/css/app.css' | prepend: site.baseurl }}">
     <script src="{{ '/assets/js/head.js' | prepend: site.baseurl }}"></script>

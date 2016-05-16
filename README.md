@@ -116,3 +116,4 @@ By default this theme will truncate your content by 40 lines. If you need to add
 ## Shipping to production
 
 Change the values on `confg-build.yml` and run `gulp ready` to compile, lint and optimize assets. Push it!
+

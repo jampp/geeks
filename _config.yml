@@ -1,7 +1,7 @@
 # Site settings
-title:             Jampp Geeks
-sitename:          Jampp
-title-divider:     "-"
+title:             Tech
+sitename:          Jampp Geeks Blog
+title-divider:     "|"
 email:             tech@jammp.com
 description:       Jampp Geeks - tech, python, big data, data science and random interesting stuff!
 locale:            en_US
@@ -12,9 +12,7 @@ github_username:   jampp
 facebook_username: jamppHQ
 linkedin_username: jampp
 
-
-fb_admins:         https://www.facebook.com/alexis.redo
-fb_appid:          362484580560378
+google_analytics: UA-22947720-14
 
 production:        false
 

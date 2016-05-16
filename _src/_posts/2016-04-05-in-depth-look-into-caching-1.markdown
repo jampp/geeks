@@ -12,20 +12,20 @@ author: klauss
 ##The world-wide web
 
 <!--excerpt.start-->
-Nobody calls it that anymore. But the term is oddly descriptive. 
+Nobody calls it that way anymore. But the term is oddly descriptive. 
 Nowadays, it's all about interconnected systems. You log into your
-mobile game with your google account, or maybe your facebook account.
+mobile game with your Google account, or maybe your Facebook account.
 You search for some page (of which you never ever knew its address
 - honestly, who types URLs anymore?) and expect the whole process
 of typing your query, finding your page, and going into that, to
 be faster than bookmarking it. You find it in half a second, it
-was a news page, and hit the button to share on twitter.
+was a news page, and hit the button to share on Twitter.
 <!--excerpt.end-->
 
 Increasingly, the difference between offline and online is slowly
 fading, and the separation between services even more so.
 
-At the heart of it all, is a huge, world-wide web of server-to-server
+At the heart of it all, there is a huge, world-wide web of server-to-server
 communication protocols. Usually REST, but not necessarily always so.
 And for it to work as described above, it all has to be fast. It has
 to respond, as they say, in real-time - because everything above 50
@@ -41,26 +41,26 @@ does real-time really mean? It usually means there's a user behind
 that process waiting for its answer, and it expects the answer
 to pop up in a reasonable time. It's not always measured in
 milliseconds, sometimes a few seconds is fine, but it's certainly
-not minutes. For ads for instance, it's around 100ms. That's
+not minutes. For ads, for instance, it's around 100ms. That's
 milliseconds.
 
 But the systems are complex - or they wouldn't be useful. And they
 get more complex every day. So, aside from Moore's law, how do you
-cope with increasing complexity with stricter and stricter timing
+cope with increasing complexity, with stricter and stricter timing
 requirements?
 
 We're looking for an architecture that can:
 
  - Handle lots of requests per second. Like 200K rps.
  - Handle each request in milliseconds. 100ms to be precise.
- - Handle increasing complexity
+ - Handle increasing complexity.
 
 And yes, we're talking architecture, not technologies. While
 architectures are empowered by technology, it's usually the 
 architecture itself the one defining how and whether an app
 can scale with real-time constraints.
 
-Lets look at an example.
+Let us look at an example.
 
 ###Example: The smart banking system
 
@@ -71,10 +71,9 @@ commits (when transactions need to span shards), etc.
 
 Hardware that is fast enough, can make the system meet the 100ms deadline even under big loads when using sharding. Banks have this very well tuned.
 
-Let’s spice it up a bit. Now, the system wants to reply to
+Let’s spice it up a bit. Now, to give an example, the system wants to reply to
 every transaction with both the current balance, and a projection
-of future balances, as an estimate of how the user is spending
-(or earning) his money. To put an example.
+of future balances, as an estimate of how the user is spending (or earning) her money.
 
 The system suddenly needs access to a lot of historic transaction
 data, do a lot of math, and things quickly get out of hand.
@@ -94,14 +93,14 @@ There are several ways to get this back to manageable:
    
  - Throw a lot of computing power (and money) to the problem.
    The fact that this still is constrained to the history of
-   a single user makes it at least scalable (it may not always
+   a single user makes it at least scalable (it might not always
    be the case).
  
  - Do approximations. Keep a truncated transaction history
    handy to do the projection quickly, or use algorithms that
    allow online update of the projection, even if it's approximate.
 
-So, on the one side,we have technological solutions, in the form of 
+So, on the one side, we have technological solutions, in the form of 
 *technologies or very fast hardware* that happens to be fit
 for solving the problem at hand, or at least help.
 And on the other, we have architectural solutions, that involve introducing 
@@ -118,7 +117,7 @@ After all, they are usually architectures made reusable by packaging them
 into a product, and come with their own set of tradeoffs. 
 Take NoSQL, for instance. It takes away *ACID* ity (mostly
 consistency) and querying capabilities, trading it for speed and ease of
-scalability. They may be useful, but they won't work in all cases, and the
+scalability. They might be useful, but they won't work in all cases, and the
 tradeoffs need to be considered carefully before adoption.
 
 Most of the time, we can get a better fit by designing our own
@@ -141,7 +140,7 @@ to make roadblocks go away.
 ![Graph 1]({{ site.url }}/assets/images/caching_diagram_3.png){: .center-image }
 
 But like TNT, it requires careful handling. Someone said it of regexes, and we can say it
-of caching too. If you add caching to a solve a problem, you get two problems.
+of caching too. If you add caching to solve a problem, you get two problems.
 But caching done right can actually solve problems, just like regexes
 can solve you some too. The trick lies in understanding its limitations.
 And its pointy edges.
@@ -230,13 +229,13 @@ But let's discuss the other problems, those that do have some formula that mostl
 
 ###Cache intermediate results
 
-You may have noticed the example above is about caching the result of a function,
+You might have noticed the example above is about caching the result of a function,
 and not the reply to an HTTP request.
 
 Caching the whole HTTP reply of course is easier to deploy (usually a plugin here or
 there, a CDN or two). It's also quite efficient, since it reuses almost 100% of the
 work involved in generating a reply. But it also restricts your options quite considerably,
-and it may give you no measurable benefit due to poor keying (ie: badly selected cache keys).
+and it might give you no measurable benefit due to poor keying (ie: badly selected cache keys).
 
 *Always consider the possibility of caching functions, not responses*. Functions are
 far more ubiquitous in your code, you'll have more caching opportunities, and you'll
@@ -252,7 +251,7 @@ the limits hard enough.
 
 In all time-constrained systems, the TTL will have to be set to what you can afford. It will
 balance the need for freshness with what's viable, what your hardware can compute with which
-frequency. Say you have 1M users and each projection takes 10 seconds, if you have 1000 cores at your disposal, then you will **have** to set the TTL to about 2 hours 45 minutes (10K seconds) or slower. Because that's what the hardware can handle, and there's no flexibility in changing the hardware. And if there was, it's a budgeting decision we engineers don't usually make anyway.
+frequency. Say you have 1M users and each projection takes 10 seconds, if you have 1000 cores at your disposal, then you will **have** to set the TTL to about 2 hours 45 minutes (10K seconds) or slower. Because that's what the hardware can handle, and there's no flexibility in changing the hardware. And even if there was, it's a budgeting decision we engineers don't usually make anyway.
 
 So don't sweat over the TTL. When the time comes, you'll know what to set it to. 
 If you do make budgeting decisions, wear your business hat, and make the decision from a
@@ -262,11 +261,11 @@ If the answer is yes, do it. If not, just set a TTL that saves you money.
 Sure, things get trickier with a hundred different kinds of requests, when you have to juggle the TTLs of all to prioritize some above others. But usually any sensible setting will do, and the business
 itself will push hard for changes if they're needed (and pay for the bills too, when needed).
 
-If you need a guideline for your starting point, ask yourself how fast does the value
+If you need a guideline for your starting point, ask yourself: how fast does the value
 you're trying to cache change? If projections, for instance, can't change more than a
 small percent during a day, there's little point in a refresh period much lower than a day.
 
-Do, however, decouple your decision about a reasonable TTL (ie: *how stale* a reply *can* be), from the asynchronous refresh period (ie: every how often a reply *needs updating*). One will
+Do, however, decouple your decision about a reasonable TTL (ie: *how stale* a reply *can* be), from the asynchronous refresh period (i.e,: every how often a reply *needs updating*). One will
 be guided by business rules, and the other by available resources, so it's a good idea
 to keep them separate. In our experience, the best way to accomplish this is to rely heavily on asynchronous refresh.
 
@@ -283,7 +282,7 @@ an LRU isn't hard enough to justify crippling your system like that.
 A related problem is how to limit the amount of data in the cache. We don't want to get
 into the various types of cache stores just yet, but an LRU in memory needs a limit,
 and sometimes measuring that limit in bytes (which would be optimal in most cases, since
-we know how many bytes we can have for caching) may not be as easy (or viable) as
+we know how many bytes we can have for caching) might not be as easy (or viable) as
 one would like.
 
 Trying to estimate the "size in bytes" of a complex object graph
@@ -366,14 +365,14 @@ def get_transfers(user_id, destination_user_id):
     return database.blah...
 {% endhighlight %}
 
-That there just made it impossible to hold everything in memory. If you happen to have a
+That line there just made it impossible to hold everything in memory. If you happen to have a
 reasonable user base, with reasonably connected people, using this composite key didn't just double the cardinality, **it made it quadratic!**. Ouch.
 
 A cache over a key with high cardinality will provide very small benefits, and
 may not be worth your trouble.
 
 Remember that adding caching to a problem gets you two problems - make sure you
-got a real measurable benefit from importing that extra problem. Multidimensional  keys are going to be necessary, but as you make a point of thinking about total latency, also make a point of mentally sizing up the **key space**.
+got a real measurable benefit from importing that extra problem. Multidimensional keys are going to be necessary, but as you make a point of thinking about total latency, also make a point of mentally sizing up the **key space**.
 
 If your key space is big (or huge), we find it best not to invest many resources 
 in caching that aspect of your computations, since it will be an uphill battle.
@@ -381,7 +380,7 @@ It's preferable to get the low hanging fruits and walk away while you're ahead.
 
 ###Executors
 
-As the example of asynchronous refresh showed, actual computation doesn't happen
+As the example of asynchronous refresh has shown, actual computation doesn't happen
 on the main thread (if there is such a thing), and for a good reason. You don't
 want to stall request processing while computing new values, because you already
 have a value you can work with, and latency matters.
@@ -415,7 +414,6 @@ So, we're getting to a rather long winded post here, and as hinted in the previo
 section, it's time to put off some subjects for our next post.
 
 If you found any part of this interesting and would like to work in a cool company where you can tackle other challenges like this [We Are Hiring Geeks!](http://jampp.com/jobs.php "We Are Hiring Geeks!").
-
 
 
 

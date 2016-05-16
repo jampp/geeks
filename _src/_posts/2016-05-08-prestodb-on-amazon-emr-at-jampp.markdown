@@ -16,7 +16,7 @@ At Jampp we are big users of Amazon EMR. Since we handle a lot of data, our volu
 We really like the versatility EMR provides with the 
 apps available like PrestoDB, Spark and  Hive. It doesn’t limit you to one kind of processing since you can do batch, interactive and real-time workloads mixed with some Machine Learning magic. In particular, we found in PrestoDB a great tool that gave us speed and flexibility and was much more robust than Spark SQL as a SQL tool for large scale analytics. As our use of Presto grew, we even got featured in the Amazon [PrestoDB product page](https://aws.amazon.com/elasticmapreduce/details/presto/).
 
-Our production cluster executes daily ETL tasks and contains a warehouse stored in Parquet backed tables, which is queried by OLAP processes through PrestoDB and Spark. These daily and hourly ETL jobs extract data from different sources like RDS databases and log files and centralize everything in the EMR Cluster. We found Airflow from AirBnB to be a great tool for orchestrating these workflows and we will talk more in detail on how and why we use it on a later post.
+Our production cluster executes daily ETL tasks and contains a warehouse stored in Parquet backed tables, which is queried by OLAP processes through PrestoDB and Spark. These daily and hourly ETL jobs extract data from different sources like RDS databases and log files and centralize everything in the EMR Cluster. We found <a href="https://github.com/airbnb/airflow" target="_blank">Airflow from AirBnB</a> to be a great tool for orchestrating these workflows and we will talk more in detail on how and why we use it on a later post.
 
 During this post, we will focus on our experience with Presto and the different customizations we implemented and nuggets of wisdom we learnt along the way.
 
@@ -82,7 +82,7 @@ done
 
 As our usage of Presto grew, we developed many ways of improving its performance and stability.
 
-One common issue with Presto is that, when handling a join between two large tables, Presto’s process, in the node that is doing part of the join, might be killed due to **OoM exception**. Since most of the queries we run in Presto are for analytics, it is not a big issue for us if one of the queries fails. But, as Amazon EMR is configured by default, once a Presto process dies, there is no monitor that restarts it. Therefore, when you run many large queries the nodes available for Presto to process data were decreased over time. To fix this issue, we run a bootstrap action for each node in the cluster that installs and configures [Monit](https://mmonit.com/monit/) to monitor the Presto service in each node.
+One common issue with Presto is that, when handling a join between two large tables, Presto’s process, in the node that is making part of the join, might be killed due to **OoM exception**. Since most of the queries we run in Presto are for analytics, it is not a big issue for us if one of the queries fails. But, as Amazon EMR is configured by default, once a Presto process dies, there is no monitor that restarts it. Therefore, when you run many large queries the nodes available for Presto to process data were decreasing over time. To fix this issue, we run a bootstrap action for each node in the cluster that installs and configures [Monit](https://mmonit.com/monit/) to monitor the Presto service in each node.
 
 In the **config.properties** file we added:
 
@@ -122,7 +122,7 @@ Other important aspects to consider when tuning Presto to improve its performanc
  
  - **hash_partition_count** the number of partitions for distributed joins and aggregations. The default for Presto in EMR is 8 which is good for only a small cluster. If you have a cluster with more than 8 nodes that do processing and you are running a query that contains a big join, it is a good idea to set this number to a higher value.  
 
-Finally, there were a couple of issues we run into in some of the EMR versions. I will leave the solutions we found here, in case you run into any of them.
+Finally, there were a couple of issues we faced in some of the EMR versions. I will leave the solutions we found here, in case you run into any of them.
 
 The first issue had to do with some problems with Presto’s connection to the Hive Metastore to retrieve table metadata. After some use, the connections were timing out and we found that this was originated by EMR switching to the MariaDB connector. In the link below, you can find a post from the EMR blog detailing this issue and our answer on how to fix it:
 [https://forums.aws.amazon.com/thread.jspa?threadID=220302&tstart=25](https://forums.aws.amazon.com/thread.jspa?threadID=220302&tstart=25)

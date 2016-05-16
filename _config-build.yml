@@ -2,8 +2,6 @@ url:         "http://jampp-geeks.com.s3-website-sa-east-1.amazonaws.com" # the b
 
 owner:       REPLACEME # Default site Owner. Will be used if post has no author. Full Name
 
-production:  true
-
 mailchimp:
   user-id:   REPLACEME
   list-id:   REPLACEME

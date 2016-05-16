@@ -2,6 +2,10 @@ var gulp        = require('gulp'),
     cp          = require('child_process'),
     browsersync = require('browser-sync'),
     config      = require('../../config').jekyll.production;
+	argv = require('yargs').argv;
+
+var isPreview = (argv.production === undefined) ? true : false;
+if(isPreview) config = require('../../config').jekyll.staging;
 
 /**
  * Build the Jekyll Site

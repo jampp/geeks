@@ -36,10 +36,15 @@ module.exports = {
       dest:   development,
       config: '_config.yml'
     },
-    production: {
+    staging: {
       src:    src,
       dest:   production,
       config: '_config.yml,_config-build.yml'
+    },
+    production: {
+      src:    src,
+      dest:   production,
+      config: '_config.yml,_config-build.yml,_config-prod.yml'
     }
   },
   styles: {

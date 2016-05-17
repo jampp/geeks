@@ -1,11 +1,11 @@
 var gulp        = require('gulp'),
     cp          = require('child_process'),
     browsersync = require('browser-sync'),
-    config      = require('../../config').jekyll.production;
+    config      = require('../../config').jekyll.staging;
 	argv		= require('yargs').argv;
 
 
-if(argv.production) config = require('../../config').jekyll.staging;
+if(argv.production) config = require('../../config').jekyll.production;
 
 /**
  * Build the Jekyll Site

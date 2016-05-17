@@ -30,7 +30,7 @@
 
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ "/feed.xml" | prepend: site.baseurl }}">
 
-    {% if !site.production %}
+    {% if site.production == false %}
       <meta name="robots" content="NOINDEX, NOFOLLOW">
     {% endif %}
 

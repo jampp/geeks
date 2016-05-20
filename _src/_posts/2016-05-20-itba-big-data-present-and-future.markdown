@@ -33,7 +33,7 @@ Julián Klas and Adrián Quilis gave the last talk of the day. They have both be
 
 <h3>Programmatic ad buying: How to build an intelligent and scalable, real-time bidding platform</h3>
 
-![Graph 1]({{ site.url }}/assets/images/big-data-itba.jpg){: .center-image }
+![Graph 1]({{ site.url }}/assets/images/big-data-itba2.jpg){: .center-image }
 
 Martín Bonamico and myself were the ones representing Jampp. At the beginning we gave an overview on how the programmatic ads market for mobile works. Later we took the audience through the evolution of Jampp's data platform: from the early beginnings when we only used MySQL and PostgreSQL in a very traditional data architecture, to the last iteration that enables near real-time event processing with Amazon Kinesis and Lambda. You can see our presentation below.
 

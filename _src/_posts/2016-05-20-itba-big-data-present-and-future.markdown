@@ -44,4 +44,6 @@ The move to Public Cloud providers like AWS to outsource infrastructure maintena
 The trend towards using tools for SQL over Hadoop like Presto.
 The evolution towards a real-time architecture to keep up with the needs of the market.
 
+Finally, we want to thank ITBA for inviting us to participate, and all the other speakers for contributing to make such a great event.
+
 

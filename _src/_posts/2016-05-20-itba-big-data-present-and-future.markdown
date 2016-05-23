@@ -40,8 +40,11 @@ Martín Bonamico and myself were the ones representing Jampp. At the beginning w
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/MSKnvOEoHsUtuz" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/Jampp/building-a-realtime-scalable-and-intelligent-programmatic-ad-buying-platform-62233250" title="Building a real-time, scalable and intelligent programmatic ad buying platform" target="_blank">Building a real-time, scalable and intelligent programmatic ad buying platform</a> </strong> from <strong><a href="//www.slideshare.net/Jampp" target="_blank">Jampp</a></strong> </div>
 
 We had a very positive experience taking part in this event. It showed that the ecosystem of developers dealing with large scale data processing challenges is growing at a steady pace. Although each company uses its own combination of tools and components, we could see some clear patterns emerging:
+
  - The move to Public Cloud providers like AWS to outsource infrastructure maintenance work.
+
  - The trend towards using tools for SQL over Hadoop like Presto.
+
  - The evolution towards a real-time architecture to keep up with the needs of the market.
 
 Finally, we want to thank ITBA for inviting us to participate, and all the other speakers for contributing to make such a great event.

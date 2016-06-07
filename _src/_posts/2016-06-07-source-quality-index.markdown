@@ -9,10 +9,6 @@ keywords: "sources, ranking"
 author: pedrof
 ---
 <!--excerpt.start-->
-In this entry we briefly discuss how we have built an index that ranks our
-sources on a bi-monthly data basis.
-<!--excerpt.end-->
-
 At Jampp we use a variety of sources to generate our traffic flow. Generally the
 source employed in one campaign is not necessarily the same as the one used in
 another campaign however, until recently, we did not have a unified measure to
@@ -22,6 +18,7 @@ different campaigns but also because campaigns do not share the same
 post-install metrics (and we are precisely interested in post-install quality).
 In this entry we briefly discuss how we have built an index that ranks our
 sources on a bi-monthly data basis.
+<!--excerpt.end-->
 
 When we started this project, despite our objective was clear (basically
 creating a score that should reflect a particular source post-install quality)
@@ -66,27 +63,27 @@ conversion rates according to the sample size required by an specific width of a
 95% binomial proportion confidence interval. Let's break that last sentence down.
 
 Assume we can model conversion scenarios as a binomial random variable with
-parameter $p$. A 95% confidence interval for an estimator of $p$, call it
-$\hat{p}$, is given by
+parameter $$p$$. A 95% confidence interval for an estimator of $$p$$, call it
+$$\hat{p}$$, is given by
 
 $$\left[\hat{p} - 2\sqrt{(0.25/n)}, \hat{p} + 2\sqrt{(0.25/n)}\right]$$
 
-where $n$ is the sample size.
+where $$n$$ is the sample size.
 Subtracting the lower bound from the upper one, it is easy to see that the width
-of the interval, call it $w$, can be written as
+of the interval, call it $$w$$, can be written as
 
 $$ w = 4\sqrt{0.25/n}$$
 
-Using the previous equation we allowed $w$ to vary (linearly) stepwise in the
-range $[0.01, 0.1]$ and solved for $n$. We then mapped the resulting sample
+Using the previous equation we allowed $$w$$ to vary (linearly) stepwise in the
+range $$[0.01, 0.1]$$ and solved for $n$. We then mapped the resulting sample
 sizes (which for our goal can be interpreted as number of installs) to a number,
-say $P$ for penalty, in the interval $[0, 1]$.  The penalty mapping is
+say $$P$$ for penalty, in the interval $$[0, 1]$$.  The penalty mapping is
 constructed in such way that if the number of installs for given source in a
 given vertical is tiny (or equivalently the confidence interval is wide) then
-$P=0$ (full penalty) and if the volume is huge (which translates to a  narrow
-confidence interval) then $P=1$ (i.e no penalty). In other words, there is a
+$$P=0$$ (full penalty) and if the volume is huge (which translates to a  narrow
+confidence interval) then $$P=1$$ (i.e no penalty). In other words, there is a
 direct relationship between the penalty and the interval width. We finally
-multiply $P$ by the raw conversion rates to get our quality index.
+multiply $$P$$ by the raw conversion rates to get our quality index.
 
 In the next figure limit our attention to apps belonging to the classifieds
 vertical, and display the top ten sources in the United States according to the

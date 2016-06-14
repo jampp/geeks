@@ -5,7 +5,8 @@ date:   2016-06-07
 tag: data-science
 categories:
  - data-science
-keywords: "sources, ranking"
+keywords: "RTB, quality ranking, fraud, data science, python"
+description: In this post we discuss how we have built an index that ranks the sources that generate our traffic flow on a bi-monthly data basis.
 author: pedrof
 ---
 <!--excerpt.start-->

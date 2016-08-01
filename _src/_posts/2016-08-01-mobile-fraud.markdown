@@ -14,7 +14,6 @@ Jampp's mission is to help companies grow their mobile business by engaging user
 
 <!--excerpt.end-->
 
-TRASH SENTENCE EXAMPLE FOOTNOTE <sup id="a1">[1](#myfootnote1)</sup>
 
 <h2>What is it and how can it be done? </h2>
 
@@ -71,19 +70,16 @@ A brief example of this tool is given below, this test was carried out on clicks
 
 ![Graph 1]({{ site.url }}/assets/images/fraud/top_cpr_clicks.png){: .center-image }
 
-<h1>**(INSERTAR IMAGEN) **</h1>
 
-<h4>Geo Discrepancy Ratio</h4>
  - Similar to the metric explained before, we compare geoIP regional mismatches between different actions, comparing across impressions, clicks, installs and events. This metric is expected to uncover only few discrepancies because, as we mentioned before, masking an IP in a request is a difficult task and filtering invalid traffic this way is a common industry practice. 
 In our experience, this ratio is rarely "unusual", having average differences of the order of 0.7%. The following histogram shows  geographical average mismatches at the publisher and campaign levels. A sample of 20k click-installs was used for this analysis.
 
 ![Graph 2]({{ site.url }}/assets/images/fraud/geo_delta_click_install_july.png){: .center-image }
-<h1>**(INSERTAR IMAGEN) **</h1>
 
 When focusing on the top discrepancy cases in unfiltered traffic, we are encountered with the following results which highlight differences in click and events geolocations:
 
-![Graph 3]({{ site.url }}/assets/images/fraud/top_ge_frauds.png){: .center-image }
-<h1>**(INSERTAR IMAGEN) **</h1>
+![Graph 3]({{ site.url }}/assets/images/fraud/top_geo_frauds.png){: .center-image }
+
 
 Notice that even though publishers are not the same, some campaigns repeatedly appear in this head. This type of information would raise suspicions towards click spamming or action farming where scammers would be resetting their IP address to hide high volumes of traffic from a single IP, thus creating a discrepancy with the past IP used for the click.
 
@@ -93,25 +89,25 @@ Notice that even though publishers are not the same, some campaigns repeatedly a
 The idea behind this metric is that, in general, counting data gives rise to empirical distributions with specific properties. Most of the distribution's mass would be concentrated in lower values and the decay would be exponential at first and almost constant at higher values. An example of this metric is shown below, where time between a click and an install is measured:
 
 ![Graph 4]({{ site.url }}/assets/images/fraud/hist-median_tdelta_global.png){: .center-image }
-<h1>**(INSERTAR IMAGEN) **</h1>
+
 
 - The histogram shows a sharp decay for the lower values of the metric with an almost constant decay value for higher time deltas. 
 These type of distributions also appear when focusing the analysis on specific applications. The following example is taken from the Classifieds vertical where all except the fraudulent publisher have been excluded:
 
 ![Graph 5]({{ site.url }}/assets/images/fraud/hist-median_tdelta_classifieds.png){: .center-image }
-<h1>**(INSERTAR IMAGEN) **</h1>
+
 Notice that the two histograms shown before are essentially very similar in terms of their statistical moments when compared to more fraudulent samples. Once we focus  on the fraudulent publisher, we find that the empirical distribution has evidently  changed, and this change is reflected in statistical tests.  
 
 ![Graph 6]({{ site.url }}/assets/images/fraud/hist-tdelta_fraud.png){: .center-image }
-<h1>**(INSERTAR IMAGEN) **</h1>
+
 
 <h4>Performance Metrics</h4>
 - For this tool, we are assuming that faking a device ID at the tracking platform's SDK level would be a difficult feat. Thus we will be looking at click and install volume, CVR rates and the number of unique device IDs making installs in a given time interval. The idea is to see if there are significant anomalies when segmenting traffic per publisher or click IP.
 These metrics are simple and based around standard industry metrics. Comparing top and bottom performance notches for each performer would give an insight into the condition of the traffic being acquired. However, it’s important to take special care before tagging an object with unusual behavior because it is common to have notable differences amongst verticals, sources and applications.
 Let's see what unfiltered traffic would look like:
 
-![Graph 7]({{ site.url }}/assets/images/fraud/top_global_click_per _ip.png .png){: .center-image }
- <h1>**(INSERTAR IMAGEN) **</h1>
+![Graph 7]({{ site.url }}/assets/images/fraud/top_global_click_per_ip.png .png){: .center-image }
+
 
 Here observations are ordered by click volume. Notice the high volume incoming from the same IP range. Unique device ID rates look healthy though for this range, with a handful of cases where one device ID has multiple installs. However, the first row is more suspicious when you consider that, in average, every device ID using this specific IP has generated 1.3 installs.
 

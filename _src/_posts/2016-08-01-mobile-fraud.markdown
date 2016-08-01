@@ -106,7 +106,7 @@ Notice that the two histograms shown before are essentially very similar in term
 These metrics are simple and based around standard industry metrics. Comparing top and bottom performance notches for each performer would give an insight into the condition of the traffic being acquired. However, it’s important to take special care before tagging an object with unusual behavior because it is common to have notable differences amongst verticals, sources and applications.
 Let's see what unfiltered traffic would look like:
 
-![Graph 7]({{ site.url }}/assets/images/fraud/top_global_click_per_ip.png .png){: .center-image }
+![Graph 7]({{ site.url }}/assets/images/fraud/top_global_click_per_ip.png){: .center-image }
 
 
 Here observations are ordered by click volume. Notice the high volume incoming from the same IP range. Unique device ID rates look healthy though for this range, with a handful of cases where one device ID has multiple installs. However, the first row is more suspicious when you consider that, in average, every device ID using this specific IP has generated 1.3 installs.
@@ -131,6 +131,9 @@ If you found this post interesting and want to do stuff like this on a daily bas
 [unsupervised]: https://en.wikipedia.org/wiki/Unsupervised_learning
 
 <a name="generalTraffic">1</a>:  There are legitimate cases of traffic coming from these sources such as from large organizations, universities and such; however this is not the general case.
+
 <a name="actionFarm">2</a>:  We've evolved the term click farm into action farm to better suit the mobile world since having people manually click, install and use an app is also carried out as fraud. Remember that payback on installs is significantly higher than on clicks or views
+
 <a name="installDefinition">3</a>: Here an install is defined as the user's first in-app event reported by the tracking platform.
-<a name="anomaly">4</a>: For a more accurate and complete overview of anomaly detection, a very useful survey on the topic can be found at http://cucis.ece.northwestern.edu/projects/DMS/publications/AnomalyDetection.pdf .
+
+<a name="anomaly">4</a>: For a more accurate and complete overview of anomaly detection, a very useful survey on the topic can be found at http://cucis.ece.northwestern.edu/projects/DMS/publications/AnomalyDetection.pdf.

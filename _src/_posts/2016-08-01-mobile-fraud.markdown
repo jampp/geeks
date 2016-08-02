@@ -16,18 +16,24 @@ Jampp's mission is to help companies grow their mobile business by engaging user
 
 ## What is it and how can it be done?
 
-The mobile ad business is fairly simple in monetary terms, some people, namely advertisers, pay to place their ads in a site whose owners we will call publishers. There’s a whole lot more players in between and around, but for now we’ll keep it simple. Publishers are the ones offering their advertising space for sale and advertisers are essentially bidding for that space. Most pricing models across the industry are proportional to ad impressions, click volumes and, recently, generated installs.
+The mobile ad business is fairly simple in monetary terms, some people, namely advertisers, pay to place their ads in a site whose owners we will call publishers. There’s a whole lot more players in between and around, but we’ll keep it simple for the moment. Publishers are the ones offering their advertising space for sale and advertisers are essentially bidding for that space. Most pricing models across the industry are proportional to ad impressions, click volumes and, recently, generated installs.
 
+Technically speaking, clicks or impressions are not exactly what people would commonly think of. Under normal conditions clicks, impressions and events are HTTP requests being made between devices and servers, in response to user actions. To exemplify this, a simple diagram is given below. Here a click request bounces around different servers, one for each actor in the mobile advertisement ecosystem. 
+
+![Graph 0]({{ site.url }}/assets/images/fraud/click_postback.png){: .center-image }
+
+The user initially clicks on the ad and its user agent, device ID and other metadata are being URL-encoded in the request. Their request is passed along the chain until it is finally redirected to the App/Playstore where, ideally, the user would install and open the app. Then, an event-tracking SDK integrated to the advertiser's application would report this type of in-app events back along the chain of requests. This action is named a *postback* request, which informs everyone that a user has opened it, thus prompting an install.
+
+The difficulty relies on actually verifying that the user's reported action effectively happened and wasn't just simulated. In all cases, this means establishing that a real touch on the screen or even an ad view. Faking a request or a real *action* is essentially not difficult.
+
+<!--
 Technically speaking, clicks or impressions are not exactly what people would commonly think of. Under normal conditions clicks, impressions and events are HTTP requests being made between devices and servers, in response to user actions. The request would then bounce around different servers, one for each actor in the mobile advertisement ecosystem. 
 
-For example, the user initially clicks on the ad and a request is sent. The user agent, device ID and other metadata are being URL-encoded and it is passed along the chain until finally redirected to the App/Playstore. Ideally the user would install and open the app, and the SDK would trigger a *postback* request to inform that the user has opened the app.
+For example, the user initially clicks on the ad and a request is sent. The user agent, device ID and other metadata are being URL-encoded and it is passed along the chain until finally redirected to the App/Playstore. Ideally the user would install and open the app, and the tracking SDK would trigger a *postback* request to inform that the user has opened the app.
 The difficulty relies on actually verifying the said user's action effectively happened, and wasn't just simulated. This means verifying a real touch on the screen or even an ad view. Faking a request or a real *action* is essentially not difficult.
-<!--
-, one’s device has to tell the advertiser’s server that an event has been triggered.
 -->
+
 Given the rules, costs and benefits of this game, you can imagine why scammers feel so encouraged to do their job.  There you have it, that is mobile fraud. 
-
-
 
 ## Fraud Categories
 
@@ -46,15 +52,15 @@ Using rootkits, the malware gets to command and coordinate a huge botnet across 
 
 ## Fraud Objects (Sites or IPs)
 
-By the arguments we mentioned before, one could assume that a scammer will represent himself either as an IP or through a publisher/site. In some cases, also looking at device ids as possible fraud objects could be more favorable but even these are easily falsifiable and, in the end, the advertiser's budget is going to the publishers. And here is where the scammer will be cashing his rewards. For the rest of this post we will be focusing the analysis on these two data points because masking IPs is not a simple task and because the publisher information is reliable (otherwise a scammer would never cash in his rewards).
+By the arguments we mentioned before, one could assume that a scammer would represent theirself either as an IP or through a publisher/site. In some cases, also looking at device ids as possible fraud objects could be more favorable but even these are easily falsifiable and, in the end, the advertiser's budget is going to the publishers. And here is where the scammer will be cashing their rewards. For the rest of this post we will be focusing the analysis on these two data points because masking IPs is not a simple task and because the publisher information is reliable (otherwise a scammer would never cash in their rewards).
 
 ## Fraud Metrics
-For this post, we will be looking at anti fraud tools against both forms of invalid traffic, with focus on the following fraud types: Click Spamming, Mobile Hijacking and Action Farming<sup>[2](#actionFarm)</sup>.
+For this post, we will be looking at anti-fraud tools against both forms of invalid traffic, with focus on the following fraud types: Click Spamming, Mobile Hijacking and Action Farming<sup>[2](#actionFarm)</sup>.
 
  A brief outline of each type is given below.
 
 ### Click Spamming
-This type refers to programs that generate fake click requests programmatically. The scammer would first run tests to extract appropriate campaign URL tokens for a specific device type or location. Next, they would execute a high volume of click requests, randomizing device-IDs and user agents at each iteration. The idea is to cash in from these requests and, as a surplus, randomly nail a would-be-organic install. 
+This type refers to programs that generate fake click requests programmatically. A scammer would first run tests to extract appropriate campaign URL tokens for a specific device type or location. Next, it would execute programs to generate a high volume of click requests, randomizing device-IDs and user agents at each iteration. The idea is to cash in from these requests and, as a surplus, randomly nail a would-be-organic install. 
 The typical consequences of this scenario would be having huge volumes of clicks and impressions, low CVRs and high volume coming through a few network points or sites.
 
 ### Mobile Hijacking

@@ -15,12 +15,20 @@ Jampp's mission is to help companies grow their mobile business by engaging user
 <!--excerpt.end-->
 
 
+
 <h2>What is it and how can it be done? </h2>
 
-The mobile ad business is fairly simple in monetary terms, some people, namely advertisers, pay to place their ads in a site whose owners we will call publishers. There’s a whole lot more players in between and around, but for now we’ll keep it simple. Publishers are the ones offering their advertising space for sale and advertisers are essentially bidding for that space.Most pricing models across the industry are proportional to ad impressions, click volumes and, recently, generated installs.
+The mobile ad business is fairly simple in monetary terms, some people, namely advertisers, pay to place their ads in a site whose owners we will call publishers. There’s a whole lot more players in between and around, but for now we’ll keep it simple. Publishers are the ones offering their advertising space for sale and advertisers are essentially bidding for that space. Most pricing models across the industry are proportional to ad impressions, click volumes and, recently, generated installs.
 
-Technically speaking, clicks or impressions are not exactly what people would commonly think of. It’s just information traveling through servers, consequence of an alleged click or ad load. There is no actual sensor in your device checking if the user has made a touch on the screen or even an ad view. This means that faking them is essentially very easy, one’s device has to tell the advertiser’s server that an action has been triggered. 
+Technically speaking, clicks or impressions are not exactly what people would commonly think of. Under normal conditions clicks, impressions and events are HTTP requests being made between devices and servers, in response to user actions. To exemplify this, a simple diagram is given below. Here a click request bounces around different servers, one for each actor in the mobile advertisement ecosystem. 
 
+![Graph 0]({{ site.url }}/assets/images/fraud/click_postback.png){: .center-image }
+
+The user initially clicks on the ad and its user agent, device ID and other metadata are being URL-encoded in the request. His request is passed along the chain until finally redirected to the App/Playstore. Ideally the user would install and open the app, and the SDK would trigger a *postback* request to inform that the user has opened the app.
+The difficulty relies on actually verifying the said user's action effectively happened, and wasn't just simulated. This means verifying a real touch on the screen or even an ad view. Faking a request or a real *action* is essentially not difficult.
+<!--
+, one’s device has to tell the advertiser’s server that an event has been triggered.
+-->
 Given the rules, costs and benefits of this game, you can imagine why scammers feel so encouraged to do their job.  There you have it, that is mobile fraud. 
 <h3>Tell me more</h3>
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A modern take on mobile fraud detection
+title: Our take on mobile fraud detection
 date:   2016-08-01
 tag: data-science
 categories:

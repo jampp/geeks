@@ -102,7 +102,7 @@ The idea behind this metric is that, in general, counting data gives rise to emp
 
 
 The histogram shows a sharp decay for the lower values of the metric with an almost constant decay value for higher time deltas. 
-These type of distributions also appear when focusing the analysis on specific applications. The following example is taken from the Classifieds vertical where all except the fraudulent publisher have been excluded:
+These type of distributions also appear when focusing the analysis on specific applications. The following example is taken from the Classifieds vertical where the fraudulent publisher has been excluded:
 
 ![Graph 5]({{ site.url }}/assets/images/fraud/hist-median_tdelta_classifieds.png){: .center-image }
 
@@ -125,7 +125,7 @@ Here observations are ordered by click volume. Notice the high volume incoming f
 ## Some Final Comments on the Nature of Fraud Detection
 By now, it might have become evident to the reader that mobile fraud is, in essence, an [unsupervised][unsupervised] problem. There is virtually no data, other than the obvious cases, to label any given click, install, view, or in-app event as fraud in an automatic, non-intrusive way. This concept is fundamental to the issue at hand. Looking at the techniques used in other industries, say banking, health or finance, some of them would have access to specific fraud cases (picture a credit-card charge dispute for instance) where fraudulent actions are duly tagged. For the rest of the cases they'd need to rely on unsupervised techniques.
 
-As an example, imagine we measures some variable that tests out to be normally distributed. Then a toy anti-fraud tool would label all cases outside the 99.7% band. This is called outlier or anomaly detection <sup>[4](#anomaly)</sup>  and the spirit is that, in a normal distribution, this band value equals to three standard-deviations from mean. But why is this band chosen? Should we choose two, three or four standard-deviations? What is standard about a standard-deviation? What if our distributions have fat-tails? (*DISCLAIMER: yes, this is our case*). The same goes for all statistical tools in Extreme Value Theory or Anomaly Detection: their applications must be handled with care and with attention to context (one measurement might be atypical in one context but not in others ). To sum up, there is no mathematically correct definition to characterize outliers, and by this, human input is inherently needed for the problem.
+As an example, imagine we measure some variable that tests out to be normally distributed. Then a toy anti-fraud tool would label all cases outside the 99.7% band. This is called outlier or anomaly detection <sup>[4](#anomaly)</sup>  and the spirit is that, in a normal distribution, this band value equals to three standard-deviations from mean. But why is this band chosen? Should we choose two, three or four standard-deviations? What is standard about a standard-deviation? What if our distributions have fat-tails? (*DISCLAIMER: yes, this is our case*). The same goes for all statistical tools in Extreme Value Theory or Anomaly Detection: their applications must be handled with care and with attention to context (one measurement might be atypical in one context but not in others ). To sum up, there is no mathematically correct definition to characterize outliers, and by this, human input is inherently needed for the problem.
 
 
 

@@ -54,7 +54,7 @@ Using rootkits, the malware gets to command and coordinate a huge botnet across 
 
 By the arguments we mentioned before, one could assume that a scammer would represent theirself either as an IP or through a publisher/site. In some cases, also looking at device ids as possible fraud objects could be more favorable but even these are easily falsifiable and, in the end, the advertiser's budget is going to the publishers. And here is where the scammer will be cashing their rewards. For the rest of this post we will be focusing the analysis on these two data points because masking IPs is not a simple task and because the publisher information is reliable (otherwise a scammer would never cash in their rewards).
 
-## Fraud Metrics
+## Fraud Types
 For this post, we will be looking at anti-fraud tools against both forms of invalid traffic, with focus on the following fraud types: Click Spamming, Mobile Hijacking and Action Farming<sup>[2](#actionFarm)</sup>.
 
  A brief outline of each type is given below.
@@ -64,7 +64,7 @@ This type refers to programs that generate fake click requests programmatically.
 The typical consequences of this scenario would be having huge volumes of clicks and impressions, low CVRs and high volume coming through a few network points or sites.
 
 ### Mobile Hijacking
-This happens when user's seemingly genuine app runs hidden ads and clicks in the background. In general, the program would be scripted to imitate human behavior as much as possible. The problem is that all common data points look valid i.e., the IP address and user-agent, as well as the device ID. The idea is that would-be-organic installs from this user will be then incorrectly attributed to this publisher. This scenario would generate high volumes across clicks and impressions. Low CVRs and better-than-average user activity are expected as well. Also, given that a scammer can't control when the install is organically made by a user, the time delta analysis from click to install would result in very atypical distributions at the fraud object's level (either publisher or IP).
+This happens when a user's seemingly genuine app runs hidden ads and clicks in the background. In general, the program would be scripted to imitate human behavior as much as possible. The problem is that all common data points look valid i.e., the IP address and user-agent, as well as the device ID. The idea is that would-be-organic installs from this user will be then incorrectly attributed to this publisher. This scenario would generate high volumes across clicks and impressions. Low CVRs and better-than-average user activity are expected as well. Also, given that a scammer can't control when the install is organically made by a user, the time delta analysis from click to install would result in very atypical distributions at the fraud object's level (either publisher or IP).
 
 ### Action Farms
 The idea behind this scheme is fairly simple. Scammers would reward people all around the world for clicking ads and installing apps manually i.e., actual people are hired to click on ads and install applications. The amount of events to be reached by this scheme will definitely not be as big as in programmatic schemes, but put in monetary terms, where one install might equal one dollar means three hundred fake installs a day is no joke to any campaign's budget.  

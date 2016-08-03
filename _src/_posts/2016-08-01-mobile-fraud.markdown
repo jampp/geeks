@@ -16,13 +16,13 @@ Jampp's mission is to help companies grow their mobile business by engaging user
 
 ## What is it and how can it be done?
 
-The mobile ad business is fairly simple in monetary terms, some people, namely advertisers, pay to place their ads in a site whose owners we will call publishers. There’s a whole lot more players in between and around, but we’ll keep it simple for the moment. Publishers are the ones offering their advertising space for sale and advertisers are essentially bidding for that space. Most pricing models across the industry are proportional to ad impressions, click volumes and, recently, generated installs.
+The mobile ad business is fairly simple in monetary terms, some people, namely advertisers, pay to place their ads in a site whose owners we will call publishers. There’re a whole lot more players in between and around, but we’ll keep it simple for the moment. Publishers are the ones offering their advertising space for sale and advertisers are essentially bidding for that space. Most pricing models across the industry are proportional to ad impressions, click volumes and, recently, generated installs.
 
 Technically speaking, clicks or impressions are not exactly what people would commonly think of. Under normal conditions clicks, impressions and events are HTTP requests being made between devices and servers, in response to user actions. To exemplify this, a simple diagram is given below. Here a click request bounces around different servers, one for each actor in the mobile advertisement ecosystem. 
 
 ![Graph 0]({{ site.url }}/assets/images/fraud/click_postback.png){: .center-image }
 
-The user initially clicks on the ad and its user agent, device ID and other metadata are being URL-encoded in the request. Their request is passed along the chain until it is finally redirected to the App/Playstore where, ideally, the user would install and open the app. Then, an event-tracking SDK integrated to the advertiser's application would report this type of in-app events back along the chain of requests. This action is named a *postback* request, which informs everyone that a user has opened it, thus prompting an install.
+The user initially clicks on the ad and its user agent, device ID and other metadata are being URL-encoded in the request. Their request is passed along the chain until it is finally redirected to the App/Playstore where, ideally, the user would install and open the app. Then, an event-tracking SDK integrated to the advertiser's application would report this type of in-app events back along the chain of requests. This action is named a *postback* request, which informs everyone that a user has opened the app, thus prompting an install.
 
 The difficulty relies on actually verifying that the user's reported action effectively happened and wasn't just simulated. In all cases, this means establishing that a real touch on the screen or even an ad view. Faking a request or a real *action* is essentially not difficult.
 
@@ -43,9 +43,9 @@ The [Invalid Traffic Detection and Filtration Guidelines Addendum][MRA] made by 
 A "consistent source of non-human traffic". This is covered by mobile bots, traffic from data center, virtual machines and traffic from proxies or VPNs. <sup>[1](#generalTraffic)</sup>
 
 ### Sophisticated
-It is defined by the property that significant human analysis and intervention in order to detect. The addendum's non-exhaustive list includes certain examples like "hijacked devices; hijacked sessions within hijacked devices; hijacked ad tags; hijacked creatives; adware; malware; incentivized manipulation of measurements; content; falsified viewable impression...". The common denominator being that there is an *real* user in the scheme, but the ad is not served correctly.
+Its defined by the property that significant human analysis and intervention are needed in order to detect it. The addendum's non-exhaustive list includes certain examples like "hijacked devices; hijacked sessions within hijacked devices; hijacked ad tags; hijacked creatives; adware; malware; incentivized manipulation of measurements; content; falsified viewable impression...". The common denominator being that there is an *real* user in the scheme, but the ad is not served correctly.
 
-Simply put, most of the traffic involved in the general fraud traffic would originate when a scammer runs programs that imitate mobile devices and human behaviour interaction with advertisements. The programs behind these schemes consist of obvious random-http-request scripts generating requests with tokens tuned for each specific source or ad network. General fraud traffic is represented in the type of invalid traffic from data centers, VPNs, malware and other similar scenarios where programs are impersonating human actions like viewing and clicking ads or even installing and generating in-app events. Typical countermeasures for this type of fraud involve using ip blacklists, user-agent filtering, checking correct device-id formats, and other direct filter measures.
+Simply put, most of the traffic involved in the general fraud category would be originated when a scammer runs programs that imitate mobile devices and human behaviour interaction with advertisements. The programs behind these schemes consist of obvious random-http-request scripts generating requests with tokens tuned for each specific source or ad network. General fraud traffic is represented in the type of invalid traffic from data centers, VPNs, malware and other similar scenarios where programs are impersonating human actions like viewing and clicking ads or even installing and generating in-app events. Typical countermeasures for this type of fraud involve using ip blacklists, user-agent filtering, checking correct device-id formats, and other direct filter measures.
 
 [Hummingbad][HB] malware campaigns are a recent example of sophisticated invalid traffic.
 Using rootkits, the malware gets to command and coordinate a huge botnet across millions of devices, generating most of its revenue from app installs. Yingmob is the organization responsible for this scheme employing up to 25 people in different project groups. The organization's professional structure behind the campaigns involved managing interactions between highly complex modules and across different technical teams.
@@ -64,10 +64,10 @@ This type refers to programs that generate fake click requests programmatically.
 The typical consequences of this scenario would be having huge volumes of clicks and impressions, low CVRs and high volume coming through a few network points or sites.
 
 ### Mobile Hijacking
-This happens when user's seemingly genuine app runs hidden ads and clicks in the background. In general, the program would be scripted to imitate human behavior as much as possible. The problem is that all common data points look valid i.e. the IP address and user-agent, as well as the device ID. The idea is that would-be-organic installs from this user will be then incorrectly attributed to this publisher. This scenario would generate high volumes across clicks and impressions. Low CVRs and better than average user activity are expected as well. Also, given that a scammer can't control when the install is organically made by a user, the time delta analysis from click to install would result in very atypical distributions at the fraud object's level (either publisher or IP).
+This happens when user's seemingly genuine app runs hidden ads and clicks in the background. In general, the program would be scripted to imitate human behavior as much as possible. The problem is that all common data points look valid i.e., the IP address and user-agent, as well as the device ID. The idea is that would-be-organic installs from this user will be then incorrectly attributed to this publisher. This scenario would generate high volumes across clicks and impressions. Low CVRs and better-than-average user activity are expected as well. Also, given that a scammer can't control when the install is organically made by a user, the time delta analysis from click to install would result in very atypical distributions at the fraud object's level (either publisher or IP).
 
 ### Action Farms
-The idea behind this scheme is fairly simple. Scammers would reward people all around the world for clicking ads and installing apps manually i.e. actual people are hired to click on ads and install applications. The amount of events to be reached by this scheme will definitely not be as big as in programmatic schemes, but put in monetary terms, where one install might equal one dollar means three hundred fake installs a day is no joke to any campaign's budget.  
+The idea behind this scheme is fairly simple. Scammers would reward people all around the world for clicking ads and installing apps manually i.e., actual people are hired to click on ads and install applications. The amount of events to be reached by this scheme will definitely not be as big as in programmatic schemes, but put in monetary terms, where one install might equal one dollar means three hundred fake installs a day is no joke to any campaign's budget.  
 We have even tracked cases to social network groups where people were openly being hired to "get paid for installing applications!".
 
 ## Fraud Metrics
@@ -81,7 +81,7 @@ A brief example of this tool is given below, this test was carried out on clicks
 ![Graph 1]({{ site.url }}/assets/images/fraud/top_cpr_clicks.png){: .center-image }
 
 
-Similar to the metric explained before, we compare geoIP regional mismatches between different actions, comparing across impressions, clicks, installs and events. This metric is expected to uncover only few discrepancies because, as we mentioned before, masking an IP in a request is a difficult task and filtering invalid traffic this way is a common industry practice. 
+Similar to the metric explained before, we compare geoIP regional mismatches between different actions, comparing across impressions, clicks, installs and events. This metric is expected to uncover only a few discrepancies because, as we mentioned before, masking an IP in a request is a difficult task and filtering invalid traffic this way is a common industry practice. 
 In our experience, this ratio is rarely "unusual", having average differences of the order of 0.7%. The following histogram shows  geographical average mismatches at the publisher and campaign levels. A sample of 20k click-installs was used for this analysis.
 
 ![Graph 2]({{ site.url }}/assets/images/fraud/geo_delta_click_install_july.png){: .center-image }
@@ -91,7 +91,7 @@ When focusing on the top discrepancy cases in unfiltered traffic, we are encount
 ![Graph 3]({{ site.url }}/assets/images/fraud/top_geo_frauds.png){: .center-image }
 
 
-Notice that even though publishers are not the same, some campaigns repeatedly appear in this head. This type of information would raise suspicions towards click spamming or action farming where scammers would be resetting their IP address to hide high volumes of traffic from a single IP, thus creating a discrepancy with the past IP used for the click.
+Notice that even though publishers are not the same, some campaigns appear more than once in this head. This type of information would raise suspicions towards click spamming or action farming where scammers would be resetting their IP address to hide high volumes of traffic from a single IP, thus creating a discrepancy with the past IP used for the click.
 
 
 ### Time Delta
@@ -123,7 +123,7 @@ Let's see what unfiltered traffic would look like:
 Here observations are ordered by click volume. Notice the high volume incoming from the same IP range. Unique device ID rates look healthy though for this range, with a handful of cases where one device ID has multiple installs. However, the first row is more suspicious when you consider that, in average, every device ID using this specific IP has generated 1.3 installs.
 
 ## Some Final Comments on the Nature of Fraud Detection
-By now, it might have become evident to the reader that mobile fraud is in its essence an [unsupervised][unsupervised] problem. There is virtually no data, other than the obvious cases, to label any given click, install, view, or in-app event as fraud in an automatic, non-intrusive way. This concept is fundamental to the issue at hand. Looking at the techniques used in other industries, say banking, health or finance, some of them would have access to specific fraud cases (picture a credit-card charge dispute for instance) where fraudulent actions are duly tagged. For the rest of the cases they'd need to rely on unsupervised techniques.
+By now, it might have become evident to the reader that mobile fraud is, in essence, an [unsupervised][unsupervised] problem. There is virtually no data, other than the obvious cases, to label any given click, install, view, or in-app event as fraud in an automatic, non-intrusive way. This concept is fundamental to the issue at hand. Looking at the techniques used in other industries, say banking, health or finance, some of them would have access to specific fraud cases (picture a credit-card charge dispute for instance) where fraudulent actions are duly tagged. For the rest of the cases they'd need to rely on unsupervised techniques.
 
 As an example, imagine we measures some variable that tests out to be normally distributed. Then a toy anti-fraud tool would label all cases outside the 99.7% band. This is called outlier or anomaly detection <sup>[4](#anomaly)</sup>  and the spirit is that, in a normal distribution, this band value equals to three standard-deviations from mean. But why is this band chosen? Should we choose two, three or four standard-deviations? What is standard about a standard-deviation? What if our distributions have fat-tails? (*DISCLAIMER: yes, this is our case*). The same goes for all statistical tools in Extreme Value Theory or Anomaly Detection: their applications must be handled with care and with attention to context (one measurement might be atypical in one context but not in others ). To sum up, there is no mathematically correct definition to characterize outliers, and by this, human input is inherently needed for the problem.
 
@@ -143,7 +143,7 @@ If you found this post interesting and want to do stuff like this on a daily bas
 
 <a name="generalTraffic">1</a>:  There are legitimate cases of traffic coming from these sources such as from large organizations, universities and such; however this is not the general case.
 
-<a name="actionFarm">2</a>:  We've evolved the term click farm into action farm to better suit the mobile world since having people manually click, install and use an app is also carried out as fraud. Remember that payback on installs is significantly higher than on clicks or views
+<a name="actionFarm">2</a>:  We've evolved the term click farm into action farm to better suit the mobile world since having people manually click, install and use an app is also carried out as fraud. Remember that payback on installs is significantly higher than on clicks or views.
 
 <a name="installDefinition">3</a>: Here an install is defined as the user's first in-app event reported by the tracking platform.
 

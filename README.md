@@ -117,3 +117,9 @@ By default this theme will truncate your content by 40 lines. If you need to add
 
 Change the values on `confg-build.yml` and run `gulp ready` to compile, lint and optimize assets. Push it!
 
+# Docker 
+### build
+Build the docker image with `create_docker.sh`
+
+### run
+Just use `./run_docker.sh`

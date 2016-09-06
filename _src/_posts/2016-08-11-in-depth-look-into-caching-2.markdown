@@ -186,7 +186,7 @@ Stores come in all forms and colors, but we use just a few that we found useful:
    No surprise there. Within files, you can store data. So it works very well to
    cache lots of stuff, especially big objects that can be trivially mapped into
    files. We use it preferentially when the file can be readily used mmap'd. Yes,
-   that's two "m"s. Go read the link, it's black magic. I'll wait. Only sad thing is that it's 
+   that's two "m"s. Go read [the link](https://deplinenoise.wordpress.com/2013/03/31/fast-mmapable-data-structures/), it's black magic. I'll wait. Only sad thing is that it's 
    server-local: mmapping files over networked filesystems isn't advisable.
 
  * **S3**

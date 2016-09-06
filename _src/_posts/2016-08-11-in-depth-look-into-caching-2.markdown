@@ -289,7 +289,7 @@ There are many ways to counter this:
  
  * **Mix and match**
  
-   You can both coordinate *and* randomize. Useful if the
+   You can both coordinate *and* randomize. Useful if
    coordination itself becomes a bottleneck (and it will).
 
 For coordination, a well known pattern, at least in the python community, is the 

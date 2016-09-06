@@ -24,8 +24,8 @@ milliseconds because... well, teenagers are impatient.
 <!--excerpt.end-->
 
 So we talked about how we want to cache everything, how to decide the TTL,
-more or less, and all those things that you can read on our previous post
-on the matter.
+more or less, and all those things that you can read on [our previous post
+on the matter]({{ site.url }}/python/in-depth-look-into-caching-1/).
 
 But we didn't pause to ponder what would happen if we had 2000 cores in 
 a few hundred servers all hitting the database to fetch that address for that
@@ -346,7 +346,7 @@ tiers could simply "notify" lower tiers when they change something.
 And this is what coherence gossip is all about. If you have a suitable pub/sub channel,
 every worker can publish task-started, finished and aborted messages, and respond to
 general queries about tasks in progress (for new workers that haven't been paying attention
-to previous chatter), and you can solve both concurrency and coherence like this.
+to previous chatter), and you can solve both concurrency and coherence issues like this.
 
 With suitable filtering of channel subscriptions, you can even avoid having gossip
 traffic grow as O(N<sup>2</sup>) (which would really suck).

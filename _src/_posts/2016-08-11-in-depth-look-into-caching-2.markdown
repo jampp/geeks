@@ -201,7 +201,9 @@ be extremely useful to store snapshots of slow-evolving cache stores, so we'll i
 
    Serialized structures in such a way that you can use
    them as-is, directly from the file, like inverted indexes, or flat buffers
-   (as in Google's library).
+   (as in Google's library). The key difference from a filesystem-based cache being
+   that bundles store all key-value pairs in a single memory-mapped region, as
+   opposed to storing one key-value pair per file.
 
 We'll certainly talk more about the various stores in a follow-up post. Lots of
 cool things to talk about here. But for now let's concentrate on big architectural

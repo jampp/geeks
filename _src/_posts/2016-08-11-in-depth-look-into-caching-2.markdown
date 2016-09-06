@@ -41,29 +41,39 @@ And things *will* go wrong.
 
 When we work at those scales, several things can and will get out of hand. Just to name a few:
 
- * **Memcache dies under the stress**: yes, we know, memcache is fast. Or redis, whatever
+ * **Memcache dies under the stress**
+ 
+   Yes, we know, memcache is fast. Or redis, whatever
    you use. But at some point you realize that even the titanic sinks. Or memcache in this case. 
    The problem: you're hammering your memcache instance with 2000x redundancy. Call that overkill?
  
- * **Split-brain**: some of the workers on the fleet think the above cat is the one,
+ * **Split-brain**
+ 
+   Some of the workers on the fleet think the above cat is the one,
    while others think it's this one: 
 
-![Cute kitty](https://d2br548mr8rnz3.cloudfront.net/imgsrv/tn/320/240/https%3A//pixabay.com/static/uploads/photo/2015/09/16/20/15/kitten-943275_960_720.jpg){: .center-image }
+![Another cute kitty](https://d2br548mr8rnz3.cloudfront.net/imgsrv/tn/320/240/https%3A//pixabay.com/static/uploads/photo/2015/09/16/20/15/kitten-943275_960_720.jpg){: .center-image }
 
 And all of a sudden millions of people are torn apart by an impossible choice.
 When you've got more than one source of truth, shit happens. We've all failed to learn
 this universal truth.
    
- * **Concurrent redundant recomputations**: say you escape from the above, you may find
+ * **Concurrent redundant recomputations**
+ 
+   Say you escape from the above, you may find
    yourself with another sinking boat - your database. Everything was fine until this huge
    entry expired and you've got 200 copies of the same query bringing your database to a
    halt. Servers need to cooperate to avoid this chaos.
 
- * **The home page is slow**. Wasn't caching supposed to fix this? Well, yeahnotsomuch.
+ * **The home page is slow**
+ 
+   Wasn't caching supposed to fix this? Well, yeahnotsomuch.
    Sometimes on-demand refresh isn't fast enough. That's especially the case for insanely
    popular items that may get queued behind a sea of irrelevant outliers.
 
- * **The impossible tradeoff**: you need more compute power, and add more cores. But since
+ * **The impossible tradeoff**
+
+   You need more compute power, and add more cores. But since
    each core needs its quite huge L1 cache, you ran out of RAM again! Something's hinky.
 
 Ok, that's a lot of ground to cover, so lets start from the beginning and see what we can
@@ -86,16 +96,22 @@ to start naive.
 
 At this stage of naivety, you may have one of the following very basic architectures:
 
- * **Single-tier shared cache**: all workers in your fleet communicate to a single, shared
+ * **Single-tier shared cache**
+ 
+   All workers in your fleet communicate to a single, shared
    memcache (or memcache-like) service. The service might be a single memcache instance or
    a cluster of memcaches, but it works as a whole. And if it fails, your entire system
    goes down. Ouch.
 
- * **Single-tier in-process cache**: the proverbial dict. Or LRU. It's a miracle it managed
+ * **Single-tier in-process cache**
+ 
+   The proverbial dict. Or LRU. It's a miracle it managed
    to scale like this, but sometimes it just works. For a while. It's resilient, though.
    At least that can be said about this approach.
    
- * **Two-tier in-process LRU + memcache**: we call the LRU the L1, and memcache the L2. Savvy.
+ * **Two-tier in-process LRU + memcache**
+ 
+   We call the LRU the L1, and memcache the L2. Savvy.
    Just, sometimes, not enough.
 
 The problem with the single-tier architecture is, obviously, the huge, red, blinking,
@@ -113,12 +129,14 @@ items, which in all likelihood you have (or caching wouldn't be very useful), ev
 best consistent hashing scheme won't avoid the overload of whichever shard gets to host
 this evil most frequently accessed item.
 
+![Death by a thousand cuts](../src/geeks/_src/_assets/images/caching_death_by_a_thousand_cuts.jpg){: .center-image }
+
 The two-tier architecture can handle this better, since it has an L1 that will absorb
 a portion of the bandwidth and make the whole network more efficient. But as your fleet
 grows, the efficiency of the L1 gets diluted, and the architecture quickly degenerates
 back into the behavior of the single-tier one.
 
-We're not even going to bother criticising the single-tier in-process one. Noone could
+We're not even going to bother criticising the single-tier in-process one. No one could
 expect that a reasonably large fleet using that strategy wouldn't DoS the database
 with redundant work, as each worker in the fleet computes the same thing over and over.
 
@@ -145,32 +163,42 @@ this naive two-tier *LRU + memcache* way, to produce enough cuteness for today's
 
 Stores come in all forms and colors, but we use just a few that we found useful:
 
- * **The LRU hash map**. It combines a hash map (to access values by key) with a
+ * **The LRU hash map**
+ 
+   It combines a hash map (to access values by key) with a
    pririty queue (by last access time) to be able to evict the least-recently-used
    item when space runs short. It's a fast, low-latency, flexible in-process store 
    that can serve many use cases, so it's a workhorse of any real-time deployment.
 
- * **Memcache**. We know it, no need to waste e-ink describing it further. It does
+ * **Memcache**
+ 
+   We know it, no need to waste e-ink describing it further. It does
    have a nasty drawback that it has several... uncomfortable limits. For one,
    values cannot be bigger than 1MB in size. Sometimes you need more. For another,
    as any remote caching service will require - any out-of-process one in fact - it
    requires serialization of both keys and values, and that's CPU-intensive.
 
- * **The filesystem**. With an appropriate layout of course, it can store files.
+ * **The filesystem**
+ 
+   With an appropriate layout of course, it can store files.
    No surprise there. Within files, you can store data. So it works very well to
    cache lots of stuff, especially big objects that can be trivially mapped into
    files. We use it preferentially when the file can be readily used mmap'd. Yes,
    that's two "m"s. Look that up, it's magic. Only sad thing is that it's 
    server-local: mmapping files over networked filesystems isn't advisable.
 
- * **S3**. Kinda like the filesystem, but remote. It does preclude mmapping, sadly,
+ * **S3**
+ 
+   Kinda like the filesystem, but remote. It does preclude mmapping, sadly,
    but if you don't need to mmap, it's a good option. 
    Filesystem over NFS works for that case too.
  
 And while the following isn't technically a cache store, since it's static, it can
 be extremely useful to store snapshots of slow-evolving cache stores, so we'll include:
 
- * **Flat-buffer bundles**. Serialized structures in such a way that you can use
+ * **Flat-buffer bundles**
+
+   Serialized structures in such a way that you can use
    them as-is, directly from the file, like inverted indexes, or flat buffers
    (as in Google's library).
 
@@ -182,19 +210,19 @@ decisions.
 
 All those stores can be combined to form a sort of composite cache store. The most
 common combination method is the inclusive tiered cache. Such caches are composed
-of N tiers, L1 to LN, and lookups test the tiers in increasing order until a fresh
-item is found in tier L(i). When that happens, that item is "promoted" into lower
+of _N_ tiers, _L1_ to _LN_, and lookups test the tiers in increasing order until a fresh
+item is found in tier _Li_. When that happens, that item is "promoted" into lower
 tiers for further access.
 
 This works well to combine the properties of cache stores. If S3 has unbounded size
 but cannot mmap files, but the filesystem can map them but takes long to do so,
 we can hold already-mapped files in an LRU, then we can make a tiered cache with:
 
- * L1 = in-process LRU
+ * _L1_ = in-process LRU
  
- * L2 = local filesystem
+ * _L2_ = local filesystem
  
- * L3 = S3
+ * _L3_ = S3
  
 L1 cannot hold many items (due to max open file limits), but that's ok because
 when we have too many, we can close one to open another. The local filesystem
@@ -216,8 +244,9 @@ Cool.
 
 ###Concurrent redundant recomputations
 
-This is a hard one. This is where having a library (coff [chorde](https://bitbucket.org/claudiofreire/chorde/) coff) abstracting 
-away "good solutions" (which can certainly evolve in time) is a gold mine.
+This is a hard one. This is where having a library 
+(_coff_ [chorde](https://bitbucket.org/claudiofreire/chorde/) _coff_) 
+abstracting away "good solutions" (which can certainly evolve in time) is a gold mine.
 
 This along with the next (coherence) are probably two of the most difficult problems
 of adding a cache to a growing system, and it deserves respect.
@@ -235,24 +264,33 @@ limited database.
 
 There are many ways to counter this:
 
- * **Use a task queue** (like celery) to sort out and de-duplicate tasks. A simple
+ * **Use a task queue** (like celery) 
+ 
+   ..to to sort out and de-duplicate tasks. A simple
    way to de-duplicate is to check the cache key for freshness before starting
    an expensive task, but some queues natively support task de-duplication
    (or write-coalescence), which would of course be a good thing.
    
- * **Randomize refresh times**. This is so simple it's embarrasing, but it's
+ * **Randomize refresh times**
+ 
+   This is so simple it's embarrasing, but it's
    surprisingly effective. Spreading the load in time is a neat secondary effect.
    Just make each of your workers pick a different, random refresh rate. This
    will cause some workers to effectively become brokers without having to code
    any complicated logic. Sadly it gives no guarantees, but it's very cheap to
    implement.
  
- * **Coordinate**, explicitly, among workers. There are many ways. We'll discuss some.
+ * **Coordinate**
  
- * **Mix and match**. You can both coordinate *and* randomize. Useful if the
+   Explicitly, among workers. There are many ways. We'll discuss some.
+ 
+ * **Mix and match**
+ 
+   You can both coordinate *and* randomize. Useful if the
    coordination itself becomes a bottleneck (and it will).
 
-For coordination, a well known pattern is the **dogpile locking** pattern, where keys are
+For coordination, a well known pattern, at least in the python community, is the 
+**dogpile locking** pattern (named after the library that made it popular), where keys are
 marked in the cache as "locked" when a worker is about to start a recomputation.
 This needs support from the cache store (whatever it may be) for some atomic
 locking operations, and is sensible to dead workers that abort a computation
@@ -294,6 +332,8 @@ data that doesn't match what others have. If your requests are routed round-robi
 or in a way that doesn't guarantee users will hit the same worker every time,
 then some times they'll see one value, and some times they'll see another, confusing
 the hell out of them. Maybe even starting wars! (hey, kittens are serious business)
+
+![Which is it?](../src/geeks/_src/_assets/images/caching_split_brain.jpg){: .center-image }
 
 The problem is, lower tiers need to hear when an upper tier updates a key they're
 holding onto. Checking every time would work, but defeat the purpose of having fast,
@@ -341,6 +381,8 @@ Our current implementation tries to be fully distributed, and does, roughly, the
  
  6. When joining the fleet as a broker, issue a general request for WIP entries to start serving.
 
+![Coherence gossip through ZMQ](../src/geeks/_src/_assets/images/zmq_coherence.jpg){: .center-image }
+
 It's a complex protocol, with lots of nuances, but it keeps all tiers consistent, and that's 
 worth the effort. Notice that the gossip involves only keys, never values. It makes little sense
 marshalling values early among workers, since they may never need them. It's best to simply remove
@@ -365,9 +407,9 @@ refreshing them in the cache, just to avoid the nightmare above.
 Maybe you don't even need to query the LRU to get the MFU - sometimes it's as predictable as "the home page".
 You know, the page everybody has to look at before they start using your service. Which is kind of predictable.
 
-##So long (and thanks for all the fish)
+##So long (has this post been)
 
-So long (has this post been), and lets better leave some for later.
+And thanks for all the fish. Lets better leave some for later.
 
 In the next post, we'll take a deep dive into the various data structures one can use as cache stores,
 and some tools to tackle the last problem we mentioned before, that *impossible tradeoff*.

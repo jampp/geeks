@@ -235,7 +235,7 @@ tier shields our system from that latency.
 
 So mature caching architectures start to take shape, in the form of multi-tier
 cache stores made out of complementing technologies, and we solve the bandwidth
-bottleneck since the L2 can now absorb a lot of the bandwidth going to/from
+bottleneck, since the L2 can now absorb a lot of the bandwidth going to/from
 the L3, making the L3 scale better. It may even hold its own better during an L3
 outage, since the L2 is big enough to hold lots of entries. Still not all, but
 it's good progress towards eliminating the SPF too.

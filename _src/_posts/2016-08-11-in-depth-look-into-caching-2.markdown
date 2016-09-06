@@ -161,6 +161,7 @@ together to form a solution that solves a need for caching. Like, in our case,
 the *kitten store*: it uses many stores cooperating in some fashion, let's say
 this naive two-tier *LRU + Memcache* way, to produce enough cuteness for today's teens.
 
+So a tier is the role a cache store fullfils in the whole architecture.
 Stores come in all forms and colors, but we use just a few that we found useful:
 
  * **The LRU hash map**

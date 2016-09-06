@@ -167,7 +167,7 @@ Stores come in all forms and colors, but we use just a few that we found useful:
  * **The LRU hash map**
  
    It combines a hash map (to access values by key) with a
-   pririty queue (by last access time) to be able to evict the least-recently-used
+   priority queue (by last access time) to be able to evict the least-recently-used
    item when space runs short. It's a fast, low-latency, flexible in-process store 
    that can serve many use cases, so it's a workhorse of any real-time deployment.
 

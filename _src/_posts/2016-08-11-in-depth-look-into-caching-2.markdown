@@ -129,7 +129,7 @@ items, which in all likelihood you have (or caching wouldn't be very useful), ev
 best consistent hashing scheme won't avoid the overload of whichever shard gets to host
 this evil most frequently accessed item.
 
-![Death by a thousand cuts](../src/geeks/_src/_assets/images/caching_death_by_a_thousand_cuts.jpg){: .center-image }
+![Death by a thousand cuts]({{ site.url }}/assets/images/caching_death_by_a_thousand_cuts.jpg){: .center-image }
 
 The two-tier architecture can handle this better, since it has an L1 that will absorb
 a portion of the bandwidth and make the whole network more efficient. But as your fleet
@@ -333,7 +333,7 @@ or in a way that doesn't guarantee users will hit the same worker every time,
 then some times they'll see one value, and some times they'll see another, confusing
 the hell out of them. Maybe even starting wars! (hey, kittens are serious business)
 
-![Which is it?](../src/geeks/_src/_assets/images/caching_split_brain.jpg){: .center-image }
+![Which is it?]({{ site.url }}/assets/images/caching_split_brain.jpg){: .center-image }
 
 The problem is, lower tiers need to hear when an upper tier updates a key they're
 holding onto. Checking every time would work, but defeat the purpose of having fast,
@@ -381,7 +381,7 @@ Our current implementation tries to be fully distributed, and does, roughly, the
  
  6. When joining the fleet as a broker, issue a general request for WIP entries to start serving.
 
-![Coherence gossip through ZMQ](../src/geeks/_src/_assets/images/zmq_coherence.jpg){: .center-image }
+![Coherence gossip through ZMQ]({{ site.url }}/assets/images/zmq_coherence.jpg){: .center-image }
 
 It's a complex protocol, with lots of nuances, but it keeps all tiers consistent, and that's 
 worth the effort. Notice that the gossip involves only keys, never values. It makes little sense

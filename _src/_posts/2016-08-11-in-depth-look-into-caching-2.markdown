@@ -141,7 +141,7 @@ expect that a reasonably large fleet using that strategy wouldn't DoS the databa
 with redundant work, as each worker in the fleet computes the same thing over and over.
 
 This is not to say that those strategies don't have a niche place, in less critical
-parts of the system. But those parts don't need their own blog posts now do they?
+parts of the system. But those parts don't need their own blog posts now, do they?
 
 ###Meet the cache stores
 

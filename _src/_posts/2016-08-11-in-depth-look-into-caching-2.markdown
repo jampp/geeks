@@ -43,9 +43,9 @@ When we work at those scales, several things can and will get out of hand. Just 
 
  * **Memcache dies under the stress**
  
-   Yes, we know, memcache is fast. Or redis, whatever
-   you use. But at some point you realize that even the titanic sinks. Or memcache in this case. 
-   The problem: you're hammering your memcache instance with 2000x redundancy. Call that overkill?
+   Yes, we know, Memcache is fast. Or Redis, whatever
+   you use. But at some point you realize that even the Titanic sinks. Or Memcache in this case.
+   The problem: you're hammering your Memcache instance with 2000x redundancy. Call that overkill?
  
  * **Split-brain**
  
@@ -76,16 +76,16 @@ this universal truth.
    You need more compute power, and add more cores. But since
    each core needs its quite huge L1 cache, you ran out of RAM again! Something's hinky.
 
-Ok, that's a lot of ground to cover, so lets start from the beginning and see what we can
+Ok, that's a lot of ground to cover, so let's start from the beginning and see what we can
 do with a few kilobytes of blog post.
 
 ##Bottlenecks and single points of failure
 
 If you're lazy like all good programmers, you'll probably start with a single lonesome
 dictionary (or LRU if you're cunning) as your cache, but soon grow beyond the critical
-mass necessary to break the laziness barrier and get busy putting stuff into a memcache.
+mass necessary to break the laziness barrier and get busy putting stuff into a Memcache.
 
-And you may stay there for a long while, because if memcache doesn't rock, it's only because
+And you may stay there for a long while, because if Memcache doesn't rock, it's only because
 it doesn't know how to play the guitar just yet. So since it can take quite a pounding,
 you'll realize quite late in life that you're abusing it enough that it's starting to cry out in pain.
 And if you're lucky there's going to be some monitoring in place to hear that tree fall.
@@ -99,8 +99,8 @@ At this stage of naivety, you may have one of the following very basic architect
  * **Single-tier shared cache**
  
    All workers in your fleet communicate to a single, shared
-   memcache (or memcache-like) service. The service might be a single memcache instance or
-   a cluster of memcaches, but it works as a whole. And if it fails, your entire system
+   Memcache (or Memcache-like) service. The service might be a single Memcache instance or
+   a cluster of Memcaches, but it works as a whole. And if it fails, your entire system
    goes down. Ouch.
 
  * **Single-tier in-process cache**
@@ -109,9 +109,9 @@ At this stage of naivety, you may have one of the following very basic architect
    to scale like this, but sometimes it just works. For a while. It's resilient, though.
    At least that can be said about this approach.
    
- * **Two-tier in-process LRU + memcache**
+ * **Two-tier in-process LRU + Memcache**
  
-   We call the LRU the L1, and memcache the L2. Savvy.
+   We call the LRU the L1, and Memcache the L2. Savvy.
    Just, sometimes, not enough.
 
 The problem with the single-tier architecture is, obviously, the huge, red, blinking,
@@ -153,13 +153,13 @@ ready to be retrieved at a moment's notice. You're already reading about caching
 probably have enough of an idea about this concept so we don't need much detail.
 
 That, we call a cache store. Something that stores stuff. It may be a hash map, it
-may be an LRU, a service like memcache, or even a database if it's faster than the
+may be an LRU, a service like Memcache, or even a database if it's faster than the
 source of the data it's storing - why not.
 
 On a higher level, a cache may refer to an architecture - a way of knitting stores
 together to form a solution that solves a need for caching. Like, in our case,
-the *kitten store*: it uses many stores cooperating in some fashion, lets say
-this naive two-tier *LRU + memcache* way, to produce enough cuteness for today's teens.
+the *kitten store*: it uses many stores cooperating in some fashion, let's say
+this naive two-tier *LRU + Memcache* way, to produce enough cuteness for today's teens.
 
 Stores come in all forms and colors, but we use just a few that we found useful:
 
@@ -203,7 +203,7 @@ be extremely useful to store snapshots of slow-evolving cache stores, so we'll i
    (as in Google's library).
 
 We'll certainly talk more about the various stores in a follow-up post. Lots of
-cool things to talk about here. But for now lets concentrate on big architectural
+cool things to talk about here. But for now let's concentrate on big architectural
 decisions.
 
 ###Meet the tiered cache

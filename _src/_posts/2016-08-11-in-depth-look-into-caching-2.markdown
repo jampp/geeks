@@ -150,7 +150,8 @@ the dictionary definition, caches can be understood in two levels.
 
 On a low level, a cache may be a data structure or service that holds onto values
 ready to be retrieved at a moment's notice. You're already reading about caching so you
-probably have enough of an idea about this concept so we don't need much detail.
+probably have enough of an idea about this concept, we don't need to go any deeper
+than that.
 
 That, we call a cache store. Something that stores stuff. It may be a hash map, it
 may be an LRU, a service like Memcache, or even a database if it's faster than the
@@ -161,7 +162,7 @@ together to form a solution that solves a need for caching. Like, in our case,
 the *kitten store*: it uses many stores cooperating in some fashion, let's say
 this naive two-tier *LRU + Memcache* way, to produce enough cuteness for today's teens.
 
-So a tier is the role a cache store fullfils in the whole architecture.
+So a tier is the role a cache store fulfills in the whole architecture.
 Stores come in all forms and colors, but we use just a few that we found useful:
 
  * **The LRU hash map**
@@ -185,7 +186,7 @@ Stores come in all forms and colors, but we use just a few that we found useful:
    No surprise there. Within files, you can store data. So it works very well to
    cache lots of stuff, especially big objects that can be trivially mapped into
    files. We use it preferentially when the file can be readily used mmap'd. Yes,
-   that's two "m"s. Look that up, it's magic. Only sad thing is that it's 
+   that's two "m"s. Go read the link, it's black magic. I'll wait. Only sad thing is that it's 
    server-local: mmapping files over networked filesystems isn't advisable.
 
  * **S3**
@@ -234,7 +235,7 @@ can - we'll just have to download them (takes time), but the local filesystem
 tier shields our system from that latency.
 
 So mature caching architectures start to take shape, in the form of multi-tier
-cache stores made out of complementing technologies, and we solve the bandwidth
+cache stores made out of complementing technologies. We also solve the bandwidth
 bottleneck, since the L2 can now absorb a lot of the bandwidth going to/from
 the L3, making the L3 scale better. It may even hold its own better during an L3
 outage, since the L2 is big enough to hold lots of entries. Still not all, but
@@ -257,7 +258,7 @@ of adding a cache to a growing system, and it deserves respect.
 That said, there are a couple of simple techniques that can have a huge impact on
 the performance of your cache. It doesn't always need to be perfect. But if our
 hypothetical "kitty store" were to be extremely heavy on our
-resources, it becomes quite important guaranteeing that we won't do something twice.
+resources, guaranteeing that we won't do something twice becomes quite important.
 
 And that's what concurrency control is about. When a key in the cache is about to expire,
 if we have a big cluster of machines handling requests, all of them will want
@@ -267,7 +268,7 @@ limited database.
 
 There are many ways to counter this:
 
- * **Use a task queue** (like celery) 
+ * **Use a task queue** (like Celery) 
  
    ..to to sort out and de-duplicate tasks. A simple
    way to de-duplicate is to check the cache key for freshness before starting
@@ -292,7 +293,7 @@ There are many ways to counter this:
    You can both coordinate *and* randomize. Useful if
    coordination itself becomes a bottleneck (and it will).
 
-For coordination, a well known pattern, at least in the python community, is the 
+For coordination, a well known pattern, at least in the Python community, is the 
 **dogpile locking** pattern (named after the library that made it popular), where keys are
 marked in the cache as "locked" when a worker is about to start a recomputation.
 This needs support from the cache store (whatever it may be) for some atomic
@@ -322,7 +323,7 @@ those things. Redis *pub/sub* also works well.
 Keeping the gossip bus ticking while workers come and go, fail, get stuck, explode
 or simply vanish, is no small feat. In fact [chorde](https://bitbucket.org/claudiofreire/chorde/) is still evolving in that
 regard, and that's probably the biggest benefit of using a library, where the
-experience and fixes of many users can be pooled. You can also opt for zookeeper,
+experience and fixes of many users can be pooled. You can also opt for Zookeeper,
 if you favour heavyweight solutions, but you surely want to draw on other projects'
 experiences.
 

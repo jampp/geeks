@@ -17,7 +17,7 @@ author: klauss
 Time to post about caching again.
 
 This time, we're going to concentrate on the complexities of caching at scale.
-You know, you have a big honking piece of a datacenter all crunching numbers
+You know, you have a big honking piece of a datacenter crunching numbers
 so you can post the most awesome kitty pics. That's what the internet is for
 after all. And you want your awesome kitty pics to appear in less than 100
 milliseconds because... well, teenagers are impatient.
@@ -270,7 +270,7 @@ There are many ways to counter this:
 
  * **Use a task queue** (like Celery) 
  
-   ..to to sort out and de-duplicate tasks. A simple
+   ..to sort out and de-duplicate tasks. A simple
    way to de-duplicate is to check the cache key for freshness before starting
    an expensive task, but some queues natively support task de-duplication
    (or write-coalescence), which would of course be a good thing.

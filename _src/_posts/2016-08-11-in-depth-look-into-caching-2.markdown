@@ -239,7 +239,7 @@ cache stores made out of complementing technologies. We also solve the bandwidth
 bottleneck, since the L2 can now absorb a lot of the bandwidth going to/from
 the L3, making the L3 scale better. It may even hold its own better during an L3
 outage, since the L2 is big enough to hold lots of entries. Still not all, but
-it's good progress towards eliminating the SPF too.
+it's making good progress towards eliminating the SPF too.
 
 And if you need an L4, don't be shy. You might need one, say, if you have multiple
 datacenters.

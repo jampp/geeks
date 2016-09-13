@@ -51,21 +51,25 @@
     figure
       margin-bottom: 20px
 
+    ol 
+      list-style: decimal
+
+      li
+        padding-left: 10px
+
+    ul 
+      list-style: disc
+
     ol, ul
-      list-style: outside none none
-      padding: 0
       margin-bottom: 1em
       font-size: 16px
       letter-spacing: 0.3px
       font-family: Yantramanav
       font-weight: 300
+      margin-left: 15px
+
       li
         line-height: 30px
-        &:before
-          content: "•"
-          font-size: 18px
-          padding-right: .5em
-          float: left;
 
     table
       font-size: 16px
@@ -82,6 +86,14 @@
 
       th
         color: #888
+
+    sup 
+      font-size: 70%
+      position: relative
+      top: -3px
+
+    em 
+      font-style: italic
 
     .center-image 
       margin: 0 auto

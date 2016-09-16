@@ -186,7 +186,7 @@ Stores come in all forms and colors, but we use just a few that we found useful:
    No surprise there. Within files, you can store data. So it works very well to
    cache lots of stuff, especially big objects that can be trivially mapped into
    files. We use it preferentially when the file can be readily used mmap'd. Yes,
-   that's two "m"s. Go read [the link](http://lbrandy.com/blog/2010/11/memory-mapped-io-for-fun-and-profit/), it's black magic. I'll wait. Only sad thing is that it's 
+   that's two "m"s. Go read [the link](http://lbrandy.com/blog/2010/11/memory-mapped-io-for-fun-and-profit/), it's black magic. I'll wait. The only sad thing is that it's 
    server-local: mmapping files over networked filesystems isn't advisable.
 
  * **S3**
@@ -344,7 +344,7 @@ holding onto. Checking every time would work, but defeat the purpose of having f
 low-latency cache stores as lower tiers. So it would be best if, somehow, the upper
 tiers could simply "notify" lower tiers when they change something.
 
-And this is what coherence gossip is all about. If you have a suitable pub/sub channel,
+And this is what *coherence gossip* is all about. If you have a suitable pub/sub channel,
 every worker can publish task-started, finished and aborted messages, and respond to
 general queries about tasks in progress (for new workers that haven't been paying attention
 to previous chatter), and you can solve both concurrency and coherence issues like this.

@@ -82,7 +82,7 @@ done
 
 As our usage of Presto grew, we developed many ways of improving its performance and stability.
 
-One common issue with Presto is that, when handling a join between two large tables, Presto’s process, in the node that is making part of the join, might be killed due to **OoM exception**. Since most of the queries we run in Presto are for analytics, it is not a big issue for us if one of the queries fails. But, as Amazon EMR is configured by default, once a Presto process dies, there is no monitor that restarts it. Therefore, when you run many large queries the nodes available for Presto to process data were decreasing over time. To fix this issue, we run a bootstrap action for each node in the cluster that installs and configures [Monit](https://mmonit.com/monit/) to monitor the Presto service in each node.
+One common issue with Presto is that, when handling a join between two large tables, Presto’s process, in the node that is making part of the join, might be killed due to **OoM exception**. Since most of the queries we run in Presto are for analytics, it is not a big issue for us if one of the queries fails. But, as Amazon EMR is configured by default, once a Presto process dies, there is no monitor that restarts it. Therefore, when you run many large queries, the nodes available for Presto to process data were decreasing over time. To fix this issue, we run a bootstrap action for each node in the cluster that installs and configures [Monit](https://mmonit.com/monit/) to monitor the Presto service in each node.
 
 In the **config.properties** file we added:
 
@@ -116,7 +116,7 @@ Other important aspects to consider when tuning Presto to improve its performanc
  
  - **hive.parquet_predicate_pushdown_enabled** pretty self explanatory.
  
- - **hive.parquet_optimized_reader_enabled** enable optimized Parquet reader for PrestoDB. This reader is still experimental but we have tried most of the usual queries we use and haven’t found a differences with the legacy reader. We still only use it in queries where approximate results are acceptable.
+ - **hive.parquet_optimized_reader_enabled** enable optimized Parquet reader for PrestoDB. This reader is still experimental but we have tried most of the usual queries we use and haven’t found differences with the legacy reader. We still only use it in queries where approximate results are acceptable.
  
  - **task_intermediate_aggregation** this option forces intermediate aggregation of results which improves the performance of queries that do aggregations over very large data sets.  
  

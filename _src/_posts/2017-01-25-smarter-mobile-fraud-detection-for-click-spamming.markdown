@@ -115,9 +115,3 @@ If you found any part of this interesting and would like to work in a cool compa
 [^3]: https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution
 [^4]: https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)
 [^5]: https://en.wikipedia.org/wiki/Chi-squared_distribution
-
-
-[//]: # (     Quick FAQ on Jekyll-Markdown synthax (the one used for our blogposts)
-[//]: # (Latex type equations synthax is: $$f(x)$$ and $f(x)$ for same-line equations.)
-[//]: # ( Hyperlinks are set as:  `[MY_WORD][MY_REFERENCE]` with the link set in the reference as `[MY_REFERENCE]: http:my_url.com`)
-[//]: # (   Images are inserted as:  `![ IMAGE_SCREEN_NAME ]({{ site.url }}/PATH/TO/IMG.png "HERE GOES ALT-TEXT"){: .center-image }` )

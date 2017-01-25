@@ -113,7 +113,18 @@ By default this theme will truncate your content by 40 lines. If you need to add
       "BLOCKQUOTE TEXT"
     {% endblockquote %}
 
+**References and URls**
+These are set as:  `[MY_WORD][MY_REFERENCE]`  and then we can set the referrenced content at the bottom ie. `[MY_REFERENCE]: http:my_url.com`
+
+**Math latex-type Equations**
+Regular equations synthax can be used as `$$f(x)$$` and `$f(x)$` for same-line equations. Also `\[ e(x)\]` works.
+
+**Inserting Images**
+They can be inserted as  `![ IMAGE_SCREEN_NAME ]({{ site.url }}/PATH/TO/IMG.png "HERE GOES ALT-TEXT"){: .center-image }`
+
+**Fake Comments**
+If you want to comment text in the post source files you can abuse broken links with `[//]: # (your comment in here. Be sure not to escape internal bracket chars)`
+
 ## Shipping to production
 
 Change the values on `confg-build.yml` and run `gulp ready` to compile, lint and optimize assets. Push it!
-

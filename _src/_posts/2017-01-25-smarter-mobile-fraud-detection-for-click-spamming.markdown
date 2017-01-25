@@ -27,7 +27,7 @@ With impact forecasts of mobile fraud in 2016 that varied along \$1.25bn ([Foren
 
 ##Click Spamming
 
-The Invalid Traffic Detection and Filtration Guidelines Addendum made by the Media Rating Council (MRC) and the Mobile Marketing Association (MMA) states that sophisticated fraud is characterized by the need of  significant human analysis and intervention to be detected.
+The Invalid Traffic Detection and Filtration Guidelines Addendum made by the Media Rating Council (MRC) and the Mobile Marketing Association (MMA) states that sophisticated fraud is characterized by the need of  significant human analysis and intervention to be detected. In our [our previous fraud post ]({{ site.url }}/data-science/mobile-fraud/) we talked about the different types of fraud in the mobile advertisement industry and today we are going to concentrate on Click Spamming detection.
 
 Click Spamming refers to applications that generate thousands of fake impressions and/or click requests programmatically. The scammer will first run tests to extract appropriate campaign URL tokens for a specific device type or location. Next they will generate thousands of fake impressions and/or clicks which in turn steal the installs' attribution from other publishers or directly from organic traffic. An advertiser whose campaign is spammed would see huge volumes across clicks and impressions, low CVRs and good in-app-event rates.
 

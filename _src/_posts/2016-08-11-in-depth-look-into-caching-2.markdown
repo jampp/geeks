@@ -422,5 +422,3 @@ We may even have some code, which was MIA in this one. Sorry for that.
 
 See you next time.
 
-If you found any part of this interesting and would like to work in a cool company where you can tackle other challenges like this [We Are Hiring Geeks!](http://jampp.com/jobs.php "We Are Hiring Geeks!").
-

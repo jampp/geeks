@@ -18,7 +18,7 @@ With impact forecasts of mobile fraud in 2016 that varied along \$1.25bn ([Foren
 
 ##Click Spamming
 
-The Invalid Traffic Detection and Filtration Guidelines Addendum made by the Media Rating Council (MRC) and the Mobile Marketing Association (MMA) states that sophisticated fraud is characterized by the need of  significant human analysis and intervention to be detected. In our [our previous fraud post ]({{ site.url }}/data-science/mobile-fraud/) we talked about the different types of fraud in the mobile advertisement industry and today we are going to concentrate on Click Spamming detection.
+The Invalid Traffic Detection and Filtration Guidelines Addendum made by the Media Rating Council (MRC) and the Mobile Marketing Association (MMA) states that sophisticated fraud is characterized by the need of  significant human analysis and intervention to be detected. In [our previous fraud post ]({{ site.url }}/data-science/mobile-fraud/) we talked about the different types of fraud in the mobile advertisement industry and in this opportunity we are going to focus on Click Spamming detection.
 
 Click Spamming refers to applications that generate thousands of fake impressions and/or click requests programmatically. The scammer will first run tests to extract appropriate campaign URL tokens for a specific device type or location. Next they will generate thousands of fake impressions and/or clicks which in turn steal the installs' attribution from other publishers or directly from organic traffic. An advertiser whose campaign is spammed would see huge volumes across clicks and impressions, low CVRs and good in-app-event rates.
 
@@ -76,10 +76,11 @@ For our specific case we will comparing the theoretical distributions `P` with t
 ##Methodology
 
 On a periodical basis, run the following algorithm to every apps' TimeDelta data:
-   1. For each theoretical distribution, find the best fitting parameters from the data. 
-   2. Take a theoretical sample which is the same size as the empirical sample, using the aforementioned parameters.
-   3. Assess, through the KL measure, which is the distribution that fits our data. Make a special record if the distribution has a fraudulent nature.
-   4.  Get the 95th theoretical percentile as our threshold, if the best-fit distribution is non-fraudulent.
+
+1. For each theoretical distribution, find the best fitting parameters from the data.
+2. Take a theoretical sample which is the same size as the empirical sample, using the aforementioned parameters.
+3. Assess, through the KL measure, which is the distribution that fits our data. Make a special record if the distribution has a fraudulent nature.
+4. Get the 95th theoretical percentile as our threshold, if the best-fit distribution is non-fraudulent.
 
 Here, we must remind readers that we have chosen weak theoretical distributions to fit the fraudulent cases. This means that we are imposing a higher barrier to the fraudulent case to be selected. This is because we are lowering the amount of false positives cases and because this will give us more certainty on our classification.
 
@@ -91,11 +92,11 @@ Below, we've included two examples on the output of the algorithm when there's n
 
 In this image bins are grouped every one hundred minutes. This sample shows all values extremely wrapped around minimum values, where the 95th percentile amounts slightly over a day and a half. 
 
-![Fraud App Threshold Example 2 ]({{ site.url }}/assets/images/fraud/hist-app_threshold_value2.png "For this case we se a similar behavior but we find the decay to be much faster. The tail is much shorter than before and the threshold is set slightly over three hours. This is significantly different to the previous case."){: .center-image }
+![Fraud App Threshold Example 2 ]({{ site.url }}/assets/images/fraud/hist-app_threshold_value2.png "For this case we see a similar behavior but we find the decay to be much faster. The tail is much shorter than before and the threshold is set slightly over three hours. This is significantly different to the previous case."){: .center-image }
 
-For this case we se a similar behavior but we find the decay to be much faster. The tail is much shorter than before and the threshold is set slightly over three hours. This is significantly different to the previous case.
+For this case we see a similar behavior but we find the decay to be much faster. The tail is much shorter than before and the threshold is set slightly over three hours. This is significantly different to the previous case.
 
-Finally, to build an install threshold for today's date, we take a timespan of data and record all of the the thresholds calculated from those cases which were were not regarded as coming from fraudulent behavior. From this data, we calculate the median threshold for each app and this value will be our cut. The median statistic has the advantage of being robust to outliers and this is important for cases where fraudulent behavior has slipped through as "normal". 
+Finally, to build an install threshold for today's date, we take a timespan of data and record all of the thresholds calculated from those cases which were not regarded as coming from fraudulent behavior. From this data, we calculate the median threshold for each app and this value will be our cut. The median statistic has the advantage of being robust to outliers and this is important for cases where fraudulent behavior has slipped through as "normal". 
 
 
 #Conclusion
@@ -104,12 +105,11 @@ The methods here exposed are a first iteration for fraud detection and classific
 
 We find that this algorithm is strong and flexible to account for differences among applications, where there are significant time differences  between TimeDeltas. The evaluation measures this difference by automatically fitting the best distributions and usesworks with uses it to provide a robust and thorough fraud detection system.
 
-
-If you found any part of this interesting and would like to work in a cool company where you can tackle other challenges like this [We Are Hiring Geeks!](http://jampp.com/jobs.php "We Are Hiring Geeks!").
-
-
 [ANA]: http://www.ana.net/content/show/id/botfraud-2016
 [Forensiq]: https://forensiq.com/mobile-app-fraud-study/
+
+## References
+
 [^1]: https://en.wikipedia.org/wiki/Exponential_distribution
 [^2]: https://en.wikipedia.org/wiki/Exponentiated_Weibull_distribution
 [^3]: https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution

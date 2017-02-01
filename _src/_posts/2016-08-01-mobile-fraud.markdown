@@ -22,7 +22,7 @@ Technically speaking, clicks or impressions are not exactly what people would co
 
 ![Graph 0]({{ site.url }}/assets/images/fraud/click_postback.png){: .center-image }
 
-The user initially clicks on the ad and its user agent, device ID and other metadata are being URL-encoded in the request. Their request is passed along the chain until it is finally redirected to the App/Playstore where, ideally, the user would install and open the app. Then, an event-tracking SDK integrated to the advertiser's application would report this type of in-app events back along the chain of requests. This action is named a *postback* request, which informs everyone that a user has opened the app, thus prompting an install.
+The user initially clicks on the ad and its user agent, device ID and other metadata are being URL-encoded in the request. Their request is passed along the chain until it is finally redirected to the App/Playstore where, ideally, the user would install [^3] and open the app. Then, an event-tracking SDK integrated to the advertiser's application would report this type of in-app events back along the chain of requests. This action is named a *postback* request, which informs everyone that a user has opened the app, thus prompting an install.
 
 The difficulty relies on actually verifying that the user's reported action effectively happened and wasn't just simulated. In all cases, this means establishing that a real touch on the screen or even an ad view. Faking a request or a real *action* is essentially not difficult.
 

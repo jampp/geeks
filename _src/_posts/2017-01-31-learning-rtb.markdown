@@ -17,27 +17,26 @@ auction is announced and any interested bidder has to answer with a bid price
 within a time constraint of about 100 milliseconds. The bidder that wins the
 auction pays the second-highest price and obtains the right to print a creative
 (which is just jargon for displaying an ad) on a publisher site. If the banner
-is clicked by the user further goal events might be tracked, v.g. the
+is clicked by the user, further goal events might be tracked, v.g. the
 application may be installed or opened. Obtaining a goal event is called a
 conversion.
 
 One main component of our platform is the machine learning subsystem that feeds
 the bidding subsystem with predictive models of conversion rates for different
 events of interest (clicks, installs, opens, etc.). A conversion rate for an
-event is the conditional probability of getting that event given the set of
-features that characterizes the current RTB transaction and given that we
-already printed a creative targeting that event. Why is it so important for our
-business to have good estimates of these rates? Simply because we sell
-conversions but we pay for impressions. For example, suppose one client pays us
-$\$1$ per install and we estimate the install conversion rate to be around $0.1$
-(just cheating... real world figures are well under a dismaying $0.001$ `:(`).
-Then, assuming our creative is going to get printed, we should expect an average
-profit of $\$0.1 - c$, where $c$ is the expected cost of the impression. If our
-rate estimates are grossly miscalculated we will be losing money by valuating
-the expected income too low (thus missing opportunities with $c < \$0.1$) or too
-high (thus buying non-opportunities with $c > \$0.1$)[^risk]. The bottom line is
-that our bidder may be able to pick an optimal pair (bid, creative) for the
-market transaction in course from:
+event $E$ is the conditional probability $p(E|C,T)$ of getting that event by
+printing some creative $C$ in the context of the current RTB transaction $T$.
+Why is it so important for our business to have good estimates of these rates?
+Simply because we sell conversions but we pay for impressions. For example,
+suppose one client pays us $\$1$ per install and we estimate the install
+conversion rate to be around $0.1$ (just cheating... real world figures are well
+under a dismaying $0.001$ `:(`). Then, assuming our creative is going to get
+printed, we should expect an average profit of $\$0.1 - c$, where $c$ is the
+expected cost of the impression. If our rate estimates are grossly miscalculated
+we will be losing money by valuating the expected income too low (thus missing
+opportunities with $c < \$0.1$) or too high (thus buying non-opportunities with
+$c > \$0.1$)[^risk]. The bottom line is that our bidder may be able to pick an
+optimal pair (bid, creative) for the market transaction in course from:
 (i) The estimated conditional conversion rate for the goal event.
 (ii) Our customer valuation of the goal event.
 (iii) The budget constraint for the advertising campaign.
@@ -79,8 +78,8 @@ Of course, the goal of the algorithm is to learn $\theta_t$ from
 a succession of input events $(x_1,y_1), \ldots, (x_t,y_t)$. For this
 we minimize the sum over each previously seen input event of:
 (i) (The gradient of) the log-likelihood loss, which is a [logloss][] for the
-logistic model.
-(ii) A stabilizing term that introduces some strong convexity into the mix.
+logistic model;
+(ii) A stabilizing term that introduces some strong convexity into the mix;
 (iii) Regularizing terms that combine lasso and ridge regularization.
 
 After filling in the details and translating everything to Greek:
@@ -133,10 +132,10 @@ $$
 $$
 
 Glossing over many technicalities like:
-* Keeping a huge inverse hash map, in order to recover features from hashes.
+* Keeping a huge inverse hash map, in order to recover features from hashes;
 * Following a "memory schedule" that weights each input according to the time
   elapsed since its arrival, in order to adapt to ever-changing market
-  conditions[^decay].
+  conditions[^decay];
 * Storing frequent checkpoints of the model, in order to resume from valid
   states after expected deployments or unexpected crashes.
 
@@ -146,8 +145,8 @@ with $n$ the number of non zero features) even for high dimensional data
 (millions of features). The implementation is pretty generic in the sense that
 ---besides the logloss and logit link--- custom loss and link functions can be
 passed as parameters to the optimizer. We implemented all this using Python
-(with patches of C here and there) and we are very happy with our experience and
-results.
+(with patches of C here and there), and we are very happy with our experience
+and results.
 
 Currently, we are well on our way to leverage this technology for the estimation
 of models of market clearing prices and campaign velocity of spend, which are

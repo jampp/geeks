@@ -39,7 +39,7 @@ This statistical property in the distributions is ubiquitous across apps of diff
 
 ![Fraud TimeDelta Example ]({{ site.url }}/assets/images/fraud/hist-tdelta_fraud.png "Note here that the decay has become linear and that lots of installs are still coming late."){: .center-image }
 
-In this image, the decay has become linear and that lots of installs are still coming late.
+In this image, the decay has become linear and lots of installs are still coming late.
 
 
 For the last case, we look at an example where the distribution is multimodal. At first, the decay and distribution looks like usual, but then the large slump at the end confirms this is a publisher with Click Spamming activity. 

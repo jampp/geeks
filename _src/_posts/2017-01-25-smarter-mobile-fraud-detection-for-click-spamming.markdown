@@ -42,7 +42,7 @@ This statistical property in the distributions is ubiquitous across apps of diff
 In this image, the decay has become linear and lots of installs are still coming late.
 
 
-For the last case, we look at an example where the distribution is multimodal. At first, the decay and distribution looks like usual, but then the large slump at the end confirms this is a publisher with Click Spamming activity. 
+As a last example, we look at a scenario where the distribution is multimodal. At first, the decay and distribution looks like usual, but then the large slump at the end confirms this is a publisher with Click Spamming activity. 
 
 ![Fraud TimeDelta Example 2]({{ site.url }}/assets/images/fraud/hist-timedelta_fraud2.png "Initially normal distribution with a large fradulent activity at the end."){: .center-image }
 

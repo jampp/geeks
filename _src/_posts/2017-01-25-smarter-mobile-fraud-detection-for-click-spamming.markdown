@@ -28,7 +28,7 @@ To counter this type of fraud we can consider the TimeDelta metric.
 
 This is the measure of the time it takes between click and install (the first app-open). The idea behind this metric is that, in general, _counting data_ will statistically appear as a distribution which is exponentially decreasing and with long thin tails. In general, empirical distributions that arise from the data can be characterized by these specific properties. Most of the distribution's mass would be concentrated in smaller Time Delta values, and a small percentage of the distribution would be spread out in higher values. 
 
-As an example, we take a look at a group of apps in the Classifieds business. All Time Delta measurements shown are aggregated into the same dataset, where measure is in minutes and base the data is taken for a day worth of installs. In addition, clicks could have happened anytime previous to the install.
+As an example, we take a look at a group of apps in the Classifieds business. All Time Delta measurements shown are aggregated into the same dataset, where measure is in minutes and data is taken for a day worth of installs. In addition, clicks could have happened anytime previous to the install.
 
 ![TimeDelta Example 1]({{ site.url }}/assets/images/fraud/hist-median_tdelta_global.png "Note that the histogram shows a sharp decay for the lower values of the metric with an almost constant decay value for higher time deltas."){: .center-image }
 

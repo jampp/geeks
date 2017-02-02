@@ -84,9 +84,6 @@ The stream of events from the bidder is designed as PUB/SUB message stream witho
 
 This was a very brief summary of some aspects of the systems we have in place at Jampp to effectively market apps. 
 
-If you found any part of this interesting and would like to work in a cool company where you can tackle other challenges like this [We Are Hiring Geeks!](http://jampp.com/jobs.php "We Are Hiring Geeks!").
-
-###References:
+##References
 [http://44jaiio.sadio.org.ar/sites/default/files/agranda14-30.pdf](http://44jaiio.sadio.org.ar/sites/default/files/agranda14-30.pdf)
-[http://jampp.pr.co/96504-mobile-app-marketing-platform-jampp-raises-7m-series-a-to-accelerate-growth](http://jampp.pr.co/96504-mobile-app-marketing-platform-jampp-raises-7m-series-a-to-accelerate-growth)
 

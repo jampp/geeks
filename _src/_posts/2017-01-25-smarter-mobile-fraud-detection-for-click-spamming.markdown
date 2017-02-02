@@ -18,7 +18,7 @@ With impact forecasts of mobile fraud in 2016 that varied along \$1.25bn ([Foren
 
 ##Click Spamming
 
-The Invalid Traffic Detection and Filtration Guidelines Addendum made by the Media Rating Council (MRC) and the Mobile Marketing Association (MMA) states that sophisticated fraud is characterized by the need of  significant human analysis and intervention to be detected. In our [our previous fraud post ]({{ site.url }}/data-science/mobile-fraud/) we talked about the different types of fraud in the mobile advertisement industry and today we are going to concentrate on Click Spamming detection.
+The Invalid Traffic Detection and Filtration Guidelines Addendum made by the Media Rating Council (MRC) and the Mobile Marketing Association (MMA) states that sophisticated fraud is characterized by the need of significant human analysis and intervention to be detected. In [our previous fraud post ]({{ site.url }}/data-science/mobile-fraud/) we talked about the different types of fraud in the mobile advertisement industry and in this opportunity we are going to focus on Click Spamming detection.
 
 Click Spamming refers to applications that generate thousands of fake impressions and/or click requests programmatically. The scammer will first run tests to extract appropriate campaign URL tokens for a specific device type or location. Next they will generate thousands of fake impressions and/or clicks which in turn steal the installs' attribution from other publishers or directly from organic traffic. An advertiser whose campaign is spammed would see huge volumes across clicks and impressions, low CVRs and good in-app-event rates.
 
@@ -26,7 +26,7 @@ To counter this type of fraud we can consider the TimeDelta metric.
 
 ##TimeDelta
 
-This is the measure of the time it takes between click and install (the first app-open).  The idea behind this metric is that, in general, _counting data_ will statistically appear as a distribution which is exponentially decreasing and with long thin tails. In general, empirical distributions that arise from the data can be characterized by these specific properties. Most of the distribution's mass would be concentrated in smaller Time Delta values, and a small percentage of the distribution would be spread out in higher values. 
+This is the measure of the time it takes between click and install (the first app-open). The idea behind this metric is that, in general, _counting data_ will statistically appear as a distribution which is exponentially decreasing and with long thin tails. In general, empirical distributions that arise from the data can be characterized by these specific properties. Most of the distribution's mass would be concentrated in smaller Time Delta values, and a small percentage of the distribution would be spread out in higher values. 
 
 As an example, we take a look at a group of apps in the Classifieds business. All Time Delta measurements shown are aggregated into the same dataset, where measure is in minutes and base the data is taken for a day worth of installs. In addition, clicks could have happened anytime previous to the install.
 
@@ -56,7 +56,7 @@ Care must be taken though not to set a _universal_ value for every install from 
 
 ##Theoretical Aspects
 
-In order to build our system, we must first find a way to identify fraudulent vs. non-fraudulent distributions. As a start, we can make the assumption that all installs' events are independent or that one event is not related to another. Then we need to choose among distributions which assimilate the _exponential decaying_ nature of TimeDelta.  We must also select among functions with infinite support and which only take in positive values.
+In order to build our system, we must first find a way to identify fraudulent vs. non-fraudulent distributions. As a start, we can make the assumption that all installs' events are independent or that one event is not related to another. Then we need to choose among distributions which assimilate the _exponential decaying_ nature of TimeDelta. We must also select among functions with infinite support and which only take in positive values.
 
 After various tests and evaluating different candidates, we found out that there are certain distributions that best fit usual TimeDelta behavior: the _Exponential_ [^1], the _Exponentiated Weibull_ [^2] and the _Generalized Extreme Value_ [^3] distributions. Note that the second is an extension of the first one. For more references to the properties of these functions, we recommend following their respective links to Wikipedia.
 
@@ -69,17 +69,18 @@ The Kullback-Leibler divergence or relative entropy is a pseudo-metric to assess
  
 $$KL(Q \mid P) =  -\int p(x) ln(\frac{q(x)}{p(x)})dx$$
 
-The second form better characterizes how the $Q$ distribution is used as an approximation of  $P$ by comparing the entropy $H(P)$, with the entropy when we use $Q$ as an approximation.
+The second form better characterizes how the $Q$ distribution is used as an approximation of $P$ by comparing the entropy $H(P)$, with the entropy when we use $Q$ as an approximation.
 
 For our specific case we will comparing the theoretical distributions `P` with the empirical distribution `Q`. The idea is to try and decide in which category does the empirical distribution fall to. And then use the theoretically fit distribution to set a 95th percentile threshold on the data. This _ad-hoc_ percentile will serve as a cut to all late timed installs. 
 
 ##Methodology
 
 On a periodical basis, run the following algorithm to every apps' TimeDelta data:
-   1. For each theoretical distribution, find the best fitting parameters from the data. 
-   2. Take a theoretical sample which is the same size as the empirical sample, using the aforementioned parameters.
-   3. Assess, through the KL measure, which is the distribution that fits our data. Make a special record if the distribution has a fraudulent nature.
-   4.  Get the 95th theoretical percentile as our threshold, if the best-fit distribution is non-fraudulent.
+
+1. For each theoretical distribution, find the best fitting parameters from the data.
+2. Take a theoretical sample which is the same size as the empirical sample, using the aforementioned parameters.
+3. Assess, through the KL measure, which is the distribution that fits our data. Make a special record if the distribution has a fraudulent nature.
+4. Get the 95th theoretical percentile as our threshold, if the best-fit distribution is non-fraudulent.
 
 Here, we must remind readers that we have chosen weak theoretical distributions to fit the fraudulent cases. This means that we are imposing a higher barrier to the fraudulent case to be selected. This is because we are lowering the amount of false positives cases and because this will give us more certainty on our classification.
 
@@ -91,25 +92,24 @@ Below, we've included two examples on the output of the algorithm when there's n
 
 In this image bins are grouped every one hundred minutes. This sample shows all values extremely wrapped around minimum values, where the 95th percentile amounts slightly over a day and a half. 
 
-![Fraud App Threshold Example 2 ]({{ site.url }}/assets/images/fraud/hist-app_threshold_value2.png "For this case we se a similar behavior but we find the decay to be much faster. The tail is much shorter than before and the threshold is set slightly over three hours. This is significantly different to the previous case."){: .center-image }
+![Fraud App Threshold Example 2 ]({{ site.url }}/assets/images/fraud/hist-app_threshold_value2.png "For this case we see a similar behavior but we find the decay to be much faster. The tail is much shorter than before and the threshold is set slightly over three hours. This is significantly different to the previous case."){: .center-image }
 
-For this case we se a similar behavior but we find the decay to be much faster. The tail is much shorter than before and the threshold is set slightly over three hours. This is significantly different to the previous case.
+For this case we see a similar behavior but we find the decay to be much faster. The tail is much shorter than before and the threshold is set slightly over three hours. This is significantly different to the previous case.
 
-Finally, to build an install threshold for today's date, we take a timespan of data and record all of the the thresholds calculated from those cases which were were not regarded as coming from fraudulent behavior. From this data, we calculate the median threshold for each app and this value will be our cut. The median statistic has the advantage of being robust to outliers and this is important for cases where fraudulent behavior has slipped through as "normal". 
+Finally, to build an install threshold for today's date, we take a timespan of data and record all of the thresholds calculated from those cases which were not regarded as coming from fraudulent behavior. From this data, we calculate the median threshold for each app and this value will be our cut. The median statistic has the advantage of being robust to outliers and this is important for cases where fraudulent behavior has slipped through as "normal". 
 
 
 #Conclusion
 
 The methods here exposed are a first iteration for fraud detection and classification for Click Spamming. Note here that we rely on the assumption that for all apps, there are periods free of fraudulent behavior. These periods are then used to calculate our final threshold which is robust to data that is contaminated. We are confident on this assumption since we have seen that fraudulent behavior from publishers will only last, at most, for a few days. Thus using at least a week of data is enough to identify cases of fraudulent behavior.
 
-We find that this algorithm is strong and flexible to account for differences among applications, where there are significant time differences  between TimeDeltas. The evaluation measures this difference by automatically fitting the best distributions and usesworks with uses it to provide a robust and thorough fraud detection system.
-
-
-If you found any part of this interesting and would like to work in a cool company where you can tackle other challenges like this [We Are Hiring Geeks!](http://jampp.com/jobs.php "We Are Hiring Geeks!").
-
+We find that this algorithm is strong and flexible to account for differences among applications, where there are significant time differences between TimeDeltas. The evaluation measures this difference by automatically fitting the best distributions and usesworks which uses it to provide a robust and thorough fraud detection system.
 
 [ANA]: http://www.ana.net/content/show/id/botfraud-2016
 [Forensiq]: https://forensiq.com/mobile-app-fraud-study/
+
+## References
+
 [^1]: https://en.wikipedia.org/wiki/Exponential_distribution
 [^2]: https://en.wikipedia.org/wiki/Exponentiated_Weibull_distribution
 [^3]: https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution

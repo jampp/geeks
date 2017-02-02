@@ -134,4 +134,4 @@ presto - nofile 32768
 presto - nproc  65536
 {% endhighlight %}
 
-This brings us to the end of the post. As you might have seen we did a lot of tuning of Presto which was a result of having this tool running in production for almost a year. Although much was done, this is still a work in progress. If you find anything mentioned in this post interesting and might want to come work with us at Jampp, [We Are Hiring Geeks!](http://jampp.com/jobs.php)   
+This brings us to the end of the post. As you might have seen we did a lot of tuning of Presto which was a result of having this tool running in production for almost a year. Although much was done, this is still a work in progress.

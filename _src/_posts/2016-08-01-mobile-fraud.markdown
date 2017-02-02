@@ -22,7 +22,7 @@ Technically speaking, clicks or impressions are not exactly what people would co
 
 ![Graph 0]({{ site.url }}/assets/images/fraud/click_postback.png){: .center-image }
 
-The user initially clicks on the ad and its user agent, device ID and other metadata are being URL-encoded in the request. Their request is passed along the chain until it is finally redirected to the App/Playstore where, ideally, the user would install and open the app. Then, an event-tracking SDK integrated to the advertiser's application would report this type of in-app events back along the chain of requests. This action is named a *postback* request, which informs everyone that a user has opened the app, thus prompting an install.
+The user initially clicks on the ad and its user agent, device ID and other metadata are being URL-encoded in the request. Their request is passed along the chain until it is finally redirected to the App/Playstore where, ideally, the user would install [^3] and open the app. Then, an event-tracking SDK integrated to the advertiser's application would report this type of in-app events back along the chain of requests. This action is named a *postback* request, which informs everyone that a user has opened the app, thus prompting an install.
 
 The difficulty relies on actually verifying that the user's reported action effectively happened and wasn't just simulated. In all cases, this means establishing that a real touch on the screen or even an ad view. Faking a request or a real *action* is essentially not difficult.
 
@@ -40,7 +40,7 @@ Given the rules, costs and benefits of this game, you can imagine why scammers f
 The [Invalid Traffic Detection and Filtration Guidelines Addendum][MRA] made by the MRA and the Mobile Marketing Association (MMA) defines two big categories of fraud according to their technical nature:
 
 ### General
-A "consistent source of non-human traffic". This is covered by mobile bots, traffic from data center, virtual machines and traffic from proxies or VPNs. <sup>[1](#generalTraffic)</sup>
+A "consistent source of non-human traffic". This is covered by mobile bots, traffic from data center, virtual machines and traffic from proxies or VPNs. [^1]
 
 ### Sophisticated
 Its defined by the property that significant human analysis and intervention are needed in order to detect it. The addendum's non-exhaustive list includes certain examples like "hijacked devices; hijacked sessions within hijacked devices; hijacked ad tags; hijacked creatives; adware; malware; incentivized manipulation of measurements; content; falsified viewable impression...". The common denominator being that there is an *real* user in the scheme, but the ad is not served correctly.
@@ -55,7 +55,7 @@ Using rootkits, the malware gets to command and coordinate a huge botnet across 
 By the arguments we mentioned before, one could assume that a scammer would represent theirself either as an IP or through a publisher/site. In some cases, also looking at device ids as possible fraud objects could be more favorable but even these are easily falsifiable and, in the end, the advertiser's budget is going to the publishers. And here is where the scammer will be cashing their rewards. For the rest of this post we will be focusing the analysis on these two data points because masking IPs is not a simple task and because the publisher information is reliable (otherwise a scammer would never cash in their rewards).
 
 ## Fraud Types
-For this post, we will be looking at anti-fraud tools against both forms of invalid traffic, with focus on the following fraud types: Click Spamming, Mobile Hijacking and Action Farming<sup>[2](#actionFarm)</sup>.
+For this post, we will be looking at anti-fraud tools against both forms of invalid traffic, with focus on the following fraud types: Click Spamming, Mobile Hijacking and Action Farming [^2].
 
  A brief outline of each type is given below.
 
@@ -125,13 +125,7 @@ Here observations are ordered by click volume. Notice the high volume incoming f
 ## Some Final Comments on the Nature of Fraud Detection
 By now, it might have become evident to the reader that mobile fraud is, in essence, an [unsupervised][unsupervised] problem. There is virtually no data, other than the obvious cases, to label any given click, install, view, or in-app event as fraud in an automatic, non-intrusive way. This concept is fundamental to the issue at hand. Looking at the techniques used in other industries, say banking, health or finance, some of them would have access to specific fraud cases (picture a credit-card charge dispute for instance) where fraudulent actions are duly tagged. For the rest of the cases they'd need to rely on unsupervised techniques.
 
-As an example, imagine we measure some variable that tests out to be normally distributed. Then a toy anti-fraud tool would label all cases outside the 99.7% band. This is called outlier or anomaly detection <sup>[4](#anomaly)</sup>  and the spirit is that, in a normal distribution, this band value equals to three standard-deviations from mean. But why is this band chosen? Should we choose two, three or four standard-deviations? What is standard about a standard-deviation? What if our distributions have fat-tails? (*DISCLAIMER: yes, this is our case*). The same goes for all statistical tools in Extreme Value Theory or Anomaly Detection: their applications must be handled with care and with attention to context (one measurement might be atypical in one context but not in others ). To sum up, there is no mathematically correct definition to characterize outliers, and by this, human input is inherently needed for the problem.
-
-
-
-
-If you found this post interesting and want to do stuff like this on a daily basis, join the team at Jampp, [we are hiring geeks!](http://jampp.com/jobs.php)
-
+As an example, imagine we measure some variable that tests out to be normally distributed. Then a toy anti-fraud tool would label all cases outside the 99.7% band. This is called outlier or anomaly detection [^4] and the spirit is that, in a normal distribution, this band value equals to three standard-deviations from mean. But why is this band chosen? Should we choose two, three or four standard-deviations? What is standard about a standard-deviation? What if our distributions have fat-tails? (*DISCLAIMER: yes, this is our case*). The same goes for all statistical tools in Extreme Value Theory or Anomaly Detection: their applications must be handled with care and with attention to context (one measurement might be atypical in one context but not in others ). To sum up, there is no mathematically correct definition to characterize outliers, and by this, human input is inherently needed for the problem.
 
 [ANA]: http://www.ana.net/content/show/id/botfraud-2016
 [Forensiq]: https://forensiq.com/mobile-app-fraud-study/
@@ -141,10 +135,9 @@ If you found this post interesting and want to do stuff like this on a daily bas
  [Kochava]:  https://www.kochava.com/kochava-difference/fraud-detection/
 [unsupervised]: https://en.wikipedia.org/wiki/Unsupervised_learning
 
-<a name="generalTraffic">1</a>:  There are legitimate cases of traffic coming from these sources such as from large organizations, universities and such; however this is not the general case.
+##References
 
-<a name="actionFarm">2</a>:  We've evolved the term click farm into action farm to better suit the mobile world since having people manually click, install and use an app is also carried out as fraud. Remember that payback on installs is significantly higher than on clicks or views.
-
-<a name="installDefinition">3</a>: Here an install is defined as the user's first in-app event reported by the tracking platform.
-
-<a name="anomaly">4</a>: For a more accurate and complete overview of anomaly detection, a very useful survey on the topic can be found at [http://cucis.ece.northwestern.edu/projects/DMS/publications/AnomalyDetection.pdf](http://cucis.ece.northwestern.edu/projects/DMS/publications/AnomalyDetection.pdf).
+[^1]: There are legitimate cases of traffic coming from these sources such as from large organizations, universities and such; however this is not the general case.
+[^2]: We've evolved the term click farm into action farm to better suit the mobile world since having people manually click, install and use an app is also carried out as fraud. Remember that payback on installs is significantly higher than on clicks or views.
+[^3]: Here an install is defined as the user's first in-app event reported by the tracking platform.
+[^4]: For a more accurate and complete overview of anomaly detection, a very useful survey on the topic can be found at [http://cucis.ece.northwestern.edu/projects/DMS/publications/AnomalyDetection.pdf](http://cucis.ece.northwestern.edu/projects/DMS/publications/AnomalyDetection.pdf).

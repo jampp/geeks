@@ -10,6 +10,8 @@ description: In this post we discuss robust and dynamic systems to fight against
 author: jdemonasterio
 ---
 
+<meta property="og:image" content="{{ site.url }}/assets/images/jampp_blue_logo.png">
+
 <!--excerpt.start-->
 Jampp's mission is to help companies boost their mobile business by engaging users and driving new customers. Fighting mobile fraud is a top priority to ensure this goal is possible.
 Other than spamming, phishing and scamming, ad fraud is one of the most profitable scenarios for rogue internet users. 
@@ -115,3 +117,4 @@ We find that this algorithm is strong and flexible to account for differences am
 [^3]: https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution
 [^4]: https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)
 [^5]: https://en.wikipedia.org/wiki/Chi-squared_distribution
+

@@ -103,7 +103,7 @@ Finally, to build an install threshold for today's date, we take a timespan of d
 
 The methods here exposed are a first iteration for fraud detection and classification for Click Spamming. Note here that we rely on the assumption that for all apps there are periods free of fraudulent behavior. These periods are then used to calculate our final threshold which is robust to data that is contaminated. We are confident on this assumption since we have seen that fraudulent behavior from publishers will only last, at most, for a few days. Thus using at least a week of data is enough to identify cases of fraudulent behavior.
 
-We find that this algorithm is strong and flexible to account for differences among applications, where there are significant time differences between TimeDeltas. The evaluation measures this difference by automatically fitting the best distributions and usesworks which uses it to provide a robust and thorough fraud detection system.
+We find that this algorithm is strong and flexible to account for differences among applications, where there are significant time differences between TimeDeltas. The evaluation measures this difference by automatically fitting the best distributions for different contexts which creates a robust and thorough fraud detection system.
 
 [ANA]: http://www.ana.net/content/show/id/botfraud-2016
 [Forensiq]: https://forensiq.com/mobile-app-fraud-study/

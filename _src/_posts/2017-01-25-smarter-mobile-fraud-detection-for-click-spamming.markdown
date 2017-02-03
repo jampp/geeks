@@ -84,7 +84,7 @@ On a periodical basis, run the following algorithm to every app's TimeDelta data
 
 Here, we must remind readers that we have chosen weak theoretical distributions to fit the fraudulent cases. This means that we are imposing a higher barrier to the fraudulent case to be selected. This is because we are lowering the amount of false positives cases and also this will give us more certainty on our classification.
 
-Finally, we'll change the timeframe of analysis and repeat the algorithm before to output for a given time period, a TimeDelta threshold and a a classification of fraudulent vs. non-fraudulent behavior.
+Finally, we'll change the timeframe of analysis and repeat the algorithm before to output for a given time period, a TimeDelta threshold and a classification of fraudulent vs. non-fraudulent behavior.
 
 Below, we include two examples of the algorithm's output when there's no fraudulent activity.
 

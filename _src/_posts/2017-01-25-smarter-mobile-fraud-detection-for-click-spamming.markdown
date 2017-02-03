@@ -73,7 +73,7 @@ $$KL(Q \mid P) =  -\int p(x) ln(\frac{q(x)}{p(x)})dx$$
 
 The second form better characterizes how the $Q$ distribution is used as an approximation of $P$ by comparing the entropy $H(P)$, with the entropy when we use $Q$ as an approximation.
 
-For our specific case we will comparing the theoretical distributions `P` with the empirical distribution `Q`. The idea is to try and decide which category does the empirical distribution fall to. And then use the theoretically fit distribution to set the 95th percentile threshold on the data. This _ad-hoc_ percentile will serve as a cut to all late timed installs. 
+For our specific case we will compare the theoretical distribution `P` with the empirical distribution `Q`. The idea is to try and decide which category the empirical distribution falls to. And then use the theoretically fit distribution to set the 95th percentile threshold on the data. This _ad-hoc_ percentile will serve as a cut to all late timed installs. 
 
 ##Methodology
 

@@ -28,7 +28,7 @@ To counter this type of fraud we can consider the TimeDelta metric.
 
 This is the measure of the time it takes between click and install (the first app-open). The idea behind this metric is that, in general, _counting data_ will statistically appear as a distribution which is exponentially decreasing and with long thin tails. In general, empirical distributions that arise from the data can be characterized by these specific properties. Most of the distribution's mass would be concentrated in smaller Time Delta values, and a small percentage of the distribution would be spread out in higher values. 
 
-As an example, we take a look at a group of apps in the Classifieds business. All Time Delta measurements shown are aggregated into the same dataset, where measure is in minutes and base the data is taken for a day worth of installs. In addition, clicks could have happened anytime previous to the install.
+As an example, we take a look at a group of apps in the Classifieds business. All Time Delta measurements shown are aggregated into the same dataset, where measure is in minutes and data is taken for a day worth of installs. In addition, clicks could have happened anytime previous to the install.
 
 ![TimeDelta Example 1]({{ site.url }}/assets/images/fraud/hist-median_tdelta_global.png "Note that the histogram shows a sharp decay for the lower values of the metric with an almost constant decay value for higher time deltas."){: .center-image }
 
@@ -39,10 +39,10 @@ This statistical property in the distributions is ubiquitous across apps of diff
 
 ![Fraud TimeDelta Example ]({{ site.url }}/assets/images/fraud/hist-tdelta_fraud.png "Note here that the decay has become linear and that lots of installs are still coming late."){: .center-image }
 
-In this image, the decay has become linear and that lots of installs are still coming late.
+In this image, the decay has become linear and lots of installs are still coming late.
 
 
-For the last case, we look at an example where the distribution is multimodal. At first, the decay and distribution looks like usual, but then the large slump at the end confirms this is a publisher with Click Spamming activity. 
+As a last example, we look at a scenario where the distribution is multimodal. At first, the decay and the distribution look like usual, but then the large slump at the end confirms this is a publisher with Click Spamming activity. 
 
 ![Fraud TimeDelta Example 2]({{ site.url }}/assets/images/fraud/hist-timedelta_fraud2.png "Initially normal distribution with a large fradulent activity at the end."){: .center-image }
 
@@ -71,26 +71,26 @@ $$KL(Q \mid P) =  -\int p(x) ln(\frac{q(x)}{p(x)})dx$$
 
 The second form better characterizes how the $Q$ distribution is used as an approximation of $P$ by comparing the entropy $H(P)$, with the entropy when we use $Q$ as an approximation.
 
-For our specific case we will comparing the theoretical distributions `P` with the empirical distribution `Q`. The idea is to try and decide in which category does the empirical distribution fall to. And then use the theoretically fit distribution to set a 95th percentile threshold on the data. This _ad-hoc_ percentile will serve as a cut to all late timed installs. 
+For our specific case we will comparing the theoretical distributions `P` with the empirical distribution `Q`. The idea is to try and decide which category does the empirical distribution fall to. And then use the theoretically fit distribution to set the 95th percentile threshold on the data. This _ad-hoc_ percentile will serve as a cut to all late timed installs. 
 
 ##Methodology
 
-On a periodical basis, run the following algorithm to every apps' TimeDelta data:
+On a periodical basis, run the following algorithm to every app's TimeDelta data:
 
 1. For each theoretical distribution, find the best fitting parameters from the data.
 2. Take a theoretical sample which is the same size as the empirical sample, using the aforementioned parameters.
 3. Assess, through the KL measure, which is the distribution that fits our data. Make a special record if the distribution has a fraudulent nature.
 4. Get the 95th theoretical percentile as our threshold, if the best-fit distribution is non-fraudulent.
 
-Here, we must remind readers that we have chosen weak theoretical distributions to fit the fraudulent cases. This means that we are imposing a higher barrier to the fraudulent case to be selected. This is because we are lowering the amount of false positives cases and because this will give us more certainty on our classification.
+Here, we must remind readers that we have chosen weak theoretical distributions to fit the fraudulent cases. This means that we are imposing a higher barrier to the fraudulent case to be selected. This is because we are lowering the amount of false positives cases and also this will give us more certainty on our classification.
 
-Finally, we'll change the timeframe of analysis and repeat the algorithm before to output for given time period, a TimeDelta threshold and a a classification of fraudulent vs. non-fraudulent behavior.
+Finally, we'll change the timeframe of analysis and repeat the algorithm before to output for a given time period, a TimeDelta threshold and a a classification of fraudulent vs. non-fraudulent behavior.
 
-Below, we've included two examples on the output of the algorithm when there's no fraudulent activity.
+Below, we include two examples of the algorithm's output when there's no fraudulent activity.
 
-![Fraud App Threshold Example ]({{ site.url }}/assets/images/fraud/hist-app_threshold_value1.png "In this image bins are grouped every one hundred minutes. This sample shows all values extremely wrapped around minimum values, where the 95th percentile amounts slightly over a day and a half. "){: .center-image }
+![Fraud App Threshold Example ]({{ site.url }}/assets/images/fraud/hist-app_threshold_value1.png "In this image bins are grouped every one hundred minutes. This sample shows all values extremely wrapped around minimum values, where the 95th percentile value is slightly over a day and a half. "){: .center-image }
 
-In this image bins are grouped every one hundred minutes. This sample shows all values extremely wrapped around minimum values, where the 95th percentile amounts slightly over a day and a half. 
+In this image bins are grouped every one hundred minutes. This sample shows all values extremely wrapped around minimum values, where the 95th percentile value is slightly over a day and a half. 
 
 ![Fraud App Threshold Example 2 ]({{ site.url }}/assets/images/fraud/hist-app_threshold_value2.png "For this case we see a similar behavior but we find the decay to be much faster. The tail is much shorter than before and the threshold is set slightly over three hours. This is significantly different to the previous case."){: .center-image }
 
@@ -101,7 +101,7 @@ Finally, to build an install threshold for today's date, we take a timespan of d
 
 #Conclusion
 
-The methods here exposed are a first iteration for fraud detection and classification for Click Spamming. Note here that we rely on the assumption that for all apps, there are periods free of fraudulent behavior. These periods are then used to calculate our final threshold which is robust to data that is contaminated. We are confident on this assumption since we have seen that fraudulent behavior from publishers will only last, at most, for a few days. Thus using at least a week of data is enough to identify cases of fraudulent behavior.
+The methods here exposed are a first iteration for fraud detection and classification for Click Spamming. Note here that we rely on the assumption that for all apps there are periods free of fraudulent behavior. These periods are then used to calculate our final threshold which is robust to data that is contaminated. We are confident on this assumption since we have seen that fraudulent behavior from publishers will only last, at most, for a few days. Thus using at least a week of data is enough to identify cases of fraudulent behavior.
 
 We find that this algorithm is strong and flexible to account for differences among applications, where there are significant time differences between TimeDeltas. The evaluation measures this difference by automatically fitting the best distributions and usesworks which uses it to provide a robust and thorough fraud detection system.
 

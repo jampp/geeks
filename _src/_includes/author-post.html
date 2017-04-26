@@ -21,12 +21,10 @@
         <img src="{{ site.url }}/assets/images/authors/default.png" alt="{{ author.name }}"> {% endif %}
       </span>
 
-      <h3 class="author-name">
-        {% if author.web %}
-        <a class="author-data" href="{{ author.web }}" itemprop="author">{{ author.name }}</a> {% else %}
-        <span class="author-data" itemprop="author">{{ author.name }}</span>
-        {% endif %}
-      </h3>
+      {% if author.web %}
+      <a class="author-data" href="{{ author.web }}" itemprop="author">{{ author.name }}</a> {% else %}
+      <span class="author-data" itemprop="author">{{ author.name }}</span>
+      {% endif %}
     </div>
   </div>
 </div>

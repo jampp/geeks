@@ -9,7 +9,7 @@
     width: 100%
     .post
       margin-bottom: 2em
-      border: 1px solid rgba($box-frame, 50%)
+      border: 1px solid transparentize($jampp-color, 0.8)
       border-radius: 3px
       width: 100%
       margin: 0
@@ -44,11 +44,11 @@
 
   .excerpt
     margin-bottom: .5em
-    font-size: 16px
+    font-size: 17px
+    letter-spacing: .3px
     color: $text-secondary
     font-weight: 100
-    p
-      line-height: 24px
+    line-height: 1.7em
 
   .read
     color: $brand-color
@@ -72,7 +72,7 @@
     border-bottom: 1px dashed $body-color
     margin-bottom: 1em
     a
-      color: $body-color
+      color: $brand-color
       font-weight: 500
       font-size: 12px
       text-transform: uppercase
@@ -80,7 +80,7 @@
       display: inline-block
       padding-bottom: .5em
       &:hover
-        color: $brand-color
+        color: darken($brand-color, 10%)
 
   .featured-image
     margin-bottom: 1em

@@ -73,9 +73,11 @@ which is the workhorse of our learning system. Let \\((x,y)\\) denote the input
 vector, with \\(x\\) a set of binary features and \\(y\\) a binary response.
 Also, let \\(\theta\\) denote the vector of model coefficients. Then our
 prediction at time \\(t\\) is computed from the logistic regression model:
+
 $$
 \hat{y_t} = \frac{1}{1 + e^{-{\theta_t}^T x_t}}
 $$
+
 Of course, the goal of the algorithm is to learn \\(\theta_t\\) from
 a succession of input events \\((x_1,y_1), \ldots, (x_t,y_t)\\). For this
 we minimize the sum over each previously seen input event of:
@@ -86,12 +88,14 @@ logistic model.
 3. Regularizing terms that combine lasso and ridge regularization.
 
 After filling in the details and translating everything to Greek:
+
 $$
 \theta_{t+1} = \underset{\theta}{\operatorname{argmin}}\ 
 {g_{1:t}}^T \theta +
 \frac{1}{2\eta_0}\sum_{s=1}^t ||\theta_s-\theta||^2_{A_s - A_{s-1}} +
 \lambda_1 ||\theta||_1 + \frac{\lambda_2}{2}||\theta||^2_2
 $$
+
 where:
 
 * \\(g_{1:t}\\) is the sum of the previous gradients \\(g_1, \ldots, g_t\\) of
@@ -115,18 +119,23 @@ over every previous input--- would be harder than implementing the gradient
 descent update step ---which just cares about the last update---, this first
 impression turns out to be wrong after a [careful reformulation][trenches] of
 the above expression:
+
 $$
 \theta_{t+1} = \underset{\theta}{\operatorname{argmin}}\ 
 {z_t}^T \cdot \theta +
 \frac{1}{2\eta_0} ||\theta||^2_{A_t} +
 \lambda_1 ||\theta||_1 + \frac{\lambda_2}{2}||\theta||^2_2
 $$
+
 where \\(z_t = {g_{1:t}} - \frac{1}{\eta_0} \sum_{s=1}^t (A_s -
 A_{s-1})\theta_s\\), which can be cheaply calculated in an incremental way as:
+
 $$
 z_t = z_{t-1} + g_t + \frac{1}{\eta_0} (A_t - A_{t-1})\theta_t
 $$
+
 Now, when \\(A_t\\) is diagonal the closed form of the solution is just:
+
 $$
 \theta_{t,i} =
 \begin{cases}

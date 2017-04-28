@@ -38,6 +38,7 @@ the expected income too low (thus missing opportunities with \\(c < $0.1\\)) or
 too high (thus buying non-opportunities with \\(c > $0.1\\))[^risk]. The bottom
 line is that our bidder might be able to pick an optimal pair (bid, creative)
 for the market transaction in course from:
+
 1. The estimated conditional conversion rate for the goal event.
 2. Our customer valuation of the goal event.
 3. The budget constraint for the advertising campaign.
@@ -78,6 +79,7 @@ $$
 Of course, the goal of the algorithm is to learn \\(\theta_t\\) from
 a succession of input events \\((x_1,y_1), \ldots, (x_t,y_t)\\). For this
 we minimize the sum over each previously seen input event of:
+
 1. (The gradient of) the log-likelihood loss, which is a [logloss][] for the
 logistic model.
 2. A stabilizing term that introduces some strong convexity into the mix.
@@ -91,6 +93,7 @@ $$
 \lambda_1 ||\theta||_1 + \frac{\lambda_2}{2}||\theta||^2_2
 $$
 where:
+
 * \\(g_{1:t}\\) is the sum of the previous gradients \\(g_1, \ldots, g_t\\) of
   the loss function.
 * \\(A_t = (\sum_{s=1}^t g_s g'_s)^{1/2}\\), which
@@ -133,6 +136,7 @@ $$
 $$
 
 Glossing over many technicalities like:
+
 * Keeping a huge inverse hash map, in order to recover features from hashes.
 * Following a "memory schedule" that weights each input according to the time
   elapsed since its arrival, in order to adapt to ever-changing market

@@ -27,20 +27,21 @@ events of interest (clicks, installs, opens, etc.). A conversion rate for an
 event $E$ is the conditional probability $p(E|C,T)$ of getting that event by
 printing some creative $C$ in the context of the current RTB transaction $T$.
 Why is it so important for our business to have good estimates of these rates?
-Simply because we sell conversions but we pay for impressions. For example,
+Simply because we sell conversions, but we pay for impressions. For example,
 suppose one client pays us $\$1$ per install and we estimate the install
 conversion rate to be around $0.1$ (just cheating... real world figures are well
 under a dismaying $0.001$ `:(`). Then, assuming our creative is going to get
 printed, we should expect an average profit of $\$0.1 - c$, where $c$ is the
-expected cost of the impression. If our rate estimates are grossly miscalculated
-we will be losing money by valuating the expected income too low (thus missing
-opportunities with $c < \$0.1$) or too high (thus buying non-opportunities with
-$c > \$0.1$)[^risk]. The bottom line is that our bidder may be able to pick an
-optimal pair (bid, creative) for the market transaction in course from:
-(i) The estimated conditional conversion rate for the goal event.
-(ii) Our customer valuation of the goal event.
-(iii) The budget constraint for the advertising campaign.
-(iv) A narrow-minded profit maximization behavior.
+expected cost of the impression. If our rate estimates are grossly
+miscalculated, we will be losing money by valuating the expected income too low
+(thus missing opportunities with $c < \$0.1$) or too high (thus buying
+non-opportunities with $c > \$0.1$)[^risk]. The bottom line is that our bidder
+might be able to pick an optimal pair (bid, creative) for the market transaction
+in course from:
+1. The estimated conditional conversion rate for the goal event.
+2. Our customer valuation of the goal event.
+3. The budget constraint for the advertising campaign.
+4. A narrow-minded profit maximization behavior.
 
 In order to estimate conversion rates, we implemented a SGD (Stochastic
 Gradient Descent) algorithm or, more specifically, [a FTRL-P][ftrlp] (Follow the
@@ -50,7 +51,7 @@ a state-of-the-art algorithm mostly used in online advertising because of its
 [convenient trade-off][sgd] between optimization and estimation errors in
 scenarios where computational capacity ---and not available data--- is the
 real bottleneck. Every day our system is able to learn from an online stream of
-tens of millions of events published by the bidder into a very
+tens of millions of messages published by the bidder into a very
 lightweight middleware implemented on top of [ZMQ][zmq].
 
 The first step after receiving an event from the stream is to turn it into a
@@ -77,10 +78,10 @@ $$
 Of course, the goal of the algorithm is to learn $\theta_t$ from
 a succession of input events $(x_1,y_1), \ldots, (x_t,y_t)$. For this
 we minimize the sum over each previously seen input event of:
-(i) (The gradient of) the log-likelihood loss, which is a [logloss][] for the
-logistic model;
-(ii) A stabilizing term that introduces some strong convexity into the mix;
-(iii) Regularizing terms that combine lasso and ridge regularization.
+1. (The gradient of) the log-likelihood loss, which is a [logloss][] for the
+logistic model.
+2. A stabilizing term that introduces some strong convexity into the mix.
+3. Regularizing terms that combine lasso and ridge regularization.
 
 After filling in the details and translating everything to Greek:
 $$
@@ -108,7 +109,7 @@ exactly zero (and, hence, more sparse models that are cheaper to store and
 transfer and, most importantly, way faster to evaluate). Although at first sight
 it might seem that implementing the follow-the-leader update step ---which sums
 over every previous input--- would be harder than implementing the gradient
-descent update step ---which just cares about the last update--- this first
+descent update step ---which just cares about the last update---, this first
 impression turns out to be wrong after a [careful reformulation][trenches] of
 the above expression:
 $$
@@ -132,10 +133,10 @@ $$
 $$
 
 Glossing over many technicalities like:
-* Keeping a huge inverse hash map, in order to recover features from hashes;
+* Keeping a huge inverse hash map, in order to recover features from hashes.
 * Following a "memory schedule" that weights each input according to the time
   elapsed since its arrival, in order to adapt to ever-changing market
-  conditions[^decay];
+  conditions[^decay].
 * Storing frequent checkpoints of the model, in order to resume from valid
   states after expected deployments or unexpected crashes.
 
@@ -150,9 +151,9 @@ and results.
 
 Currently, we are well on our way to leverage this technology for the estimation
 of models of market clearing prices and campaign velocity of spend, which are
-paramount to compute the opportunity cost of bidding for a campaign (vs. bidding
-for another one) and to establish a bidding schedule with the right pacing for
-each campaign, so keep in touch with us! `;)`
+paramount to computing the opportunity cost of bidding for a campaign (vs.
+bidding for another one) and to establishing a bidding schedule with the right
+pacing for each campaign, so keep in touch with us! `;)`
 
 ### References
 

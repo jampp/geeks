@@ -24,20 +24,20 @@ conversion.
 One main component of our platform is the machine learning subsystem that feeds
 the bidding subsystem with predictive models of conversion rates for different
 events of interest (clicks, installs, opens, etc.). A conversion rate for an
-event $E$ is the conditional probability $p(E|C,T)$ of getting that event by
-printing some creative $C$ in the context of the current RTB transaction $T$.
-Why is it so important for our business to have good estimates of these rates?
-Simply because we sell conversions, but we pay for impressions. For example,
-suppose one client pays us $\$1$ per install and we estimate the install
-conversion rate to be around $0.1$ (just cheating... real world figures are well
-under a dismaying $0.001$ `:(`). Then, assuming our creative is going to get
-printed, we should expect an average profit of $\$0.1 - c$, where $c$ is the
-expected cost of the impression. If our rate estimates are grossly
-miscalculated, we will be losing money by valuating the expected income too low
-(thus missing opportunities with $c < \$0.1$) or too high (thus buying
-non-opportunities with $c > \$0.1$)[^risk]. The bottom line is that our bidder
-might be able to pick an optimal pair (bid, creative) for the market transaction
-in course from:
+event \\(E\\) is the conditional probability \\(p(E|C,T)\\) of getting that
+event by printing some creative \\(C\\) in the context of the current RTB
+transaction \\(T\\). Why is it so important for our business to have good
+estimates of these rates? Simply because we sell conversions, but we pay for
+impressions. For example, suppose one client pays us \\($1\\) per install and
+we estimate the install conversion rate to be around \\(0.1\\) (just cheating...
+real world figures are well under a dismaying \\(0.001\\) `:(`). Then, assuming
+our creative is going to get printed, we should expect an average profit of
+\\($0.1 - c\\), where \\(c\\) is the expected cost of the impression. If our
+rate estimates are grossly miscalculated, we will be losing money by valuating
+the expected income too low (thus missing opportunities with \\(c < $0.1\\)) or
+too high (thus buying non-opportunities with \\(c > $0.1\\))[^risk]. The bottom
+line is that our bidder might be able to pick an optimal pair (bid, creative)
+for the market transaction in course from:
 1. The estimated conditional conversion rate for the goal event.
 2. Our customer valuation of the goal event.
 3. The budget constraint for the advertising campaign.
@@ -68,15 +68,15 @@ converted to a tree-like data structure thoroughly optimized for fast model
 evaluation and, finally, it's exported to the bidding subsystem.
 
 We now move on to a more detailed description of the FTRL-P algorithm itself,
-which is the workhorse of our learning system. Let $(x,y)$ denote the input
-vector, with $x$ a set of binary features and $y$ a binary response. Also, let
-$\theta$ denote the vector of model coefficients. Then our prediction at time
-$t$ is computed from the logistic regression model:
+which is the workhorse of our learning system. Let \\((x,y)\\) denote the input
+vector, with \\(x\\) a set of binary features and \\(y\\) a binary response.
+Also, let \\(\theta\\) denote the vector of model coefficients. Then our
+prediction at time \\(t\\) is computed from the logistic regression model:
 $$
 \hat{y_t} = \frac{1}{1 + e^{-{\theta_t}^T x_t}}
 $$
-Of course, the goal of the algorithm is to learn $\theta_t$ from
-a succession of input events $(x_1,y_1), \ldots, (x_t,y_t)$. For this
+Of course, the goal of the algorithm is to learn \\(\theta_t\\) from
+a succession of input events \\((x_1,y_1), \ldots, (x_t,y_t)\\). For this
 we minimize the sum over each previously seen input event of:
 1. (The gradient of) the log-likelihood loss, which is a [logloss][] for the
 logistic model.
@@ -91,19 +91,19 @@ $$
 \lambda_1 ||\theta||_1 + \frac{\lambda_2}{2}||\theta||^2_2
 $$
 where:
-* $g_{1:t}$ is the sum of the previous gradients $g_1, \ldots, g_t$ of the
-  loss function.
-* $A_t = (\sum_{s=1}^t g_s g'_s)^{1/2}$, which
+* \\(g_{1:t}\\) is the sum of the previous gradients \\(g_1, \ldots, g_t\\) of
+  the loss function.
+* \\(A_t = (\sum_{s=1}^t g_s g'_s)^{1/2}\\), which
   [minimizes the regret bound][minregret] over Mahalanobis norms for projected
   gradient descent. That said, in real life we just consider the diagonal matrix
-  $diag(A_t)$ for the sake of computation.
-* $\eta_0$ is the initial learning step.
-* $\lambda_1$ is the strength of the lasso regularization.
-* $\lambda_2$ is the strength of the ridge regularization.
+  \\(diag(A_t)\\) for the sake of computation.
+* \\(\eta_0\\) is the initial learning step.
+* \\(\lambda_1\\) is the strength of the lasso regularization.
+* \\(\lambda_2\\) is the strength of the ridge regularization.
 
 Regularization terms aside, this is mostly equivalent to an online gradient
-descent formulation with learning rate $\eta_t = \eta_0 A_t^{-1}$, but solving
-the minimization in a follow-the-leader fashion allows for an effective
+descent formulation with learning rate \\(\eta_t = \eta_0 A_t^{-1}\\), but
+solving the minimization in a follow-the-leader fashion allows for an effective
 implementation of lasso regularization that produces coefficients which are
 exactly zero (and, hence, more sparse models that are cheaper to store and
 transfer and, most importantly, way faster to evaluate). Although at first sight
@@ -118,12 +118,12 @@ $$
 \frac{1}{2\eta_0} ||\theta||^2_{A_t} +
 \lambda_1 ||\theta||_1 + \frac{\lambda_2}{2}||\theta||^2_2
 $$
-where $z_t = {g_{1:t}} - \frac{1}{\eta_0} \sum_{s=1}^t (A_s - A_{s-1})\theta_s$,
-which can be cheaply calculated in an incremental way as:
+where \\(z_t = {g_{1:t}} - \frac{1}{\eta_0} \sum_{s=1}^t (A_s -
+A_{s-1})\theta_s\\), which can be cheaply calculated in an incremental way as:
 $$
 z_t = z_{t-1} + g_t + \frac{1}{\eta_0} (A_t - A_{t-1})\theta_t
 $$
-Now, when $A_t$ is diagonal the closed form of the solution is just:
+Now, when \\(A_t\\) is diagonal the closed form of the solution is just:
 $$
 \theta_{t,i} =
 \begin{cases}
@@ -141,8 +141,8 @@ Glossing over many technicalities like:
   states after expected deployments or unexpected crashes.
 
 ...our implementation faithfully follows the update formula above. Given that
-the input vectors are sparse, the update step is very efficient (it's $O(n)$
-with $n$ the number of non zero features) even for high dimensional data
+the input vectors are sparse, the update step is very efficient (it's \\(O(n)\\)
+with \\(n\\) the number of non zero features) even for high dimensional data
 (millions of features). The implementation is pretty generic in the sense that
 ---besides the logloss and logit link--- custom loss and link functions can be
 passed as parameters to the optimizer. We implemented all this using Python

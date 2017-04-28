@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Learning from the RTB market
-date:   2017-01-31
+date:   2017-04-24
 tag: data-science
 categories:
   - data-science

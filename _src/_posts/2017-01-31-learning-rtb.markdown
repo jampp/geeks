@@ -212,7 +212,6 @@ pacing for each campaign, so keep in touch with us! `;)`
 
 [minregret]: https://courses.cs.washington.edu/courses/cse547/16sp/slides/adagrad.pdf
 
-[^risk]: Here we assume we have a neutral attitude towards risk so we only care
-  about expected values.
+[^risk]: Here we assume we have a neutral attitude towards risk so we only care about expected values.
 
 [^decay]: In practice, we implement a simple exponential-decay schedule.

@@ -35,7 +35,7 @@ printed, we should expect an average profit of $\$0.1 - c$, where $c$ is the
 expected cost of the impression. If our rate estimates are grossly
 miscalculated, we will be losing money by valuating the expected income too low
 (thus missing opportunities with $c < \$0.1$) or too high (thus buying
-non-opportunities with $c > \$0.1$)[^risk]. The bottom line is that our bidder
+non-opportunities with $c > \$0.1$) [^risk]. The bottom line is that our bidder
 might be able to pick an optimal pair (bid, creative) for the market transaction
 in course from:
 1. The estimated conditional conversion rate for the goal event.
@@ -136,7 +136,7 @@ Glossing over many technicalities like:
 * Keeping a huge inverse hash map, in order to recover features from hashes.
 * Following a "memory schedule" that weights each input according to the time
   elapsed since its arrival, in order to adapt to ever-changing market
-  conditions[^decay].
+  conditions [^decay].
 * Storing frequent checkpoints of the model, in order to resume from valid
   states after expected deployments or unexpected crashes.
 
@@ -155,7 +155,7 @@ paramount to computing the opportunity cost of bidding for a campaign (vs.
 bidding for another one) and to establishing a bidding schedule with the right
 pacing for each campaign, so keep in touch with us! `;)`
 
-### References
+## References
 
 - Bottou, Léon. "Large-scale machine learning with stochastic gradient descent."
   Proceedings of COMPSTAT'2010. Physica-Verlag HD, 2010. 177-186.
@@ -199,7 +199,6 @@ pacing for each campaign, so keep in touch with us! `;)`
 
 [minregret]: https://courses.cs.washington.edu/courses/cse547/16sp/slides/adagrad.pdf
 
-[^risk]: Here we assume we have a neutral attitude towards risk so we only care
-  about expected values.
+[^risk]: Here we assume we have a neutral attitude towards risk so we only care about expected values.
 
 [^decay]: In practice, we implement a simple exponential-decay schedule.

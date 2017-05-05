@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Learning from the RTB market
-date:   2017-01-31
+date:   2017-04-24
 tag: data-science
 categories:
   - data-science
@@ -168,7 +168,7 @@ paramount to computing the opportunity cost of bidding for a campaign (vs.
 bidding for another one) and to establishing a bidding schedule with the right
 pacing for each campaign, so keep in touch with us! `;)`
 
-### References
+## References
 
 - Bottou, Léon. "Large-scale machine learning with stochastic gradient descent."
   Proceedings of COMPSTAT'2010. Physica-Verlag HD, 2010. 177-186.

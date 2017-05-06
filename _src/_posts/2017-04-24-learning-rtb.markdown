@@ -24,6 +24,7 @@ conversion.
 One main component of our platform is the machine learning subsystem that feeds
 the bidding subsystem with predictive models of conversion rates for different
 events of interest (clicks, installs, opens, etc.). A conversion rate for an
+
 event \\(E\\) is the conditional probability \\(p(E|C,T)\\) of getting that
 event by printing some creative \\(C\\) in the context of the current RTB
 transaction \\(T\\). Why is it so important for our business to have good
@@ -149,7 +150,7 @@ Glossing over many technicalities like:
 * Keeping a huge inverse hash map, in order to recover features from hashes.
 * Following a "memory schedule" that weights each input according to the time
   elapsed since its arrival, in order to adapt to ever-changing market
-  conditions[^decay].
+  conditions [^decay].
 * Storing frequent checkpoints of the model, in order to resume from valid
   states after expected deployments or unexpected crashes.
 

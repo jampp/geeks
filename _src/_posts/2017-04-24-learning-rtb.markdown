@@ -24,19 +24,18 @@ conversion.
 One main component of our platform is the machine learning subsystem that feeds
 the bidding subsystem with predictive models of conversion rates for different
 events of interest (clicks, installs, opens, etc.). A conversion rate for an
-
 event \\(E\\) is the conditional probability \\(p(E|C,T)\\) of getting that
 event by printing some creative \\(C\\) in the context of the current RTB
 transaction \\(T\\). Why is it so important for our business to have good
 estimates of these rates? Simply because we sell conversions, but we pay for
 impressions. For example, suppose one client pays us \\($1\\) per install and
 we estimate the install conversion rate to be around \\(0.1\\) (just cheating...
-real world figures are well under a dismaying \\(0.001\\) `:(`). Then, assuming
+real world figures are well under a dismaying \\(0.001\\) **:-(** ). Then, assuming
 our creative is going to get printed, we should expect an average profit of
 \\($0.1 - c\\), where \\(c\\) is the expected cost of the impression. If our
 rate estimates are grossly miscalculated, we will be losing money by valuating
 the expected income too low (thus missing opportunities with \\(c < $0.1\\)) or
-too high (thus buying non-opportunities with \\(c > $0.1\\))[^risk]. The bottom
+too high (thus buying non-opportunities with \\(c > $0.1\\)) [^risk]. The bottom
 line is that our bidder might be able to pick an optimal pair (bid, creative)
 for the market transaction in course from:
 
@@ -156,7 +155,7 @@ Glossing over many technicalities like:
 
 ...our implementation faithfully follows the update formula above. Given that
 the input vectors are sparse, the update step is very efficient (it's \\(O(n)\\)
-with \\(n\\) the number of non zero features) even for high dimensional data
+with \\(n\\) the number of non-zero features) even for high dimensional data
 (millions of features). The implementation is pretty generic in the sense that
 ---besides the logloss and logit link--- custom loss and link functions can be
 passed as parameters to the optimizer. We implemented all this using Python

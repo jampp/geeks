@@ -9,7 +9,7 @@ keywords: "python, RTB, machine-learning"
 author: memeplex
 ---
 
-As you might already know, [Jampp][jampp] is a demand-side platform ([DSP][dsp])
+As you might already know, [Jampp][jampp] is a performance marketing platform
 that allows companies to promote their mobile applications by leveraging
 real-time bidding ([RTB][rtb]) technologies in order to buy digital advertising
 from multiple inventory sources and exchanges. During an RTB transaction, an
@@ -17,7 +17,7 @@ auction is announced and any interested bidder has to answer with a bid price
 within a time constraint of about 100 milliseconds. The bidder that wins the
 auction pays the second-highest price and obtains the right to print a creative
 (which is just jargon for displaying an ad) on a publisher site. If the banner
-is clicked by the user, further goal events might be tracked, v.g. the
+is clicked by the user, further goal events might be tracked, e.g. the
 application may be installed or opened. Obtaining a goal event is called a
 conversion.
 
@@ -33,11 +33,11 @@ we estimate the install conversion rate to be around \\(0.1\\) (just cheating...
 real world figures are well under a dismaying \\(0.001\\) **:-(** ). Then, assuming
 our creative is going to get printed, we should expect an average profit of
 \\($0.1 - c\\), where \\(c\\) is the expected cost of the impression. If our
-rate estimates are grossly miscalculated, we will be losing money by valuating
-the expected income too low (thus missing opportunities with \\(c < $0.1\\)) or
-too high (thus buying non-opportunities with \\(c > $0.1\\)) [^risk]. The bottom
+rate estimates are grossly miscalculated, we lose money by under-evaluating the
+expected income (thus missing opportunities with \\(c < $0.1\\)) or by
+over-evaluating it (thus buying non-opportunities with \\(c > $0.1\\)) [^risk]. The bottom
 line is that our bidder might be able to pick an optimal pair (bid, creative)
-for the market transaction in course from:
+for the market transaction in progress from:
 
 1. The estimated conditional conversion rate for the goal event.
 2. Our customer valuation of the goal event.
@@ -90,7 +90,7 @@ logistic model.
 After filling in the details and translating everything to Greek:
 
 $$
-\theta_{t+1} = \underset{\theta}{\operatorname{argmin}}\ 
+\theta_{t+1} = \underset{\theta}{\operatorname{argmin}}\
 {g_{1:t}}^T \theta +
 \frac{1}{2\eta_0}\sum_{s=1}^t ||\theta_s-\theta||^2_{A_s - A_{s-1}} +
 \lambda_1 ||\theta||_1 + \frac{\lambda_2}{2}||\theta||^2_2
@@ -121,7 +121,7 @@ impression turns out to be wrong after a [careful reformulation][trenches] of
 the above expression:
 
 $$
-\theta_{t+1} = \underset{\theta}{\operatorname{argmin}}\ 
+\theta_{t+1} = \underset{\theta}{\operatorname{argmin}}\
 {z_t}^T \cdot \theta +
 \frac{1}{2\eta_0} ||\theta||^2_{A_t} +
 \lambda_1 ||\theta||_1 + \frac{\lambda_2}{2}||\theta||^2_2
@@ -162,11 +162,11 @@ passed as parameters to the optimizer. We implemented all this using Python
 (with patches of C here and there), and we are very happy with our experience
 and results.
 
-Currently, we are well on our way to leverage this technology for the estimation
-of models of market clearing prices and campaign velocity of spend, which are
+Currently, we are well on our way to leveraging this technology in order to
+model market clearing prices and campaign velocity of spend, which are
 paramount to computing the opportunity cost of bidding for a campaign (vs.
 bidding for another one) and to establishing a bidding schedule with the right
-pacing for each campaign, so keep in touch with us! `;)`
+pacing for each campaign, so stay tuned! **;-)**
 
 ## References
 
@@ -205,8 +205,6 @@ pacing for each campaign, so keep in touch with us! `;)`
 [trenches]: https://www.eecs.tufts.edu/~dsculley/papers/ad-click-prediction.pdf
 
 [rtb]: https://en.wikipedia.org/wiki/Real-time_bidding
-
-[dsp]: https://en.wikipedia.org/wiki/Demand-side_platform
 
 [logloss]: https://www.kaggle.com/wiki/LogarithmicLoss
 

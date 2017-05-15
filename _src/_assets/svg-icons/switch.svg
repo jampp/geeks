@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>switch</title>
+    <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="A" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="article" transform="translate(-42.000000, -81.000000)" fill="#A8C7D6">
-            <path d="M42,82 L43,82 L43,87 L42,87 L42,82 Z M48,82 L49,82 L49,87 L48,87 L48,82 Z M43,81 L48,81 L48,82 L43,82 L43,81 Z M43,87 L48,87 L48,88 L43,88 L43,87 Z M50,82 L51,82 L51,87 L50,87 L50,82 Z M56,82 L57,82 L57,87 L56,87 L56,82 Z M51,81 L56,81 L56,82 L51,82 L51,81 Z M51,87 L56,87 L56,88 L51,88 L51,87 Z M42,90 L43,90 L43,95 L42,95 L42,90 Z M48,90 L49,90 L49,95 L48,95 L48,90 Z M43,89 L48,89 L48,90 L43,90 L43,89 Z M43,95 L48,95 L48,96 L43,96 L43,95 Z M50,90 L51,90 L51,95 L50,95 L50,90 Z M56,90 L57,90 L57,95 L56,95 L56,90 Z M51,89 L56,89 L56,90 L51,90 L51,89 Z M51,95 L56,95 L56,96 L51,96 L51,95 Z" id="switch"></path>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="switch" fill="#36355B" fill-rule="nonzero">
+            <path d="M0,1 L1,1 L1,6 L0,6 L0,1 Z M6,1 L7,1 L7,6 L6,6 L6,1 Z M1,0 L6,0 L6,1 L1,1 L1,0 Z M1,6 L6,6 L6,7 L1,7 L1,6 Z M8,1 L9,1 L9,6 L8,6 L8,1 Z M14,1 L15,1 L15,6 L14,6 L14,1 Z M9,0 L14,0 L14,1 L9,1 L9,0 Z M9,6 L14,6 L14,7 L9,7 L9,6 Z M0,9 L1,9 L1,14 L0,14 L0,9 Z M6,9 L7,9 L7,14 L6,14 L6,9 Z M1,8 L6,8 L6,9 L1,9 L1,8 Z M1,14 L6,14 L6,15 L1,15 L1,14 Z M8,9 L9,9 L9,14 L8,14 L8,9 Z M14,9 L15,9 L15,14 L14,14 L14,9 Z M9,8 L14,8 L14,9 L9,9 L9,8 Z M9,14 L14,14 L14,15 L9,15 L9,14 Z"></path>
         </g>
     </g>
 </svg>

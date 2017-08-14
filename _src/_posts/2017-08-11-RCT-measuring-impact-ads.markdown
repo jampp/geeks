@@ -55,20 +55,20 @@ As the effect we are trying to measure is usually very small ((link to the comme
 
 In order to establish the behavior difference between the two groups, we use a test to compare their means. We focus on the case of the two-sample t-test. This is the framework most commonly used in online experiment analysis. ([Deng, et al. 2013] [deng-cuped]).  Although t-test assumes that the distributions are normal, when you have enough samples [t-test are robust to non-normality] [robust-to-non-norm].
 
-Specifically, we use the [Welch Test] [welch], which is an adaptation of the [Student’s t-test] [student-test] and doesn't assume equal variances between the samples, as they may vary between treatment and control. For this test, to calculate the needed sample size for each group (we split them equally), we need the variance and mean of each sample; and of course we need to set up our desired \(\alpha\) and \(\beta\), the [type I and II] [type12error] error respectively. 
+Specifically, we use the [Welch Test] [welch], which is an adaptation of the [Student’s t-test] [student-test] and doesn't assume equal variances between the samples, as they may vary between treatment and control. For this test, to calculate the needed sample size for each group (we split them equally), we need the variance and mean of each sample; and of course we need to set up our desired \\(\alpha\\) and \\(\beta\\), the [type I and II] [type12error] error respectively. 
 
 To reach the specified significance, the [formula] [sample_size_2sigma] for each group sample size is:
 
 $$n_1=n_2 = \frac{ (z_{\alpha/2} + z_{\beta})^2 (\sigma_1^2+\sigma_2^2)  }{(\bar{X}_{1}-\bar{X}_{2})^2}$$
 
-where: \(n_1\) and \(n_2\) are the minimum sample size needed in both groups,
-\(\alpha\) is the Type I error \(\beta\) is the Type II error (\(1-\beta\) is also called power), \(\sigma_1^2\) 
-and \(\sigma_2^2\) are the variances of each group
-\(\bar{X}_1\) and \(\bar{X}_2\) represents the mean of each group. 
+where: \\(n_1\\) and \\(n_2\\) are the minimum sample size needed in both groups,
+\\(\alpha\\) is the Type I error \\(\beta\\) is the Type II error \\(1-\beta\\) is also called power), \\(\sigma_1^2\\) 
+and \\(\sigma_2^2\\) are the variances of each group
+\\(\bar{X}_1\\) and \\(\bar{X}_2\\) represents the mean of each group. 
 
 As we can see from the formula, for a specific significance and power, there is a trade-off between the variances and the sample size. The same happens with the difference between the means we would be able to detect. To put it simple: if the variances are big (and the sample size is given), we won't be able to detect small differences between means. In the same way, to detect a very small difference (for fixed variances) we need a very big sample. (the figure below depicts this relation). 
 
-![ Relation between the variance and the mean differences ]({{site.url}}/assets/images/RCT/relation_diff_n.png){: .center-image } 
+![ Relation between the sample size and the mean differences ]({{site.url}}/assets/images/RCT/relation_diff_n.png){: .center-image } 
 
 [Deng, et al. 2013] [deng-cuped] explained that sometimes even with a large amount of traffic, online experiments cannot always reach enough statistical power. Thus, we may have a scientifically correct test to run, but if the data is not statistically convenient (i.e. low variance) we won't be able to detect the differences between our groups.
 
@@ -90,7 +90,7 @@ As an example, we show a case for an app that sells trip tickets. We divided the
 | p-value                       |           | 0.27          |
 
 
-If we plug those numbers in the formula, to get the sample size we need for a significance of  \(\alpha=0.05\) and power \(1 - \beta=.80\), we have that nearly 6 million of users are needed in each group. Evidently an unmanageable sample size. 
+If we plug those numbers in the formula, to get the sample size we need for a significance of  \\(\alpha=0.05\\) and power \\(1 - \beta=.80\\), we have that nearly 6 million of users are needed in each group. Evidently an unmanageable sample size. 
 
 $$
  \frac{ (z_{\alpha/2} + z_{\beta})^2 (\sigma_1^2+\sigma_2^2)  }{(\bar{X}_{treat}-\bar{X}_{cont})^2} = \frac{ (1.96 + 0.84)^2 (1.23^2+1.24^2)  }
@@ -149,7 +149,7 @@ Let’s define a useful tool we will use from now on:
 
 Minimum Detectable Effect (MDE or Δ): The minimum relative difference in the average global of the defined metric, among the treatment and control groups. This is to establish a comparable effect between different key events and apps.
 
-Where \(\bar{X}_{treat}\) and \(\bar{X}_{cont}\) are the mean of the treatment and control groups.
+Where \\(\bar{X}_{treat}\\) and \\(\bar{X}_{cont}\\) are the mean of the treatment and control groups.
 
 The main steps of the method are outlined in the next graph. The specifics of each of them are explained in more detail below.
 
@@ -168,10 +168,10 @@ $$
 
 where :
 
-\({\alpha}\) and \(\beta}\) are the [Type I and II error] [type12error],
-\(\bar{X}\) is the estimated mean of exposed users (from past data),
-\(\sigma \) is the estimated standard deviation of exposed users (from past data),
-\(n\) is the estimated size of the exposed users (from past data).
+\\({\alpha}\\) and \\(\beta}\\) are the [Type I and II error] [type12error],
+\\(\bar{X}\\) is the estimated mean of exposed users (from past data),
+\\(\sigma \\) is the estimated standard deviation of exposed users (from past data),
+\\(n\\) is the estimated size of the exposed users (from past data).
 
 Once we estimated the power of the test, we decide if it is worth running or not. To calculate this initial MDE we use data that is *similar* to the one we are trying to evaluate, but not the same. We will update these values once we have data from the actual test. 
 	
@@ -198,7 +198,7 @@ $$
 t = \frac{\bar{X}_1 - \bar{X}_2}{\sqrt{\frac{\sigma_1^2}{N_1}+\frac{\sigma_2^2}{N_2}}}
 $$
 
-where \(\bar{X}_i\), \(\sigma_i^2\) and \(N_i\) are the sample mean, sample variance and sample size for the group \(i=1,2\)
+where \\(\bar{X}_i\\), \\(\sigma_i^2\\) and \\(N_i\\) are the sample mean, sample variance and sample size for the group \\(i=1,2\\)
 
 The test will run for at least 21 days, and no more than 30 days. We will stop it once we’ve reached the minimum sample size needed. 
 Sample Size Re Estimation
@@ -232,6 +232,7 @@ In practice, this technology is difficult to implement with current Internet ad 
 Implementing the Predicted Ghost Ad methodology will be our next challenge. We hope that we would be running experiments with that approach in the near future.
 
 ## References
+
 
 [jampp]: http://jampp.com/
 
@@ -323,10 +324,10 @@ $$
 \sigma^2 = \frac{n-1 (\sigma_1^2 + \sigma_2^2)}{2n-1} + \frac{n/2 (\bar{X}_1-\bar{X}_2)^2}{2n-1}
 $$
 
-where \(n\)= the size of each group, 
-\(\sigma\)= the variance of the whole group, and \(\sigma_i\) and \(\bar{X}_i\) is the variance and the mean for each group. 
+where \\(n\\)= the size of each group, 
+\\(\sigma\\)= the variance of the whole group, and \\(\sigma_i\\) and \\(\bar{X}_i\\) is the variance and the mean for each group. 
 
-Meaning that when \(n\) is big (which is our case):  
+Meaning that when \\(n\\) is big (which is our case):  
  
  $$
 \sigma^2 \approx \frac{(\sigma_1^2 + \sigma_2^2)}{2} + \frac{ (\bar{X}_1-\bar{X}_2)^2}{4}

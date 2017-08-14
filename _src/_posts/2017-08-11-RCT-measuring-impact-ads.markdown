@@ -24,7 +24,7 @@ In this post, we dive deeper into some of the possible problems for these kind o
 
 Every advertiser wants to know whether they are having an impact on their users or not. More precisely, the question they're trying to answer is perfectly captured in a blog [post by Google] [google-blog]: "Did showing my ads affect customers' behavior, relative to not showing my ads?". With that in mind, we established a method to address this question and its underlying implications for the way engagement is measured.
 
-The best approach to this issue is to run a randomized controlled trial ([RCT][rct]) or, more specifically, an [A/B test] [ABtest] [Deng, et al. 2013 ][deng-cuped], which is basically a controlled experiment where two probabilistically equivalent groups (A and B, or treatment and control) are compared. They are identical except for one variation or factor that might affect a user's behavior. In our case, the factor would be to *show an ad* of the specific advertiser we want to analyze. As a result, any difference between them would be because of the factor applied, the only thing that changed. Therefore, we can establish a causal relation between *showing an ad* and the difference in the behavior.  
+The best approach to this issue is to run a randomized controlled trial ([RCT][rct]) or, more specifically, an [A/B test] [ABtest] ([Deng, et al. 2013 ][deng-cuped]), which is basically a controlled experiment where two probabilistically equivalent groups (A and B, or treatment and control) are compared. They are identical except for one variation or factor that might affect a user's behavior. In our case, the factor would be to *show an ad* of the specific advertiser we want to analyze. As a result, any difference between them would be because of the factor applied, the only thing that changed. Therefore, we can establish a causal relation between *showing an ad* and the difference in the behavior.  
 
 To have a way to measure the behavior we need to establish one metric. It will be used to compare the differences between the groups. In general, this metric is based on a specific demand of the advertiser, depending on the kind of behavior they want to measure. For example, it can be a click on an impression, a search, a purchase, etc. 
 
@@ -37,7 +37,7 @@ It is important to notice that events that go deeper into the funnel have less r
 of occurrence and more volatility among users. (the graph below show a possible funnel of events) The work of [Gordon et al. 2016] [fcb-kellog] showed that commonly-used approaches for this kind of experiments are unreliable for lower funnel conversion outcomes (e.g., purchases)
 but somewhat more reliable for upper funnel ones (e.g., search of a product in the app).
 
-![ Funnel of Events ]({{site.url}}//_assets/images/RCT/funnel_events.png){: .center-image } 
+![ Funnel of Events ]({{site.url}}//assets/images/RCT/funnel_events.png){: .center-image } 
 
 In this post we focus on our method for *engagement campaigns* and, for the sake of simplicity, the sum of *key events* per user in the period of analysis will characterize the engagement of a particular user. The mean of that sum for all users will be the key metric of the group under analysis. 
 
@@ -45,36 +45,36 @@ In an ideal world, we would like to measure the effect on apps which also have u
 
 In most industries running this kind of tests is not a big deal. In contrast, in the online advertising world is frequently a very hard work to achieve.
 
-### Typical problems in the Industry
+## Typical problems in the Industry
 
 In this section, we describe some of the most common problems that may arise in this settings.
 
-#### Not enough significance
+### Not enough significance
 
-As the effect we are trying to measure is usually very small ((should we explain this more)), we will often need a lot of samples in order to achieve the significance we want. Also, the variance of the data will play an important role. Higher variances of the metric of study will diminish the power of the test. Let’s expand this more.
+As the effect we are trying to measure is usually very small ((link to the commercial post)), we will often need a lot of samples in order to achieve the significance we want. Also, the variance of the data will play an important role. Higher variances of the metric of study will diminish the power of the test. Let’s expand this more.
 
-In order to establish the behavior difference between the two groups, we use a test to compare their means. We focus on the case of the two-sample t-test. This is the framework most commonly used in online experiment analysis. [Deng, et al. 2013] [deng-cuped].  Although t-test assumes that the distributions are normal, when you have enough samples [t-test are robust to non-normality] [robust-to-non-norm].
+In order to establish the behavior difference between the two groups, we use a test to compare their means. We focus on the case of the two-sample t-test. This is the framework most commonly used in online experiment analysis. ([Deng, et al. 2013] [deng-cuped]).  Although t-test assumes that the distributions are normal, when you have enough samples [t-test are robust to non-normality] [robust-to-non-norm].
 
-Specifically, we use the [Welch Test] [welch], which is an adaptation of the [Student’s t-test] [student-test] and doesn't assume equal variances between the samples, as they may vary between treatment and control. For this test, to calculate the needed sample size for each group (we split them equally), we need the variance and mean of each sample; and of course we need to set up our desired $\alpha$ and $\beta$, [type I and II] [type12error] error respectively. 
+Specifically, we use the [Welch Test] [welch], which is an adaptation of the [Student’s t-test] [student-test] and doesn't assume equal variances between the samples, as they may vary between treatment and control. For this test, to calculate the needed sample size for each group (we split them equally), we need the variance and mean of each sample; and of course we need to set up our desired \(\alpha\) and \(\beta\), the [type I and II] [type12error] error respectively. 
 
 To reach the specified significance, the [formula] [sample_size_2sigma] for each group sample size is:
 
 $$n_1=n_2 = \frac{ (z_{\alpha/2} + z_{\beta})^2 (\sigma_1^2+\sigma_2^2)  }{(\bar{X}_{1}-\bar{X}_{2})^2}$$
 
-where: $n_1$ and $n_2$ are the minimum sample size needed in both groups,
-$\alpha$ is the Type I error $\beta$ is the Type II error ($1-\beta$ is also called power), $\sigma_1^2$ 
-and $\sigma_2^2$ are the variances of each group
-$\bar{X}_1$ and $\bar{X}_2$ represents the mean of each group. 
+where: \(n_1\) and \(n_2\) are the minimum sample size needed in both groups,
+\(\alpha\) is the Type I error \(\beta\) is the Type II error (\(1-\beta\) is also called power), \(\sigma_1^2\) 
+and \(\sigma_2^2\) are the variances of each group
+\(\bar{X}_1\) and \(\bar{X}_2\) represents the mean of each group. 
 
 As we can see from the formula, for a specific significance and power, there is a trade-off between the variances and the sample size. The same happens with the difference between the means we would be able to detect. To put it simple: if the variances are big (and the sample size is given), we won't be able to detect small differences between means. In the same way, to detect a very small difference (for fixed variances) we need a very big sample. (the figure below depicts this relation). 
 
-![ Relation between  ]({{site.url}}/_assets/images/RCT/relation_diff_n.png){: .center-image } 
+![ Relation between the variance and the mean differences ]({{site.url}}/assets/images/RCT/relation_diff_n.png){: .center-image } 
 
 [Deng, et al. 2013] [deng-cuped] explained that sometimes even with a large amount of traffic, online experiments cannot always reach enough statistical power. Thus, we may have a scientifically correct test to run, but if the data is not statistically convenient (i.e. low variance) we won't be able to detect the differences between our groups.
 
 Let’s look at the events and its behavior. The histogram below shows the distribution of the sum of keys events per user in one month period.
 
-![ Histogram sum of key events ]({{site.url}}/_assets/images/RCT/histogram_events.png){: .center-image } 
+![ Histogram sum of key events ]({{site.url}}/assets/images/RCT/histogram_events.png){: .center-image } 
 
 We can observe that the users are mostly in the left of the graph, meaning that they have a very low sum of key events. In fact, in this example, 99% has less than 10 key events. But, there are what we call *whales* (i.e. very heavy users) with more than 50 events. The maximum number of events reported in this example is 150. As a result, our variance is very high. 
 
@@ -90,14 +90,14 @@ As an example, we show a case for an app that sells trip tickets. We divided the
 | p-value                       |           | 0.27          |
 
 
-If we plug those numbers in the formula, to get the sample size we need for a significance of  $\alpha$=0.05 and power 1 - $\beta$=.80, we have that nearly 6 million of users are needed in each group. Evidently an unmanageable sample size. 
+If we plug those numbers in the formula, to get the sample size we need for a significance of  \(\alpha=0.05\) and power \(1 - \beta=.80\), we have that nearly 6 million of users are needed in each group. Evidently an unmanageable sample size. 
 
 $$
  \frac{ (z_{\alpha/2} + z_{\beta})^2 (\sigma_1^2+\sigma_2^2)  }{(\bar{X}_{treat}-\bar{X}_{cont})^2} = \frac{ (1.96 + 0.84)^2 (1.23^2+1.24^2)  }
  {(.319-.317)^2} = \frac{7.84 + 3.05}{.000004}  =5978980
 $$
 
-#### Bias Selection - Naive approach: Exposed vs Unexposed
+### Bias Selection - Naive approach: Exposed vs Unexposed
 
 What if we look at the difference between the set of exposed users (i.e. users that had been exposed to an ad) and unexposed users (i.e. users that never saw an ad) ? This is a very simple experiment and we can use past data to check differences. In the table below we present the data for the trip tickets app.
 
@@ -114,9 +114,9 @@ We can definitely see that there is a higher rate of events in the Exposed Group
 For example, suppose that in our group of consumers, women are more likely to perform the key event than men. Then the advertising platform will select more women from the total group to show them the ad. In the end, there will be more women in the group who saw ads, and more men in the group who didn't see ads. It is clear, that the group with more women is more likely to have a higher rate of key events. The selection is then, biased; and we cannot assure the causality of that event rate. Therefore, we cannot consider this measure as a reliable one. 
 
 Ideally, to measure the causal effect of an specific ad we have to look the differences between consumers behavior in two different settings, that are *exactly* the same except that in one setting the consumers see an ad, and in the other they don't. 
-In the latter case the splitting of the groups by exposed and unexposed users was clearly biased. [Lewis et al. 2013] [measure-lewis]
+In the latter case the splitting of the groups by exposed and unexposed users was clearly biased. ([Lewis et al. 2013] [measure-lewis]).
 
-#### Noisy Data - A/B Classical Test
+### Noisy Data - A/B Classical Test
 
 To prevent bias selection, we can divide in advance our groups randomly and equally distributed on the features of interest. In this case, we ignore the exposure information in both treatment and control. Of course, we are not showing ads to the Control Group. By comparing all users, without distinguishing between exposed or unexposed, we are generalizing the comparison with the users that wouldn't have been exposed to the ads and the ones that would have been exposed as well. 
 
@@ -124,7 +124,7 @@ However the comparison is scientifically correct, we are [adding the noise of un
 
 So again, this measure is not reliable.
 
-#### Bias in the delivery of Ads - Normal ad delivery with PSA in Control 
+### Bias in the delivery of Ads - Normal ad delivery with PSA in Control 
 
 In the approach we discussed before, we've eliminated the bias selection, now we need to eliminate the noise from unexposed users. It is easy to identify the unexposed from the exposed in the treatment group. But, what can we do to differentiate the exposure or not in the control group? More precisely, we need to identify the users that *would* have been shown the ad.
 
@@ -136,7 +136,7 @@ As an example, [(Johnson et al. 2015)][lessmore] shows that PSAs in control can 
 
 But again, the advertising platform will treat the advertisers' and the PSA's ads differently, thus the treatment and the control exposed users won't be comparable. As a consequence, if the ad delivery platform is working normally for both groups, the PSAs are not valid control ads. This happens because the engine optimizes ad delivery by matching each ad to a user type, and clearly an advertiser ad is very different to a PSA ad, in consequence we will have different types of users.
 
-### Method
+## Method
 
 We developed the method equipped with the insights learned from the problems described above:
 
@@ -149,13 +149,13 @@ Let’s define a useful tool we will use from now on:
 
 Minimum Detectable Effect (MDE or Δ): The minimum relative difference in the average global of the defined metric, among the treatment and control groups. This is to establish a comparable effect between different key events and apps.
 
-Where $\bar{X}_{treat}$ and $\bar{X}_{cont}$ are the mean of the treatment and control groups.
+Where \(\bar{X}_{treat}\) and \(\bar{X}_{cont}\) are the mean of the treatment and control groups.
 
 The main steps of the method are outlined in the next graph. The specifics of each of them are explained in more detail below.
 
-![ Steps of the Method ]({{site.url}}/_assets/images/steps_method.png){: .center-image } 
+![ Steps of the Method ]({{site.url}}/assets/images/steps_method.png){: .center-image } 
 
-#### Pre test Stats - Estimate MDE
+### Pre test Stats - Estimate MDE
 
 Given that we have seen this kind of experiments are successful depending on the kind of data we are working with, at this stage, we *estimate* the potential power of the test. We would like to know certain values before the test, where these values will only be available at the end of it. Things such as mean and variance of the sum of key events for all users and number of users will only be known after we ran the test, for exposed users. All of these, are necessary inputs to produce our pre-test estimation of the MDE. 
 
@@ -168,35 +168,37 @@ $$
 
 where :
 
-${\alpha}$ and $\beta}$= are the [Type I and II error] [type12error]
-$\bar{X}$= the estimated mean of exposed users (from past data)
-$\sigma $= the estimated standard deviation of exposed users (from past data)
-$n$ = The estimated size of the exposed users (from past data) 
+\({\alpha}\) and \(\beta}\) are the [Type I and II error] [type12error],
+\(\bar{X}\) is the estimated mean of exposed users (from past data),
+\(\sigma \) is the estimated standard deviation of exposed users (from past data),
+\(n\) is the estimated size of the exposed users (from past data).
 
 Once we estimated the power of the test, we decide if it is worth running or not. To calculate this initial MDE we use data that is *similar* to the one we are trying to evaluate, but not the same. We will update these values once we have data from the actual test. 
 	
 As the test will run for at least 21 days, the MDE choice will be calibrated to have a test running for in between 21 and 30 days, using the sample size estimation formula. As such, the past data we collect will be for at least that time period, up to a range of 30 days. Still, we will only say that the test has reached statistical significance once we have exposed a number of users which is bigger than the sample size we estimated. All other stopping criteria are not statistically significant.
 
-#### Set up
+### Set up
 At this point, we need to set up the campaign in our platform in order to be able to compare the Treatment and Control Groups. 
 
 To identify the Control Exposed Users we will use Control PSA Ads (not related with the campaign). For every treatment ad size, we must have the *same equivalent* PSA ad. 
 
 Bidding and pricing configurations should be the same among the treatment and control.
-[CPM Ads] [cpm]: Both groups should have *fixed price* CPM Ads in order to eliminate the bias of ads shown between groups (to make them comparable). 
-Turn off the engine for ad delivery in this campaign, to prevent bias selection.
-The segmentation of users that are more likely to convert, which is run on a daily basis, will be ran at the beginning and remain constant along the whole test. So we don’t introduce bias in the selection while the campaign is running.
 
-#### Run the Test
+* [CPM Ads] [cpm]: Both groups should have *fixed price* CPM Ads in order to eliminate the bias of ads shown between groups (to make them comparable). 
+* Turn off the engine for ad delivery in this campaign, to prevent bias selection.
+* The segmentation of users that are more likely to convert, which is run on a daily basis, will be ran at the beginning and remain constant along the whole test. So we don’t introduce bias in the selection while the campaign is running.
+
+### Run the Test
 
 As we mentioned before we will focus only on the exposed users in each group. For every exposed user, we will discard events that occur during the test, but prior to the user’s first impression. 
 
 The two-sample t-test is the framework most commonly used in online experiment analysis. In particular, we will use the Welch's Test to detect differences in means for samples with different variances. The t-statistic for the Welch test is:
+
 $$
 t = \frac{\bar{X}_1 - \bar{X}_2}{\sqrt{\frac{\sigma_1^2}{N_1}+\frac{\sigma_2^2}{N_2}}}
 $$
 
-where $\bar{X}_i$, $\sigma_i^2$ and $N_i$ are the sample mean, sample variance and sample size for the group $i=1,2$
+where \(\bar{X}_i\), \(\sigma_i^2\) and \(N_i\) are the sample mean, sample variance and sample size for the group \(i=1,2\)
 
 The test will run for at least 21 days, and no more than 30 days. We will stop it once we’ve reached the minimum sample size needed. 
 Sample Size Re Estimation
@@ -207,19 +209,19 @@ These estimations will be updated after 7 days of running the test with in-test-
 
 To calculate this, we use the sample size formula (link to formula) defined above.
 
-#### Test Monitoring
+### Test Monitoring
 
 During the test, we will also perform health checks on the data and on the test itself. These checks will not be statistically valid yet they might point to possible problems in the test.  Following a methodology from [Airbnb] [airbnb] we will graph two time series showing the hourly test metrics. For both series, each value is showing the resulting metric, up to that hour. 
 	
 These metrics will be test's p-value, and the test's MDE. The intention of this, is to have a heuristic of the test's convergence. Where both time series would help detect tests with a bad design, or where the minimum sample size estimation was inaccurate. It is expected, we find a high initial variability in p-values at the start of the test which will later converge to its "true value".
 
-#### Test Evaluation
+### Test Evaluation
 
 The post test evaluation is done *only once* we've reached the minimum required sample size, as determined at the 21ts day of the test. The main output will be the test's effect and p-values of the A and B groups. This will be the test's most important insight on whether there was a positive difference between the means.
 
 Other analysis can include analyzing subgroup p-values and difference in means, in search of anomalies. i.e. segment users by device type, platform version and analyze if there are big differences in the results. High differences at the subgroup level can be indicative of problems in our own platform, bidder, etc. However, it is important to note that these results should not be taken as a statistically valid test.f
 
-### Next Steps
+## Next Steps
 
 We showed our current method to measure the impact of advertising in a fast-paced ecosystem like the mobile ad industry. In the process of continuously upgrading our approaches, we would like to improve the method by letting our engine for ad delivery work normally. This would make the experiment to be closer to what we do at Jampp. 
 	
@@ -229,7 +231,7 @@ In practice, this technology is difficult to implement with current Internet ad 
 
 Implementing the Predicted Ghost Ad methodology will be our next challenge. We hope that we would be running experiments with that approach in the near future.
 
-### References
+## References
 
 [jampp]: http://jampp.com/
 
@@ -237,7 +239,7 @@ Implementing the Predicted Ghost Ad methodology will be our next challenge. We h
 
 [fcb-kellog]: https://www.kellogg.northwestern.edu/faculty/gordon_b/files/kellogg_fb_whitepaper.pdf
  
-[type12error] : https://en.wikipedia.org/wiki/Type_I_and_type_II_errors
+[type12error]: https://en.wikipedia.org/wiki/Type_I_and_type_II_errors
 
 [johnson]: https://courses.cit.cornell.edu/jl2545/adpapers/Randall%20Lewis.pdf
 
@@ -269,9 +271,9 @@ Implementing the Predicted Ghost Ad methodology will be our next challenge. We h
 
 [combined_variance]: http://saraemilyburke.com/stats/CombinedVarianceEqualNs.pdf
 
-### Appendix
+## Appendix
 
-#### Derivation of MDE calculation from the sample size formula:
+### Derivation of MDE calculation from the sample size formula:
 
 $$
 n = \frac{ (z_{\alpha/2} + z_{\beta})^2  (\sigma_1^2 + \sigma_2^2)  }{(\bar{X}_{treat}-\bar{X}_{cont})^2}
@@ -311,9 +313,9 @@ MDE = \frac{ (z_{\alpha/2} + z_{\beta}) \sqrt{(\sigma_1^2 + \sigma_2^2)}  }
 $$
 
 
-#### To calculate the initial MDE
+### To calculate the initial MDE
 
-We need to estimate the values of the variance, as we only have one (the variance of the total group).
+We need to estimate the values of the variance, but we only have one (the variance of the total group).
 
 If the samples in each group are the same, [we know that][combined_variance]:
 
@@ -321,10 +323,10 @@ $$
 \sigma^2 = \frac{n-1 (\sigma_1^2 + \sigma_2^2)}{2n-1} + \frac{n/2 (\bar{X}_1-\bar{X}_2)^2}{2n-1}
 $$
 
-where $n$= the size of each group, 
-$\sigma$= the variance of the whole group, and $\sigma_i$ and $\bar{X}_i$ is the variance and the mean for each group. 
+where \(n\)= the size of each group, 
+\(\sigma\)= the variance of the whole group, and \(\sigma_i\) and \(\bar{X}_i\) is the variance and the mean for each group. 
 
-Meaning that when $n$ is big (which is our case):  
+Meaning that when \(n\) is big (which is our case):  
  
  $$
 \sigma^2 \approx \frac{(\sigma_1^2 + \sigma_2^2)}{2} + \frac{ (\bar{X}_1-\bar{X}_2)^2}{4}

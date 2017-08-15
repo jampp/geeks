@@ -52,7 +52,7 @@ As the effect we are trying to measure is usually very small ((link to the non-t
 
 In order to establish the behavior difference between the two groups, we use a test to compare their means. We focus on the case of the two-sample t-test. This is the framework most commonly used in online experiment analysis. [Deng, et al. 2013] [deng-cuped].  Although t-test assumes that the distributions are normal, when you have enough samples [t-test are robust to non-normality]. [robust-to-non-norm]
 
-Specifically, we use the [Welch Test] [welch], which is an adaptation of the [Student’s t-test] [student-test], and it doesn't assume equal variances between the samples, as they may vary between treatment and control. For this test, to calculate the needed sample size for each group (we split them equally), we need the variance and mean of each sample; and of course we need to set up our desired $\alpha$ and $\beta$, [type I and II] [type12] error respectively. 
+Specifically, we use the [Welch Test] [welch], which is an adaptation of the [Student’s t-test] [student-test], and it doesn't assume equal variances between the samples, as they may vary between treatment and control. For this test, to calculate the needed sample size for each group (we split them equally), we need the variance and mean of each sample; and of course we need to set up our desired \\(\alpha\\) and \\(\beta\\), [type I and II] [type12] error respectively. 
 
 To reach the specified significance, the [formula] [sample_size_2sigma] for each group sample size is:
 
@@ -158,8 +158,7 @@ MDE = \frac{\bar{X}_{treat}
 {\bar{X}_{cont}}-1
 $$
 
-Where \\( {\bar{X}_{treat}} \\)
-and \\({\bar{X}_{cont}}\\) are the mean of the treatment and control groups.
+Where \\( {\bar{X}\_{treat}} \\) and \\({\bar{X}\_{cont}}\\) are the mean of the treatment and control groups.
 
 
 The main steps of the method are outlined in the next graph. The specifics of each of them are explained in more detail below.
@@ -167,6 +166,7 @@ The main steps of the method are outlined in the next graph. The specifics of ea
 ![ Steps of the Method ]({{site.url}}/assets/images/RCT/steps_method.png){: .center-image }
 
 ### Pre test Stats - Estimate MDE
+
 Given that we have seen this kind of experiments are successful depending on the kind of data we are working with, at this stage we *estimate* the potential power of the test. We would like to know certain values before the test, where these values will only be available at the end of it. Things such as mean and variance of the sum of key events for all users and number of users will only be known after we run the test, for exposed users. All of these are necessary inputs to produce our pre-test estimation of the MDE. 
 
 To cope with this, we'll get estimates values from past data and, with these, we will infer an MDE. Finally, if we consider the MDE estimated is good (small) enough, we will run the experiment. As we are running a t-test, the formula for the MDE is derived from the sample size formula we’ve seen before, obtaining: ((note at the end to see the details of this derivation))
@@ -187,7 +187,9 @@ where :
 Once we’ve estimated the power of the test, we decide if it is worth running or not. To calculate this initial MDE we use data that is *similar* to the one we are trying to evaluate, but not the same. We will update these values once we have data from the actual test. 
     
 As the test will run for at least 21 days, the MDE choice will be calibrated to have a test running for in between 21 and 30 days, using the sample size estimation formula. As such, we will collect past data up to a range of 30 days.
+
 ### Set up
+
 At this point, we need to set up the campaign, in order to be able to compare the Treatment and Control Groups. 
 
 To identify the Control Exposed Users we will use Control PSA Ads (not related with the campaign). For every treatment ad size, we must have the *same equivalent* PSA ad. 
@@ -198,6 +200,7 @@ Bidding and pricing configurations should be the same among the treatment and co
 *The segmentation of users that are more likely to convert, which is run on a daily basis, will be run at the beginning, and remain constant throughout the whole test. So we don’t introduce bias in the selection while the campaign is running.
 
 ### Run the Test
+
 As we mentioned before, we will focus only on the exposed users in each group. For every exposed user, we will discard events that occur during the test, but prior to the user’s first impression. 
 
 The two-sample t-test is the framework most commonly used in online experiment analysis. In particular, we will use the Welch's Test to detect differences in means for samples with different variances. The t-statistic for the Welch test is:
@@ -210,6 +213,7 @@ where \\(\bar{X}_i\\), \\(\sigma_i^2\\) and \\(N_i\\) are the sample mean, sampl
 
 
 The test will run for at least 21 days, and no more than 30 days. We will stop it once we’ve reached the minimum sample size needed. 
+
 #### Sample Size Re-Estimation
 
 All of our parameters above (mean, variance, n), were calculated with data previous to the test. As such, they provide an estimate of the final MDE of this test. To cope with this and to better calibrate these estimations, we will refresh all of the previous variance, means, exposed users and sample size for both the treatment and control groups. 
@@ -217,6 +221,7 @@ All of our parameters above (mean, variance, n), were calculated with data previ
 These estimations will be updated after 7 days of running the test with in-test-data exposed users only. With this, we will be having more reliable estimates of an achievable sample size and, as such, an updated MDE as well. We will repeat this process at the 14th and 21st days of the test as well, giving us a sense of the sample size needed and the expected exposed users we would have by the end of the test.
 
 To calculate this, we use the sample size formula (link to formula) defined above.
+
 #### Test Monitoring
 
 During the test, we will also perform health checks on the data and on the test itself. These checks will not be statistically valid, yet they might point to possible problems in the test.  Following a methodology from [Airbnb] [airbnb] we will graph two time series showing the hourly test metrics. For both series, each value is showing the resulting metric, up to that hour. 
@@ -228,7 +233,9 @@ These metrics will be test's p-value and MDE. The intention of this is to have a
 The post test evaluation is done *only once* we've reached the minimum required sample size, as determined at the 21ts day of the test. The main output will be the test's effect and p-values of the A and B groups. This will be the test's most important insight on whether there was a positive difference between the means.
 
 Other analysis can include analyzing subgroup p-values and difference in means, in search of anomalies. i.e. segment users by device type, platform version and analyze if there are big differences in the results. High differences at the subgroup level can be indicative of problems in our own platform, bidder, etc. 
+
 ## Next Steps
+
 We showed our current method to measure the impact of advertising in a fast-paced ecosystem like the mobile ad industry. In the process of continuously upgrading our approaches, we would like to improve the method by letting our engine for ad delivery to work normally. This would make the experiment to be closer to what we do at Jampp. 
     
 In [Lewis et al., 2015] [johnson] they describe the Ghost Ad methodology, where the ad platform works normally. In this methodology, the ad platform delivers ads to the control group as usual, but tags as *ghost ad impressions* where the ad platform *would have* served an experimental ad. Therefore, we would be able to identify the *exposed* users in the control group and still be showing *another* advertiser ad. The Ghost Ad methodology avoid the ad inventory and coordination costs of PSAs.

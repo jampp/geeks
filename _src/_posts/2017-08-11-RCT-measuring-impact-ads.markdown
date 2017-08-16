@@ -5,7 +5,7 @@ date:   2017-08-11
 tag: data-science
 categories:
  - data-science
-keywords: "controlled trials, a/b test, measure, advertising, data science"
+keywords: "controlled trials, a/b test, measure, advertising, method, data science"
 description: In this post we discuss the method we developed to measure the impact of advertising in re targeting campaigns
 author: pablow
 ---

@@ -18,15 +18,15 @@ At [Jampp] [jampp], we boost mobile sales through advertising. That’s why meas
 While most common approaches for controlled experiments would succeed in other scenarios, they might fail in a complex, online, fast-paced ecosystem like the one we experience at Jampp. 
 Bias selection, noisy data, or not having enough statistical power, could make the experiment unsuccessful.
 After extensive research on the subject in both academia and the industry, we developed a method that facilitates measuring this impact in complex settings.
-In this post, we dive deeper into some of the possible problems for these kind of experiments, and we show the key findings that will be implemented in our design. Finally, we describe the details of the method and the next steps towards improving its design.
+In this post, we dive deeper into some of the possible problems for these kind of experiments, and we show the key findings that will be implemented in our design. Finally, we describe the details of the method and the next steps towards improving its architecture.
 
 <!--excerpt.end-->
 
 ## Introduction
 
-Every advertiser wants to know whether they are having an impact on their users or not. More precisely, the question they're trying to answer is perfectly captured in a blog post by [Google] [google-blog]: "Did showing my ads affect customers' behavior, relative to not showing my ads?". With that in mind, we established a method to address this question and its underlying implications for the way retargeting is measured.
+Every advertiser wants to know whether they are having an impact on their users or not. More precisely, the question they're trying to answer is perfectly captured in a blog post by [Google] [google-blog]: "Did showing my ads affect customers' behavior, relative to not showing my ads?". With that in mind, we established a method to address this question and its underlying implications for the way re targeting is measured.
 
-The best approach to this issue is to run a randomized controlled trial ([RCT]) [rct] or, more specifically, an [A/B test] [ABtest] [Deng, et al. 2013 ][deng-cuped], which is basically a controlled experiment where two probabilistically equivalent groups (A and B, or treatment and control) are compared. They are identical except for one variation or factor that might affect a user's behavior. In our case, the factor would be to *show an ad* of the specific advertiser we want to analyze. As a result, any difference between the two groups would be because of the factor applied, the only thing that changed. Therefore, we can establish a causal relation between *showing an ad* and the difference in the behavior.  
+The best approach to this issue is to run a randomized controlled trial ([RCT] [rct]) or, more specifically, an [A/B test] [ABtest] [Deng, et al. 2013 ][deng-cuped], which is basically a controlled experiment where two probabilistically equivalent groups (A and B, or treatment and control) are compared. They are identical except for one variation or factor that might affect a user's behavior. In our case, the factor would be to *show an ad* of the specific advertiser we want to analyze. As a result, any difference between the two groups would be because of the factor applied, the only thing that changed. Therefore, we can establish a causal relation between *showing an ad* and the difference in the behavior.  
 
 In order to measure the behavior we need to establish a metric. It will be used to compare the differences between the groups. In general, this metric is based on a specific demand of the advertiser, depending on the kind of behavior they want to measure. For example, it can be a click on an impression, a search, a purchase, etc. 
 
@@ -49,7 +49,7 @@ In most industries, running these kind of tests is not a big deal. In contrast, 
 
 ## Typical problems in the Industry
 
-In this section, we describe some of the most common problems that may arise in these settings. We show examples from our own data and also experiments from academia. These issues appear consistently across verticals (i.e. transportation, entertainment, travel, shopping, etc)
+In this section, we describe some of the most common problems that may arise in these settings. We show examples from our own data and also discuss experiments from academia. These issues appear consistently across our business verticals (i.e. transportation, entertainment, travel, shopping, etc)
 
 
 ### Not enough significance
@@ -142,7 +142,7 @@ To do this, we introduce the Public Service Announcement ([PSA] [psa]), which is
 
 Once equipped with that tagging, we can focus on the Treatment Exposed (users in the treatment group who saw an ad from the advertiser) and Control Exposed (users in the control group who saw the PSA ad, this will be a user who *would* have seen an advertiser ad). With this tool we increase precision in the comparison, eliminating the noise of the unexposed users. 
 
-As an example, [(Johnson et al. 2015)][lessmore] shows that PSAs in control can significantly improve precision: their estimate is 31% more precise than their A/B Classical Test estimate. In the same work, they also found an improvement when discarding events that occur in the campaign prior to a user’s first impression in both treatment and control groups. This makes sense: considering only the user's events *after* seeing their first impression won’t bias the selection made by the ad platform and will account for events only when the user becomes part of the experiment. 
+As an example, ([Johnson et al. 2015][lessmore]) shows that PSAs in control can significantly improve precision: their estimate is 31% more precise than their A/B Classical Test estimate. In the same work, they also found an improvement when discarding events that occur in the campaign prior to a user’s first impression in both treatment and control groups. This makes sense: considering only the user's events *after* seeing their first impression won’t bias the selection made by the ad platform and will account for events only when the user becomes part of the experiment. 
 
 But again, the advertising platform will treat the advertisers' and the PSA's ads differently, thus the treatment and the control exposed users won't be comparable. As a consequence, if the ad delivery platform is working normally for both groups, the PSAs are not valid control ads. This happens because the engine optimizes ad delivery by matching each ad to a user type, and clearly an advertiser ad is very different to a PSA ad, in consequence, we will have different types of users.
 
@@ -154,12 +154,12 @@ We developed the method equipped with the insights learned from the problems des
 * Deliver PSA ads to the Control Group in order to identify the Exposed users. For every Treatment ad size, we must have the *same equivalent* PSA ad. 
 * Bidding and pricing configurations should be the same among the treatment and control.
 * Turn off the ad delivery platform and run a [CPM Ad] [cpm]: *fixed priced* campaign. Our platform needs to select the exposed users in both groups with the same criteria to reduce the bias selection. 
-*The segmentation of users that are more likely to convert, which is run on a daily basis, will be run at the beginning, and remain constant throughout the whole test. So we don’t introduce any bias in the selection while the campaign is running.
+* The segmentation of users that are more likely to convert, which is run on a daily basis, will be run at the beginning, and remain constant throughout the whole test. So we don’t introduce any bias in the selection while the campaign is running.
 * Consider only events after the first impression in both Treatment and Control Groups. 
 
 Let’s define a useful tool we will use from now on:
 
-Minimum Detectable Effect (MDE or Δ): The Minimum Relative Difference in the average global of the defined metric, among the treatment and control groups. This is to establish a comparable effect between different key events and apps.
+Minimum Detectable Effect (MDE or Δ): The minimum relative difference in the average global of the defined metric, among the treatment and control groups. This is to establish a comparable effect between different key events and apps.
 
 $$
 MDE = \frac{\bar{X}_{treat}
@@ -206,7 +206,7 @@ As the test will run for at least 21 days, the MDE choice will be calibrated to 
 
 As we mentioned before, we will focus only on the exposed users in each group. For every exposed user, we will discard events that occur during the test, but prior to the user’s first impression. 
 
-The two-sample t-test is the framework most commonly used in online experiment analysis. In particular, we will use the Welch's Test to detect differences in means for samples with different variances. The t-statistic for the Welch test is:
+We use the Welch's Test to detect differences in means for samples with different variances. The t-statistic for the Welch test is:
 
 $$
 t = \frac{\bar{X}_1 - \bar{X}_2}{\sqrt{\frac{\sigma_1^2}{N_1}+\frac{\sigma_2^2}{N_2}}}
@@ -219,11 +219,14 @@ The test will run for at least 21 days, and no more than 30 days. We will stop i
 
 #### Sample Size Re-Estimation
 
-All of our parameters above (mean, variance, n), were calculated with data previous to the test. As such, they provide an estimate of the final MDE of this test. To cope with this and to better calibrate these estimations, we will refresh all of the previous variance, means, exposed users and sample size for both the treatment and control groups. 
+All of our parameters above (mean, variance, n), were calculated with data previous to the test. As such, they provide an estimate of the final MDE of this test. To better calibrate these estimations, we will refresh all of the previous variance, mean, exposed users and sample size for both the treatment and control groups. 
 
 These estimations will be updated after 7 days of running the test with in-test-data exposed users only. With this, we will be having more reliable estimates of an achievable sample size and, as such, an updated MDE as well. We will repeat this process at the 14th and 21st days of the test as well, giving us a sense of the sample size needed and the expected exposed users we would have by the end of the test.
 
-To calculate this, we use the sample size formula (link to formula) defined above.
+To calculate this, we use the sample size formula defined above.
+
+$$n_{treat}=n_{cont} = \frac{ (z_{\alpha/2} + z_{\beta})^2 (\sigma_{treat}^2+\sigma_{cont}^2)  }{(\bar{X}_{treat}-\bar{X}_{cont})^2}$$
+
 
 #### Test Monitoring
 
@@ -233,7 +236,7 @@ These metrics will be test's p-value and MDE. The intention of this is to have a
 
 ### Test Evaluation
 
-The post test evaluation is done *only once* we've reached the minimum required sample size, as determined at the 21st day of the test. The main output will be the test's effect and p-values of the A and B groups. This will be the test's most important insight on whether there was a positive difference between the means.
+The post test evaluation is done *only once* we've reached the minimum required sample size, as determined at the 21st day of the test. The main output will be the test's effect and p-value. This will be the test's most important insight on whether there was a positive difference between the means.
 
 Other analysis can include analyzing subgroup p-values and difference in means, in search of anomalies. i.e. segment users by device type, platform version and analyze if there are big differences in the results. High differences at the subgroup level can be indicative of problems in our own platform, bidder, etc. 
 
@@ -249,10 +252,13 @@ Implementing the Predicted Ghost Ad methodology will be our next challenge. We h
 
 ## References
  
+- Jan, S. L., & Shieh, G. (2011). Optimal sample sizes for Welch’s test under various allocation and cost considerations. Behavior research methods, 43(4), 1014-1022. [online] [sample_size_2sigma]
 - Deng, A., Xu, Y., Kohavi, R., & Walker, T. (2013, February). Improving the sensitivity of online controlled experiments by utilizing pre-experiment data. In Proceedings of the sixth ACM international conference on Web search and data mining (pp. 123-132). ACM. [Online] [deng-cuped]
 - Johnson, G. A., Lewis, R. A., & Nubbemeyer, E. I. (2015). Ghost ads: Improving the economics of measuring ad effectiveness. Available at SSRN. [online] [johnson]
 - Johnson, G. A., Lewis, R. A., & Reiley, D. H. (2016). When less is more: Data and power in advertising experiments. Marketing Science, 36(1), 43-53. [online] [lessmore]
 - Gordon, B. R., Zettelmeyer, F., Bhargava, N., & Chapsky, D. (2016). A comparison of approaches to advertising measurement: Evidence from big field experiments at Facebook. White paper. [online] [fcb-kellog]
+
+
 
 [jampp]: http://jampp.com/
 

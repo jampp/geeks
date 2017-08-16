@@ -5,10 +5,13 @@ date:   2017-08-11
 tag: data-science
 categories:
  - data-science
-keywords: "controlled trials, a/b test, measure, advertising, data science"
+keywords: "controlled trials, a/b test, measure, advertising, method, data science"
 description: In this post we discuss the method we developed to measure the impact of advertising in re targeting campaigns
 author: pablow
----$
+---
+
+
+
 <!--excerpt.start-->
 
 At [Jampp] [jampp], we boost mobile sales through advertising. That’s why measuring the impact of advertising is key to our business. At first glance, this may sound like an easy task, but it turns out it is more than a little complicated. A quick Google scholar search for randomized control trials might show how much research is going on in this area.
@@ -53,9 +56,9 @@ In this section, we describe some of the most common problems that may arise in 
 
 As the effect we are trying to measure is usually very small, we will often need a lot of samples in order to achieve the significance we want. Also, the variance of the data will play an important role. Higher variances of the metric of study will diminish the power of the test. Let’s expand this more.
 
-In order to establish the behavior difference between the two groups, we use a test to compare their means. We focus on the case of the two-sample t-test. This is the framework most commonly used in online experiment analysis ([Deng, et al. 2013] [deng-cuped]).  Although t-test assumes that the distributions are normal, when you have enough samples [t-test are robust to non-normality]. [robust-to-non-norm]
+In order to establish the behavior difference between the two groups, we use a test to compare their means. We focus on the case of the two-sample t-test. This is the framework most commonly used in online experiment analysis ([Deng, et al. 2013] [deng-cuped]).  Although t-test assumes that the distributions are normal, when you have enough samples [t-test are robust to non-normality] [robust-to-non-norm].
 
-Specifically, we use the [Welch Test] [welch], which is an adaptation of the [Student’s t-test] [student-test], and it doesn't assume equal variances between the samples, as they may vary between treatment and control. For this test, to calculate the needed sample size for each group (we split them equally), we need the variance and mean of each sample; and of course we need to set up our desired \\(\alpha\\) and \\(\beta\\), [type I and II] [type12] error respectively. 
+Specifically, we use the [Welch Test] [welch], which is an adaptation of the [Student’s t-test] [student-test], and it doesn't assume equal variances between the samples, as they may vary between treatment and control. For this test, to calculate the needed sample size for each group (we split them equally), we need the variance and mean of each sample; and of course we need to set up our desired \\(\alpha\\) and \\(\beta\\), [type I and II] [type12error] error respectively. 
 
 To reach the specified significance, the [formula] [sample_size_2sigma] for each group sample size is:
 
@@ -179,7 +182,7 @@ The main steps of the method are outlined in the next graph. The specifics of ea
 
 Given that we have seen this kind of experiments can be successful depending on the kind of data we are working with, at this stage we *estimate* the potential power of the test. We would like to know certain values before the test, where these values will only be available at the end of it. Things such as mean and variance of the sum of key events for all users and number of users will only be known after we run the test, for exposed users. All of these are necessary inputs to produce our pre-test estimation of the MDE. 
 
-To cope with this, we'll get estimates values from past data and, with these, we will infer an MDE. Finally, if we consider the MDE estimated is good (small) enough, we will run the experiment. As we are running a t-test, the formula for the MDE is derived from the sample size formula we’ve seen before, obtaining: ((note at the end to see the details of this derivation))
+To cope with this, we'll get estimates values from past data and, with these, we will infer an MDE. Finally, if we consider the MDE estimated is good (small) enough, we will run the experiment. As we are running a t-test, the formula for the MDE is derived from the sample size formula we’ve seen before, obtaining: (find this derivation in the appendix at the end of the post)
 
 $$
 MDE = \frac{ (z_{\alpha/2} + z_{\beta}) \sqrt{2} \sigma }
@@ -333,7 +336,7 @@ $$
 
 ### To calculate the initial MDE
 
-We need to estimate the values of the variance, but we only have one (the variance of the total group).
+We need to estimate the values of the variances, but we only have one (the variance of the total group).
 
 If the samples in each group are the same, [we know that][combined_variance]:
 

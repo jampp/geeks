@@ -8,7 +8,10 @@ categories:
 keywords: "controlled trials, a/b test, measure, advertising, data science"
 description: In this post we discuss the method we developed to measure the impact of advertising in re targeting campaigns
 author: pablow
----$
+---
+
+
+
 <!--excerpt.start-->
 
 At [Jampp] [jampp], we boost mobile sales through advertising. That’s why measuring the impact of advertising is key to our business. At first glance, this may sound like an easy task, but it turns out it is more than a little complicated. A quick Google scholar search for randomized control trials might show how much research is going on in this area.

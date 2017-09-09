@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The importance of serving the right amount of ads 
-date:   2017-09-11
+date:  2017-09-11
 tag: data-science
 categories:
  - data-science
@@ -31,9 +31,9 @@ Current attribution methods rely on what is known as the last-touch of a user. W
 
 We understand that, all other things equal, a user which has repeatedly seen an ad for a short period of time should not be treated the same as one which has seen it with less frequency. Yet quantifying the effects of advertising on both these _types_ of users *is hard*. 
 
-At the same time, how much value do impressions drive? It is clear that they play a key role in advertisers’ efforts to reach/ engage users, but the current industry pricing models compensate deeper funnel interactions i.e. clicks or events. 
+At the same time, how much value do impressions drive? It is clear that they play a key role in advertisers’ efforts to reach/engage users, but the current industry pricing models compensate deeper funnel interactions, i.e. clicks or events. 
 
-Yet it is  Another element to consider when assessing impression value is what the industry refers to as "frequency capping". 
+Yet it is. Another element to consider when assessing impression value is what the industry refers to as "frequency capping". 
 
 From our research, there are not many articles published on this subject: a user's functional relationship of the number of impressions he is served and the likelihood of performing a desirable action, be it an install or an in-app-event. We make an initial approximation on establishing a limit to the amount of advertising messages shown to a unique user, expanding on this topic's technicalities, problems, perspectives and first methods to analyze the data. 
 
@@ -41,7 +41,7 @@ Our simulation stems from the idea that we have to dynamically limit the number 
 
 ##The RTB ecosystem
 
-In the most simple RTB ad space, we have a marketplace consisting of three groups of players: advertisers, publishers and exchanges. App marketers demand advertising spaces in exchange for money and the publishers  supply those spaces. Here, the exchange acts as an intermediary between these two groups and directs the flow of users in one direction: advertisers &rightarrow; publishers. Also, it oversees the money flow in the opposite direction. 
+In the most simple RTB ad space, we have a marketplace consisting of three groups of players: advertisers, publishers and exchanges. App marketers demand advertising spaces in exchange for money and the publishers supply those spaces. Here, the exchange acts as an intermediary between these two groups and directs the flow of users in one direction: advertisers &rightarrow; publishers. Also, it oversees the money flow in the opposite direction. 
 
 Virtually all RTB exchanges offer ads by means of auctions which operate under the second price model i.e. the winner will not pay their actual bid price, but the second highest bid price. 
 
@@ -53,13 +53,13 @@ Our bidder then bridges between the CPA and CPM pricing models. This must be don
 
 ##Analysis
 
-To start, we must analyze our current last-touch attribution model. By touch we might either refer to impressions or clicks. In both systems in which the advertiser will retribute the publisher who was last to show an ad to the user, prior to their conversion. 
+To start, we must analyze our current last-touch attribution model. By touch we might either refer to impressions or clicks. In both systems in which the advertiser will retribute the publisher who was the last to show an ad to the user, prior to their conversion. 
 
-The retribution is always conditional to the message being delivered within a predefined  attribution window. These windows are set as a method to incorporate causality in the model. It is safe to say that a click that occurred a year prior to a conversion has no relationship to this event. 
+The retribution is always conditional to the message being delivered within a predefined attribution window. These windows are set as a method to incorporate causality in the model. It is safe to say that a click that occurred one year prior to a conversion has no relationship to this event. 
 
-For clicks, this window is typically set between seven to thirty days whilst for impressions, it is more on the order of twenty four hours. While the industry believes there is a significant causality relationship between seeing an ad and actually going forward and, for example, purchasing a shirt. The purchase is seen nearer to a click, where it is assumed that the user's intent is stronger by their interaction with the ad (click), rather than only viewing the ad.
+For clicks, this window is typically set between seven to thirty days whilst for impressions, it is commonly set to twenty four hours. While the industry believes there is a significant causality relationship between seeing an ad and actually going forward and, for example, purchasing a shirt. The purchase is seen nearer to a click, where it is assumed that the user's intent is stronger by their interaction with the ad (click), rather than only viewing the ad.
 
-A typical user ad lifecycle can look something like this:
+A typical user ad lifecycle can look like something like this:
 
 ![ Normalized view of increase/decrease in revenue and CPA]({{site.url}}/assets/images/frequency-capping/attribution_windows.png){: .center-image } 
 
@@ -67,7 +67,7 @@ We can see that there are two possible attribution periods, caused by the differ
 
 The figure above is an example of a scenario where there is only one conversion for this user. But this situation can happen a number of times over a given period. Users need not convert only once, and every time this happens there are systems checking the attribution of the conversion, to past impressions or clicks.
 
-Note that this is just one of possible user attributions. We could actually have new impressions after the click or no click at all. A user can be for example buying goods, without actually clicking on ads.
+Note that this is just one of many possible user attributions. We could actually have new impressions after the click, or no click at all. A user can be for example buying goods, without actually clicking on ads.
 ###Assumptions
 
 From our messages, we search click, impression and conversion logs. Here we will be assuming that these logs are i.i.d random variables, for any given instance $c \in C$ (during $T$). 
@@ -85,7 +85,7 @@ Let $A$ be the set of apps (or Advertisers) and, without loss of generality, con
 
 The set of users, clicks, events and impressions will be noted by $U$, $Cl$, $E$, $I$, respectively. All of these occur inside the window defined by $T$ [^past-click-attributed]. 
 
-Our data will be made of impressions and clicks that happen inside an attribution window, relative to our event of interest. For impressions, we will calculate their frequency number determined as the number of  impressions a user receives per day. We will also refer to this as the impression number of that message. This is independent of the message being attributed or not.
+Our data will be made of impressions and clicks that happen inside an attribution window, relative to our event of interest. For impressions, we will calculate their frequency number determined as the number of impressions a user receives per day. We will also refer to this as the impression number of that message. This is independent of the message being attributed or not.
 
 In short, given a time period $T$ and a campaign $c$ we will want to have, for each $e$, the corresponding clicks ($cl$) and impressions ($i$) that occurred previous to $e$. We will also see that all of the clicks and impressions comply with their attribution window, for that message type. 
 
@@ -95,7 +95,7 @@ The above implies that for a certain user $u$ and a conversion $e$, we may have 
 
 Here, we will consider only campaigns which had no actual frequency capping set during $T$. This is because we implement an offline counterfactual model where, for each $c$, we gather all messages as explained before, and hypothesize what would've happened had we _frequency capped_ the campaign. 
 
-Consider $f \in F$ a frequency level threshold from the set $F =  [1,\cdots,100] \cap $. With this, we can calculate a cumulative impression analysis. The idea is to look at the trade off when we simulate different frequency caps into the data, and calculating the resulting change in metrics. 
+Consider $f \in F$ a frequency level threshold from the set $F = [1,\cdots,100] \cap $. With this, we can calculate a cumulative impression analysis. The idea is to look at the trade off when we simulate different frequency caps into the data, and calculating the resulting change in metrics. 
 
 Naturally, all simulated capping scenarios would affect conversion volumes, impressions spend clicks and revenues. 
 
@@ -106,26 +106,26 @@ First, we need to know what is the resulting volume of impressions after the cap
 The same goes for the remaining conversions volume after capping:
 
 \begin{equation}
-    \begin{aligned}
-    Imp : & F \rightarrow \mathbb{N} \\
-       f & \rightarrow n
-    \end{aligned}
+  \begin{aligned}
+  Imp : & F \rightarrow \mathbb{N} \\
+    f & \rightarrow n
+  \end{aligned}
 \end{equation}
 
 \begin{equation}
-    \begin{aligned}
-    Conv : & F \rightarrow \mathbb{N} \\
-       f & \rightarrow n
-    \end{aligned}
+  \begin{aligned}
+  Conv : & F \rightarrow \mathbb{N} \\
+    f & \rightarrow n
+  \end{aligned}
 \end{equation}
 
 As we've said before, a simulated capping implies _losing_ clicks. We thus have a functional (unknown) transformation $h(\cdot)$ between impression and click levels that affect the final click volume:
 
 \begin{equation*}
-    \begin{aligned}
-    Cl : & F \rightarrow \mathbb{N} \\
-       f & \rightarrow h(Imp(f))
-    \end{aligned}
+  \begin{aligned}
+  Cl : & F \rightarrow \mathbb{N} \\
+    f & \rightarrow h(Imp(f))
+  \end{aligned}
 \end{equation*}
 
 These relationships were created from the data, yet we could not explicitly give closed-form formulas for them. From our explorations, different instances showed different relations. In other words, we can fit the data for a single instance, a specific campaign and time period, yet these functions will change for other instances, in a way which does not allow their generalization. So we worked each instance separately. 
@@ -138,19 +138,19 @@ In this way we will have to metrics defined as functions of the previous relatio
 
 The revenue is very simple in terms of the average CPC (cost-per-click) for that campaign:
 \begin{equation}
-    \begin{aligned}
-    Rev : & F \rightarrow \mathbb{N} \\
-       f & \rightarrow Cl(f)\times CPC
-    \end{aligned}
+  \begin{aligned}
+  Rev : & F \rightarrow \mathbb{N} \\
+    f & \rightarrow Cl(f)\times CPC
+  \end{aligned}
 \end{equation}
 
 The same goes with the CPA, it is easy to see that it is established as a 
 
 \begin{equation}
-    \begin{aligned}
-    Cpa : & F \rightarrow \mathbb{N} \\
-       f & \rightarrow g(Cl(f),Conv(f))
-    \end{aligned}
+  \begin{aligned}
+  Cpa : & F \rightarrow \mathbb{N} \\
+    f & \rightarrow g(Cl(f),Conv(f))
+  \end{aligned}
 \end{equation}
 
 Where $g$ is the functional relationship among them, which is advertiser-specific.

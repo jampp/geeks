@@ -61,7 +61,7 @@ For clicks, this window is typically set between seven to thirty days whilst for
 
 A typical user ad lifecycle can look something like this:
 
-![ User series showing arrival of messages in time ]({{site.url}}/assets/images/frequency-capping/attribution_windows.png){: .center-image } 
+![ Normalized view of increase/decrease in revenue and CPA]({{site.url}}/assets/images/frequency-capping/attribution_windows.png){: .center-image } 
 
 We can see that there are two possible attribution periods, caused by the different message types. These can overlap in time and they do not invalidate themselves. 
 
@@ -157,7 +157,7 @@ Where $g$ is the functional relationship among them, which is advertiser-specifi
 
 We show here two examples of these relationships, for a specific campaign. The output $Cpa$ and $Rev$ levels shown are evaluated at different frequency cap levels (x-axis). Note that the figures are given in terms of the percentage change, when compared to the baseline $Cpa$ and $Rev$ which exist when no frequency cap is enforced.
 
-![ User series showing arrival of messages in time ]({{site.url}}/assets/images/frequency-capping/cpa_revenue_decrease_chart.png){: .center-image } 
+![ Comparison of both CPA and revenue series tradeoff ]({{site.url}}/assets/images/frequency-capping/cpa_revenue_decrease_chart.png){: .center-image } 
 
 The tradeoff is very clear, we have that at the minimum cap level, with one impression only we 
 would have a huge optimization in CPA. The figures start at frequency cap level one, and by the looks we might think we have the optimal CPA. Yet understand that this value is showing a *singularity* from the data. Such an extreme cap would imply barely any clicks for the advertiser and, in turn, barely any conversions volume. 

@@ -5,15 +5,26 @@ title: Jampp Tech
 <a class="job-button" href="#modal">&lt;/We are hiring!&gt;</a>
 <div class="container">
   {% include style-switcher.html %}
-  <div class="post-list">
-    {% include first-post.html %}
-  </div>
-  <div class="post-list" data-columns>
-    {% for post in paginator.posts offset:1 %}
-      <div class="post">
-        {% include post.html %}
-      </div>
-    {% endfor %}
-  </div>
+  {% if page.url == "/" %}
+    <div class="post-list">
+      {% include first-post.html %}
+    </div>
+    <div class="post-list" data-columns>
+      {% for post in paginator.posts offset:1 %}
+        <div class="post">
+          {% include post.html %}
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="post-list" data-columns>
+      {% for post in paginator.posts %}
+        <div class="post">
+          {% include post.html %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
   {% include pagination.html %}
 </div>

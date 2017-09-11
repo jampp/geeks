@@ -1,9 +1,12 @@
 .post-body
+  .container
+    width: 680px
+
   .tagline
     font-size: 16px
     color: #B4B4B4
     line-height: 30px
-    padding-bottom: 1em
+    padding-bottom: 1.2em
 
   .title
     @extend .h1
@@ -12,13 +15,15 @@
   .meta
     padding: 0
     font-family: Lekton
-    font-size: 14px
+    font-size: 16px
     color: $body-color
     line-height: 22px
-    margin-bottom: 1em
+    margin-bottom: 1.2em
     a
-      color: $body-color
-      border-bottom: 1px dotted $body-color
+      color: $brand-color
+      border-bottom: 1px dotted $brand-color
+      &:hover
+        border-style: solid
     h3
       display: inline-block
 
@@ -51,21 +56,25 @@
     figure
       margin-bottom: 20px
 
+    ol 
+      list-style: decimal
+
+      li
+        padding-left: 10px
+
+    ul 
+      list-style: disc
+
     ol, ul
-      list-style: outside none none
-      padding: 0
       margin-bottom: 1em
       font-size: 16px
       letter-spacing: 0.3px
       font-family: Yantramanav
       font-weight: 300
+      margin-left: 18px
+
       li
         line-height: 30px
-        &:before
-          content: "•"
-          font-size: 18px
-          padding-right: .5em
-          float: left;
 
     table
       font-size: 16px
@@ -82,6 +91,14 @@
 
       th
         color: #888
+
+    sup 
+      font-size: 70%
+      position: relative
+      top: -3px
+
+    em 
+      font-style: italic
 
     .center-image 
       margin: 0 auto
@@ -120,6 +137,11 @@
     border: none
     overflow-y: hidden
 
+.footnotes
+  li
+    font-size: 12px
+  p
+    font-size: 12px
 
 .related
   padding: 2em 0

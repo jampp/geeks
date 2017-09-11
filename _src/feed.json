@@ -1,0 +1,15 @@
+---
+layout: nil
+---
+
+[
+{% for post in site.posts limit:5 %}
+    {
+      "title": "{{ post.title }}",
+      "url": "{{ post.url | prepend: site.baseurl | prepend: site.url }}",
+      "category": "{% assign sortedcategories = post.categories | sort %}{% for category in sortedcategories %}{{ category }}{% endfor %}",
+      "date": "{{ post.date | date: "%B %d, %Y" }}",
+      "lala": "{{ post.content | strip_html | truncatewords: 50 }}"
+} {% if forloop.last %}{% else %},{% endif %}
+{% endfor %}
+]

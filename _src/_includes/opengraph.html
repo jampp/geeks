@@ -4,7 +4,7 @@
 
 <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
-<meta property="og:image" content="{% if page.image.feature %}{{ site.url }}/assets/images/featured-images-posts/{{ page.image.feature }}{% else %}{{ site.url }}/assets/images/categories/product-announcements@2x.png{% endif %}">
+<meta property="og:image" content="{% if page.image.feature %}{{ site.url }}/assets/images/featured-images-posts/{{ page.image.feature }}{% else %}http://geeks-preview.jampp.com/assets/images/jampp_blue_logo-b79bba3297.png{% endif %}">
 
 <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
 

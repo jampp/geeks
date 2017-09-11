@@ -16,6 +16,7 @@ We know that, sometimes, serving more impressions to users will result in CPA in
 
 <!--excerpt.end→
 
+
 ##Introduction
 
 Performance advertising is relevant to advertisers that want to have a quantifiable measure of their ROI. This means that the investment in advertising has to reach measurable goals such as increased number of in-app activity or app downloads. Then, the payment is directly measured by the value brought by the _events_ caused by ads. 

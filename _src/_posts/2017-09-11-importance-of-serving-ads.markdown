@@ -29,11 +29,11 @@ Current attribution methods rely on what is known as the last-touch of a user. W
 
 We understand that, all other things equal, a user which has repeatedly seen an ad for a short period of time should not be treated the same as one which has seen it with less frequency. Yet quantifying the effects of advertising on both these _types_ of users *is hard*. 
 
-At the same time, how much value do impressions drive? It is clear that they play a key role in advertisers’ efforts to reach/engage users, but the current industry pricing models compensate deeper funnel interactions, i.e. clicks or events. 
+At the same time, how much value do impressions drive? It is clear that they play a key role in advertisers’ efforts to reach/engage users, but the current industry pricing models compensate deeper funnel interactions, i.e. clicks or events. Yet impressions are relevant. 
 
-Yet it is. Another element to consider when assessing impression value is what the industry refers to as "frequency capping". 
+Another element to consider when assessing impression value is what the industry refers to as "frequency capping". From our research, there are not many articles published on this subject: a user's functional relationship of the number of impressions he is served and the likelihood of performing a desirable action, be it an install or an in-app-event. 
 
-From our research, there are not many articles published on this subject: a user's functional relationship of the number of impressions he is served and the likelihood of performing a desirable action, be it an install or an in-app-event. We make an initial approximation on establishing a limit to the amount of advertising messages shown to a unique user, expanding on this topic's technicalities, problems, perspectives and first methods to analyze the data. 
+We make an initial approximation on establishing a limit to the amount of advertising messages shown to a unique user, expanding on this topic's technicalities, problems, perspectives and first methods to analyze the data. 
 
 Our simulation stems from the idea that we have to dynamically limit the number of ads that a user will see during a given campaign, to minimize excess spending and improve Cost Per Action (CPA). Based on some assumptions, we detail a method to calculate the optimal number of impressions that should be served to a user for a given campaign.
 
@@ -68,7 +68,7 @@ The figure above is an example of a scenario where there is only one conversion 
 Note that this is just one of many possible user attributions. We could actually have new impressions after the click, or no click at all. A user can be for example buying goods, without actually clicking on ads.
 ###Assumptions
 
-From our messages, we search click, impression and conversion logs. Here we will be assuming that these logs are i.i.d random variables, for any given instance $c \in C$ (during $T$). 
+From our messages, we search click, impression and conversion logs. Here we will be assuming that these logs are i.i.d random variables, for any given instance \\c \in C\\ (during \\T\\). 
 
 We also make other key assumptions about our data's structure. First, we say that a click is inextricably caused by its impression. There are no other factors affecting a click and this _causality_ can not be shared with other impressions. 
 This affects our analysis when simulating different frequency cap levels. We will say that a cut of an impression that is attributed to a click will directly lead to a loss of that click. Yet this would not occur for events, where an impression loss (or click loss as well) would not necessarily incur in the event loss. This is because of the way we are assuming attribution relationships among distinct message types. The bottom line is that it is not the same to say we lost an impression for that event, than an impression for an install.
@@ -77,23 +77,23 @@ We will be setting attribution windows to the values most commonly used by our c
 
 ###Data Preparation
 
-Consider a time window $T$ over which to analyze our data, fifteen days or one month as a way of reducing stationarity in the data. 
+Consider a time window \\T\\ over which to analyze our data, fifteen days or one month as a way of reducing stationarity in the data. 
 
-Let $A$ be the set of apps (or Advertisers) and, without loss of generality, consider $a$ to be a generic app. The same goes for the set of Campaigns $C$ of those advertisers. In this context we can have multiple $c$ for each $a$, but each $c$ is assigned to one and only one $a$.
+Let \\A\\ be the set of apps (or Advertisers) and, without loss of generality, consider \\a\\ to be a generic app. The same goes for the set of Campaigns \\C\\ of those advertisers. In this context we can have multiple \\c\\ for each \\a\\, but each \\c\\ is assigned to one and only one \\a\\.
 
-The set of users, clicks, events and impressions will be noted by $U$, $Cl$, $E$, $I$, respectively. All of these occur inside the window defined by $T$ [^past-click-attributed]. 
+The set of users, clicks, events and impressions will be noted by \\U\\, \\Cl\\, \\E\\, \\I\\, respectively. All of these occur inside the window defined by \\T\\ [^past-click-attributed]. 
 
 Our data will be made of impressions and clicks that happen inside an attribution window, relative to our event of interest. For impressions, we will calculate their frequency number determined as the number of impressions a user receives per day. We will also refer to this as the impression number of that message. This is independent of the message being attributed or not.
 
-In short, given a time period $T$ and a campaign $c$ we will want to have, for each $e$, the corresponding clicks ($cl$) and impressions ($i$) that occurred previous to $e$. We will also see that all of the clicks and impressions comply with their attribution window, for that message type. 
+In short, given a time period \\T\\ and a campaign \\c\\ we will want to have, for each \\e\\, the corresponding clicks (\\cl\\) and impressions (\\i\\) that occurred previous to \\e\\. We will also see that all of the clicks and impressions comply with their attribution window, for that message type. 
 
-The above implies that for a certain user $u$ and a conversion $e$, we may have multiple associated clicks and impressions to that conversion.
+The above implies that for a certain user \\u\\ and a conversion \\e\\, we may have multiple associated clicks and impressions to that conversion.
  
 ###Counterfactual Simulation
 
-Here, we will consider only campaigns which had no actual frequency capping set during $T$. This is because we implement an offline counterfactual model where, for each $c$, we gather all messages as explained before, and hypothesize what would've happened had we _frequency capped_ the campaign. 
+Here, we will consider only campaigns which had no actual frequency capping set during \\T\\. This is because we implement an offline counterfactual model where, for each \\c\\, we gather all messages as explained before, and hypothesize what would've happened had we _frequency capped_ the campaign. 
 
-Consider $f \in F$ a frequency level threshold from the set $F = [1,\cdots,100] \cap $. With this, we can calculate a cumulative impression analysis. The idea is to look at the trade off when we simulate different frequency caps into the data, and calculating the resulting change in metrics. 
+Consider \\f \in F\\ a frequency level threshold from the set \\F = [1,\cdots,100] \cap \\. With this, we can calculate a cumulative impression analysis. The idea is to look at the trade off when we simulate different frequency caps into the data, and calculating the resulting change in metrics. 
 
 Naturally, all simulated capping scenarios would affect conversion volumes, impressions spend clicks and revenues. 
 
@@ -103,57 +103,48 @@ First, we need to know what is the resulting volume of impressions after the cap
 
 The same goes for the remaining conversions volume after capping:
 
-\begin{equation}
-  \begin{aligned}
-  Imp : & F \rightarrow \mathbb{N} \\
-    f & \rightarrow n
-  \end{aligned}
-\end{equation}
+$$
+  Imp : F \rightarrow \mathbb{N} \\
+    f \rightarrow n
+$$
 
-\begin{equation}
-  \begin{aligned}
-  Conv : & F \rightarrow \mathbb{N} \\
-    f & \rightarrow n
-  \end{aligned}
-\end{equation}
+$$
+  Conv : F \rightarrow \mathbb{N} \\
+    f \rightarrow n
+$$
 
-As we've said before, a simulated capping implies _losing_ clicks. We thus have a functional (unknown) transformation $h(\cdot)$ between impression and click levels that affect the final click volume:
+As we've said before, a simulated capping implies _losing_ clicks. We thus have a functional (unknown) transformation \\h(\cdot)\\ between impression and click levels that affect the final click volume:
 
-\begin{equation*}
-  \begin{aligned}
-  Cl : & F \rightarrow \mathbb{N} \\
-    f & \rightarrow h(Imp(f))
-  \end{aligned}
-\end{equation*}
+$$
+  Cl : F \rightarrow \mathbb{N} \\
+    f \rightarrow h(Imp(f))
+$$
 
 These relationships were created from the data, yet we could not explicitly give closed-form formulas for them. From our explorations, different instances showed different relations. In other words, we can fit the data for a single instance, a specific campaign and time period, yet these functions will change for other instances, in a way which does not allow their generalization. So we worked each instance separately. 
 
-As a second step, we needed to define business metrics that are relevant for our customers. We will have that different frequency cappings would produce different levels of them, because of how the relationships $Imp$, $Conv$ and $Cl$ varied.
+As a second step, we needed to define business metrics that are relevant for our customers. We will have that different frequency cappings would produce different levels of them, because of how the relationships \\Imp\\, \\Conv\\ and \\Cl\\ varied.
 
 Being a performance marketing platform, we prioritized CPA (cost-per-action) optimization of our clients. At the same time, and given the industry's last-click attribution system, we have that our revenue stream is click dependent. So we took revenue to be a second relevant metric, as measured by clicks.
 
 In this way we will have to metrics defined as functions of the previous relationships. 
 
 The revenue is very simple in terms of the average CPC (cost-per-click) for that campaign:
-\begin{equation}
-  \begin{aligned}
-  Rev : & F \rightarrow \mathbb{N} \\
-    f & \rightarrow Cl(f)\times CPC
-  \end{aligned}
-\end{equation}
+
+$$
+  Rev :  F \rightarrow \mathbb{N} \\
+    f  \rightarrow Cl(f)\times CPC
+  $$
 
 The same goes with the CPA, it is easy to see that it is established as a 
 
-\begin{equation}
-  \begin{aligned}
-  Cpa : & F \rightarrow \mathbb{N} \\
-    f & \rightarrow g(Cl(f),Conv(f))
-  \end{aligned}
-\end{equation}
+$$
+  Cpa :  F \rightarrow \mathbb{N} \\
+    f  \rightarrow g(Cl(f),Conv(f))
+  $$
 
-Where $g$ is the functional relationship among them, which is advertiser-specific.
+Where \\g\\ is the functional relationship among them, which is advertiser-specific.
 
-We show here two examples of these relationships, for a specific campaign. The output $Cpa$ and $Rev$ levels shown are evaluated at different frequency cap levels (x-axis). Note that the figures are given in terms of the percentage change, when compared to the baseline $Cpa$ and $Rev$ which exist when no frequency cap is enforced.
+We show here two examples of these relationships, for a specific campaign. The output \\Cpa\\ and \\Rev\\ levels shown are evaluated at different frequency cap levels (x-axis). Note that the figures are given in terms of the percentage change, when compared to the baseline \\Cpa\\ and \\Rev\\ which exist when no frequency cap is enforced.
 
 ![ Comparison of both CPA and revenue series tradeoff ]({{site.url}}/assets/images/frequency-capping/cpa_revenue_decrease_chart.png){: .center-image } 
 
@@ -167,11 +158,13 @@ Once again we see how the CPA is at maximum levels when the caps are at their mi
 The question now remains: where do we set the optimal frequency cap, given these two metrics? This is a broad question which is more dependant on how the company values them. For our case, we decided to equally value both equally, in a way which is both advantageous for us and our clients. In this scalarization, we set the same weights for both in a way that doesn
 
 
-Given this multi-objective optimization setting, we will finally find the optimal frequency cap level $f \in F$ by choosing:
+Given this multi-objective optimization setting, we will finally find the optimal frequency cap level \\f \in F\\ by choosing:
 
-$$\\mathrm{argmax}_f = Cpa(f) + Rev(f) $$ 
+$$
+mathrm{argmax}_f = Cpa(f) + Rev(f)
+$$ 
 
-As our optimal cap level. Again, this valuation is something that suits our way of understanding this business. Different valuations create different optimization forms. We tried other ways, such as Pareto optimal relations, or other $\epsilon$-constrained methods. You find more cool stuff about this topic on [Wikipedia][wiki-scalarization].
+As our optimal cap level. Again, this valuation is something that suits our way of understanding this business. Different valuations create different optimization forms. We tried other ways, such as Pareto optimal relations, or other \\\epsilon\\-constrained methods. You find more cool stuff about this topic on [Wikipedia][wiki-scalarization].
 
 This yielded results which were more than satisfying. We found optimal daily frequency caps per users to be around five to twenty impressions per day in general. This makes sense if we think that when we want to get an advertising message across to a group of people. We won't get them immediately to convert, but, in general, we have that there is a amount of impressions which is just _enough_.
 

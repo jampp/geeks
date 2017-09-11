@@ -11,11 +11,10 @@ author: jdemonasterio
 ---
 <!--excerpt.start-->
 
-[Jampp] [jampp] helps customers boost their mobile sales with performance marketing. One of the most challenging problems of the industry is the impact quantification an ad has on users. A poorly tackled problem is understanding when a user has been affected enough by ads, and why acquiring clicks is not always best aligned with the advertiser's interests.
+[Jampp][jampp] helps customers boost their mobile sales with performance marketing. One of the most challenging problems of the industry is the impact quantification an ad has on users. A poorly tackled problem is understanding when a user has been affected enough by ads, and why acquiring clicks is not always best aligned with the advertiser's interests.
 We know that, sometimes, serving more impressions to users will result in CPA increase, since we can not influence their behavior any more. The key question is: how many ads are enough? 
 
-<!--excerpt.end→
-
+<!--excerpt.end-->
 
 ##Introduction
 
@@ -93,7 +92,7 @@ The above implies that for a certain user \\u\\ and a conversion \\e\\, we may h
 
 Here, we will consider only campaigns which had no actual frequency capping set during \\T\\. This is because we implement an offline counterfactual model where, for each \\c\\, we gather all messages as explained before, and hypothesize what would've happened had we _frequency capped_ the campaign. 
 
-Consider \\f \in F\\ a frequency level threshold from the set \\F = [1,\cdots,100] \cap \\. With this, we can calculate a cumulative impression analysis. The idea is to look at the trade off when we simulate different frequency caps into the data, and calculating the resulting change in metrics. 
+Consider \\f \in F\\ a frequency level threshold from the set \\(F = [1,\cdots,100] \cap \\). With this, we can calculate a cumulative impression analysis. The idea is to look at the trade off when we simulate different frequency caps into the data, and calculating the resulting change in metrics. 
 
 Naturally, all simulated capping scenarios would affect conversion volumes, impressions spend clicks and revenues. 
 
@@ -161,7 +160,7 @@ The question now remains: where do we set the optimal frequency cap, given these
 Given this multi-objective optimization setting, we will finally find the optimal frequency cap level \\f \in F\\ by choosing:
 
 $$
-mathrm{argmax}_f = Cpa(f) + Rev(f)
+\mathrm{argmax}_f = Cpa(f) + Rev(f)
 $$ 
 
 As our optimal cap level. Again, this valuation is something that suits our way of understanding this business. Different valuations create different optimization forms. We tried other ways, such as Pareto optimal relations, or other \\\epsilon\\-constrained methods. You find more cool stuff about this topic on [Wikipedia][wiki-scalarization].
@@ -177,9 +176,9 @@ We are also researching into other statistically valid methods on optimal freque
 It is important for marketers to recognize the value in impressions and how they should be considered as part of the general view of how advertisements affect user conversions. At the same time, we understand there is excess spend in high-served users and this should be quantified. Frequency caps is a natural way of optimizing this situation where different methods, as shown above, can help to determine the optimal capping values. Iterating reports over these optimal cap values is detrimental to establishing intelligent campaign performance.
 
 
- ##References
+##References
 
 [jampp]: http://jampp.com/
-[^past-click-attributed] We could possibly have events attributed to clicks occurring in the past.
-[wiki-scalarization] https://en.wikipedia.org/wiki/Multi-objective_optimization#Scalarizing
+[^past-click-attributed]: We could possibly have events attributed to clicks occurring in the past.
+[wiki-scalarization]: https://en.wikipedia.org/wiki/Multi-objective_optimization#Scalarizing
 

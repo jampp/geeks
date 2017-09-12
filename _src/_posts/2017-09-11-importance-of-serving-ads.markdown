@@ -88,7 +88,7 @@ The set of users, clicks, events and impressions will be noted by \\(U\\), \\(Cl
 
 For impressions, we will calculate their frequency number. This is determined as the number of impressions a user receives per day. We will also refer to this as the impression number of that message. This is independent of the message being attributed or not.
 
-In short, given a time period \\(T\\) and a campaign \\(c\\) we will want to have, for each \\(e\\), the corresponding clicks (\\(cl\\() and impressions (\\(i\\)) that occurred previous to \\(e\\), under a user \\(u\\). We will also see that all of the clicks and impressions comply with their attribution window, for that message type. 
+In short, given a time period \\(T\\) and a campaign \\(c\\) we will want to have, for each \\(e\\), the corresponding clicks (\\(cl\\) and impressions (\\(i\\)) that occurred previous to \\(e\\), under a user \\(u\\). We will also see that all of the clicks and impressions comply with their attribution window, for that message type. 
 
 The above implies that for a certain user \\(u\\) and a conversion \\(e\\), we may have multiple associated clicks and impressions to that conversion.
  
@@ -164,7 +164,7 @@ The question now remains: where do we set the optimal frequency cap, given these
 Given this multi-objective optimization setting, we scalarized the values in a single functional form. Valuing both equally means setting the same weights for both. Thus we find the optimal frequency cap level \\(f \in F\\) by choosing:
 
 $$
-\mathrm{argmax}_{f \in F} = Cpa(f) + Rev(f)
+\mathrm{argmax}_{f \in F} Cpa(f) + Rev(f)
 $$ 
 
 as our optimal cap level. 

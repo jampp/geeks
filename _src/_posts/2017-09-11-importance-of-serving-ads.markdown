@@ -11,7 +11,7 @@ author: jdemonasterio
 ---
 <!--excerpt.start-->
 
-[Jampp][jampp] helps customers boost their mobile sales with performance marketing. One of the most challenging problems of the industry is the impact quantification an ad has on users. A poorly tackled problem is understanding when a user has been affected enough by ads, and why acquiring clicks is not always best aligned with the advertiser's interests.
+[Jampp][jampp] helps customers boost their mobile sales with performance marketing. One of the most challenging problems of the industry is the impact quantification an ad has on users. A poorly tackled problem is understanding when a user has been affected enough by ads, and why acquiring clicks is not always best aligned with advertiser's interests.
 We know that, sometimes, serving more impressions to users will result in CPA increase, since we can not influence their behavior any more. The key question is: how many ads are enough? 
 
 <!--excerpt.end-->
@@ -56,35 +56,37 @@ The retribution is always conditional to the message being delivered within a pr
 
 For clicks, this window is typically set between seven to thirty days whilst for impressions, it is commonly set to twenty four hours. While the industry believes there is a significant causality relationship between seeing an ad and actually going forward and, for example, purchasing a shirt. The purchase is seen nearer to a click, where it is assumed that the user's intent is stronger by their interaction with the ad (click), rather than only viewing the ad.
 
-A typical user ad lifecycle can look like something like this:
+The ad lifecycle for a typical user might look something like this:
 
 ![ Normalized view of increase/decrease in revenue and CPA]({{site.url}}/assets/images/frequency-capping/attribution_windows.png){: .center-image } 
 
-We can see that there are two possible attribution periods, caused by the different message types. These can overlap in time and they do not cancel each other. 
+We can see that there are two possible attribution periods, caused by the different message types. These can overlap in time and they do not cancel out one another. 
 
-The figure above is an example of a scenario where there is only one conversion for this user. But this situation can happen a number of times over a given period. Users need not convert only once, and every time this happens there are systems checking the attribution of the conversion, to past impressions or clicks.
+The figure above is an example of a scenario where the user has only one conversion in his timeline. But conversions can happen a number of times over a given period. Users need not convert only once, and every time this happens there are systems checking the attribution of that conversion, to past impressions or clicks.
 
-Note that this is just one of many possible user attributions. We could actually have new impressions after the click, or no click at all. A user can be for example buying goods, without actually clicking on ads.
+Note that this is just one of many possible user attributions. We could actually have more impressions after the click, or no click at all. A user can be for example buying goods, without actually clicking on ads.
 
 ###Assumptions
 
 From our messages, we search click, impression and conversion logs. Here we will be assuming that these logs are i.i.d random variables, for any given instance \\(c \in C\\) (during \\(T\\) ). 
 
-We also make other key assumptions about our data's structure. First, we say that a click is inextricably caused by its impression. There are no other factors affecting a click and this _causality_ can not be shared among impressions. There is only one impression attached to that click.
+We also make other key assumptions about our data's structure. First, we say that a click is inextricably caused by its impression. There are no other factors affecting a click and this _causality_ can not be shared among impressions. There is only one impression joined to that click.
 
-This affects our analysis when simulating different frequency cap levels. For example we will have that a frequency cap of eight, will cut all impressions of higher frequency number. With this, we will assume that a drop of an impression that is joined to a click will directly lead to a loss of that click. Yet this would not occur for events, where an impression loss (or click loss as well) would not necessarily incur in the event loss. Our assumptions structure attribution relationships among distinct message types in this way. The bottom line is that it is not the same to say we lost an impression for that click, than an impression for an install.
+This affects our analysis when simulating different frequency cap levels. For example we will have that a frequency cap of eight, will cut all impressions of higher frequency number. With this, we will assume that a drop of an impression that is joined to a click will directly lead to a loss of that click. Yet this would not occur for events, where an impression loss (or click loss as well) would not necessarily incur in the event loss. Our assumptions structure attribution relationships among distinct message types in this way. 
 
-We will be setting attribution windows to the values most commonly used by our clients which are twenty four hours for last-impressions and thirty days for last-clicks.
+The bottom line is that it is not the same to say we lost an impression for that click, than an impression for an install.
+
+Finally, we will be setting attribution windows to the values most commonly used by our clients which are twenty four hours for last-impressions and thirty days for last-clicks.
 
 ###Data Preparation
 
 Consider a time window \\(T\\) over which to analyze our data, fifteen days or one month, as a way of reducing stationarity in the data. 
 
-Let \\(A\\) be the set of apps (or Advertisers) and, without loss of generality, consider \\(a\\) to be a generic app. The same goes for the set of Campaigns \\(C\\( of those advertisers. In this context we can have multiple \\(c\\) for each \\(a\\), but each \\(c\\) is assigned to one and only one \\(a\\).
+Let \\(A\\) be the set of apps (or Advertisers) and, without loss of generality, consider \\(a\\) to be a generic app. The same goes for the set of Campaigns \\(C\\) of those advertisers. In this context we can have multiple \\(c\\) for each \\(a\\), but each \\(c\\) is assigned to one and only one \\(a\\).
 
-The set of users, clicks, events and impressions will be noted by \\(U\\), \\(Cl\\), \\(E\\), \\(I\\), respectively. All of these [occur inside the window defined by \\(T\\)][past-click-attributed]. 
+The set of users, clicks, events and impressions will be noted by \\(U\\), \\(Cl\\), \\(E\\), \\(I\\), respectively. All of these [occur inside the window][past-click-attributed] defined by \\(T\\). Our data will be made of impressions and clicks that happen inside an attribution window, relative to our event of interest. 
 
-Our data will be made of impressions and clicks that happen inside an attribution window, relative to our event of interest. For impressions, we will calculate their frequency number determined as the number of impressions a user receives per day. We will also refer to this as the impression number of that message. This is independent of the message being attributed or not.
+For impressions, we will calculate their frequency number. This is determined as the number of impressions a user receives per day. We will also refer to this as the impression number of that message. This is independent of the message being attributed or not.
 
 In short, given a time period \\(T\\) and a campaign \\(c\\) we will want to have, for each \\(e\\), the corresponding clicks (\\(cl\\() and impressions (\\(i\\)) that occurred previous to \\(e\\), under a user \\(u\\). We will also see that all of the clicks and impressions comply with their attribution window, for that message type. 
 
@@ -103,21 +105,21 @@ Let us define some simple functions that formalize these notions.
 First, we need to know what is the resulting volume of impressions after the cap, by analyzing the data:
 
 $$
-  Imp : F \rightarrow \mathbb{N} \\(
+  Imp : F \rightarrow \mathbb{N} \\
     f \rightarrow n
 $$
 
 The same goes for the remaining conversions volume after capping:
 
 $$
-  Conv : F \rightarrow \mathbb{N} \\(
+  Conv : F \rightarrow \mathbb{N} \\
     f \rightarrow n
 $$
 
 As we've said before, a simulated capping implies _losing_ clicks. We thus have a functional, *unknown*, transformation \\(h(\cdot)\\) between impression and click levels that affect the final click volume:
 
 $$
-  Cl : F \rightarrow \mathbb{N} \\(
+  Cl : F \rightarrow \mathbb{N} \\
     f \rightarrow h(Imp(f))
 $$
 
@@ -130,14 +132,14 @@ Being a performance marketing platform, we prioritized CPA (cost-per-action) opt
 The revenue is very simple in terms of the average CPC (cost-per-click) for that campaign:
 
 $$
-  Rev :  F \rightarrow \mathbb{N} \\(
+  Rev :  F \rightarrow \mathbb{N} \\
     f  \rightarrow Cl(f)\times CPC
   $$
 
 The same goes with the CPA, it is easy to see that it is established as a 
 
 $$
-  Cpa :  F \rightarrow \mathbb{N} \\(
+  Cpa :  F \rightarrow \mathbb{N} \\
     f  \rightarrow g(Cl(f),Conv(f))
   $$
 

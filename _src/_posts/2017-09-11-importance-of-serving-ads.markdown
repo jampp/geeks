@@ -88,7 +88,7 @@ The set of users, clicks, events and impressions will be noted by \\(U\\), \\(Cl
 
 For impressions, we will calculate their frequency number. This is determined as the number of impressions a user receives per day. We will also refer to this as the impression number of that message. This is independent of the message being attributed or not.
 
-In short, given a time period \\(T\\) and a campaign \\(c\\) we will want to have, for each \\(e\\), the corresponding clicks (\\(cl\\) and impressions (\\(i\\)) that occurred previous to \\(e\\), under a user \\(u\\). We will also see that all of the clicks and impressions comply with their attribution window, for that message type. 
+In short, given a time period \\(T\\) and a campaign \\(c\\) we will want to have, for each \\(e\\), the corresponding clicks (\\(cl\\)) and impressions (\\(i\\)) that occurred previous to \\(e\\), under a user \\(u\\). We will also see that all of the clicks and impressions comply with their attribution window, for that message type. 
 
 The above implies that for a certain user \\(u\\) and a conversion \\(e\\), we may have multiple associated clicks and impressions to that conversion.
  
@@ -96,7 +96,7 @@ The above implies that for a certain user \\(u\\) and a conversion \\(e\\), we m
 
 Here, we will consider only campaigns which had no actual frequency capping set during \\(T\\). This is because we implement an offline counterfactual model where, for each \\(c\\), we gather all messages as explained before, and hypothesize what would've happened had we _frequency capped_ the campaign. 
 
-Consider \\(f \in F\\) a frequency level threshold from the set \\((F = [1,\cdots,100] \cap \mathbb{N} \\). With this, we can calculate a cumulative impression analysis. The idea is to look at the trade off when we simulate different frequency caps into the data, and output the resulting change in metrics. 
+Consider \\(f \in F\\) a frequency level threshold from the set \\(F = [1,\cdots,100] \cap \mathbb{N} \\). With this, we can calculate a cumulative impression analysis. The idea is to look at the trade off when we simulate different frequency caps into the data, and output the resulting change in metrics. 
 
 Naturally, all simulated capping scenarios would affect conversion volumes, impressions spend, clicks and revenues. 
 

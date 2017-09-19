@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Measuring the impact of advertising
-date:   2017-08-11
+date:   2017-09-19
 tag: data-science
 categories:
  - data-science
@@ -83,7 +83,7 @@ Let’s look at the events and their behavior. The histogram shows a typical dis
 
 
 
-We can observe that the users are mostly on the left side of the graph, meaning that they have a very low sum of key events. In fact, in this example, 99% has less than 10 key events. But, these are what we call *whales* (i.e. very heavy users) with more than 50 events. The maximum number of events reported in this example is 150. As a result, our variance is very high. 
+We can observe that the users are mostly on the left side of the graph, meaning that they have a very low sum of key events. In fact, in this example, 99% has less than 10 key events. But, there are what we call *whales* (i.e. very heavy users) with more than 50 events. The maximum number of events reported in this example is 150. As a result, our variance is very high. 
 
 Indeed, we usually have very small differences between the means and large variances, meaning that we will need a large sample size in each group.
 
@@ -139,7 +139,7 @@ So again, the test is unreliable.
 
 In the approach we discussed before, we eliminated the bias selection, now we need to eliminate the noise from unexposed users. It is easy to identify the unexposed from the exposed in the treatment group. But, what can we do to differentiate the exposure (or lack of it) in the control group? More precisely, *we need to identify the users that would have been shown the ad*.
 
-To do this, we use plain vanilla Public Service Announcement ([PSA] [psa]) ads (yes, “Puppies are forever, not just for Christmas” type ads ). Then, we can show the control a PSA ad instead of the advertiser ad, in order to be able to tag them. 
+To do this, we use plain vanilla Public Service Announcement ([PSA] [psa]) ads (yes, “Puppies are forever, not just for Christmas” type ads). Then, we can show the control a PSA ad instead of the advertiser ad, in order to be able to tag them. 
 
 Once equipped with that tagging, we can focus on the Treatment Exposed (users in the treatment group who saw an ad from the advertiser) and Control Exposed (users in the control group who saw the PSA ad, this will be a user who *would* have seen an advertiser ad). With this tool we increase precision in the comparison, eliminating the noise of the unexposed users. 
 
@@ -155,7 +155,7 @@ After considerable research and testing, we developed what we think is a correct
 * Deliver PSA ads to the Control Group in order to identify the Exposed users. For every Treatment ad size, we must have the *same equivalent* PSA ad. 
 * Bidding and pricing configurations should be the same among the treatment and control.
 * Turn off the ad delivery platform and run a [CPM Ad] [cpm] *fixed priced* campaign. Our platform needs to select the exposed users in both groups with the same criteria to reduce the bias selection. 
-* The segment of users that are more likely to convert (our platform automatically calculates this on a daily basis) , will be run at the beginning, and remain constant throughout the whole test. So we don’t introduce any bias in the selection while the campaign is running.
+* The segment of users that are more likely to convert (our platform automatically calculates this on a daily basis), will be run at the beginning, and remain constant throughout the whole test. So we don’t introduce any bias in the selection while the campaign is running.
 * Consider only events after the first impression in both Treatment and Control Groups. 
 
 Let’s define a useful tool we will use from now on:

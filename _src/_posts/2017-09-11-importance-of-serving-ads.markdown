@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The importance of serving the right amount of ads 
-date:  2017-09-11
+date:  2018-01-04
 tag: data-science
 categories:
  - data-science

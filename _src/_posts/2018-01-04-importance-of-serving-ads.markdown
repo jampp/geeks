@@ -9,6 +9,7 @@ keywords: "ROI, impressions, clicks, advertising, data science, impression frequ
 description: In this post we analyze how different levels of impressions affect the impact of advertising in multiple campaigns.
 author: jdemonasterio
 ---
+
 <!--excerpt.start-->
 
 [Jampp][jampp] helps customers boost their mobile sales with performance marketing. One of the most challenging problems of the industry is the impact quantification an ad has on users. A poorly tackled problem is understanding when a user has been affected enough by ads, and why acquiring clicks is not always best aligned with advertiser's interests.
@@ -38,13 +39,11 @@ Our simulation stems from the idea that we have to dynamically limit the number 
 
 ##The RTB ecosystem
 
-In the most simple RTB ad space, we have a marketplace consisting of three groups of players: advertisers, publishers and exchanges. App marketers demand advertising spaces in exchange for money and the publishers supply those spaces. Here, the exchange acts as an intermediary between these two groups and directs the flow of users in one direction: advertisers \\(\rightarrow\\) publishers. Also, it oversees the money flow in the opposite direction. 
+In the most simple RTB ad space, we have a marketplace consisting of three groups of players: advertisers, publishers and exchanges. App marketers demand advertising spaces in exchange for money and the publishers supply those spaces. Here, the exchange acts as an intermediary between these two groups and directs the flow of users in one direction: publishers \\(\rightarrow\\) advertisers. Also, it oversees the money flow in the opposite direction. 
 
 Virtually all RTB exchanges offer ads by means of auctions which operate under the second price model i.e. the winner will not pay their actual bid price, but the second highest bid price. 
 
-Keep in mind that in the RTB space, advertisers are paying for impressions but, their business bottom line is to get users to spend more time or money in their apps. Showing ads is a means to an end, and it’s not without its risks. Advertisers come to us, to minimize the risks and uncertainties of the ad space buying process.
-
-Clients would spend in advertising only conditioned on user actions and we, in turn, have to optimize the advertising spend to reach those objectives. When bidding, we optimize our pricing strategies to effectively minimize the risk using machine learning techniques in a scalable way. We can optimize these decisions at a rate of millions of times per second for a number of geos, clients, platforms, etc.
+Keep in mind that in the RTB space, advertisers are paying for impressions but their business bottom line is to get users to spend more time or money in their apps. Showing ads is a means to an end, and it’s not without its risks. Advertisers come to us to minimize the risks and uncertainties of the ad space buying process. Clients would spend in advertising only conditioned on user actions and we, in turn, have to optimize the advertising spend to reach those objectives. When bidding, we optimize our pricing strategies to effectively minimize the risk using machine learning techniques in a scalable way. We can optimize these decisions at a rate of millions of times per second for a number of geos, clients, platforms, etc.
 
 Our bidder then bridges between the CPA and CPM pricing models. This must be done in the most effective way for our advertisers. Part of this task means having an optimal frequency-cap for impressions.
 
@@ -54,13 +53,13 @@ To start, we must analyze our current last-touch attribution model. By touch we 
 
 The retribution is always conditional to the message being delivered within a predefined attribution window. These windows are set as a method to incorporate causality in the model. It is safe to say that a click that occurred one year prior to a conversion has no relationship to this event. 
 
-For clicks, this window is typically set between seven to thirty days whilst for impressions, it is commonly set to twenty four hours. While the industry believes there is a significant causality relationship between seeing an ad and actually going forward and, for example, purchasing a shirt. The purchase is seen nearer to a click, where it is assumed that the user's intent is stronger by their interaction with the ad (click), rather than only viewing the ad.
+For clicks, this window is typically set between seven to thirty days, whilst for impressions, it is commonly set to twenty four hours. While the industry believes there is a significant causality relationship between seeing an ad and actually going forward and, for example, purchasing a shirt, the purchase is seen nearer to a click. Here, it is assumed that the user's intent is stronger by their interaction with the ad (click), rather than only viewing the ad.
 
 The ad lifecycle for a typical user might look something like this:
 
 ![ Normalized view of increase/decrease in revenue and CPA]({{site.url}}/assets/images/frequency-capping/attribution_windows.png){: .center-image } 
 
-We can see that there are two possible attribution periods, caused by the different message types. These can overlap in time and they do not cancel out one another. 
+We can see that there are two possible attribution periods, caused by the different message types. These can overlap in time and they do not cancel each other. 
 
 The figure above is an example of a scenario where the user has only one conversion in his timeline. But conversions can happen a number of times over a given period. Users need not convert only once, and every time this happens there are systems checking the attribution of that conversion, to past impressions or clicks.
 
@@ -68,19 +67,17 @@ Note that this is just one of many possible user attributions. We could actually
 
 ###Assumptions
 
-From our messages, we search click, impression and conversion logs. Here we will be assuming that these logs are i.i.d random variables, for any given instance \\(c \in C\\) (during \\(T\\) ). 
+From our messages, we search click, impression and conversion logs. Here we will be assuming that these logs are i.i.d random variables, for any given instance \\(c \in C\\) (during a time period \\(T\\) ). 
 
 We also make other key assumptions about our data's structure. First, we say that a click is inextricably caused by its impression. There are no other factors affecting a click and this _causality_ can not be shared among impressions. There is only one impression joined to that click.
 
-This affects our analysis when simulating different frequency cap levels. For example we will have that a frequency cap of eight, will cut all impressions of higher frequency number. With this, we will assume that a drop of an impression that is joined to a click will directly lead to a loss of that click. Yet this would not occur for events, where an impression loss (or click loss as well) would not necessarily incur in the event loss. Our assumptions structure attribution relationships among distinct message types in this way. 
-
-The bottom line is that it is not the same to say we lost an impression for that click, than an impression for an install.
+This affects our analysis when simulating different frequency cap levels. For example we will have that a frequency cap of eight, will cut all impressions of higher frequency number. With this, we will assume that a drop of an impression that is joined to a click will directly lead to a loss of that click. Yet this would not occur for events, where an impression loss (or click loss as well) would not necessarily incur in the event loss. Our assumptions structure attribution relationships among distinct message types in this way. The bottom line is that it is not the same to say we lost an impression for that click, than an impression for a conversion.
 
 Finally, we will be setting attribution windows to the values most commonly used by our clients which are twenty four hours for last-impressions and thirty days for last-clicks.
 
 ###Data Preparation
 
-Consider a time window \\(T\\) over which to analyze our data, fifteen days or one month, as a way of reducing stationarity in the data. 
+Consider a time window \\(T\\) over which to analyze our data, fifteen days or one month, as a way of accounting for stationarity in the data. 
 
 Let \\(A\\) be the set of apps (or Advertisers) and, without loss of generality, consider \\(a\\) to be a generic app. The same goes for the set of Campaigns \\(C\\) of those advertisers. In this context we can have multiple \\(c\\) for each \\(a\\), but each \\(c\\) is assigned to one and only one \\(a\\).
 
@@ -88,7 +85,7 @@ The set of users, clicks, events and impressions will be noted by \\(U\\), \\(Cl
 
 For impressions, we will calculate their frequency number. This is determined as the number of impressions a user receives per day. We will also refer to this as the impression number of that message. This is independent of the message being attributed or not.
 
-In short, given a time period \\(T\\) and a campaign \\(c\\) we will want to have, for each \\(e\\), the corresponding clicks (\\(cl\\)) and impressions (\\(i\\)) that occurred previous to \\(e\\), under a user \\(u\\). We will also see that all of the clicks and impressions comply with their attribution window, for that message type. 
+In short, given a time period \\(T\\) and a campaign \\(c\\) we will want to have, for each \\(e\\), the corresponding clicks (\\(cl\\)) and impressions (\\(i\\)) that occurred previous to \\(e\\), under a user \\(u\\). We will also check if the clicks and impressions comply with their attribution window, for that message type. 
 
 The above implies that for a certain user \\(u\\) and a conversion \\(e\\), we may have multiple associated clicks and impressions to that conversion.
  
@@ -143,7 +140,7 @@ $$
     f  \rightarrow g(Cl(f),Conv(f))
   $$
 
-Where \\(g\\) is the functional relationship between them. This metric is advertiser-specific.
+where \\(g\\) is the functional relationship between them to formulate CPA. This metric is advertiser-specific.
 
 We show here two examples of these relationships, for a specific campaign. The output \\(Cpa\\) and \\(Rev\\) levels shown are evaluated at different frequency cap levels (x-axis). Note that the figures are given in terms of the percentage change, when compared to the baseline \\(Cpa\\) and \\(Rev\\) which exist when no frequency cap is enforced.
 
@@ -158,7 +155,7 @@ We repeat the series above with another campaign, this is shown in the figure be
 
 Once again we see how the CPA is at maximum levels when the caps are at their minimum. Note how in this case we have a different functional relationship between CPA and cap level, compared to the previous figure. The same goes with the revenue decrease. 
 
-The question now remains: where do we set the optimal frequency cap, given these two metrics? This is a broad question which is more dependant on how the company values them. For our case, we decided to value both in equal ways. We think this is both advantageous for us and our clients. 
+The question now remains: where do we set the optimal frequency cap, given these two metrics? This is a broad question which is more dependant on how the company values them. For our case, we decided to value both equally. We think this is both advantageous for us and our clients. 
 
 
 Given this multi-objective optimization setting, we scalarized the values in a single functional form. Valuing both equally means setting the same weights for both. Thus we find the optimal frequency cap level \\(f \in F\\) by choosing:
@@ -169,9 +166,9 @@ $$
 
 as our optimal cap level. 
 
-Again, this valuation is something that suits our way of understanding this business. Different valuations create different optimization forms. We tried other ways, such as Pareto optimal relations, or other \\(\epsilon\\)-constrained methods. You can find more cool stuff about this topic on [Wikipedia][wiki-scalarization].
+Again, this valuation is something that suits our way of understanding the business. Different valuations create different optimization forms. We tried other ways, such as Pareto optimal relations, or other \\(\epsilon\\)-constrained methods. You can find more cool stuff about this topic on [Wikipedia][wiki-scalarization].
 
-The previous optimization yielded results which were more than satisfying. We found optimal daily frequency caps per users to be around five to twenty impressions in general. This makes sense if we think that when we want to get an advertising message across to a largee group of people. We won't get them immediately to convert, but, in general, we have that there is a amount of impressions which is just _enough_.
+The previous optimization yielded results which were more than satisfying. In general, we found optimal daily frequency caps per users to be around five to twenty impressions. This makes sense if we think that when we want to get an advertising message across to a large group of people. We won't get them immediately to convert, but, in general, we have that there is a amount of impressions which is just _enough_.
 
 ##Final Remarks
 
@@ -183,6 +180,7 @@ It is important for marketers to recognize the value in impressions and how they
 
 
 ##References
+
 
 [jampp]: http://jampp.com/
 [past-click-attributed]: We could possibly have events attributed to clicks occurring in the past.

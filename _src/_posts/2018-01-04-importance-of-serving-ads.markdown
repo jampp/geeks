@@ -12,8 +12,7 @@ author: jdemonasterio
 
 <!--excerpt.start-->
 
-[Jampp][jampp][^1] helps customers boost their mobile sales with performance marketing. One of the most challenging problems of the industry is the impact quantification an ad has on users. A poorly tackled problem is understanding when a user has been affected enough by ads, and why acquiring clicks is not always best aligned with performance advertiser's interests.
-We know that, sometimes, serving more impressions to users will result in CPA increase, since we can not influence their behavior any more. The key question is: how many ads are enough?
+[Jampp][jampp][^1] helps customers boost their mobile sales with performance marketing. One of the most challenging problems of the industry is quantifying the impact an ad has on users. Understanding when a user has seen “enough” ads and reconciling click acquisition with the interests of performance advertisers have historically been difficult problems to tackle. We know that, sometimes, serving more impressions to users will result in CPA increase, since we can not influence their behavior any more. The key question is: how many ads are enough?
 
 <!--excerpt.end-->
 
@@ -31,7 +30,7 @@ We understand that, all other things equal, a user which has repeatedly seen an 
 
 At the same time, how much value do impressions drive? It is clear that they play a key role in advertisers’ efforts to reach/engage users, but the current industry pricing models compensate deeper funnel interactions, i.e. clicks or events. Yet impressions are relevant.
 
-Another element to consider when assessing impression value is what the industry refers to as "frequency capping". From our research, there are not many articles published on this subject: a user's functional relationship of the number of impressions he is served and the likelihood of performing a desirable action, be it an install or an in-app-event.
+Another element to consider when assessing impression value is what the industry refers to as "frequency capping". From our research, there are not many articles published on this subject: a user's functional relationship of the number of impressions a user is served and the likelihood of performing a desirable action, be it an install or an in-app-event.
 
 We make an initial approximation on establishing a limit to the amount of advertising messages shown to a unique user, expanding on this topic's technicalities, problems, perspectives and first methods to analyze the data.
 
@@ -39,11 +38,11 @@ Our simulation stems from the idea that we have to dynamically limit the number 
 
 ##The RTB ecosystem
 
-In the most simple RTB ad space, we have a marketplace consisting of three groups of players: advertisers, publishers and exchanges. App marketers demand advertising spaces in exchange for money and the publishers supply those spaces. Here, the exchange acts as an intermediary between these two groups and directs the flow of users in one direction: publishers \\(\rightarrow\\) advertisers. Also, it oversees the money flow in the opposite direction.
+In the most simple RTB ad space, there exists a marketplace consisting of three groups of players: advertisers, publishers and exchanges. App marketers demand advertising spaces in exchange for money and the publishers supply those spaces. Here, the exchange acts as an intermediary between these two groups and directs the flow of users in one direction: publishers \\(\rightarrow\\) advertisers. Also, it oversees the money flow in the opposite direction.
 
 Virtually all RTB exchanges offer ads by means of auctions which operate under the second price model i.e. the winner will not pay their actual bid price, but the second highest bid price.
 
-Keep in mind that in the RTB space, performance advertisers are paying for impressions but their business bottom line is to get users to spend more time or money in their apps. Showing ads is a means to an end, and it’s not without its risks. Advertisers come to us to minimize the risks and uncertainties of the ad space buying process. Clients would spend in advertising only conditioned on user actions and we, in turn, have to optimize the advertising spend to reach those objectives. When bidding, we optimize our pricing strategies to effectively minimize the risk using machine learning techniques in a scalable way. We can optimize these decisions at a rate of millions of times per second for a number of geos, clients, platforms, etc.
+Keep in mind that in the RTB space, performance advertisers are paying for impressions but their bottom line is to get users to spend more time or money in their apps. Showing ads is a means to an end, and it’s not without its risks. Advertisers come to us to minimize the risks and uncertainties of the ad space buying process. Clients would spend in advertising only conditioned on user actions and we, in turn, have to optimize the advertising spend to reach those objectives. When bidding, we optimize our pricing strategies to effectively minimize the risk using machine learning techniques in a scalable way. We can optimize these decisions at a rate of millions of times per second for a number of geos, clients, platforms, etc.
 
 Our bidder then bridges between the CPA and CPM pricing models. This must be done in the most effective way for our advertisers. Part of this task means having an optimal frequency-cap for impressions.
 
@@ -93,7 +92,7 @@ The above implies that for a certain user \\(u\\) and a conversion \\(e\\), we m
 
 Here, we will consider only campaigns which had no actual frequency capping set during \\(T\\). This is because we implement an offline counterfactual model where, for each \\(c\\), we gather all messages as explained before, and hypothesize what would've happened had we _frequency capped_ the campaign.
 
-Consider \\(f \in F\\) a frequency level threshold from the set \\(F = [1,\cdots,100] \cap \mathbb{N} \\). With this, we can calculate a cumulative impression analysis. The idea is to look at the trade off when we simulate different frequency caps in the data, and output the resulting change in metrics. Naturally, all simulated capping scenarios would affect the volumes of clicks, impressions and conversions, and the spend of impressions.
+Consider \\(f \in F\\) a frequency level threshold from the set \\(F = [1,\cdots,100] \cap \mathbb{N} \\). With this, we can calculate a cumulative impression analysis. The idea is to look at the tradeoff when we simulate different frequency caps in the data, and output the resulting change in metrics. Naturally, all simulated capping scenarios would affect the volumes of clicks, impressions and conversions, and the spend of impressions.
 
 Let us define some simple functions that formalize these notions. First, we need to know what is the resulting volume of impressions after the cap, by analyzing the data:
 
@@ -118,11 +117,11 @@ $$
 
 These relationships were created from the data, yet we could not explicitly give closed-form formulas for them. From our explorations, different campaign instances showed different relations. In other words, we can fit the data for a single instance, a specific campaign and time period, yet these functions will change for other instances in a way which does not allow their generalization. So we worked each instance separately.
 
-As a second step, we needed to define business metrics that are relevant for our customers. We will have that different frequency cappings would produce different levels of them, because of how the relationships \\(Imp\\), \\(Conv\\) and \\(Cl\\) vary along cap levels.
+As a second step, we needed to define business metrics that are relevant for our customers. Different frequency cappings would produce different levels of them, because of how the relationships \\(Imp\\), \\(Conv\\) and \\(Cl\\) vary along cap levels.
 
-Being a performance marketing platform, we prioritized CPA (cost-per-action) optimization of our clients. At the same time, and given the industry's last-click attribution system, we have that our revenue stream is click dependent. So we took click volume to be a second relevant metric, measured by the volume of clicks. In this way we will have two metrics defined as functions of the previous relationships.
+Being a performance marketing platform, we prioritized CPA (cost-per-action) optimization of our clients. At the same time, and given the industry's last-click attribution system, our revenue stream is click dependent. We used click volume to be a second relevant metric, measured by the volume of clicks. In this way, we obtain two metrics defined as functions of the previous relationships.
 
-Calculating CPA is very simple in terms of the average CPC (cost-per-click) for that campaign. It is easy to see that it is established as functional relation between $Cl$ and $Conv$.
+Calculating CPA is very simple in terms of the average CPC (cost-per-click) for that campaign. It is easy to see that it is established as a functional relationship between $Cl$ and $Conv$.
 
 $$
   Cpa :  F \rightarrow \mathbb{N} \\
@@ -135,13 +134,13 @@ We show here two examples of these relationships, for a specific campaign. The \
 
 ![ Comparison of both CPA and volume decreasing tradeoff series. ]({{site.url}}/assets/images/frequency-capping/cpa_revenue_decrease_chart.png){: .center-image }
 
-The trade off is very clear, we have that at the minimum cap level, with one impression only, we would have a huge optimization in CPA. The figures start at frequency cap level one, and by the looks of it we might think that this is the optimal CPA. Yet understand that this value is showing a *singularity* from the data. Such an extreme cap would imply barely any clicks for the advertiser and, in turn, barely any conversions volume.
+The tradeoff is very clear, at the minimum cap level and with one impression only we would have a huge optimization in CPA. The figures start at frequency cap level one, and by the looks of it we might think that this is the optimal CPA. Yet understand that this value is showing a *singularity* from the data. Such an extreme cap would imply barely any clicks for the advertiser and, in turn, barely any conversions volume.
 
 We repeat the series above with another campaign, this is shown in the figure below.
 
-![ Side comparison of both CPA and volume series monotonous trade off for a different campaign.]({{site.url}}/assets/images/frequency-capping/cpa_revenue_comparison_chart.png){: .center-image }
+![ Side comparison of both CPA and volume series monotonous tradeoff for a different campaign.]({{site.url}}/assets/images/frequency-capping/cpa_revenue_comparison_chart.png){: .center-image }
 
-Once again we see how the CPA is at maximum levels when the caps are at their minimum. Note how in this case we have a different functional relationship between the CPA and the cap level, in comparison to the previous figure. The same can be said for the volume decrease.
+Once again we see how the CPA is at maximum levels when the caps are at their minimum. Note how in this case there is a different functional relationship between the CPA and the cap level, in comparison to the previous figure. The same can be said for the volume decrease.
 
 The question now remains: where do we set the optimal frequency cap, given these two metrics? This is a broad question which is more dependant on how the company values them. For our case, we decided to value both equally. We think this is both advantageous for us and our clients.
 
@@ -156,7 +155,7 @@ as our optimal cap level.
 
 Again, this valuation is something that suits our way of understanding the business. Different valuations create different optimization forms. We tried other ways, such as Pareto optimal relations, or other \\(\epsilon\\)-constrained methods. You can find more cool stuff about this topic on [Wikipedia][wiki-scalarization][^3].
 
-The previous optimization yielded results which were more than satisfying. In general, we found that the optimal number of daily frequency caps per user was in between five to twenty impressions. This makes sense if we think that, when we want to get an advertising message across to a large group of people, we won't get them immediately to convert. However, in general we have that there is an amount of impressions which is just _enough_.
+The previous optimization yielded results which were more than satisfying. In general, we found that the optimal number of daily frequency caps per user was in between five to twenty impressions. This makes sense if we think that, when we want to get an advertising message across to a large group of people, we won't get them immediately to convert. However, in general there is an amount of impressions which is just _enough_.
 
 ##Final Remarks
 

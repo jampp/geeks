@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The importance of serving the right amount of ads
-date:  2018-01-04
+date:  2018-01-12
 tag: data-science
 categories:
  - data-science
@@ -66,11 +66,9 @@ Note that this is just one of many possible user attributions. We could actually
 
 ###Assumptions
 
-From our messages, we search click, impression and conversion logs. Here we will be assuming that these logs are i.i.d random variables, for any given instance \\(c \in C\\) (during a time period \\(T\\) ).
+From our messages, we search click, impression and conversion logs. Here we will be assuming that these logs are i.i.d random variables, for any given instance \\(c \in C\\) (during a time period \\(T\\)).
 
-We also make other key assumptions about our data's structure. First, we say that a click is inextricably caused by its impression. There are no other factors affecting a click and this _causality_ can not be shared among impressions. There is only one impression joined to that click.
-
-This affects our analysis when simulating different frequency cap levels. For example we will have that a frequency cap of eight, will cut all impressions of higher frequency number. With this, we will assume that a drop of an impression that is joined to a click will directly lead to a loss of that click. Yet this would not occur for events, where an impression loss (or click loss as well) would not necessarily incur in the event loss. Our assumptions structure attribution relationships among distinct message types in this way. The bottom line is that it is not the same to say we lost an impression for that click, than an impression for a conversion.
+We also make other key assumptions about our data's structure. First, we say that a click is inextricably caused by its impression. There are no other factors affecting a click and this _causality_ can not be shared among impressions. There is only one impression joined to that click. This affects our analysis when simulating different frequency cap levels. For example we will have that a frequency cap of eight, will cut all impressions of higher frequency number. With this, we will assume that a drop of an impression that is joined to a click will directly lead to a loss of that click. Yet this would not occur for events, where an impression loss (or click loss as well) would not necessarily incur in the event loss. Our assumptions structure attribution relationships among distinct message types in this way. The bottom line is that it is not the same to say we lost an impression for that click, than an impression for a conversion.
 
 Finally, we will be setting attribution windows to the values most commonly used by our clients which are twenty four hours for last-impressions and thirty days for last-clicks.
 
@@ -80,7 +78,7 @@ Consider a time window \\(T\\) over which to analyze our data, fifteen days or o
 
 Let \\(A\\) be the set of apps (or Advertisers) and, without loss of generality, consider \\(a\\) to be a generic app. The same goes for the set of Campaigns \\(C\\) of those advertisers. In this context we can have multiple \\(c\\) for each \\(a\\), but each \\(c\\) is assigned to one and only one \\(a\\).
 
-The set of users, clicks, events and impressions will be noted by \\(U\\), \\(Cl\\), \\(E\\), \\(I\\), respectively. All of these [occur inside the window][^2] defined by \\(T\\). Our data will be made of impressions and clicks that happen inside an attribution window, relative to our event of interest.
+The set of users, clicks, events and impressions will be noted by \\(U\\), \\(Cl\\), \\(E\\), \\(I\\), respectively. All of these occur inside the [window][past-click-attributed][^2] defined by \\(T\\). Our data will be made of impressions and clicks that happen inside an attribution window, relative to our event of interest.
 
 For impressions, we will calculate their frequency number. This is determined as the number of impressions a user receives per day. We will also refer to this as the impression number of that message. This is independent of the message being attributed or not.
 
@@ -119,7 +117,7 @@ These relationships were created from the data, yet we could not explicitly give
 
 As a second step, we needed to define business metrics that are relevant for our customers. Different frequency cappings would produce different levels of them, because of how the relationships \\(Imp\\), \\(Conv\\) and \\(Cl\\) vary along cap levels.
 
-Being a performance marketing platform, we prioritized CPA (cost-per-action) optimization of our clients. At the same time, and given the industry's last-click attribution system, our revenue stream is click dependent. We used click volume to be a second relevant metric, measured by the volume of clicks. In this way, we obtain two metrics defined as functions of the previous relationships.
+Being a performance marketing platform, we prioritized CPA (cost-per-action) optimization of our clients. At the same time, and given the industry's last-click attribution system, our revenue stream is click dependent. We used click volume as a second relevant metric. In this way, we obtain two metrics defined as functions of the previous relationships.
 
 Calculating CPA is very simple in terms of the average CPC (cost-per-click) for that campaign. It is easy to see that it is established as a functional relationship between $Cl$ and $Conv$.
 

@@ -22,7 +22,7 @@ In this blogpost, we present our _JSON Sum_ function, how did we write it, and s
 ## Function types
 Presto has two main types of functions: scalar and aggregation[^1]. Scalar functions behave more like traditional functions, in the sense that their output is immediate from the values of their parameters. On the other hand, aggregation functions take multiple rows as input and combine them into a single output, we'll focus mainly on these functions, as they're more complex (and, interesting!).
 
-[^1]: There's also window functions, but we have yet to implement one of those, so we'll leave them out of the scope of the article.
+[^1]: There's also window functions, but we have yet to implement one of those, so we'll leave them out of the scope of this article.
 
 Aggregation functions can harness the power of presto’s distributed workers via a divide and conquer approach.
 They consist of three main methods:
@@ -37,7 +37,7 @@ It's important to note that no order of input or combination should be assumed: 
 ## Implementation
 UDFs are implemented inside a [plugin](https://prestodb.io/docs/current/develop/spi-overview.html), separate from the default Presto functions. They are exposed to presto by declaring them in [UdfPlugin.java] and later deployed as .jar files in your cluster. 
 
-Aggregation functions are trickier to implement than scalar functions, as they have many more moving parts. Aside from the _input_, _combine_ and _output_ functions, you should write a [State]() and its auxiliary files. If your state uses just basic data types, Presto automatically knows how to construct, serialize and deserialize it. Else, you should implement a [Factory]() and a [Serializer]().
+Aggregation functions are trickier to implement than scalar functions, as they have many more moving parts. Aside from the _input_, _combine_ and _output_ functions, you should write a [State](TODO) and its auxiliary files. If your state uses just basic data types, Presto automatically knows how to construct, serialize and deserialize it. Else, you should implement a [Factory]() and a [Serializer](TODO).
 
 If you'd like to write an UDF that takes different data types as input (_JSON_ and _VARCHAR_, for example), there are two ways of going about it. The simple one is to write two (or more) _input_ functions that take those data types as parameters. This works in our case, but if you need your UDF to be more generic, you can follow PrestoDB's example in their [native functions](https://github.com/prestodb/presto/tree/master/presto-main/src/main/java/com/facebook/presto/operator/aggregation).
 

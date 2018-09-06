@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  Overview of Jampp's platform
-date:   
+title:  Writing custom PrestoDB functions
+date:   2018-09-07
 tag:    technology
 categories:
     - infrastructure
@@ -10,13 +10,13 @@ keywords: "Presto, PrestoDB, UDF, aggregation"
 author: dantepawlow
 ---
 
-# Writing Custom PrestoDB Functions
+# Writing custom PrestoDB functions
 
 <!--excerpt.start-->
 
 Here at Jampp we process and analyse large amounts of data.
 One of the tools we employ to do so is [PrestoDB](https://prestodb.io/), which is a "Distributed SQL Query Engine for Big Data".
-Presto comes with many [functions](https://prestodb.io/docs/current/functions.html), which are usually enough for most use cases. Nevertheless, sometimes you need to implement your own function for a very specific use.
+Presto comes with many [native functions](https://prestodb.io/docs/current/functions.html), which are usually enough for most use cases. Nevertheless, sometimes you need to implement your own function for a very specific use.
 
 Enter the [User Defined Functions](https://prestodb.io/docs/current/develop/functions.html) (UDFs, for short).
 Writing one is not as straightforward as it first appears, mainly because the information to do so is very scattered around the web (and across many Presto versions).

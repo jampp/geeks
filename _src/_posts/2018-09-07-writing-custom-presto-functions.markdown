@@ -29,25 +29,13 @@ In this blogpost, we present [our JSON_SUM function](TODO), how we wrote it, and
 
 Presto has two main types of functions: scalar and aggregation[^1].
 
+[^1]: There's also window functions, but we have yet to implement one of those, so we'll leave them out of the scope of this article.
+
 Scalar functions are applied to every element of a list (or every selected row, in this case), without altering the order or the amount of elements of said list.
 You can think of them as being [map functions](https://en.wikipedia.org/wiki/Map_(higher-order_function)).
-Here's a simple `abs` function from [Presto's Math Functions](https://github.com/prestodb/presto/blob/3060c65a1812c6c8b0c2ab725b0184dbad67f0ed/presto-main/src/main/java/com/facebook/presto/operator/scalar/MathFunctions.java#L93):
-
-```java
-    @Description("absolute value")
-    @ScalarFunction("abs")
-    @SqlType(StandardTypes.TINYINT)
-    public static long absTinyint(@SqlType(StandardTypes.TINYINT) long num)
-    {
-        checkCondition(num != Byte.MIN_VALUE, NUMERIC_VALUE_OUT_OF_RANGE, "Value -128 is out of range for abs(tinyint)");
-        return Math.abs(num);
-    }
-```
 
 On the other hand, aggregation functions take multiple rows as input and combine them into a single output.
-We'll focus mainly on the these, as they're more complex (and interesting to implement!).
-
-[^1]: There's also window functions, but we have yet to implement one of those, so we'll leave them out of the scope of this article.
+We'll focus mainly on the these, as they're more complex (and more interesting to implement!).
 
 Aggregation functions can harness the power of Presto’s distributed workers via a divide and conquer approach.
 They consist of three main methods:
@@ -81,7 +69,21 @@ public class UdfPlugin
 }
 ```
 
-Aggregation functions are trickier to implement than scalar functions, as they have many more moving parts.
+**Scalar functions** are fairly simple: you write a single java function, and annotate it appropriately.
+Here's a simple `abs` function from [Presto's Math Functions](https://github.com/prestodb/presto/blob/3060c65a1812c6c8b0c2ab725b0184dbad67f0ed/presto-main/src/main/java/com/facebook/presto/operator/scalar/MathFunctions.java#L93):
+
+```java
+    @Description("absolute value")
+    @ScalarFunction("abs")
+    @SqlType(StandardTypes.TINYINT)
+    public static long absTinyint(@SqlType(StandardTypes.TINYINT) long num)
+    {
+        checkCondition(num != Byte.MIN_VALUE, NUMERIC_VALUE_OUT_OF_RANGE, "Value -128 is out of range for abs(tinyint)");
+        return Math.abs(num);
+    }
+```
+
+**Aggregation functions** are trickier to implement, as they have many more moving parts.
 Aside from the `input`, `combine` and `output` functions, you should write a [State](TODO) interface and its auxiliary files.
 If your state uses just basic data types, Presto automatically knows how to construct, serialize and deserialize it.
 Else, you should implement a [Factory](TODO) and a [Serializer](TODO), and link them to the State using [Presto's Metadata Annotations](https://github.com/prestodb/presto/tree/3060c65a1812c6c8b0c2ab725b0184dbad67f0ed/presto-main/src/main/java/com/facebook/presto/metadata).
@@ -119,7 +121,7 @@ Developing software never is a smooth-sailing kind of deal (where would the fun 
 Here are some of the traps we've fallen into, hopefully they'll save you some headaches:
 
 * Do NOT use the [presto-main](https://mvnrepository.com/artifact/com.facebook.presto/presto-main) dependency for anything besides testing (and even then, try to avoid it). Whichever function you need from presto-main most likely has an equivalent in the [presto-spi](https://mvnrepository.com/artifact/com.facebook.presto/presto-spi) package.
-* If your state uses more complex data types than the basic types, you should add a `Factory` and a `Serializer` (for weird errors like "HashMap<> not supported").
+* If your state uses more complex data types than the basic types, you should add a `Factory` and a `Serializer` (else, you get weird errors like "HashMap<> not supported").
 * Always check that the `.jar` files are deployed in both the coordinator and the workers. If you get an esoteric Presto exception (like “varchar not found” even though the function is listed in the `SHOW FUNCTIONS` query), this is the most likely suspect.
 
 ## Conclusion

@@ -69,7 +69,7 @@ public class UdfPlugin
 }
 ```
 
-**Scalar functions** are fairly simple: you write a single java function, and annotate it appropriately.
+**Scalar functions** are fairly simple: you write a single Java function, and annotate it appropriately.
 Here's a simple `abs` function from [Presto's Math Functions](https://github.com/prestodb/presto/blob/3060c65a1812c6c8b0c2ab725b0184dbad67f0ed/presto-main/src/main/java/com/facebook/presto/operator/scalar/MathFunctions.java#L93):
 
 ```java
@@ -86,7 +86,7 @@ Here's a simple `abs` function from [Presto's Math Functions](https://github.com
 **Aggregation functions** are trickier to implement, as they have many more moving parts.
 Aside from the `input`, `combine` and `output` functions, you should write a [State](TODO) interface and its auxiliary files.
 If your state uses just basic data types, Presto automatically knows how to construct, serialize and deserialize it.
-Else, you should implement a [Factory](TODO) and a [Serializer](TODO), and link them to the State using [Presto's Metadata Annotations](https://github.com/prestodb/presto/tree/3060c65a1812c6c8b0c2ab725b0184dbad67f0ed/presto-main/src/main/java/com/facebook/presto/metadata).
+Otherwise, you should implement a [Factory](TODO) and a [Serializer](TODO), and link them to the State using [Presto's Metadata Annotations](https://github.com/prestodb/presto/tree/3060c65a1812c6c8b0c2ab725b0184dbad67f0ed/presto-main/src/main/java/com/facebook/presto/metadata).
 
 ```java
 @AccumulatorStateMetadata(stateFactoryClass = JSONAggregationStateFactory.class, stateSerializerClass = JSONAggregationStateSerializer.class)
@@ -105,8 +105,15 @@ This works in our case, but if you need your UDF to be more generic, you can fol
 
 ## Testing
 
-Once you have your UDF, the sensible thing is to test it. But how do you simulate Presto's inner workings? This is especially important for aggregation functions, given that Presto takes the components of your UDF and uses them inside a black box.
-Thankfully, we have [Docker](https://www.docker.com/)! [Here](TODO) we provide a Makefile and a docker-compose.yml[^2] for getting a Presto server up and running locally, automatically incorporating your UDF.
+Once you have your UDF, the sensible thing is to test it.
+But how do you simulate Presto's inner workings? This is especially important for aggregation functions, given that Presto takes the components of your UDF and uses them inside a black box.
+Thankfully, we have [Docker](https://www.docker.com/)!
+
+[Here](TODO) we provide a `Makefile` and a [docker-compose.yml](TODO)[^2] for getting a Presto server up and running locally, automatically incorporating your UDF.
+
+1. First you need to build your UDFs with Maven: `mvn package`
+2. Then, replace the path to them in the `docker-compose.yml` file.
+3. Lastly, run the `make` and `make run-with-logs` commands.
 
 [^2]: Thanks to [Lewuathe's docker-presto-cluster](https://github.com/Lewuathe/docker-presto-cluster)!
 
@@ -117,11 +124,11 @@ Once it's up, it can be queried like any other Presto cluster, so you can use it
 > _"My kingdom for a discernible stack trace!"_
 >> King Richard III
 
-Developing software never is a smooth-sailing kind of deal (where would the fun in that be?), so be prepared to stare into weird looking stack traces.
-Here are some of the traps we've fallen into, hopefully they'll save you some headaches:
+Developing software never is a smooth-sailing kind of deal (where's the fun in that?), so be prepared to stare into weird looking stack traces.
+Here are some of the traps we've fallen into, hopefully it'll save you some headaches:
 
-* Do NOT use the [presto-main](https://mvnrepository.com/artifact/com.facebook.presto/presto-main) dependency for anything besides testing (and even then, try to avoid it). Whichever function you need from presto-main most likely has an equivalent in the [presto-spi](https://mvnrepository.com/artifact/com.facebook.presto/presto-spi) package.
-* If your state uses more complex data types than the basic types, you should add a `Factory` and a `Serializer` (else, you get weird errors like "HashMap<> not supported").
+* Do NOT use the [presto-main](https://mvnrepository.com/artifact/com.facebook.presto/presto-main) dependency for anything besides testing (and even then, try to avoid it). Whichever function you need from `presto-main` will most like have an equivalent in the [presto-spi](https://mvnrepository.com/artifact/com.facebook.presto/presto-spi) package.
+* If your state uses more complex data types than the basic types, you should add a `Factory` and a `Serializer` (otherwise, you get weird errors like "HashMap<> not supported").
 * Always check that the `.jar` files are deployed in both the coordinator and the workers. If you get an esoteric Presto exception (like “varchar not found” even though the function is listed in the `SHOW FUNCTIONS` query), this is the most likely suspect.
 
 ## Conclusion

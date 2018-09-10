@@ -132,5 +132,5 @@ Here are some of the traps we've fallen into, hopefully it'll save you some head
 
 ## Conclusion
 
-Pesto UDFs are a very powerful tool, but given the wide array of native functions at your disposal, it's likely that you'll never need to write one.
+Presto is a very powerful tool, and given the wide array of native functions at your disposal, it's likely that you'll never need to write an UDF.
 Nevertheless, doing so can be a fun adventure into Presto's inner workings and may encourage you to [contribute to the project](https://github.com/prestodb/presto/blob/master/CONTRIBUTING.md).

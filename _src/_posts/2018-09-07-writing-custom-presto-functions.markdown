@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  Writing custom PrestoDB functions
-date:   2018-09-07
+date:   2018-09-11
 tag:    technology
 categories:
-    - infrastructure
+    - data-infrastructure
     - technology
 keywords: "Presto, PrestoDB, UDF, aggregation"
 author: dantepawlow
@@ -107,7 +107,7 @@ Once you have your UDF, the sensible thing is to test it.
 But how do you simulate Presto's inner workings? This is especially important for aggregation functions, given that Presto takes the components of your UDF and uses them inside a black box.
 Thankfully, we have [Docker](https://www.docker.com/)!
 
-[Here](https://github.com/jampp/presto-udfs/tree/master/docker-presto-cluster) we provide a _Makefile_ and a docker-compose.yml[^2] for getting a Presto server up and running locally, automatically incorporating your UDF.
+[Here](https://github.com/jampp/presto-udfs/tree/master/docker-presto-cluster) we provide a _Makefile_ and a _docker-compose.yml_[^2] for getting a Presto server up and running locally, automatically incorporating your UDF.
 
 1. First you need to package your UDFs with Maven.
 2. Then, replace the path to them in the _docker-compose.yml_ file.

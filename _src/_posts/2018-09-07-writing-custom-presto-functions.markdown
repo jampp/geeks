@@ -19,7 +19,7 @@ Presto comes with many [native functions](https://prestodb.io/docs/current/funct
 Enter the [User Defined Functions](https://prestodb.io/docs/current/develop/functions.html) (UDFs, for short).
 Writing one for the first time is not as straightforward as it may appear, mainly because the information to do so is very scattered around the web (and across many Presto versions).
 
-In this blogpost, we present [our JSON_SUM function](TODO), how we wrote it, and some of the lessons we learned along the way.
+In this blogpost, we present [our JSON_SUM function](https://github.com/jampp/presto-udfs), how we wrote it, and some of the lessons we learned along the way.
 
 <!--excerpt.end-->
 
@@ -50,7 +50,7 @@ You can, however, define the initial parameters of the state via its constructor
 ## Implementation
 
 User Defined Functions are written in Java, inside a [plugin](https://prestodb.io/docs/current/develop/spi-overview.html), separate from the default Presto functions.
-They are exposed to Presto by declaring them in [UdfPlugin.java](TODO) and then deploying them as a _.jar_ file in the _/usr/lib/presto/plugin/udfs_ directory.
+They are exposed to Presto by declaring them in [UdfPlugin.java](https://github.com/jampp/presto-udfs/blob/master/presto-udfs/src/main/java/com/jampp/presto/udfs/UdfPlugin.java) and then deploying them as a _.jar_ file in the _/usr/lib/presto/plugin/udfs_ directory.
 
 {% highlight java %}
 public class UdfPlugin
@@ -82,9 +82,9 @@ public static long absTinyint(@SqlType(StandardTypes.TINYINT) long num)
 {% endhighlight %}
 
 **Aggregation functions** are trickier to implement, as they have many more moving parts.
-Aside from the _input_, _combine_ and _output_ functions, you should write a [State](TODO) interface and its auxiliary files.
+Aside from the _input_, _combine_ and _output_ functions, you should write a [State](https://github.com/jampp/presto-udfs/blob/master/presto-udfs/src/main/java/com/jampp/presto/udfs/aggregation/state/JSONAggregationState.java) interface and its auxiliary files.
 If your state uses just basic data types, Presto automatically knows how to construct, serialize and deserialize it.
-Otherwise, you should implement a [Factory](TODO) and a [Serializer](TODO), and link them to the State using [Presto's Metadata Annotations](https://github.com/prestodb/presto/tree/3060c65a1812c6c8b0c2ab725b0184dbad67f0ed/presto-main/src/main/java/com/facebook/presto/metadata).
+Otherwise, you should implement a [Factory](https://github.com/jampp/presto-udfs/blob/master/presto-udfs/src/main/java/com/jampp/presto/udfs/aggregation/state/JSONAggregationStateFactory.java) and a [Serializer](https://github.com/jampp/presto-udfs/blob/master/presto-udfs/src/main/java/com/jampp/presto/udfs/aggregation/state/JSONAggregationStateSerializer.java), and link them to the State using [Presto's Metadata Annotations](https://github.com/prestodb/presto/tree/3060c65a1812c6c8b0c2ab725b0184dbad67f0ed/presto-main/src/main/java/com/facebook/presto/metadata).
 
 {% highlight java %}
 @AccumulatorStateMetadata(stateFactoryClass = JSONAggregationStateFactory.class, stateSerializerClass = JSONAggregationStateSerializer.class)
@@ -107,7 +107,7 @@ Once you have your UDF, the sensible thing is to test it.
 But how do you simulate Presto's inner workings? This is especially important for aggregation functions, given that Presto takes the components of your UDF and uses them inside a black box.
 Thankfully, we have [Docker](https://www.docker.com/)!
 
-[Here](TODO) we provide a _Makefile_ and a [docker-compose.yml](TODO)[^2] for getting a Presto server up and running locally, automatically incorporating your UDF.
+[Here](https://github.com/jampp/presto-udfs/tree/master/docker-presto-cluster) we provide a _Makefile_ and a docker-compose.yml[^2] for getting a Presto server up and running locally, automatically incorporating your UDF.
 
 1. First you need to package your UDFs with Maven.
 2. Then, replace the path to them in the _docker-compose.yml_ file.
@@ -128,7 +128,7 @@ Here are some of the traps we've fallen into, hopefully it'll save you some head
 
 * Do NOT use the [presto-main](https://mvnrepository.com/artifact/com.facebook.presto/presto-main) dependency for anything besides testing (and even then, try to avoid it). Whichever function you need from _presto-main_ will most like have an equivalent in the [presto-spi](https://mvnrepository.com/artifact/com.facebook.presto/presto-spi) package.
 * If your state uses more complex data types than the basic types, you should add a _Factory_ and a _Serializer_ (otherwise, you get weird errors like "HashMap<> not supported").
-* Always check that the _.jar_ files are deployed in both the coordinator and the workers. If you get an esoteric Presto exception (like “varchar not found” even though the function is listed in the _SHOW FUNCTIONS_ query), this is the most likely suspect.
+* Always check that the _.jar_ files are deployed in both the coordinator and the workers. If you get an esoteric Presto exception (like “varchar not found” even though the function is listed in the _SHOW FUNCTIONS;_ query), this is the most likely suspect.
 
 ## Conclusion
 

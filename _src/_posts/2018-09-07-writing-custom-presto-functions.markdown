@@ -120,7 +120,7 @@ Once it's up, it can be queried like any other Presto cluster, so you can use it
 ## Pitfalls
 
 {% blockquote King Richard III %}
-My kingdom for a discernible stack trace!
+    "My kingdom for a discernible stack trace!"
 {% endblockquote %}
 
 Developing software never is a smooth-sailing kind of deal (where's the fun in that?), so be prepared to stare into weird looking stack traces.

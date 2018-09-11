@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  Writing custom PrestoDB functions
-date:   2018-09-07
+date:   2018-09-11
 tag:    technology
 categories:
-    - infrastructure
+    - data-infrastructure
     - technology
 keywords: "Presto, PrestoDB, UDF, aggregation"
 author: dantepawlow

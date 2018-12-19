@@ -12,6 +12,13 @@
 ## Environment Setup
 `bundle install & npm install & bower install`
 
+## Writing a new post
+1. Create a new branch
+2. Add a `yaml` file in `/_src/_posts` with the post content
+3. Create the pull request
+4. Once the PR is approved, it'll be deployed in stage (geeks-preview.jampp.com)
+5. Once you review the post, deploy with the Jenkins job (`blog_geeks_release`). If you don't have access to Jenkins, ask for help to the DevOps team.
+
 ## Gulp Tasks
 
 ### Default (watch)

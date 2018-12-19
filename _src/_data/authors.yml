@@ -31,10 +31,15 @@ memeplex:
 pablow:
     name: Pablo Watfi
     email: pablo.watfi@jampp.com
-    web: 
+    web:
     photo: pablow.jpg
 dantepawlow:
     name: Dante Pawlow
     email: dante.pawlow@jampp.com
     web:
     photo: dantep.jpg
+gonzalezzfelipe:
+    name: Felipe Gonzalez
+    email: felipe.gonzalez@jampp.com
+    web: https://github.com/gonzalezzfelipe
+    photo: gonzalezzfelipe.jpg

@@ -27,7 +27,7 @@ Before, with an open source library defaults...
 After, with JPlotLib:
 ![ jplotlib histogram ]({{site.url}}/assets/images/jplotlib/histogram.png){: .center-image }
 
-You might be thinking..Why? Some libraries already have what you need. But that is not true. We create and analyze tailored data-sets, user behavior and patterns from millions and millions of data and let’s be honest, almost none of the default suggestions from softwares are the correct ones to show it. Some libraries have tons of documentation and bugs, so changing small details requires a lot of manual input, a.k.a “human-time”.
+You might be thinking: "Why? Some libraries already have what you need". But that is not true. We create and analyze tailored data-sets, user behavior and patterns from millions and millions of data and let’s be honest, almost none of the default suggestions from software are the correct ones to show it. Some libraries have tons of documentation and bugs, so changing small details requires a lot of manual input, a.k.a “human-time”.
 
 Examples with before and after results and the small coding changes needed in the README are key for an easy and solid experience.
 

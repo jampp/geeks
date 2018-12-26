@@ -8,22 +8,23 @@ categories:
     - technology
     - python
 keywords: "python, matplotlib, visualization, jplotlib"
-author: felipegonzalez
+author: gonzalezzfelipe
 ---
 
 <!--excerpt.start-->
 
-In these times, it is all about Data, yes..
+In these times, it's all about Data..
 
 ... BUT, it’s not only about having your data available in a clean and easy
-data-set or feeding a machine learning algorithm, it is also about sharing it
-so other people (more or less technical than you) can understand the trends
-without too many explanations or even better, without feeling that the chart
-is so over-complicated that they can not even try it.
+data-set and feeding a machine learning algorithm, it's also about sharing it
+so other people (with more or less technical knowledge than you) can understand
+the trends without much explanation or even better, without feeling
+overwhelmed by an overly-complicated chart that makes them give up before
+they even try.
 
-Because of that, at Jampp, we create our own Matplotlib wrapper, JPlotlib.
-So everyone can use an already customized, Jampp branded and easy to go Python
-library to introduce data results with no effort.
+Because of that, at Jampp, we created our own [Matplotlib](https://matplotlib.org/)
+wrapper, JPlotLib. Now everyone can use an already customized, Jampp branded
+and easy to go Python library to introduce data results with little to no effort.
 
 <!--excerpt.end-->
 
@@ -34,15 +35,17 @@ After, with JPlotLib:
 ![ jplotlib histogram ]({{site.url}}/assets/images/jplotlib/histogram.png){: .center-image }
 
 You might be thinking: [_but why?_](https://media.giphy.com/media/1M9fmo1WAFVK0/giphy.gif)
-Some libraries already have what you need. But that is not true.
+There are libraries that already have what you need. But that is just not true.
 We create and analyze tailored data-sets, user behavior and patterns from
-millions and millions of data and let’s be honest, almost none of the default
-styles from out of the shelve libraries are the best ones to produce good
-visualizations. Some libraries have tons of documentation and bugs, so
-changing small details requires a lot of manual input, a.k.a “human-time”.
+millions and millions of data points and let’s be honest, almost none of the
+default styles from out-of-the-shelve libraries are the best ones to produce good
+visualizations. Some of these have tons of documentation and bugs, so
+changing small details require a lot of manual input, a.k.a “human-time”.
 
 Examples with before and after results and the small coding changes needed in
 the README are key for an easy and solid experience.
+
+![ readme screenshot ]({{site.url}}/assets/images/jplotlib/readme.png){: .center-image }
 
 ## Extreme-Makeover, Jampp edition
 
@@ -51,26 +54,26 @@ by improving your plotting tools.
 
 ### Bar Plot
 
-#### Before
+#### [Before](https://media.giphy.com/media/3oEjHLIKODQJeCtEic/giphy.gif)
 ![ basic bar plot ]({{site.url}}/assets/images/jplotlib/old_bar.png){: .center-image }
 
-#### After
+#### [After](https://gph.is/1POdqLV)
 ![ jplotlib bar plot ]({{site.url}}/assets/images/jplotlib/bar.png){: .center-image }
 
 ### Barh Plot
 
-#### Before
+#### [Before](https://gph.is/2q2PjzG)
 ![ basic barh plot ]({{site.url}}/assets/images/jplotlib/old_barh.png){: .center-image }
 
-#### After
+#### [After](https://gph.is/1XASFqw)
 ![ jplotlib barh plot ]({{site.url}}/assets/images/jplotlib/barh.png){: .center-image }
 
 ### Scatter Plot
 
-#### Before
+#### [Before](https://media.giphy.com/media/l1J9IcUl8ttRzrQju/giphy.gif)
 ![ basic scatter plot ]({{site.url}}/assets/images/jplotlib/old_scatter.png){: .center-image }
 
-#### After
+#### [After](https://gph.is/2d7Vro9)
 ![ jplotlib barh plot ]({{site.url}}/assets/images/jplotlib/scatter.png){: .center-image }
 
 
@@ -82,7 +85,6 @@ Here are some examples of the `slope` and `Venn` charts developed on the `JPlotL
 
 ### Venn Diagram
 ![ jplotlib venn diagram ]({{site.url}}/assets/images/jplotlib/venn.png){: .center-image }
-
 
 
 ## Bonus Points

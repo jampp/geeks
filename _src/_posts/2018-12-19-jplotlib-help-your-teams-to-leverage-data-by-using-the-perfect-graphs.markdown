@@ -18,7 +18,7 @@ In these times, it's all about Data..
 ... BUT, it’s not only about having your data available in a clean and easy
 data-set and feeding a machine learning algorithm, it's also about sharing it
 so other people (with more or less technical knowledge than you) can understand
-the trends without much explanation or even better, without feeling
+the trends and its implications without much explanation or even better, without feeling
 overwhelmed by an overly-complicated chart that makes them give up before
 they even try.
 
@@ -40,7 +40,7 @@ We create and analyze tailored data-sets, user behavior and patterns from
 millions and millions of data points and let’s be honest, almost none of the
 default styles from out-of-the-shelve libraries are the best ones to produce good
 visualizations. Some of these have tons of documentation and bugs, so
-changing small details require a lot of manual input, a.k.a “human-time”.
+changing small details requires a lot of manual labor, a.k.a “human-time”.
 
 Examples with before and after results and the small coding changes needed in
 the README are key for an easy and solid experience.
@@ -89,7 +89,7 @@ Here are some examples of the `slope` and `Venn` charts developed on the `JPlotL
 
 ## Bonus Points
 
-You can preset your brand’s color palette predefine color maps for heatmaps.
+You can also set your brand’s color palette define color maps.
 This ensures a clean and coherent look and your Marketing team will love you.
 
 ![ colors ]({{site.url}}/assets/images/jplotlib/colors.png){: .center-image }

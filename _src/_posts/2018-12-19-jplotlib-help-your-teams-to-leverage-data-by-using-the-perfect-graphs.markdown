@@ -89,7 +89,7 @@ Here are some examples of the `slope` and `Venn` charts developed on the `JPlotL
 
 ## Bonus Points
 
-You can also set your brand’s color palette define color maps.
+You can also set your brand’s color palette to define color maps.
 This ensures a clean and coherent look and your Marketing team will love you.
 
 ![ colors ]({{site.url}}/assets/images/jplotlib/colors.png){: .center-image }

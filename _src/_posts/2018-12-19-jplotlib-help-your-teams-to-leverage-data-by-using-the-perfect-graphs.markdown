@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How to help your teams to leverage data by using the perfect graphs."
-date:   2018-12-19
+date:   2018-01-03
 tag:    technology
 categories:
     - data-science
@@ -13,18 +13,23 @@ author: gonzalezzfelipe
 
 <!--excerpt.start-->
 
-In these times, it's all about Data..
+We’ve written posts about retrieving data, and storing and using data. Us and
+a lot of other people. These days, it’s all about the data. We process +100 TB
+of data per day, feeding a machine-learning algorithm that allows us to drive
+incremental sales for app marketers. Data makes the performance marketing world
+go round. There is however one point about data that few people in the industry
+are talking about…
 
-... BUT, it’s not only about having your data available in a clean and easy
-data-set and feeding a machine learning algorithm, it's also about sharing it
-so other people (with more or less technical knowledge than you) can understand
-the trends and its implications without much explanation or even better, without feeling
-overwhelmed by an overly-complicated chart that makes them give up before
-they even try.
+It has to do with how you present data. How do you share data with others so
+that trends and implications can be easily understood by everyone (regardless
+  of their analytical savviness).
 
-Because of that, at Jampp, we created our own [Matplotlib](https://matplotlib.org/)
-wrapper, JPlotLib. Now everyone can use an already customized, Jampp branded
-and easy to go Python library to introduce data results with little to no effort.
+Oftentimes, we find that key insights get lost in overly-complicated charts
+and graphs. Because of that, at Jampp, we created our own
+[Matplotlib](https://matplotlib.org/) wrapper: JPlotLib. Now everyone in our
+team, can quickly access and use a customized, Jampp branded Python library to
+introduce data results with little to no effort. In this post, we include
+several examples of data visualization, we hope it’s useful!
 
 <!--excerpt.end-->
 
@@ -34,23 +39,26 @@ Before, with an open source library defaults...
 After, with JPlotLib:
 ![ jplotlib histogram ]({{site.url}}/assets/images/jplotlib/histogram.png){: .center-image }
 
-You might be thinking: [_but why?_](https://media.giphy.com/media/1M9fmo1WAFVK0/giphy.gif)
-There are libraries that already have what you need. But that is just not true.
-We create and analyze tailored data-sets, user behavior and patterns from
-millions and millions of data points and let’s be honest, almost none of the
-default styles from out-of-the-shelve libraries are the best ones to produce good
-visualizations. Some of these have tons of documentation and bugs, so
-changing small details requires a lot of manual labor, a.k.a “human-time”.
+At this point, you might be wondering:
+[_but why?_](https://media.giphy.com/media/1M9fmo1WAFVK0/giphy.gif) There are
+libraries that already have what you need. But do they really? We create
+tailored data-sets, analyzing user behavior and patterns from millions and
+millions of data points and let’s be honest, it’s hard to find ones that
+actually offer good and highly customizable data visualizations. What’s more,
+some of these have tons of documentation and bugs, which means changing small
+details requires a lot of manual labor.
 
-Examples with before and after results and the small coding changes needed in
-the README are key for an easy and solid experience.
+A detailed README with example plots and it’s corresponding code goes a long
+way to improve user experience. Below you can find the promised examples with
+before and after results.
 
 ![ readme screenshot ]({{site.url}}/assets/images/jplotlib/readme.png){: .center-image }
 
 ## Extreme-Makeover, Jampp edition
 
-This is the part where we show you how different your visual experience can be
-by improving your plotting tools.
+It’s not just how it looks, it’s how you see it, meaning how easily you can
+grasp what the graph / chart is trying to show. Improving your plotting tools
+can make a huge difference!
 
 ### Bar Plot
 
@@ -77,7 +85,7 @@ by improving your plotting tools.
 ![ jplotlib barh plot ]({{site.url}}/assets/images/jplotlib/scatter.png){: .center-image }
 
 
-This wouldn't be complete without some of the house favorites.
+This wouldn't be complete without some of the house's favorites.
 Here are some examples of the `slope` and `Venn` charts developed on the `JPlotLib` package.
 
 ### Slope Plot
@@ -89,7 +97,7 @@ Here are some examples of the `slope` and `Venn` charts developed on the `JPlotL
 
 ## Bonus Points
 
-You can also set your brand’s color palette to define color maps.
+You can also preset your brand’s color palette to define color maps.
 This ensures a clean and coherent look and your Marketing team will love you.
 
 ![ colors ]({{site.url}}/assets/images/jplotlib/colors.png){: .center-image }
@@ -97,8 +105,15 @@ This ensures a clean and coherent look and your Marketing team will love you.
 
 ## Wrapping Up / Keep in Mind
 
-So remember, it’s not enough to “get” the data, you also need to show it in a
-way that allows others to quickly grasp its meaning. You have to make sure
-everyone in the company understands what it means with the least effort
-possible, and the best way to do that is to make easy-to-read (and pretty,
-don't forget pretty) figures that show it's value.
+When it comes to data, appearances matter.
+[Humans are visual learners](https://thenextweb.com/dd/2014/05/21/importance-visual-content-deliver-effectively/)
+so data visualization is a key in helping people understand what the data
+actually means.
+
+It’s not just about making it “pretty”, if you are doing it right, chances are
+it will look pretty, but the main point is to *make it readable,
+understandable.*
+
+Colors aren’t (or shouldn’t be) capricious, use them wisely! Same goes for any
+other element you are adding to your chart. Everyone should be able to grasp
+what the data is showing, with the least possible amount of effort.

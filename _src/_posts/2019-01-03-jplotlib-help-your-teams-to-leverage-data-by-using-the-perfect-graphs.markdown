@@ -84,8 +84,8 @@ can make a huge difference!
 ![ jplotlib barh plot ]({{site.url}}/assets/images/jplotlib/scatter.png){: .center-image }
 
 
-This wouldn't be complete without some of the house's favorites.
-Here are some examples of the `slope` and `Venn` charts developed on the `JPlotLib` package.
+This wouldn't be complete without some of the house's favorites. Here are some
+examples of the `slope` and `Venn` charts developed on the `JPlotLib` package.
 
 ### Slope Plot
 ![ jplotlib slope plot ]({{site.url}}/assets/images/jplotlib/slope.png){: .center-image }

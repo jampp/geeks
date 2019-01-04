@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How to help your teams to leverage data by using the perfect graphs."
-date:   2018-01-03
+date:   2019-01-03
 tag:    technology
 categories:
     - data-science

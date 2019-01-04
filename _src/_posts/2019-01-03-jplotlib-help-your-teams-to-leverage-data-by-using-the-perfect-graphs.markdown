@@ -48,9 +48,8 @@ actually offer good and highly customizable data visualizations. What’s more,
 some of these have tons of documentation and bugs, which means changing small
 details requires a lot of manual labor.
 
-A detailed README with example plots and it’s corresponding code goes a long
-way to improve user experience. Below you can find the promised examples with
-before and after results.
+A detailed README with example plots and its corresponding code goes a long
+way to improve user experience.
 
 ![ readme screenshot ]({{site.url}}/assets/images/jplotlib/readme.png){: .center-image }
 

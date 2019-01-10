@@ -29,7 +29,7 @@ and graphs. Because of that, at Jampp, we created our own
 [Matplotlib](https://matplotlib.org/) wrapper: JPlotLib. Now everyone in our
 team, can quickly access and use a customized, Jampp branded Python library to
 introduce data results with little to no effort. In this post, we include
-several examples of data visualization, we hope it’s useful!
+several examples of data visualization, we hope you find it useful!
 
 <!--excerpt.end-->
 

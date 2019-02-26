@@ -441,9 +441,10 @@ but **all of them**.
 
 Probably the most important thing to make sure you succeed, is knowing that you may
 fail. That most such endeavors fail. Be ready to make hard decisions, because they're
-in your future if you're considering a rewrite.
+in your future if you're considering a rewrite. Set things up so that **if** you fail,
+you **won't go under**, and learn how to recognize defeat early.
 
-Don't let despair set in, because it may be difficult to see the light at the
+Otherwise don't let despair set in, because it may be difficult to see the light at the
 end of the tunnel. But whether you see it or not, it's there.
 
 Just keep calm, and keep coding.

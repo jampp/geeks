@@ -85,7 +85,7 @@ reflex to say "No" when I hear such proposals. No, we didn't **intend** to do a 
 
 We just ended up doing it.
 
-##Preface
+## Preface
 
 Let me tell you the story of how we ended up there in the first place.
 If you're feeling like "TL;DR, gimme the punchline", feel free to skip to the
@@ -173,7 +173,7 @@ take on such a huge task. But I was convinced, I had fallen on the trap,
 and I knew the next N months of my life would be... well... "fun".
 
 
-##The project
+## The project
 
 The project itself wasn't a rewrite, but the changes involved were huge.
 As I said, it all started with a new UI. The new UI started adding 
@@ -230,7 +230,7 @@ for many a flamewar.
 
 Where to begin...
 
-###The Bidder Decision Tree
+### The Bidder Decision Tree
 
 Instead of processing campaigns one by one, caching results as we did
 before, we precomputed a decision tree optimized for whatever the current
@@ -261,7 +261,7 @@ parallelization of the build process.
 
 There was no book we didn't throw at it.
 
-###Instrumentation
+### Instrumentation
 
 Before this project, every time we decided not to bid for a campaign,
 we tracked an "NBR". Quite descriptively, a non-bidding reason.
@@ -297,7 +297,7 @@ part of why the whole endeavor ended up succeeding.
 
 But it came at considerable cost.
 
-###The new UI
+### The new UI
 
 I did mention this all started as a purely-UI project.
 The UI team soon realized they needed sweeping changes to the UI, so
@@ -315,7 +315,7 @@ old one was just not well suited to our current workflow.
 
 But we didn't just change the UI... and here it comes...
 
-###Scope creep
+### Scope creep
 
 Microservices are great. I'm totally in favor of them, especially for connecting
 a web UI to its backend. It's such a great way to work in the frontend...
@@ -332,7 +332,7 @@ We had to turn everything upside down to do that model change, so it looked like
 the best time to also change a few things we always wanted to change, but hadn't
 had the opportunity to.
 
-###Rip that Database
+### Rip that Database
 
 I mentioned microservices, I mentioned the bidder, and I mentioned the UI. Until
 now, the bidder and the UI communicated through a shared database. That was...
@@ -374,7 +374,7 @@ But, as always, hindsight is 20:20.
 
 Which brings me back to the preface, and that issue of...
 
-##Late ROI
+## Late ROI
 
 The above made the project unable to hit production before it was fully fleshed
 out. We tried to chop it into smaller chunks we *could* deploy, but there was
@@ -405,7 +405,7 @@ And then there's that sunk cost that keeps you from choosing to bail out.
 
 Suffice it to say, that planning sessions were best watched with popcorn in hand.
 
-###How to cope with it
+### How to cope with it
 
 During all this time, a sense of urgency starts to build up. At some point,
 you might be tempted to put all your eggs on the project's basket, bet it all on it,
@@ -429,7 +429,7 @@ relevant and able to sustain the business, than to spend 6 months on the rewrite
 to reach the end and find you no longer have a business, because your legacy software
 just couldn't keep up with the business without maintenance.
 
-##In the end
+## In the end
 
 Here we are. After the better part of a very hard year, working tirelessly
 to build a super-cool new version of our bidder, we have succeeded.

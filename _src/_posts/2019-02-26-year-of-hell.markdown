@@ -410,9 +410,9 @@ you might be tempted to put all your eggs in the project's basket, go all it,
 throw all your resources at it, finish it as quickly as possible and ignore everything
 else.
 
-It's common to think that if all your development team is fully dedicated to
-finishing that rewrite, it will happen sooner. And if it happens soon, then we don't
-need to maintain the old system. Right?
+It's a common reaction to think that, if all your development team is fully dedicated to
+finishing that rewrite, it will happen sooner. And then, you think, if it happens soon,
+then we don't need to maintain the old system. Right?
 
 **Resist the urge to freeze the "legacy software"**.
 

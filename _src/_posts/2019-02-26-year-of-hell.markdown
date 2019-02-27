@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Year of Hell
+title:  Year of Hell - Surviving software rewrites
 date:   2019-02-26
 tag: technology
 categories:
@@ -14,21 +14,21 @@ I've suffered a few "rewrites" over my career, both in professional projects
 and in amateur ones. You know how it goes. You start your project coding
 with a few reasonable assumptions, and you get a nice proof of concept working.
 Then you realize your proof of concept became the actual thing, so you try
-(in vain) to "tidy up things". But it works, and well, so you move on.
+(in vain) to "tidy things up". But it works, and well, so you move on.
 
-A few thousand kilometres down the road (because metric!) you look back
+A few thousand kilometres down the road (because metric!), you look back
 in horror at your code. It's awful, you've got tons of features nobody
 uses, features that require a lot of code and support.
 
 You also realize you've engineered the whole thing wrong. The assumptions that
 seemed reasonable at the time turned out to be untrue after some real-world
-experience. Or maybe they were true, but no longer. Whatever the case, you
+experience. Or maybe they were true, but not anymore. Whatever the case, you
 realize your whole software architecture no longer fits the problem.
 
-You also notice the quality of the code degraded considerably. It's hard
+Finally, you notice the quality of the code has considerably degraded. It's hard
 to read. It's hard to think about it. Patches upon patches, some for optimization,
 some for new features nobody wants, some to fix some obscure bug or worse,
-some weird stuff to work around someone else's bug you just have to deal with.
+some workaround to deal with someone else's bug.
 A million paper cuts made your software hard to read, and hard to maintain.
 
 And you think to yourself... I could do this much better if I rewrote it
@@ -44,8 +44,8 @@ Rewrites are very difficult, very risky projects:
 * **They're extremely long projects**
   
   It's not due to laziness
-  it took you years to get the software to that point. It took all that time
-  to discover how to do things, and it took a big chunk of that time to actually
+  it took years to get the software to that point. It takes time
+  to discover how to do things, and more time to actually
   do those things. It's not like you'll be able to redo all that work in a week.
   Or a month. Or two.
 
@@ -60,14 +60,14 @@ Rewrites are very difficult, very risky projects:
 
   Since we're rewriting it, I'll take the opportunity
   to fix this thing I did wrong. And since we're at it, we can
-  improve on this. And that. Famous last words.
+  improve on this... and that... famous last words.
 
 * **Insanely slow ROI**
 
   You won't see the fruits of your labor until you're done
   rewriting. Unlike with the original development experience, where you could
-  deploy features as you went, it's unlikely you can replace your old software before
-  you finish all the features. Nobody will accept a feature regression, so you won't
+  deploy features as you went along, it's unlikely you can replace your old software before
+  you finish all the features. Feature regressions are hard to accept, so you won't
   see it deployed until you're done. And you don't get feedback until you're done.
 
 * **They're demoralizing**
@@ -95,18 +95,18 @@ Like I said before, most useful projects start out from a PoC that does well
 and becomes the actual thing. Ours was no different. And, as such, there was
 a lot of room for improvement.
 
-Not only that, but our way of doing business was changing, so quite a few
-assumptions we made while writing the software were starting to prove wrong,
-and it no longer fit our needs so well.
+Not only that, but our way of doing business was changing, so many of the
+assumptions we made while writing the software no longer applied or were
+a good fit to our needs.
 
 The software I'm talking about is our Real-Time Bidder. It has some very
 strong performance requirements. One is that it has to answer to most
-requests within 100ms. Any later than that, and not only the response
-will be ignored, but if we've got even a percent of those requests take
+requests within 100ms. Any later than the response
+will be ignored. Furthermore, if we've got even a percent of those requests take
 longer than that, our partners will start complaining.
 
 But 100ms isn't even close to our actual CPU budget. In order to stay
-profitable we have to take much less than that per request. Our average
+profitable, we have to take much less than that per request. Our average
 target is closer to 4ms than 100ms.
 
 Real-time bidding is a tough thing to get right, even without any machine
@@ -118,10 +118,10 @@ technically challenging.
 
 So we've cut more than a few corners to get that performance we need.
 And each corner we cut was motivated both by performance, and some business
-reality we thought would hold for a long time. But a lot of these didn't hold.
+reality we thought would hold for a long time. Except a lot of these didn't.
 
 So, skip a few years ahead, and we realized a lot had changed on how
-users were using it.
+users (our account managers) were using it.
 
 Our bidder was like the old OpenGL 1.0 of yore: highly configurable,
 but fixed-function. It was configurable enough that we could actually
@@ -130,15 +130,15 @@ human involvement, and we do believe in letting computers do what
 computers do best.
 
 So, weighing lots of variables to try and find the right users to
-show an ad that they might be interested in? That's a task for computers,
-not humans. Figuring out the best time to show ads? Again, a task for
+show an ad to? That's a task for computers,
+not humans. Figuring what ad to show to which user? Or the best time to show ads? Again, tasks for
 computers. Building reports that give an insight into possible
-performance problems or lost opportunities? Again, the computer should
-do that. But we found, in lots of cases, our users had to "handhold" the
+performance problems or lost opportunities? You guessed it, the computer should
+do that, and yet we found, in lots of cases, our users had to "handhold" the
 system if they wanted to do things right.
 
-Our bidder design was just centered around a workflow that was no longer
-in use, and the new workflow was more labor-intensive than it should
+Our bidder design was centered around a workflow that was no longer
+in use, and the new workflow was more labor-intensive than it should be
 *because* of that.
 
 We knew that, and we wanted to fix it.
@@ -150,12 +150,12 @@ UI so that users don't have to spend more time than necessary navigating
 and clicking on the UI to do mundane tasks?
 
 A colleague of mine, let's call him Benja, because that's his name, was in
-charge of that. And as he delved into the problem, it became more apparent
-that just UI changes wouldn't cut it. And it was true, our whole system
+charge of that. As he delved into the problem, it became increasingly apparent
+that just UI changes wouldn't cut it. Our whole system
 was built on outdated assumptions, not just the UI.
 
-So he came to me one day to talk about that, and he said, paraphrasing
-more than a bit: "What if we switched to a Rules-based system?".
+So he came to me to talk about that, and said, (I'm paraphrasing
+more than a bit): "What if we switched to a Rules-based system?".
 
 It would work! It was like upgrading from the fixed-function OpenGL
 pipeline to the fully-programmable GLSL-powered version 4.0 we're so used
@@ -163,13 +163,13 @@ to today (if you're doing GPU programming that is). Having that expressive
 power would allow our workflow to translate naturally into the UI,
 and simplify our users' tasks an order of magnitude.
 
-And at that point two thoughts crossed my mind: First thing I thought,
-was that I was sold on the idea. I wanted to do it. And a second after
+At that point two thoughts crossed my mind: First thing I thought,
+was that I was sold on the idea. I wanted to do it. And a second after that
 I thought "I hate you".
 
 Because I knew just how much work achieving that would involve. And if I
 hadn't been convinced it was a good idea, I would never have agreed to
-take on such a huge task. But I was convinced, I had fallen on the trap,
+take on such a huge task. But I was convinced, I had fallen into the trap,
 and I knew the next N months of my life would be... well... "fun".
 
 
@@ -186,12 +186,11 @@ into a highly flexible rules-based one that had a lot more expressive power.
 That was the core of the project.
 
 But that's easier said than done. The new system used rules instead
-of configuration. Each campaign would have basically a program that had
+of configuration. Each campaign would basically have a program that had
 to run in order to figure out whether to bid on an impression or not.
 
 Suddenly, all the optimizations we had in place to meet our CPU budget
-no longer applied, and we had to work out another way to optimize things
-to meet that budget.
+no longer applied, and we had to work out another way to optimize things.
 
 So... how do we get there?
 
@@ -213,13 +212,13 @@ process:
 * **The new UI itself**
 
   The new UI was indeed a complete rewrite, from scratch with microservices,
-  nodejs and react. It was a massive undertaking.
+  Node.js and React. It was a massive undertaking.
 
 * **Data migration**
 
-  The new model was radically different from the old model, so we had to at some point
-  switch databases, applications, everything, from the old model to the new. It wasn't
-  trivial at all, let alone doing it without impacting day-to-day operations. It's not
+  The new model was radically different from the old model so, at some point, we had to
+  switch databases, applications, everything, from the old model to the new. It was
+  no small feat, especially since it had to be done without impacting day-to-day operations. It's not
   like we could start the new system with a blank database and tell everybody to set
   everything up again, manually, from scratch. We had to come up with an unobtrusive
   transition plan.
@@ -243,8 +242,8 @@ Building the tree would take a lot of CPU time, but the structure can
 then be shared by all bidders and that cost gets amortized in time and scale.
 It was a clear win, but not without its challenges.
 
-The first version of the BDT had a rather naïve approach we thought we
-could get away with. Instead of building a truly optimal tree, we tried
+The first version of the BDT had a rather naïve approach (which we thought we
+could get away with). Instead of building a truly optimal tree, we tried
 a heuristic that was fast and simple. At least in tests. As soon as we
 plugged it onto some real configurations, there wasn't a machine that
 had enough RAM to finish the job. Those were some nicely wasted months,
@@ -265,24 +264,23 @@ There was no book we didn't throw at it.
 
 Before this project, every time we decided not to bid for a campaign,
 we tracked an "NBR". Quite descriptively, a non-bidding reason.
-Problem with that, was that it was very hard to interpret. If the NBR
+Problem with that was that it was very hard to interpret. If the NBR
 for an auction was, say, "blacklisted publisher", that didn't mean
 it would have bid on a different publisher. NBRs weren't easily interpreted
 as lost opportunities, and thus actionable recommendations,
 and we had to solve that.
 
-We knew when - not if - something wouldn't work as intended, we would
+We knew that when - not if - something didn't work as intended, we would
 have a hard time diagnosing the issue. So we designed a whole new instrumentation
 system that let us measure all the decisions taken within the BDT with minimal overhead.
 Not only those that would result in a non-bid, but all of them.
-
 And I really mean minimal overhead. On the hottest paths, the instrumentation
-takes literally just a CPU cycle.
+takes literally a single CPU cycle.
 
-Getting there took way longer than we had estimated, putting into
-evidence the riskiness of such huge project rewrites. We thought we
+Getting there took way longer than we had estimated,
+evidencing the riskiness of such huge project rewrites. We thought we
 could do the instrumentation rather quickly, sloppily on a first version
-and then improve on it, but when we put that sloppy PoC in pre-production,
+and then improve on it. However, when we put that sloppy PoC in pre-production,
 the performance was so abysmal we just couldn't put that in production.
 
 We had to spend way longer optimizing the thing
@@ -302,7 +300,7 @@ But it came at considerable cost.
 I did mention this all started as a purely-UI project.
 The UI team soon realized they needed sweeping changes to the UI, so
 they set out to rewrite the UI from scratch. With new
-technologies to boot. React, nodejs, microservices, you pick the buzzword and we got it.
+technologies to boot. React, Node.js, microservices, you pick the buzzword and we got it.
 
 Seriously though, the original UI was a rather standard web 2.0 app that they
 rewrote entirely "the modern way", with react, js, and a host of backend
@@ -325,8 +323,8 @@ model is after all also a conceptual model, so if you're trying to adapt your
 software to changing realities, no change is complete without a corresponding
 model change.
 
-And a model change, especially if a database with terabytes or even petabytes of
-historic data that you can't throw away is involved, is a huge change.
+And a model change, especially if it involves a database with terabytes or even petabytes of
+historic data that you can't throw away, is a huge change.
 
 We had to turn everything upside down to do that model change, so it looked like
 the best time to also change a few things we always wanted to change, but hadn't
@@ -354,9 +352,9 @@ It wasn't really necessary. We just thought it would be the best time to attempt
 it. In hindsight, maybe we shouldn't have. The project was big enough without
 that, and it wouldn't come cheap in the end.
 
-We thought it would have helped shield the bidder from the huge model change
-that was happening underneath, but in the end it wasn't as effective in doing
-that either. It only served to add a dependency between the UI team and bidder team,
+We thought it would help shield the bidder from the huge model change
+that was happening underneath, but in the end it wasn't very effective in doing
+that either. It only served to add a dependency between the UI team and bidder team
 making team dynamic a lot more complex, and basically delaying the project.
 
 In retrospect, we could have switched to microservices either before or after
@@ -364,7 +362,7 @@ the redesign. That would have improved team independence, and a whole category o
 things that could go wrong would have vanished, making the project move that much
 faster and predictably as a result.
 
-Worse even, the database switch forced the project to be an all-or-nothing
+What's worse, the database switch forced the project to be an all-or-nothing
 affair. We couldn't do baby steps because the new system would work on a different
 database. It's hard to be 100% certain, but I'm pretty sure we would have had a
 much smoother transition if we hadn't compounded the problem by doing both things
@@ -376,16 +374,16 @@ Which brings me back to the preface, and that issue of...
 
 ## Late ROI
 
-The above made the project unable to hit production before it was fully fleshed
+All of the above made the project unable to hit production before it was fully fleshed
 out. We tried to chop it into smaller chunks we *could* deploy, but there was
 still a huge last jump that was quite problematic.
 
-As all very long projects, it was hard to predict when it would be done. We
+As with all very long projects, it was hard to predict when it would be done. We
 revised our estimates a zillion times, each time delaying it a bit further.
 We revised the functionality a zillion times as well, trying to move the date
 back to where we wanted it.
 
-Because there's a very weird dynamic in these huge projects that makes for a
+There's a very weird dynamic in these huge projects that makes for a
 very "fun" experience.
 
 On the one side, you want to fix a delivery date and stick to it. That's useful,
@@ -397,7 +395,7 @@ On the other side, complex problems can't be rushed. Sometimes the only resource
 a project needs to finish, is more time.
 
 Manpower can't be added. There's a very famous saying in this regard, that 
-I expect most already know: "Adding manpower to a late software project, makes it later."
+I expect most already know: *"Adding manpower to a late software project, makes it later."*
 
 Functionality can be removed only up to a point. If what delays you is the core
 of the project, you can only choose whether to invest the required time or not.
@@ -408,8 +406,8 @@ Suffice it to say, that planning sessions were best watched with popcorn in hand
 ### How to cope with it
 
 During all this time, a sense of urgency starts to build up. At some point,
-you might be tempted to put all your eggs on the project's basket, bet it all on it,
-throw all your resources in, finish it as quickly as possible and ignore everything
+you might be tempted to put all your eggs in the project's basket, go all it,
+throw all your resources at it, finish it as quickly as possible and ignore everything
 else.
 
 It's common to think that if all your development team is fully dedicated to
@@ -421,10 +419,10 @@ need to maintain the old system. Right?
 That software pays the bills. If you stop maintaining it, at some point, it will stop
 paying the bills, and you won't have it either way.
 
-As the old adage goes, "if you don't schedule time for maintenance, your equipment
-will schedule it for you". The same applies to software.
+As the old adage goes, *"if you don't schedule time for maintenance, your equipment
+will schedule it for you"*. The same applies to software.
 
-It's best to spend a whole year on the rewrite while keeping the legacy version
+It's best to spend a whole year on the rewrite, while keeping the legacy version
 relevant and able to sustain the business, than to spend 6 months on the rewrite
 to reach the end and find you no longer have a business, because your legacy software
 just couldn't keep up with the business without maintenance.
@@ -435,17 +433,17 @@ Here we are. After the better part of a very hard year, working tirelessly
 to build a super-cool new version of our bidder, we have succeeded.
 
 The switch to production was quite a rocky road, but that was to be expected.
-Such a big change is unlikely to present no obstacles. All in all, I know
+Such a big change is likely to present obstacles. All in all, I know
 how lucky we were to even finish. But it wasn't just luck, it was the effort of not one team,
 but **all of them**.
 
 Probably the most important thing to make sure you succeed, is knowing that you may
-fail. That most such endeavors fail. Be ready to make hard decisions, because they're
+fail. That most of such endeavors fail. Be ready to make hard decisions, because they're definitely
 in your future if you're considering a rewrite. Set things up so that **if** you fail,
 you **won't go under**, and learn how to recognize defeat early.
 
-Otherwise don't let despair set in, because it may be difficult to see the light at the
-end of the tunnel. But whether you see it or not, it's there.
+Otherwise, don't let despair set in, it may be difficult to see the light at the
+end of the tunnel, but whether you see it or not, it's there.
 
 Just keep calm, and keep coding.
 

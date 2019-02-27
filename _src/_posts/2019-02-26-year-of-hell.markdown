@@ -414,7 +414,7 @@ It's a common reaction to think that, if all your development team is fully dedi
 finishing that rewrite, it will happen sooner. And then, you think, if it happens soon,
 then we don't need to maintain the old system. Right?
 
-**Resist the urge to freeze the "legacy software"**.
+**Resist the urge to freeze the "old system"**.
 
 That software pays the bills. If you stop maintaining it, at some point, it will stop
 paying the bills, and you won't have it either way.
@@ -424,7 +424,7 @@ will schedule it for you"*. The same applies to software.
 
 It's best to spend a whole year on the rewrite, while keeping the legacy version
 relevant and able to sustain the business, than to spend 6 months on the rewrite
-to reach the end and find you no longer have a business, because your legacy software
+to reach the end and find you no longer have a business, because your old system
 just couldn't keep up with the business without maintenance.
 
 ## In the end

@@ -416,7 +416,7 @@ then we don't need to maintain the old system. Right?
 
 **Resist the urge to freeze the "old system"**.
 
-That software pays the bills. If you stop maintaining it, at some point, it will stop
+That system pays the bills. If you stop maintaining it, at some point, it will stop
 paying the bills, and you won't have it either way.
 
 As the old adage goes, *"if you don't schedule time for maintenance, your equipment

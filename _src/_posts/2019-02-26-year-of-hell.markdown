@@ -89,7 +89,7 @@ We just ended up doing it.
 
 Let me tell you the story of how we ended up there in the first place.
 If you're feeling like "TL;DR, gimme the punchline", feel free to skip to the
-next section. But if you're in the mood for some storytelling, read on.
+[next section](#the-project). But if you're in the mood for some storytelling, read on.
 
 Like I said before, most useful projects start out from a PoC that does well
 and becomes the actual thing. Ours was no different. And, as such, there was

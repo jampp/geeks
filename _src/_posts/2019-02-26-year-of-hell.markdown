@@ -96,13 +96,13 @@ and becomes the actual thing. Ours was no different. And, as such, there was
 a lot of room for improvement.
 
 Not only that, but our way of doing business was changing, so many of the
-assumptions we made while writing the software no longer applied or were
+assumptions we made while writing the software no longer applied nor were
 a good fit to our needs.
 
 The software I'm talking about is our Real-Time Bidder. It has some very
 strong performance requirements. One is that it has to answer to most
 requests within 100ms. Any later than the response
-will be ignored. Furthermore, if we've got even a percent of those requests take
+will be ignored. Furthermore, if even a percent of those requests take
 longer than that, our partners will start complaining.
 
 But 100ms isn't even close to our actual CPU budget. In order to stay
@@ -120,7 +120,7 @@ So we've cut more than a few corners to get that performance we need.
 And each corner we cut was motivated both by performance, and some business
 reality we thought would hold for a long time. Except a lot of these didn't.
 
-So, skip a few years ahead, and we realized a lot had changed on how
+Skip a few years ahead, and we realized a lot had changed on how
 users (our account managers) were using it.
 
 Our bidder was like the old OpenGL 1.0 of yore: highly configurable,
@@ -129,7 +129,7 @@ do what we needed, no problem there, but it took a lot of effort and
 human involvement, and we do believe in letting computers do what
 computers do best.
 
-So, weighing lots of variables to try and find the right users to
+Weighing lots of variables to try and find the right users to
 show an ad to? That's a task for computers,
 not humans. Figuring what ad to show to which user? Or the best time to show ads? Again, tasks for
 computers. Building reports that give an insight into possible
@@ -163,7 +163,7 @@ to today (if you're doing GPU programming that is). Having that expressive
 power would allow our workflow to translate naturally into the UI,
 and simplify our users' tasks an order of magnitude.
 
-At that point two thoughts crossed my mind: First thing I thought,
+At that point two thoughts crossed my mind: First thing I thought
 was that I was sold on the idea. I wanted to do it. And a second after that
 I thought "I hate you".
 
@@ -197,7 +197,7 @@ So... how do we get there?
 We had to solve quite a few nontrivial - nay, complex - problems in the
 process:
 
-* **The Bidder Decision Tree**
+* **The Bidder Decision Tree** (BDT)
 
   First, we replaced all the straightforward business logic code by a
   decision-tree-like structure that could quickly cull rules based on
@@ -207,17 +207,17 @@ process:
 
   Since the BDT was so magical that it would be an inscrutable black box, and
   that wasn't ok, we designed a whole new instrumentation
-  system that let us measure all the decisions taken within the BDT with minimal overhead.
+  system to measure all the decisions taken within the BDT with minimal overhead.
 
 * **The new UI itself**
 
-  The new UI was indeed a complete rewrite, from scratch with microservices,
+  The new UI was indeed a complete rewrite from scratch, with microservices,
   Node.js and React. It was a massive undertaking.
 
 * **Data migration**
 
   The new model was radically different from the old model so, at some point, we had to
-  switch databases, applications, everything, from the old model to the new. It was
+  transition databases, applications, everything to it. It was
   no small feat, especially since it had to be done without impacting day-to-day operations. It's not
   like we could start the new system with a blank database and tell everybody to set
   everything up again, manually, from scratch. We had to come up with an unobtrusive
@@ -242,8 +242,9 @@ Building the tree would take a lot of CPU time, but the structure can
 then be shared by all bidders and that cost gets amortized in time and scale.
 It was a clear win, but not without its challenges.
 
-The first version of the BDT had a rather naïve approach (which we thought we
-could get away with). Instead of building a truly optimal tree, we tried
+The first version of the BDT had a rather naïve approach.
+We knew this, but we thought we could get away with it.
+Instead of building a truly optimal tree, we tried
 a heuristic that was fast and simple. At least in tests. As soon as we
 plugged it onto some real configurations, there wasn't a machine that
 had enough RAM to finish the job. Those were some nicely wasted months,
@@ -254,7 +255,7 @@ The next version of the BDT was an optimal tree, done in a straightforward,
 brute-force way. It took 6 hours to build, and weighed approximately 30GB.
 That was not ok. We had to update the BDT every 5 minutes.
 
-But eventually we got there, mostly by cleverly optimizing the tree, 
+Eventually, we got there; mostly by cleverly optimizing the tree, 
 both in how it's represented, with heuristic branch pruning, **and** massive
 parallelization of the build process.
 
@@ -291,22 +292,24 @@ Yes, now we have a really nifty instrumentation system that we can
 use to diagnose and measure anything we need. It even produces easy
 to understand reports. We were even able to use it to thoroughly test
 the BDT in our test suite and in pre-production, which was probably a big
-part of why the whole endeavor ended up succeeding.
+part of why the whole endeavor succeeded.
 
 But it came at considerable cost.
 
 ### The new UI
 
 I did mention this all started as a purely-UI project.
-The UI team soon realized they needed sweeping changes to the UI, so
-they set out to rewrite the UI from scratch. With new
-technologies to boot. React, Node.js, microservices, you pick the buzzword and we got it.
+The UI team soon realized the original web app
+needed sweeping changes, so they set out to rewrite the whole thing
+"the modern way" from scratch. With new technologies to boot.
+React, Node.js, microservices, you pick the buzzword and we got it.
 
-Seriously though, the original UI was a rather standard web 2.0 app that they
-rewrote entirely "the modern way", with react, js, and a host of backend
-microservices to power them.
+Seriously though, the original UI was a rather standard web 2.0 app,
+already showing its age, and the rewrite was long overdue.
+With React, Node.js, and a host of backend microservices to power them,
+the usability and maintainability improvements were't minor.
 
-That's not done overnight.
+That's not done overnight though.
 
 This was also the core of the project. We wanted to redesign the UI because the
 old one was just not well suited to our current workflow.
@@ -338,7 +341,7 @@ chaotic, to put it mildly.
 
 Both applications were hugely different in requirements and workload. The bidder
 serves half a million requests per second, whereas the UI serves just us, in
-our internal use of the system. Those workloads are so different that those
+our internal use of the system. Those workloads are so different that the
 two apps are always clashing in some way.
 
 Even the teams maintaining them were different. Maintaining that shared database was not easy,

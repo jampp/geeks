@@ -9,7 +9,7 @@ keywords: "rewrite, architecture, platform, BDT, decision, tree"
 author: klauss
 ---
 
-![Silver]({{site.url}}/assets/images/silver_680x200_black.png){: .center-image }
+![Silver]({{site.url}}/assets/images/silver_680x200_trans.png){: .center-image }
 
 <!--excerpt.start-->
 I've suffered a few "rewrites" over my career, both in professional projects
@@ -57,6 +57,8 @@ Rewrites are very difficult, very risky projects:
   there's a very high chance you'll find something unexpected along the way.
   It's a statistical certainty. With so much work ahead, you'd have an easier
   time winning the lottery than finishing the rewrite on time and without a hitch.
+  Add that the long time frames involved naturally imply huge
+  error bars on any time estimation, and you've got eternal headaches for management.
 
 * **They're giant scope creep magnets**
 
@@ -90,7 +92,7 @@ We just ended up doing it.
 ## Preface
 
 Let me tell you the story of how we ended up there in the first place.
-If you're feeling like "TL;DR, gimme the punchline", feel free to skip to the
+If you're feeling like *"TL;DR, gimme the punchline"*, feel free to skip to the
 [next section](#the-project). But if you're in the mood for some storytelling, read on.
 
 Like I said before, most useful projects start out from a PoC that does well

@@ -7,11 +7,22 @@ categories:
   - technology
 keywords: "rewrite, architecture, platform, BDT, decision, tree"
 author: klauss
+content: |
+  I've suffered a few "rewrites" over my career.
+  You know how it goes. You start your project coding
+  with a few reasonable assumptions, and you get a nice proof of concept working.
+  Then you realize your PoC became the actual thing, so you try
+  (in vain) to "tidy things up". But it works, so you move on.
+
+  A little later you look back in horror at your code, and you think to yourself...
+  I could do this much better if I rewrote it today.
+
+  And if you've been in that situation, you know how it ends.
+  Almost always, in flames.
 ---
 
 ![Silver]({{site.url}}/assets/images/silver_680x200_trans.png){: .center-image }
 
-<!--excerpt.start-->
 I've suffered a few "rewrites" over my career, both in professional projects
 and in amateur ones. You know how it goes. You start your project coding
 with a few reasonable assumptions, and you get a nice proof of concept working.
@@ -39,7 +50,6 @@ today, with the knowledge I accumulated down the road. I know I can.
 And if you've been in that situation and decided to go for it, [you know
 how it ends as well](https://medium.com/@herbcaudill/lessons-from-6-software-rewrite-stories-635e4c8f7c22).
 Almost always, in flames.
-<!--excerpt.end-->
 
 Rewrites are very difficult, very risky projects:
 

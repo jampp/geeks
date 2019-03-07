@@ -132,7 +132,7 @@ technically challenging.
 
 So we've cut more than a few corners to get that performance we need.
 And each corner we cut was motivated both by performance, and some business
-reality we thought would hold for a long time. Except a lot of these didn't.
+reality we *thought* would hold for a long time. *Except a lot of these didn't*.
 
 Skip a few years ahead, and we realized a lot had changed on how
 users (our account managers) were using it.
@@ -179,12 +179,12 @@ and simplify our users' tasks an order of magnitude.
 
 At that point two thoughts crossed my mind: First thing I thought
 was that I was sold on the idea. I wanted to do it. And a second after that
-I thought "I hate you".
+I thought *"I hate you"*.
 
 Because I knew just how much work achieving that would involve. And if I
 hadn't been convinced it was a good idea, I would never have agreed to
-take on such a huge task. But I was convinced, I had fallen into the trap,
-and I knew the next N months of my life would be... well... "fun".
+take on such a huge task. But I was convinced. And I had fallen into the trap.
+And I knew the next N months of my life would be... well... *"fun"*.
 
 
 ## The project
@@ -263,7 +263,7 @@ a heuristic that was fast and simple. At least in tests. As soon as we
 plugged it onto some real configurations, there wasn't a machine that
 had enough RAM to finish the job. Those were some nicely wasted months,
 but it is par for the course for a complex rewrite trying to solve
-complex problems. Trial an error involves both trial... and error.
+complex problems. Trial and error involves both trial... and error.
 
 The next version of the BDT was an optimal tree, done in a straightforward, 
 brute-force way. It took 6 hours to build, and weighed approximately 30GB.

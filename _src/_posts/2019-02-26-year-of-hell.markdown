@@ -9,6 +9,8 @@ keywords: "rewrite, architecture, platform, BDT, decision, tree"
 author: klauss
 ---
 
+![ silver ]({{site.url}}/assets/images/silver_680x200_black.png){: .center-image }
+
 <!--excerpt.start-->
 I've suffered a few "rewrites" over my career, both in professional projects
 and in amateur ones. You know how it goes. You start your project coding

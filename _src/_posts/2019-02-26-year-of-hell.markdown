@@ -21,7 +21,7 @@ content: |
   Almost always, in flames.
 ---
 
-![Silver]({{site.url}}/assets/images/silver_680x200_trans.png){: .center-image }
+![Silver]({{site.url}}/assets/images/silver_681x380_trans.png){: .center-image }
 
 I've suffered a few "rewrites" over my career, both in professional projects
 and in amateur ones. You know how it goes. You start your project coding

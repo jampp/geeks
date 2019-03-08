@@ -363,7 +363,7 @@ so we decided it would be a great time to force the bidder to start using
 those new microservices. After all, we had a huge model change coming, and the
 microservices would be a great way to abstract that change away as much as possible.
 
-And thus it started. Scope crept an inch forward.
+*And thus it started. Scope crept an inch forward.*
 
 It wasn't really necessary. We just thought it would be the best time to attempt
 it. In hindsight, maybe we shouldn't have. The project was big enough without
@@ -392,7 +392,7 @@ Which brings me back to the preface, and that issue of...
 ## Late ROI
 
 All of the above made the project unable to hit production before it was fully fleshed
-out. We tried to chop it into smaller chunks we *could* deploy, but there was
+out. We *tried* to chop it into smaller chunks we *could* deploy, but there was
 still a huge last jump that was quite problematic.
 
 As with all very long projects, it was hard to predict when it would be done. We
@@ -401,7 +401,7 @@ We revised the functionality a zillion times as well, trying to move the date
 back to where we wanted it.
 
 There's a very weird dynamic in these huge projects that makes for a
-very "fun" experience.
+very *"fun"* experience.
 
 On the one side, you want to fix a delivery date and stick to it. That's useful,
 it puts a limit to scope creep, it informs the business side so they can make
@@ -456,8 +456,8 @@ but **all of them**.
 
 Probably the most important thing to make sure you succeed, is knowing that you may
 fail. That most of such endeavors fail. Be ready to make hard decisions, because they're definitely
-in your future if you're considering a rewrite. Set things up so that **if** you fail,
-you **won't go under**, and learn how to recognize defeat early.
+in your future if you're considering a rewrite. Set things up so that **if you fail,
+you won't go under**, and learn how to recognize defeat early.
 
 Otherwise, don't let despair set in, it may be difficult to see the light at the
 end of the tunnel, but whether you see it or not, it's there.

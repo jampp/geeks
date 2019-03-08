@@ -325,10 +325,10 @@ the usability and maintainability improvements were't minor.
 
 That's not done overnight though.
 
-This was also the core of the project. We wanted to redesign the UI because the
+But this was also the core of the project. We wanted to redesign the UI because the
 old one was just not well suited to our current workflow.
 
-But we didn't just change the UI... and here it comes...
+We didn't just change the UI, however... and here it comes...
 
 ### Scope creep
 

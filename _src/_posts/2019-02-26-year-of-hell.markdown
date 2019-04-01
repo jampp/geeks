@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Year of Hell - Surviving software rewrites
+title:  Surviving software rewrites
 date:   2019-02-26
 tag: technology
 categories:

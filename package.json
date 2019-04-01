@@ -1,6 +1,6 @@
 {
   "name": "jampp-jekyll",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Jampp Blog build with Jekyll, GulpJS, SASS & BrowserSync",
   "browser": {
     "modernizr": "./_src/_bower_components/modernizr/modernizr.js",

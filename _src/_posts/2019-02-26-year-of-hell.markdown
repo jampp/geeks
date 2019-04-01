@@ -114,9 +114,9 @@ assumptions we made while writing the software no longer applied nor were
 a good fit to our needs.
 
 The software I'm talking about is our Real-Time Bidder. It has some very
-strong performance requirements. One is that it has to answer to most
-requests within 100ms. Any later than the response
-will be ignored. Furthermore, if even a percent of those requests take
+strong performance requirements. One is that it has to answer most
+requests within 100ms. Any later, and the response
+is ignored. Furthermore, if even one percent of those requests take
 longer than that, our partners will start complaining.
 
 But 100ms isn't even close to our actual CPU budget. In order to stay
@@ -134,7 +134,7 @@ So we've cut more than a few corners to get that performance we need.
 And each corner we cut was motivated both by performance, and some business
 reality we *thought* would hold for a long time. *Except a lot of these didn't*.
 
-Skip a few years ahead, and we realized a lot had changed on how
+Skip a few years ahead, and we realized a lot had changed in how
 users (our account managers) were using it.
 
 Our bidder was like the old OpenGL 1.0 of yore: highly configurable,
@@ -237,7 +237,7 @@ process:
   everything up again, manually, from scratch. We had to come up with an unobtrusive
   transition plan.
 
-As you can probably tell from the preface, though, the project was as stressing as it was
+As you can probably tell from the preface, though, the project was as stressful as it was
 cool. Each step of the way encountered unexpected roadblocks, and was cause
 for many a flamewar.
 
@@ -252,7 +252,7 @@ shape that BDT the way it best suited the current setup, making it a very
 flexible design.
 
 The decision tree would trade offline CPU time with online CPU time.
-Building the tree would take a lot of CPU time, but the structure can
+Building the tree would take a lot of CPU time, but the structure could
 then be shared by all bidders and that cost gets amortized in time and scale.
 It was a clear win, but not without its challenges.
 
@@ -321,7 +321,7 @@ React, Node.js, microservices, you pick the buzzword and we got it.
 Seriously though, the original UI was a rather standard web 2.0 app,
 already showing its age, and the rewrite was long overdue.
 With React, Node.js, and a host of backend microservices to power them,
-the usability and maintainability improvements were't minor.
+the usability and maintainability improvements weren't minor.
 
 That's not done overnight though.
 

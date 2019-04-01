@@ -7,7 +7,7 @@ categories:
   - technology
 keywords: "rewrite, architecture, platform, BDT, decision, tree"
 author: klauss
-content: |
+description: |
   I've suffered a few "rewrites" over my career.
   You know how it goes. You start your project coding
   with a few reasonable assumptions, and you get a nice proof of concept working.

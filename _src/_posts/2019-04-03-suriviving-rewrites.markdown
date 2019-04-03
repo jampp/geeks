@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Surviving software rewrites
-date:   2019-02-26
+date:   2019-04-03
 tag: technology
 categories:
   - technology

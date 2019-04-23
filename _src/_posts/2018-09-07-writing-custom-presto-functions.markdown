@@ -13,10 +13,10 @@ author: dantepawlow
 <!--excerpt.start-->
 
 Here at Jampp we process and analyze large amounts of data.
-One of the tools we employ to do so is [PrestoDB](https://prestodb.io/), which is a "Distributed SQL Query Engine for Big Data".
-Presto comes with many [native functions](https://prestodb.io/docs/current/functions.html), which are usually enough for most use cases. Nevertheless, sometimes you need to implement your own function for a very specific use.
+One of the tools we employ to do so is [PrestoDB](https://prestosql.io/), which is a "Distributed SQL Query Engine for Big Data".
+Presto comes with many [native functions](https://prestosql.io/docs/current/functions.html), which are usually enough for most use cases. Nevertheless, sometimes you need to implement your own function for a very specific use.
 
-Enter the [User Defined Functions](https://prestodb.io/docs/current/develop/functions.html) (UDFs, for short).
+Enter the [User Defined Functions](https://prestosql.io/docs/current/develop/functions.html) (UDFs, for short).
 Writing one for the first time is not as straightforward as it may appear, mainly because the information to do so is very scattered around the web (and across many Presto versions).
 
 In this blogpost, we present [our JSON_SUM function](https://github.com/jampp/presto-udfs), how we wrote it, and some of the lessons we learned along the way.
@@ -49,7 +49,7 @@ You can, however, define the initial parameters of the state via its constructor
 
 ## Implementation
 
-User Defined Functions are written in Java, inside a [plugin](https://prestodb.io/docs/current/develop/spi-overview.html), separate from the default Presto functions.
+User Defined Functions are written in Java, inside a [plugin](https://prestosql.io/docs/current/develop/spi-overview.html), separate from the default Presto functions.
 They are exposed to Presto by declaring them in [UdfPlugin.java](https://github.com/jampp/presto-udfs/blob/master/presto-udfs/src/main/java/com/jampp/presto/udfs/UdfPlugin.java) and then deploying them as a _.jar_ file in the _/usr/lib/presto/plugin/udfs_ directory.
 
 {% highlight java %}
@@ -68,7 +68,7 @@ public class UdfPlugin
 {% endhighlight %}
 
 **Scalar functions** are fairly simple: you write a single Java function, and annotate it appropriately.
-Here's a simple _abs_ function from [Presto's Math Functions](https://github.com/prestodb/presto/blob/3060c65a1812c6c8b0c2ab725b0184dbad67f0ed/presto-main/src/main/java/com/facebook/presto/operator/scalar/MathFunctions.java#L93):
+Here's a simple _abs_ function from [Presto's Math Functions](https://github.com/prestosql/presto/blob/3060c65a1812c6c8b0c2ab725b0184dbad67f0ed/presto-main/src/main/java/com/facebook/presto/operator/scalar/MathFunctions.java#L93):
 
 {% highlight java %}
 @Description("absolute value")
@@ -84,7 +84,7 @@ public static long absTinyint(@SqlType(StandardTypes.TINYINT) long num)
 **Aggregation functions** are trickier to implement, as they have many more moving parts.
 Aside from the _input_, _combine_ and _output_ functions, you should write a [State](https://github.com/jampp/presto-udfs/blob/master/presto-udfs/src/main/java/com/jampp/presto/udfs/aggregation/state/JSONAggregationState.java) interface and its auxiliary files.
 If your state uses just basic data types, Presto automatically knows how to construct, serialize and deserialize it.
-Otherwise, you should implement a [Factory](https://github.com/jampp/presto-udfs/blob/master/presto-udfs/src/main/java/com/jampp/presto/udfs/aggregation/state/JSONAggregationStateFactory.java) and a [Serializer](https://github.com/jampp/presto-udfs/blob/master/presto-udfs/src/main/java/com/jampp/presto/udfs/aggregation/state/JSONAggregationStateSerializer.java), and link them to the State using [Presto's Metadata Annotations](https://github.com/prestodb/presto/tree/3060c65a1812c6c8b0c2ab725b0184dbad67f0ed/presto-main/src/main/java/com/facebook/presto/metadata).
+Otherwise, you should implement a [Factory](https://github.com/jampp/presto-udfs/blob/master/presto-udfs/src/main/java/com/jampp/presto/udfs/aggregation/state/JSONAggregationStateFactory.java) and a [Serializer](https://github.com/jampp/presto-udfs/blob/master/presto-udfs/src/main/java/com/jampp/presto/udfs/aggregation/state/JSONAggregationStateSerializer.java), and link them to the State using [Presto's Metadata Annotations](https://github.com/prestosql/presto/tree/3060c65a1812c6c8b0c2ab725b0184dbad67f0ed/presto-main/src/main/java/com/facebook/presto/metadata).
 
 {% highlight java %}
 @AccumulatorStateMetadata(stateFactoryClass = JSONAggregationStateFactory.class, stateSerializerClass = JSONAggregationStateSerializer.class)
@@ -99,7 +99,7 @@ public interface JSONAggregationState
 
 If you'd like to write an UDF that takes different data types as input (_JSON_ and _VARCHAR_, for example), there are two ways of going about it.
 The simple one is to write two (or more) _input_ functions that take those data types as parameters.
-This works in our case, but if you need your UDF to be more generic, you can follow PrestoDB's example in their [native functions](https://github.com/prestodb/presto/tree/master/presto-main/src/main/java/com/facebook/presto/operator/aggregation).
+This works in our case, but if you need your UDF to be more generic, you can follow PrestoDB's example in their [native functions](https://github.com/prestosql/presto/tree/master/presto-main/src/main/java/com/facebook/presto/operator/aggregation).
 
 ## Testing
 
